@@ -6,10 +6,10 @@
 
 const std = @import("std");
 
-const c = @import("src/metal_c.zig");
-const image = @import("src/image.zig");
-const metrics = @import("src/quality_metrics.zig");
-const model = @import("src/model.zig");
+const c = @import("zdraw").metal_c;
+const image = @import("zdraw").image;
+const metrics = @import("zdraw").quality_metrics;
+const model = @import("zdraw").model;
 
 extern "c" fn setenv(name: [*:0]const u8, value: [*:0]const u8, overwrite: c_int) c_int;
 

@@ -6,10 +6,10 @@
 
 const std = @import("std");
 
-const image = @import("src/image.zig");
-const metrics = @import("src/metrics.zig");
-const model = @import("src/model.zig");
-const runtime = @import("src/model_runtime.zig");
+const image = @import("zdraw").image;
+const metrics = @import("zdraw").metrics;
+const model = @import("zdraw").model;
+const runtime = @import("zdraw").model_runtime;
 
 const Options = struct {
     weights: []const u8 = "",

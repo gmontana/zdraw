@@ -2,18 +2,18 @@
 
 const std = @import("std");
 
-const discovery_trace = @import("src/discovery_trace.zig");
-const mattn = @import("src/mattn.zig");
-const metrics = @import("src/metrics.zig");
-const mlinear = @import("src/mlinear.zig");
-const runtime = @import("src/model_runtime.zig");
-const scheduler = @import("src/scheduler.zig");
-const zdenoise = @import("src/zdenoise.zig");
-const zlatent = @import("src/zlatent.zig");
-const zprobe = @import("src/zprobe.zig");
-const zstep = @import("src/zstep.zig");
-const zs = @import("src/zstep_shape.zig");
-const ztext = @import("src/zimage_text.zig");
+const discovery_trace = @import("zdraw").discovery_trace;
+const mattn = @import("zdraw").mattn;
+const metrics = @import("zdraw").metrics;
+const mlinear = @import("zdraw").mlinear;
+const runtime = @import("zdraw").model_runtime;
+const scheduler = @import("zdraw").scheduler;
+const zdenoise = @import("zdraw").zdenoise;
+const zlatent = @import("zdraw").zlatent;
+const zprobe = @import("zdraw").zprobe;
+const zstep = @import("zdraw").zstep;
+const zs = @import("zdraw").zstep_shape;
+const ztext = @import("zdraw").zimage_text;
 
 const Options = struct {
     weights: []const u8 = "",
@@ -360,7 +360,7 @@ const Work = struct {
     trace_digests: []TraceDigest,
     trace_adaln: []f32,
     positions: [][3]usize,
-    shape: @import("src/zpatch.zig").Shape,
+    shape: @import("zdraw").zpatch.Shape,
     state_len: usize,
     tokens: usize,
     hidden: usize,
@@ -425,7 +425,7 @@ fn makeBuffers(
     allocator: std.mem.Allocator,
     rt: *runtime.Runtime,
     latents: []f32,
-    shape: @import("src/zpatch.zig").Shape,
+    shape: @import("zdraw").zpatch.Shape,
     tokens: usize,
     hidden: usize,
     adaln_len: usize,

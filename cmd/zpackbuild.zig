@@ -1,10 +1,10 @@
 //! Dev-only `.zpack` sidecar builder.
 
 const std = @import("std");
-const packer = @import("src/zimage_packer.zig");
+const packer = @import("zdraw").zimage_packer;
 
-const zpack_families = @import("src/zpack_families.zig");
-const zpack_kinds = @import("src/zpack_kinds.zig");
+const zpack_families = @import("zdraw").zpack_families;
+const zpack_kinds = @import("zdraw").zpack_kinds;
 pub fn main(init: std.process.Init) !void {
     var iter = try std.process.Args.Iterator.initAllocator(init.minimal.args, init.gpa);
     defer iter.deinit();

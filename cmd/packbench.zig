@@ -2,8 +2,8 @@
 
 const std = @import("std");
 
-const c = @import("src/metal_c.zig");
-const shader = @import("src/mw8_shader.zig");
+const c = @import("zdraw").metal_c;
+const shader = @import("zdraw").mw8_shader;
 
 const group_size = 64;
 

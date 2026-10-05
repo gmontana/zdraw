@@ -40,8 +40,9 @@ Mac with other work.
 - `src/`: the engine. Model loaders, samplers, the Metal kernels (GEMM,
   attention, the Winograd VAE decoder) and the `zdraw` command line with its
   interactive session.
-- Root `.zig` files: the pack builders (`kleinpack`, `zpackbuild`) and the
-  kernel benchmarks and gates; `zig build check` compiles them all.
+- `cmd/`: one file per tool executable: the pack builders (`kleinpack`,
+  `zpackbuild`) and the kernel benchmarks and gates; `zig build check`
+  compiles them all.
 - `certified/hashes.json`: the reference hashes that `zdraw bench` checks.
 - `docs/`: usage, features, architecture, the measurement protocol, the
   validation record and the resolution report with its evidence.

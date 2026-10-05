@@ -5,24 +5,24 @@
 
 const std = @import("std");
 
-const mattn = @import("src/mattn.zig");
-const mconv = @import("src/mconv.zig");
-const mlinear = @import("src/mlinear.zig");
-const qenc = @import("src/qwen_encoder.zig");
-const qscratch = @import("src/qwen_scratch.zig");
-const scheduler = @import("src/scheduler.zig");
-const shards = @import("src/shards.zig");
-const tensor_file = @import("src/tensor_file.zig");
-const tokenizer = @import("src/tokenizer.zig");
-const vdecode = @import("src/vdecode.zig");
-const vviews = @import("src/vviews.zig");
-const zdenoise = @import("src/zdenoise.zig");
-const zimage = @import("src/zimage.zig");
-const zlatent = @import("src/zlatent.zig");
-const zpatch = @import("src/zpatch.zig");
-const zrope = @import("src/zrope.zig");
-const zstep = @import("src/zstep.zig");
-const ztx = @import("src/ztx.zig");
+const mattn = @import("zdraw").mattn;
+const mconv = @import("zdraw").mconv;
+const mlinear = @import("zdraw").mlinear;
+const qenc = @import("zdraw").qwen_encoder;
+const qscratch = @import("zdraw").qwen_scratch;
+const scheduler = @import("zdraw").scheduler;
+const shards = @import("zdraw").shards;
+const tensor_file = @import("zdraw").tensor_file;
+const tokenizer = @import("zdraw").tokenizer;
+const vdecode = @import("zdraw").vdecode;
+const vviews = @import("zdraw").vviews;
+const zdenoise = @import("zdraw").zdenoise;
+const zimage = @import("zdraw").zimage;
+const zlatent = @import("zdraw").zlatent;
+const zpatch = @import("zdraw").zpatch;
+const zrope = @import("zdraw").zrope;
+const zstep = @import("zdraw").zstep;
+const ztx = @import("zdraw").ztx;
 
 const max_prompt_tokens = 512;
 

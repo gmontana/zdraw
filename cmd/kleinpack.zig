@@ -1,11 +1,11 @@
 //! Dev-only FLUX.2 Klein W16/W6 sidecar builder (CLI over src/klein_packer.zig).
 
 const std = @import("std");
-const packer = @import("src/klein_packer.zig");
-const klein_bitmap = @import("src/klein_bitmap.zig");
-const qwen_pack = @import("src/qwen_pack.zig");
+const packer = @import("zdraw").klein_packer;
+const klein_bitmap = @import("zdraw").klein_bitmap;
+const qwen_pack = @import("zdraw").qwen_pack;
 
-const zflux2 = @import("src/zflux2.zig");
+const zflux2 = @import("zdraw").zflux2;
 pub fn main(init: std.process.Init) !void {
     var out_buf: [256]u8 = undefined;
     var iter = try std.process.Args.Iterator.initAllocator(init.minimal.args, init.gpa);

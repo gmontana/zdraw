@@ -103,52 +103,52 @@ pub fn build(b: *std.Build) void {
     // compiles EVERY row, which is what keeps a src/ rename from silently
     // breaking a tool that test/qa never compile (the mvres_stream lesson).
     const tools = [_]Tool{
-        .{ .step = "refcheck", .root = "refcheck.zig", .desc = "Compare zdraw against reference tensors" },
-        .{ .step = "bench", .root = "bench.zig", .desc = "Benchmark a fixed generate case" },
-        .{ .step = "trace", .root = "trace.zig", .desc = "Write a runtime engine trace report" },
+        .{ .step = "refcheck", .root = "cmd/refcheck.zig", .desc = "Compare zdraw against reference tensors" },
+        .{ .step = "bench", .root = "cmd/bench.zig", .desc = "Benchmark a fixed generate case" },
+        .{ .step = "trace", .root = "cmd/trace.zig", .desc = "Write a runtime engine trace report" },
         .{
             .step = "gemmbench",
-            .root = "gemmbench.zig",
+            .root = "cmd/gemmbench.zig",
             .desc = "Benchmark our GEMM kernel vs MPS",
             .mps_oracle = true,
         },
-        .{ .step = "packbench", .root = "packbench.zig", .desc = "Benchmark W8 fused-dequant GEMM" },
+        .{ .step = "packbench", .root = "cmd/packbench.zig", .desc = "Benchmark W8 fused-dequant GEMM" },
         .{
             .step = "vencodegate",
-            .root = "vencodegate.zig",
+            .root = "cmd/vencodegate.zig",
             .desc = "Run the CPU VAE encoder on the oracle's input tensor",
         },
         .{
             .step = "quality",
-            .root = "quality.zig",
+            .root = "cmd/quality.zig",
             .desc = "Gate a precision mode on image quality (PSNR/SSIM)",
         },
         .{
             .step = "schedulegate",
-            .root = "schedulegate.zig",
+            .root = "cmd/schedulegate.zig",
             .desc = "Compare lower-step output against an exact schedule reference",
         },
         .{
             .step = "cacheprobe",
-            .root = "cacheprobe.zig",
+            .root = "cmd/cacheprobe.zig",
             .desc = "Measure cross-step transformer layer drift",
         },
-        .{ .step = "sensitivity", .root = "sensitivity.zig", .desc = "Scan layer-band precision quality" },
+        .{ .step = "sensitivity", .root = "cmd/sensitivity.zig", .desc = "Scan layer-band precision quality" },
         .{
             .step = "quantreport",
-            .root = "quantreport.zig",
+            .root = "cmd/quantreport.zig",
             .desc = "Screen transformer weights for W8/W4 packing",
             .metal = false,
         },
         .{
             .step = "zpackbuild",
-            .root = "zpackbuild.zig",
+            .root = "cmd/zpackbuild.zig",
             .desc = "Build packed W8 sidecars",
             .metal = false,
         },
         .{
             .step = "kleinpack",
-            .root = "kleinpack.zig",
+            .root = "cmd/kleinpack.zig",
             .desc = "Build FLUX.2 Klein W16 sidecar",
             .metal = false,
         },
@@ -241,9 +241,20 @@ fn addTool(
             .optimize = optimize,
         }),
     });
+    // The tool's own root is `cmd/`; the engine comes in as one package whose
+    // root is `src/lib.zig`, carrying the vendored MFA sources, the build
+    // options and the embedded JSON the engine modules import.
+    const lib = b.createModule(.{
+        .root_source_file = b.path("src/lib.zig"),
+        .target = target,
+        .optimize = optimize,
+    });
+    lib.addImport("mfa", mfa_module.?);
+    if (build_opts) |o| lib.addOptions("build_options", o);
+    addCertifiedTo(lib, b);
+    exe.root_module.addImport("zdraw", lib);
     exe.root_module.addImport("mfa", mfa_module.?);
     if (build_opts) |o| exe.root_module.addOptions("build_options", o);
-    addCertified(exe, b);
     if (t.metal) addMetal(exe, b, is_macos);
     if (t.mps_oracle) addMpsOracle(exe, b, is_macos);
     const cmd = b.addRunArtifact(exe);
@@ -266,13 +277,17 @@ var build_opts: ?*std.Build.Step.Options = null;
 
 /// Embedded data: the certified census hashes and the safety rules/fixtures.
 fn addCertified(compile: *std.Build.Step.Compile, b: *std.Build) void {
-    compile.root_module.addAnonymousImport("certified_hashes", .{
+    addCertifiedTo(compile.root_module, b);
+}
+
+fn addCertifiedTo(module: *std.Build.Module, b: *std.Build) void {
+    module.addAnonymousImport("certified_hashes", .{
         .root_source_file = b.path("certified/hashes.json"),
     });
-    compile.root_module.addAnonymousImport("safety_rules", .{
+    module.addAnonymousImport("safety_rules", .{
         .root_source_file = b.path("safety/prompt_rules.json"),
     });
-    compile.root_module.addAnonymousImport("safety_tests", .{
+    module.addAnonymousImport("safety_tests", .{
         .root_source_file = b.path("safety/tests.json"),
     });
 }

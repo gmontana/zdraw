@@ -2,10 +2,10 @@
 
 const std = @import("std");
 
-const tensor = @import("src/tensor.zig");
-const zblock = @import("src/zblock.zig");
-const zimage = @import("src/zimage.zig");
-const ztx = @import("src/ztx.zig");
+const tensor = @import("zdraw").tensor;
+const zblock = @import("zdraw").zblock;
+const zimage = @import("zdraw").zimage;
+const ztx = @import("zdraw").ztx;
 
 const Options = struct {
     weights: []const u8 = "",

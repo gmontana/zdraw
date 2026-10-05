@@ -58,7 +58,7 @@ def tracked_override_paths(repo: Path) -> tuple[Path, ...]:
             continue
         relative = Path(raw.decode())
         if (
-            str(relative).startswith(("src/", "tools/", "examples/"))
+            str(relative).startswith(("src/", "cmd/", "tools/", "examples/"))
             or len(relative.parts) == 1
             and relative.suffix == ".zig"
         ):
@@ -155,6 +155,7 @@ def check_owners(entries: dict[str, InventoryEntry], repo: Path) -> list[str]:
                 continue
             candidates = [
                 repo / "src" / owner,
+                repo / "cmd" / owner,
                 repo / "tools" / owner,
                 repo / owner,
             ]

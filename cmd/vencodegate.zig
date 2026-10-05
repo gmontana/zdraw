@@ -4,12 +4,12 @@
 //! [32, H/8, W/8] mean as raw f32 for the oracle's --compare.
 //!   zig build vencodegate -- <weights dir> <input.bin> <H> <W> <out.bin>
 const std = @import("std");
-const mattn = @import("src/mattn.zig");
-const mconv = @import("src/mconv.zig");
-const mlinear = @import("src/mlinear.zig");
-const tensor_file = @import("src/tensor_file.zig");
-const vencode = @import("src/vencode.zig");
-const vviews = @import("src/vviews.zig");
+const mattn = @import("zdraw").mattn;
+const mconv = @import("zdraw").mconv;
+const mlinear = @import("zdraw").mlinear;
+const tensor_file = @import("zdraw").tensor_file;
+const vencode = @import("zdraw").vencode;
+const vviews = @import("zdraw").vviews;
 
 pub fn main(init: std.process.Init) !void {
     var iter = try std.process.Args.Iterator.initAllocator(init.minimal.args, init.gpa);
