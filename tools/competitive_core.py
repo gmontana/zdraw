@@ -218,7 +218,8 @@ def verdict(
     zdraw = next((row for row in rows if row.engine == "zdraw"), None)
     competitors = [row for row in rows if row.engine != "zdraw"]
     covered = {row.engine for row in competitors}
-    missing = sorted(required - covered)
+    # zdraw is the subject, never a missing competitor, even when listed as required.
+    missing = sorted(required - covered - {"zdraw"})
     if zdraw is None or not competitors:
         return {
             "protocol": protocol,
