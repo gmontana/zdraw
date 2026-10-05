@@ -2,9 +2,16 @@ name: release
 # On a v* tag: build ReleaseFast on Apple silicon, run the gates, package the
 # archive (CLI, metallib, notices), sign and
 # notarise when the secrets are present, and publish a GitHub Release.
+# The archive is built on a Mac with the current Xcode by tools/release_assets.sh
+# and attached to the GitHub Release by hand: GitHub's hosted macOS runners
+# (Xcode 15.4 SDK) do not build the Metal library or the engine with Zig 0.16.
+# This job stays available for a runner that does.
 on:
-  push:
-    tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Release tag (v*)"
+        required: true
 permissions:
   contents: write
 jobs:
@@ -15,6 +22,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: ${{ inputs.tag }}
       - name: Install zig 0.16.0
         uses: mlugg/setup-zig@v2
         with:
@@ -50,7 +58,7 @@ jobs:
           security set-key-partition-list -S apple-tool:,apple: -s -k "$KEYCHAIN_PASSWORD" build.keychain
           echo "SIGN_IDENTITY=Developer ID Application" >> "$GITHUB_ENV"
       - name: Release archive
-        run: bash tools/release_assets.sh "${GITHUB_REF_NAME}"
+        run: bash tools/release_assets.sh "${{ inputs.tag }}"
       - name: Notarise
         if: ${{ env.SIGN_IDENTITY != '' }}
         env:
@@ -59,14 +67,14 @@ jobs:
           ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
         run: |
           echo "$ASC_KEY_P8" > /tmp/asc.p8
-          NAME="zdraw-${GITHUB_REF_NAME}-macos-arm64"
+          NAME="zdraw-${{ inputs.tag }}-macos-arm64"
           ditto -c -k --keepParent "dist/$NAME" "dist/$NAME.zip"
           xcrun notarytool submit "dist/$NAME.zip" --key /tmp/asc.p8 --key-id "$ASC_KEY_ID" --issuer "$ASC_ISSUER_ID" --wait
       - name: Publish
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          NAME="zdraw-${GITHUB_REF_NAME}-macos-arm64"
-          gh release create "${GITHUB_REF_NAME}" \
+          NAME="zdraw-${{ inputs.tag }}-macos-arm64"
+          gh release create "${{ inputs.tag }}" \
             "dist/$NAME.tar.gz" "dist/$NAME.sha256" "dist/$NAME.manifest.sha256" \
-            --title "zdraw ${GITHUB_REF_NAME}" --notes-file CHANGELOG.md
+            --title "zdraw ${{ inputs.tag }}" --notes-file CHANGELOG.md

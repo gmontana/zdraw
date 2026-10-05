@@ -7,15 +7,15 @@
 
 const std = @import("std");
 
-const mblock_c = @import("mblock_c.zig");
-const mblock_chain_c = @import("mblock_chain_c.zig");
-const metal_c = @import("metal_c.zig");
-const mfinal = @import("mfinal.zig");
-const mstack_final_c = @import("mstack_final_c.zig");
-const mvres_buf = @import("mvres_buf.zig");
-const mvres_param = @import("mvres_param.zig");
-const mvres_stream = @import("mvres_stream.zig");
-const mvres_stream_chain = @import("mvres_stream_chain.zig");
+const mblock_c = @import("metal/mblock_c.zig");
+const mblock_chain_c = @import("metal/mblock_chain_c.zig");
+const metal_c = @import("metal/metal_c.zig");
+const mfinal = @import("metal/mfinal.zig");
+const mstack_final_c = @import("metal/mstack_final_c.zig");
+const mvres_buf = @import("metal/mvres_buf.zig");
+const mvres_param = @import("metal/mvres_param.zig");
+const mvres_stream = @import("metal/mvres_stream.zig");
+const mvres_stream_chain = @import("metal/mvres_stream_chain.zig");
 
 const header = blk: {
     const rows = .{

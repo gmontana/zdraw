@@ -65,7 +65,20 @@ RAW_BUFFER_RELEASE_OWNERS = {
 }
 
 def imports(path: Path) -> set[str]:
-    return set(IMPORT.findall(path.read_text(encoding="utf-8")))
+    """Import targets by file name: modules live in src/ subfolders and reach
+    each other with relative paths, and the boundary table names files."""
+    return {Path(t).name for t in IMPORT.findall(path.read_text(encoding="utf-8"))}
+
+
+def locate(src: Path, name: str) -> Path:
+    """The one file called `name` under src/ (flat or in a subfolder)."""
+    direct = src / name
+    if direct.is_file():
+        return direct
+    matches = sorted(src.rglob(name))
+    if len(matches) != 1:
+        raise SystemExit(f"architecture_guard: expected one {name} under {src}, found {len(matches)}")
+    return matches[0]
 
 
 def check_imports(
@@ -76,7 +89,7 @@ def check_imports(
         allowed_imports = ALLOWED_IMPORTS
     failures: list[str] = []
     for name, allowed in allowed_imports.items():
-        actual = imports(src / name)
+        actual = imports(locate(src, name))
         unexpected = sorted(actual - allowed)
         if unexpected:
             failures.append(
@@ -86,7 +99,7 @@ def check_imports(
 
 
 def check_safety_exit(src: Path = SRC) -> list[str]:
-    text = (src / "safety.zig").read_text(encoding="utf-8")
+    text = locate(src, "safety.zig").read_text(encoding="utf-8")
     if "std.process.exit(" in text or "std.c.exit(" in text:
         return ["safety.zig must return errors so interactive callers can unwind"]
     return []
@@ -101,14 +114,14 @@ def check_allocators(src: Path = SRC) -> list[str]:
             and path.name not in PAGE_ALLOCATOR_OWNERS
         ):
             failures.append(
-                f"src/{path.name} uses page_allocator without owning that policy"
+                f"{path.relative_to(REPO)} uses page_allocator without owning that policy"
             )
         if (
             "std.heap.smp_allocator" in text
             and path.name not in SMP_ALLOCATOR_OWNERS
         ):
             failures.append(
-                f"src/{path.name} uses smp_allocator outside an application boundary"
+                f"{path.relative_to(REPO)} uses smp_allocator outside an application boundary"
             )
     return failures
 
@@ -122,7 +135,7 @@ def check_metal_buffers(src: Path = SRC) -> list[str]:
             text,
         ):
             failures.append(
-                f"src/{path.name} constructs Buffer directly; use Buffer.borrow "
+                f"{path.relative_to(REPO)} constructs Buffer directly; use Buffer.borrow "
                 "or an owning constructor"
             )
         if (
@@ -130,9 +143,9 @@ def check_metal_buffers(src: Path = SRC) -> list[str]:
             and path.name not in RAW_BUFFER_RELEASE_OWNERS
         ):
             failures.append(
-                f"src/{path.name} releases a raw Metal buffer outside its owner"
+                f"{path.relative_to(REPO)} releases a raw Metal buffer outside its owner"
             )
-    buffer_source = (src / "mbuffer.zig").read_text(encoding="utf-8")
+    buffer_source = locate(src, "mbuffer.zig").read_text(encoding="utf-8")
     required = (
         "pub const Ownership = enum",
         "pub fn borrow(handle: *anyopaque) Buffer",
@@ -150,7 +163,7 @@ def check_metal_pipelines() -> list[str]:
         text = path.read_text(encoding="utf-8")
         if "mpipe.required(" in text and "zdraw_metal_release_pipeline(" not in text:
             failures.append(
-                f"src/{path.name} compiles Metal pipelines without an explicit "
+                f"{path.relative_to(REPO)} compiles Metal pipelines without an explicit "
                 "release owner"
             )
         lines = text.splitlines()
@@ -161,7 +174,7 @@ def check_metal_pipelines() -> list[str]:
             cleanup = "\n".join(lines[index + 1 : index + 5])
             if f"zdraw_metal_release_pipeline({name})" not in cleanup:
                 failures.append(
-                    f"src/{path.name}:{index + 1} does not immediately protect "
+                    f"{path.relative_to(REPO)}:{index + 1} does not immediately protect "
                     f"pipeline {name} with errdefer"
                 )
     return failures

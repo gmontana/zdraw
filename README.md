@@ -37,9 +37,13 @@ Mac with other work.
 
 ## What is in the repository
 
-- `src/`: the engine. Model loaders, samplers, the Metal kernels (GEMM,
-  attention, the Winograd VAE decoder) and the `zdraw` command line with its
-  interactive session.
+- `src/`: the engine, one folder per owner: `metal/` (kernels, contexts and
+  the Objective-C bridge), `klein/` and `zimage/` (the two model families),
+  `sampling/`, `vae/`, `text/` (the Qwen3 encoder and tokenizer), `pack/`
+  (weight files and sidecars), `runtime/` (model state, profiles, metrics),
+  `cli/` (commands, sessions, terminal previews, safety) and `control/`
+  (experimental execution controls). `main.zig` is the CLI root, `lib.zig`
+  the package the tools import, `tests.zig` the test root.
 - `cmd/`: one file per tool executable: the pack builders (`kleinpack`,
   `zpackbuild`) and the kernel benchmarks and gates; `zig build check`
   compiles them all.

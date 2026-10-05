@@ -17,7 +17,22 @@ model variants and experimental execution controls remain because engine code
 uses their types and hooks. Their presence is not a supported public API or a
 performance claim. No external research repository is required to build or run.
 
-## 2. Dependency direction
+## 2. Source layout
+
+`src/` has one folder per owner: `metal/` holds the kernels, the Metal
+contexts and the Objective-C bridge; `klein/` and `zimage/` the two model
+families; `sampling/` the noise, schedules and Euler loop; `vae/` the
+decoder and encoder; `text/` the Qwen3 encoder and tokenizer; `pack/` the
+weight files and sidecars; `runtime/` model state, profiles and metrics;
+`cli/` the commands, sessions, terminal previews and safety filter;
+`control/` the experimental execution controls. Three files stay at the top
+as module roots: `main.zig` (the CLI), `lib.zig` (the package the `cmd/`
+tools import) and `tests.zig` (the single test root, since files in the
+subfolders import each other with relative paths that only a module rooted
+at `src/` permits). The guards below address modules by file name, so a
+file's folder can change without changing its contract.
+
+## 3. Dependency direction
 
 ```text
 CLI and interactive session
@@ -33,7 +48,7 @@ product profiles; `profile.zig` reports hardware capabilities. An explicit
 `--profile` overrides environment settings; the default defers to exported
 experiment flags. Every such flag is documented in [env-flags.md](env-flags.md).
 
-## 3. Component owners
+## 4. Component owners
 
 | Concern | Owner | Contract |
 | --- | --- | --- |
@@ -58,7 +73,7 @@ experiment flags. Every such flag is documented in [env-flags.md](env-flags.md).
 | Experimental plan validation | `execution_plan.zig`, `plan_run.zig` | Validate before installing scoped controls; reject unsupported plans. |
 | Plan receipts | `execution_receipt.zig` | Bind inputs, identities and actual execution counts. |
 
-## 4. Request and session invariants
+## 5. Request and session invariants
 
 `model_kind.zig` owns Klein's default-route dimension policy and the existing
 4096-image-token capacity shared with `zflux2_run.zig`. With a 16-pixel token
@@ -88,9 +103,9 @@ protect internal invariants, never user-controlled shape or format validation.
 Generation uses shared runtime state and must obey `genlock.zig`. Do not run
 concurrent renders or bypass the lock. GPU tests also need an idle device.
 
-## 5. Memory and lifetime invariants
+## 6. Memory and lifetime invariants
 
-### 5.1 Allocators
+### 6.1 Allocators
 
 - A caller-provided allocator owns ordinary CPU allocations.
 - A value that outlives the creating call either stores its allocator or is
@@ -108,7 +123,7 @@ concurrent renders or bypass the lock. GPU tests also need an idle device.
 Enforcement: Zig allocator parameters, `errdefer`/`defer`, the architecture
 guard, the style ratchet, and leak-detecting unit-test allocators.
 
-### 5.2 Owned and borrowed Metal buffers
+### 6.2 Owned and borrowed Metal buffers
 
 `mbuffer.Buffer` carries explicit `owned` or `borrowed` state.
 
@@ -129,7 +144,7 @@ guard, the style ratchet, and leak-detecting unit-test allocators.
 Enforcement: `Buffer.Ownership`, owning/borrowing constructors,
 `Buffer.deinit`, architecture guard, and Metal tests.
 
-### 5.3 Persistent pools
+### 6.3 Persistent pools
 
 macOS may retain GPU wiring after an `MTLBuffer` is released. Resident paths
 therefore use named, grow-only slots whose lifetime is the owning Metal
@@ -168,7 +183,7 @@ mid-attention, which keeps its direct chain-pool borrow.
 Enforcement: `mchain_pool.Pool`, explicit slot enum, borrowed buffers, context
 deinitialization order, strict image gates, and measured peak memory.
 
-### 5.4 Mapped weights and no-copy buffers
+### 6.4 Mapped weights and no-copy buffers
 
 Tensor views borrow bytes from mapped model files. No-copy Metal weight buffers
 also borrow those bytes:
@@ -188,7 +203,7 @@ owns its Metal allocation and does not borrow the temporary CPU packing buffer.
 Enforcement: aggregate runtime `deinit` order, no-copy cache ownership, mapped
 types, and model-load tests.
 
-### 5.5 CPU-to-GPU transfer
+### 6.5 CPU-to-GPU transfer
 
 `Buffer.fromBytes` synchronously copies the supplied CPU bytes. The caller may
 release them when it returns. `Buffer.fromInput` accepts an explicit `Recycle`
@@ -198,7 +213,7 @@ completed; after passing `Recycle`, the caller no longer owns the slice.
 Enforcement: the `Recycle` value and the single implementation in
 `mbuffer.zig`.
 
-### 5.6 Command-buffer lifetime
+### 6.6 Command-buffer lifetime
 
 Buffers, pipelines, and mapped bytes referenced by encoded commands remain
 alive until the owning command buffer has completed. A context may reuse
@@ -209,7 +224,7 @@ resources.
 Enforcement: resident batch boundaries, explicit waits/drains in replay,
 context teardown, route-count checks, and the persistent replay memory gate.
 
-### 5.7 Memory claims
+### 6.7 Memory claims
 
 Static liveness and resource bounds are admission aids, not measurements.
 Product memory authority is the measured process physical footprint and GPU
@@ -230,7 +245,7 @@ schedule fact, not a plan knob.
 Enforcement: plan memory policy, execution receipt, memtrace/memgate, and
 independent promotion.
 
-### 5.8 Metal pipeline ownership
+### 6.8 Metal pipeline ownership
 
 Every successful `mpipe.required` call transfers one owned pipeline object to
 the calling context. Multi-pipeline contexts group those handles under one
@@ -242,7 +257,7 @@ borrowed by dispatch calls only.
 Enforcement: context `init`/`deinit`, aggregate pipeline owners, the
 architecture guard, and Metal context tests.
 
-### 5.9 Progressive display
+### 6.9 Progressive display
 
 The CLI owns a stack `terminal_preview.View` around one synchronous Klein
 render. It activates the embedded `progress_sink.Sink` only after the view is
@@ -262,7 +277,7 @@ images; they do not change sampling or the final safety check.
 Enforcement: observer scope/error tests, terminal protocol tests, real-model
 PTY checks, and the architecture guard's progress-module import boundaries.
 
-## 6. Experimental controls and evidence
+## 7. Experimental controls and evidence
 
 Plan/control modules have restricted imports enforced by the architecture guard.
 Controls are scoped to an admitted plan, and teardown deactivates them. Unknown

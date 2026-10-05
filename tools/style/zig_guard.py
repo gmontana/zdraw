@@ -43,7 +43,7 @@ COUNT_PATTERNS: dict[str, re.Pattern] = {
 
 # Directory policy: page_allocator/c_allocator only allowed in these prefixes.
 # The architecture guard enforces these exact VAE owners independently.
-ALLOC_ALLOWLIST = ("src/mvres_stream_chain.zig", "src/vdecode.zig")
+ALLOC_ALLOWLIST = ("src/metal/mvres_stream_chain.zig", "src/vae/vdecode.zig")
 
 
 HUNK_RE = re.compile(r"^@@ -\d+(?:,\d+)? \+(\d+)(?:,\d+)? @@")

@@ -161,7 +161,7 @@ def check_owners(entries: dict[str, InventoryEntry], repo: Path) -> list[str]:
             ]
             path = next((p for p in candidates if p.is_file()), None)
             if path is None:
-                nested = sorted(repo.glob(f"tools/**/{owner}"))
+                nested = sorted(repo.glob(f"src/**/{owner}")) or sorted(repo.glob(f"tools/**/{owner}"))
                 path = nested[0] if nested else None
             if path is None:
                 failures.append(f"{name}: canonical owner {owner} not found")

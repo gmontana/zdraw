@@ -2,7 +2,7 @@
 
 Status: authoritative inventory of the environment override surface.
 
-Typed profiles in `src/runtime_options.zig` and `src/vae_mode.zig` own shipping
+Typed profiles in `src/runtime/runtime_options.zig` and `src/vae/vae_mode.zig` own shipping
 configuration. Environment variables are explicit deployment inputs,
 development selectors, or laboratory overrides; absence must never select a
 hidden product policy.

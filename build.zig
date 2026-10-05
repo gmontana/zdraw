@@ -160,22 +160,22 @@ pub fn build(b: *std.Build) void {
     }
 
     const test_step = b.step("test", "Run unit tests");
-    const test_files = collectZigFiles(b, "src");
-    for (test_files) |path| {
-        const test_exe = b.addTest(.{
-            .root_module = b.createModule(.{
-                .root_source_file = b.path(path),
-                .target = target,
-                .optimize = optimize,
-            }),
-        });
-        test_exe.root_module.addImport("stanza", stanza);
-        test_exe.root_module.addImport("mfa", mfa_module.?);
-        test_exe.root_module.addOptions("build_options", opts);
-        addCertified(test_exe, b);
-        addMetal(test_exe, b, is_macos);
-        test_step.dependOn(&b.addRunArtifact(test_exe).step);
-    }
+    // One test root (src/tests.zig) references every module: files in the
+    // src/ subfolders import each other with relative paths, which only a
+    // module rooted at src/ permits.
+    const test_exe = b.addTest(.{
+        .root_module = b.createModule(.{
+            .root_source_file = b.path("src/tests.zig"),
+            .target = target,
+            .optimize = optimize,
+        }),
+    });
+    test_exe.root_module.addImport("stanza", stanza);
+    test_exe.root_module.addImport("mfa", mfa_module.?);
+    test_exe.root_module.addOptions("build_options", opts);
+    addCertified(test_exe, b);
+    addMetal(test_exe, b, is_macos);
+    test_step.dependOn(&b.addRunArtifact(test_exe).step);
 
     const fmt = b.addSystemCommand(&.{ "zig", "fmt", "--check", "." });
     const guard = b.addSystemCommand(&.{ "python3", "tools/style/zig_guard.py", "--check" });
@@ -317,11 +317,11 @@ fn addMetal(compile: *std.Build.Step.Compile, b: *std.Build, enabled: bool) void
         m.addSystemIncludePath(.{ .cwd_relative = b.pathJoin(&.{ sdk, "usr/include" }) });
     }
     compile.root_module.addCSourceFile(.{
-        .file = b.path("src/metal_api.m"),
+        .file = b.path("src/metal/metal_api.m"),
         .flags = &[_][]const u8{ "-O3", "-fobjc-arc" },
     });
     compile.root_module.addCSourceFile(.{
-        .file = b.path("src/image_io.m"),
+        .file = b.path("src/cli/image_io.m"),
         .flags = &[_][]const u8{ "-O2", "-fobjc-arc" },
     });
     compile.root_module.linkFramework("CoreGraphics", .{});
@@ -335,41 +335,13 @@ fn addMetal(compile: *std.Build.Step.Compile, b: *std.Build, enabled: bool) void
 fn addMpsOracle(compile: *std.Build.Step.Compile, b: *std.Build, enabled: bool) void {
     if (!enabled) return;
     compile.root_module.addCSourceFile(.{
-        .file = b.path("src/mps_api.m"),
+        .file = b.path("src/metal/mps_api.m"),
         .flags = &[_][]const u8{ "-O3", "-fobjc-arc" },
     });
     compile.root_module.linkFramework("MetalPerformanceShaders", .{});
 }
 
-fn collectZigFiles(b: *std.Build, root: []const u8) []const []const u8 {
-    const io = b.graph.io;
-    var dir = b.build_root.handle.openDir(io, root, .{ .iterate = true }) catch |err|
-        fatal(b, "open {s}: {s}", .{ root, @errorName(err) });
-    defer dir.close(io);
 
-    var walker = dir.walk(b.allocator) catch |err|
-        fatal(b, "walk {s}: {s}", .{ root, @errorName(err) });
-    defer walker.deinit();
-
-    var paths = std.ArrayList([]const u8).initCapacity(b.allocator, 256) catch |err|
-        fatal(b, "allocate test-file list: {s}", .{@errorName(err)});
-    while (walker.next(io) catch |err| {
-        fatal(b, "walk {s}: {s}", .{ root, @errorName(err) });
-    }) |entry| {
-        if (entry.kind != .file or !std.mem.endsWith(u8, entry.basename, ".zig")) continue;
-        paths.append(b.allocator, b.fmt("{s}/{s}", .{ root, entry.path })) catch |err|
-            fatal(b, "append test-file path: {s}", .{@errorName(err)});
-    }
-
-    const out = paths.toOwnedSlice(b.allocator) catch |err|
-        fatal(b, "own test-file list: {s}", .{@errorName(err)});
-    std.mem.sort([]const u8, out, {}, lessThanString);
-    return out;
-}
-
-fn lessThanString(_: void, lhs: []const u8, rhs: []const u8) bool {
-    return std.mem.lessThan(u8, lhs, rhs);
-}
 
 fn fatal(b: *std.Build, comptime fmt: []const u8, args: anytype) noreturn {
     std.debug.print("build.zig: " ++ fmt ++ "\n", args);
