@@ -1,0 +1,24 @@
+name: community-results
+on:
+  pull_request:
+    paths:
+      - "community/**"
+      - "tools/community_table.py"
+  push:
+    branches: [main, master]
+    paths:
+      - "community/**"
+      - "tools/community_table.py"
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate every card
+        run: |
+          python3 tools/community_table.py --self-test
+          python3 tools/community_table.py --check community/results.jsonl
+      - name: The rendered table must match the cards
+        run: |
+          python3 tools/community_table.py --render community/results.jsonl --out /tmp/RESULTS.md
+          diff -u community/RESULTS.md /tmp/RESULTS.md

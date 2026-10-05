@@ -1,0 +1,80 @@
+{
+  "schema": "zdraw.resolution-admission-validation.v1",
+  "date": "2026-10-01",
+  "source_commit": "35613a549d73317bd23fde843589db4366b1feeb",
+  "implementation_commit": "9412a99178e37ac3b697d0f79cc9bd159ae1806c",
+  "archive_tag": "v0.1.0-validation-20261001.7",
+  "tag_pushed": false,
+  "archive_sha256": "455594c71542609a7dfbc32703af173add8b08f927b638e81b25684066e09f63",
+  "binary_sha256": "045be1f1c10b8363bcf8f5ea614c5cb48e1ced454feda541a5cad54012f2955e",
+  "metallib_sha256": "6fed206961cf9f1b25f4e185495a2dcdddbd4d8019bfba06fa3761579f252961",
+  "scope": "Validate existing Klein default-route shape/capacity before loading; no inference computation/kernel/reference changes.",
+  "m4max-b": "Full zig build qa -j2, 31 parser/policy test executions, native ReleaseFast build and CLI smoke passed.",
+  "m4max-a": "Clean portable macOS14/apple_m1 archive, relocated smoke, CLI smoke and both model references passed.",
+  "cpu_linux": "31 parser/policy test executions, 5 resolution harness regression tests, naming/licence/architecture/style guards passed.",
+  "qa_budgets_increased": false,
+  "model_results": [
+    {
+      "case": "flux2-klein-4b",
+      "size": [
+        1024,
+        1024
+      ],
+      "pixel_sha256": "afa4c8fb1ecbd1ecadee4042bfa62351eacbe3a841f67f71a3f2da65bbc505bb",
+      "certified_match": true
+    },
+    {
+      "case": "z-image-turbo",
+      "size": [
+        1024,
+        1024
+      ],
+      "pixel_sha256": "c2ac10ec694ef04a01517fb11bd808c025e50c4e89a9a45eabe69f1109c59bb6",
+      "certified_match": true
+    },
+    {
+      "case": "klein-aligned-tail",
+      "size": [
+        64,
+        128
+      ],
+      "pixel_sha256": "3406fafae85d144596fde32db140a7a7d2207d57649eb6adac002afa09f63aca"
+    },
+    {
+      "case": "klein-aligned-tail",
+      "size": [
+        96,
+        256
+      ],
+      "pixel_sha256": "8b15c4e482b4dd0a629461e57407ba86a10578c5bf51d13ea05d11dd2f08cd20"
+    }
+  ],
+  "initial_failure": "Full QA at17d7aca rejected the 24-character helper name (limit15). Renamed in35613a5; full QA passed without budget changes. No failed attempt discarded.",
+  "portable_m4max-b": {
+    "host": "m4max-b",
+    "binary_sha256": "045be1f1c10b8363bcf8f5ea614c5cb48e1ced454feda541a5cad54012f2955e",
+    "relocated_smoke": "passed",
+    "results": [
+      {
+        "model": "flux2-klein-4b",
+        "pixel_sha256": "afa4c8fb1ecbd1ecadee4042bfa62351eacbe3a841f67f71a3f2da65bbc505bb",
+        "matches_certified": true
+      },
+      {
+        "model": "z-image-turbo",
+        "pixel_sha256": "c2ac10ec694ef04a01517fb11bd808c025e50c4e89a9a45eabe69f1109c59bb6",
+        "matches_certified": true
+      }
+    ]
+  },
+  "limits": [
+    "No new full GPU unit suite after input-only fix; complete GPU suites at earlier release sources are separately recorded.",
+    "Only M4Max128GiB macOS26.5.2/26.6.2 runtime coverage; macOS14/M1 build target is not runtime certification."
+  ],
+  "logs": {
+    "m4max-b-post-quality.txt": "b4deb171758ea7c0c6a4f3a85bae6a23a5e1a639715c3109c4dfd7a007c8ad46",
+    "m4max-b-post-quality-final.txt": "cfaa4e2085fcc013eafda650579454d5277734c81b16ec22c78ed3f6ed6e161a",
+    "m4max-a-post-timing-final.txt": "00a65e8263d27137dfb9c5745228d687bff8bba73988e4ff8d4084820dfe21cf",
+    "m4max-b-portable.txt": "15383e2f13e68b1db56c35f0ee791cc2f330156a652948ef952b4e36965aef76"
+  }
+}

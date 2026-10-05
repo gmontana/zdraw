@@ -1,0 +1,3785 @@
+{
+  "schema": "zdraw.resolution-sweep.v1",
+  "started_at": "2026-10-01T13:11:35.182599+00:00",
+  "mode": "quality",
+  "source_commit": "421ae7ba8e3604c8b7cedfaa8f0384095558c589",
+  "harness": {
+    "path": "$HOME/repos/zdraw/tools/quality/resolution_sweep.py",
+    "bytes": 9761,
+    "sha256": "1d92f0973f3e794da96f9fd28fcc422e54cc942a868d1eb83d7bc842d06abd7d"
+  },
+  "binary": {
+    "path": "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "bytes": 3776088,
+    "sha256": "90339e6a1ba7c56a168698756ef84721e4ab80fe29bc97c2e8d3cfd3df231b11"
+  },
+  "version": "zdraw 0.1.0-validation-20261001.5\ncommit a47160f\nengine abi 1\nmetal4 yes",
+  "metallib": {
+    "path": "$HOME/repos/zdraw/zig-out/lib/steel.metallib",
+    "bytes": 265363,
+    "sha256": "6fed206961cf9f1b25f4e185495a2dcdddbd4d8019bfba06fa3761579f252961"
+  },
+  "host": {
+    "name": "m4max-b",
+    "macos": "26.6.2",
+    "chip": "Apple M4 Max",
+    "ram_bytes": 137438953472
+  },
+  "models": {
+    "flux2-klein-4b": {
+      "weights": "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+      "pack": {
+        "path": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack",
+        "bytes": 7409765616,
+        "sha256": "377b64d12acc589e5162753ff9a0edd06419901bbd286f334f087f038d261519"
+      }
+    },
+    "z-image-turbo": {
+      "weights": "$HOME/models/Z-Image-Turbo",
+      "pack": {
+        "path": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack",
+        "bytes": 17380155920,
+        "sha256": "3e7726e4906354960b1992e6fd6349261939612e6a1b8f571447eacfab7d9c7b"
+      }
+    }
+  },
+  "steps": 4,
+  "seed": 46,
+  "prompts": {
+    "fox": "a red fox sitting in deep snow, golden hour light",
+    "portrait": "editorial portrait of a fashion designer in a bright studio",
+    "market": "a crowded spice market stall, dozens of open sacks, fine texture"
+  },
+  "sizes": [
+    [
+      64,
+      64
+    ],
+    [
+      128,
+      128
+    ],
+    [
+      256,
+      256
+    ],
+    [
+      512,
+      512
+    ],
+    [
+      768,
+      768
+    ],
+    [
+      1024,
+      1024
+    ],
+    [
+      1536,
+      1536
+    ],
+    [
+      2048,
+      2048
+    ],
+    [
+      1024,
+      768
+    ],
+    [
+      768,
+      1024
+    ],
+    [
+      544,
+      800
+    ]
+  ],
+  "planned": 44,
+  "completed": 44,
+  "regime": "functional only; no performance claims",
+  "thermal_before": "Note: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded",
+  "swap_before": "total = 3072.00M  used = 1850.50M  free = 1221.50M  (encrypted)",
+  "status": "automated-fail",
+  "visual_review": "not-reviewed",
+  "results": [
+    {
+      "case": "001-flux2-klein-4b-64x64-portrait-quality",
+      "model": "flux2-klein-4b",
+      "width": 64,
+      "height": 64,
+      "prompt": "portrait",
+      "phase": "quality",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "editorial portrait of a fashion designer in a bright studio",
+        "--width",
+        "64",
+        "--height",
+        "64",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/001-flux2-klein-4b-64x64-portrait-quality.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        2.87109375,
+        2.53076171875,
+        2.900390625
+      ],
+      "load_after": [
+        2.87109375,
+        2.53076171875,
+        2.900390625
+      ],
+      "returncode": 1,
+      "seconds": 2.4237693750765175,
+      "peak_rss_bytes": 382697472,
+      "peak_footprint_bytes": 518720512,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/001-flux2-klein-4b-64x64-portrait-quality.log",
+        "bytes": 1409,
+        "sha256": "88e358eb3c07fd4539dbc55593b21f1a554f96cf1e75e9641ef00f71da360540"
+      },
+      "problems": [
+        "generation exited 1",
+        "image unavailable: [Errno 2] No such file or directory: '$HOME/repos/zdraw/runs/release-resolution-20261001/quality/001-flux2-klein-4b-64x64-portrait-quality.png'"
+      ],
+      "published_log": {
+        "path": "m4max-b/001-flux2-klein-4b-64x64-portrait-quality.log",
+        "sha256": "6c522f6f15d0c7c7b4a1cd5ed8cbebad0e2a2a5bf983b7e5fb9740ab83719f9c"
+      }
+    },
+    {
+      "case": "002-flux2-klein-4b-64x64-market-quality",
+      "model": "flux2-klein-4b",
+      "width": 64,
+      "height": 64,
+      "prompt": "market",
+      "phase": "quality",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "a crowded spice market stall, dozens of open sacks, fine texture",
+        "--width",
+        "64",
+        "--height",
+        "64",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/002-flux2-klein-4b-64x64-market-quality.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        2.87109375,
+        2.53076171875,
+        2.900390625
+      ],
+      "load_after": [
+        2.87109375,
+        2.53076171875,
+        2.900390625
+      ],
+      "returncode": 1,
+      "seconds": 0.4776897920528427,
+      "peak_rss_bytes": 381599744,
+      "peak_footprint_bytes": 517671984,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/002-flux2-klein-4b-64x64-market-quality.log",
+        "bytes": 1412,
+        "sha256": "c38d7ab94426673012b76c766e048c7e233563b0613e8f88ae12b7bcc9ccfe92"
+      },
+      "problems": [
+        "generation exited 1",
+        "image unavailable: [Errno 2] No such file or directory: '$HOME/repos/zdraw/runs/release-resolution-20261001/quality/002-flux2-klein-4b-64x64-market-quality.png'"
+      ],
+      "published_log": {
+        "path": "m4max-b/002-flux2-klein-4b-64x64-market-quality.log",
+        "sha256": "292e268ba3e50ecc3b054219c6f5208d9032c9976a6a8f312353207e11e7f211"
+      }
+    },
+    {
+      "case": "003-z-image-turbo-64x64-portrait-quality",
+      "model": "z-image-turbo",
+      "width": 64,
+      "height": 64,
+      "prompt": "portrait",
+      "phase": "quality",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "editorial portrait of a fashion designer in a bright studio",
+        "--width",
+        "64",
+        "--height",
+        "64",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/003-z-image-turbo-64x64-portrait-quality.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        2.87109375,
+        2.53076171875,
+        2.900390625
+      ],
+      "load_after": [
+        2.80126953125,
+        2.521484375,
+        2.89501953125
+      ],
+      "returncode": 0,
+      "seconds": 5.516357582993805,
+      "peak_rss_bytes": 367788032,
+      "peak_footprint_bytes": 1056711608,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/003-z-image-turbo-64x64-portrait-quality.log",
+        "bytes": 7530,
+        "sha256": "e36161f227264b7cad83edbd6dbae41372a57a11c7183ffe6367d32d9f8df489"
+      },
+      "problems": [
+        "checkerboard-noise score=85.3 (sane<40)"
+      ],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/003-z-image-turbo-64x64-portrait-quality.png",
+          "bytes": 12720,
+          "sha256": "a71e5c6b91eed1b57a2ad6ed410b1ed5aac3c2fe76d646c145403c9ddfb7d391"
+        },
+        "size": [
+          64,
+          64
+        ],
+        "pixel_sha256": "e1e620144110ef513f27cfad2ba29eafd46cc85c479e5553da3516c3c3c124cb",
+        "checker_score": 85.33258928571429,
+        "luma_std": 92.26195005670364,
+        "problems": [
+          "checkerboard-noise score=85.3 (sane<40)"
+        ]
+      },
+      "published_log": {
+        "path": "m4max-b/003-z-image-turbo-64x64-portrait-quality.log",
+        "sha256": "e3d8816e05cfe94f364baea50290c1045e792a68ce0b9d2f8c169178c320ad38"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          64,
+          64
+        ],
+        "prompt": "portrait",
+        "finding": "Recognisable thumbnail with visibly limited detail; no obvious blank or checkerboard corruption.",
+        "heuristic_problems": [
+          "checkerboard-noise score=85.3 (sane<40)"
+        ]
+      }
+    },
+    {
+      "case": "004-z-image-turbo-64x64-market-quality",
+      "model": "z-image-turbo",
+      "width": 64,
+      "height": 64,
+      "prompt": "market",
+      "phase": "quality",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "a crowded spice market stall, dozens of open sacks, fine texture",
+        "--width",
+        "64",
+        "--height",
+        "64",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/004-z-image-turbo-64x64-market-quality.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        2.80126953125,
+        2.521484375,
+        2.89501953125
+      ],
+      "load_after": [
+        2.97705078125,
+        2.5625,
+        2.9072265625
+      ],
+      "returncode": 0,
+      "seconds": 1.666382750030607,
+      "peak_rss_bytes": 373243904,
+      "peak_footprint_bytes": 1062184008,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/004-z-image-turbo-64x64-market-quality.log",
+        "bytes": 7529,
+        "sha256": "c5c0515a1fcbb901750410b5355c4eeac6cd83ac24795db582bf87ed6e11c986"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/004-z-image-turbo-64x64-market-quality.png",
+          "bytes": 12720,
+          "sha256": "f13bea2e7c413a74e930183c343f02bdf5901904812e04d3a5648cb71eb6e46a"
+        },
+        "size": [
+          64,
+          64
+        ],
+        "pixel_sha256": "d56d2439e870d3e9957823f80657005d688202d2c85bac5a77ef8406ced645bd",
+        "checker_score": 36.93340773809524,
+        "luma_std": 59.746309255966665,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-b/004-z-image-turbo-64x64-market-quality.log",
+        "sha256": "78928f48777516833c4b1cdbbe1048b9c828a89fabebae2ce24f4426e87f0b6d"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          64,
+          64
+        ],
+        "prompt": "market",
+        "finding": "Recognisable thumbnail with visibly limited detail; no obvious blank or checkerboard corruption.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "005-flux2-klein-4b-128x128-portrait-quality",
+      "model": "flux2-klein-4b",
+      "width": 128,
+      "height": 128,
+      "prompt": "portrait",
+      "phase": "quality",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "editorial portrait of a fashion designer in a bright studio",
+        "--width",
+        "128",
+        "--height",
+        "128",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/005-flux2-klein-4b-128x128-portrait-quality.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        2.97705078125,
+        2.5625,
+        2.9072265625
+      ],
+      "load_after": [
+        2.97705078125,
+        2.5625,
+        2.9072265625
+      ],
+      "returncode": 0,
+      "seconds": 2.4377587910275906,
+      "peak_rss_bytes": 652722176,
+      "peak_footprint_bytes": 1302728712,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/005-flux2-klein-4b-128x128-portrait-quality.log",
+        "bytes": 4745,
+        "sha256": "7efa5ec70f64ca07643d5c172a5b09c4887c31621b503cf580dc1b30d58e22ee"
+      },
+      "problems": [
+        "checkerboard-noise score=41.1 (sane<40)"
+      ],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/005-flux2-klein-4b-128x128-portrait-quality.png",
+          "bytes": 49645,
+          "sha256": "298c25542ea848240057849b6e1e250192c482b5f98db240848a66e1933af212"
+        },
+        "size": [
+          128,
+          128
+        ],
+        "pixel_sha256": "39cacc97f3e5306953b470d6e8f1dfcc2056b9652cbc32f54f9848a4707eff9f",
+        "checker_score": 41.05121527777778,
+        "luma_std": 83.0719660064185,
+        "problems": [
+          "checkerboard-noise score=41.1 (sane<40)"
+        ]
+      },
+      "published_log": {
+        "path": "m4max-b/005-flux2-klein-4b-128x128-portrait-quality.log",
+        "sha256": "01f510bd28ae1cfc9c09c6dee859e5bbe7132af086397bc4bb39eda56fea00ba"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "flux2-klein-4b",
+        "dimensions": [
+          128,
+          128
+        ],
+        "prompt": "portrait",
+        "finding": "Recognisable thumbnail with visibly limited detail; no obvious blank or checkerboard corruption.",
+        "heuristic_problems": [
+          "checkerboard-noise score=41.1 (sane<40)"
+        ]
+      }
+    },
+    {
+      "case": "006-flux2-klein-4b-128x128-market-quality",
+      "model": "flux2-klein-4b",
+      "width": 128,
+      "height": 128,
+      "prompt": "market",
+      "phase": "quality",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "a crowded spice market stall, dozens of open sacks, fine texture",
+        "--width",
+        "128",
+        "--height",
+        "128",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/006-flux2-klein-4b-128x128-market-quality.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        2.97705078125,
+        2.5625,
+        2.9072265625
+      ],
+      "load_after": [
+        3.138671875,
+        2.6025390625,
+        2.91943359375
+      ],
+      "returncode": 0,
+      "seconds": 2.3859409170690924,
+      "peak_rss_bytes": 652787712,
+      "peak_footprint_bytes": 1302876264,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/006-flux2-klein-4b-128x128-market-quality.log",
+        "bytes": 4746,
+        "sha256": "53436d6783f7e4b38275a2cbca51ceab72800dfe3cf726cd647c685690d3838d"
+      },
+      "problems": [
+        "checkerboard-noise score=58.9 (sane<40)"
+      ],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/006-flux2-klein-4b-128x128-market-quality.png",
+          "bytes": 49645,
+          "sha256": "71461494e0024a5cb24d3deb05f3b90f44c1e7ee66a4473f7186d252a72a0d2e"
+        },
+        "size": [
+          128,
+          128
+        ],
+        "pixel_sha256": "0875cfdb24a9d40b762d7a49770f263df3fba6d50ed9e9ab81d797636003c0fc",
+        "checker_score": 58.85690104166667,
+        "luma_std": 65.71734380396354,
+        "problems": [
+          "checkerboard-noise score=58.9 (sane<40)"
+        ]
+      },
+      "published_log": {
+        "path": "m4max-b/006-flux2-klein-4b-128x128-market-quality.log",
+        "sha256": "0435cfbc0b8997dc80b13eb5650446a908bea4f765e807f9f0d49e9962cecd83"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "flux2-klein-4b",
+        "dimensions": [
+          128,
+          128
+        ],
+        "prompt": "market",
+        "finding": "Recognisable thumbnail with visibly limited detail; no obvious blank or checkerboard corruption.",
+        "heuristic_problems": [
+          "checkerboard-noise score=58.9 (sane<40)"
+        ]
+      }
+    },
+    {
+      "case": "007-z-image-turbo-128x128-portrait-quality",
+      "model": "z-image-turbo",
+      "width": 128,
+      "height": 128,
+      "prompt": "portrait",
+      "phase": "quality",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "editorial portrait of a fashion designer in a bright studio",
+        "--width",
+        "128",
+        "--height",
+        "128",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/007-z-image-turbo-128x128-portrait-quality.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        3.138671875,
+        2.6025390625,
+        2.91943359375
+      ],
+      "load_after": [
+        3.138671875,
+        2.6025390625,
+        2.91943359375
+      ],
+      "returncode": 0,
+      "seconds": 1.8575777090154588,
+      "peak_rss_bytes": 504725504,
+      "peak_footprint_bytes": 1166943712,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/007-z-image-turbo-128x128-portrait-quality.log",
+        "bytes": 7534,
+        "sha256": "61ec86e5b34d5219335eaadd7a6e005d58077f71ad10201e73697eb0e916bf63"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/007-z-image-turbo-128x128-portrait-quality.png",
+          "bytes": 49650,
+          "sha256": "5577979a390ebb48b65b9552c8a00162662f94f2f84892a20888bd21f173417f"
+        },
+        "size": [
+          128,
+          128
+        ],
+        "pixel_sha256": "0bb5693f74f7575b14c775eb2fafa34b9d0ff2a9c5a8d1d197ea27929f557a72",
+        "checker_score": 39.80217013888888,
+        "luma_std": 96.80231213659762,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-b/007-z-image-turbo-128x128-portrait-quality.log",
+        "sha256": "08bac7c2584aa7937015f3c96094c8889ffc73f0d2482a170e9f05fe70a81424"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          128,
+          128
+        ],
+        "prompt": "portrait",
+        "finding": "Recognisable thumbnail with visibly limited detail; no obvious blank or checkerboard corruption.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "008-z-image-turbo-128x128-market-quality",
+      "model": "z-image-turbo",
+      "width": 128,
+      "height": 128,
+      "prompt": "market",
+      "phase": "quality",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "a crowded spice market stall, dozens of open sacks, fine texture",
+        "--width",
+        "128",
+        "--height",
+        "128",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/008-z-image-turbo-128x128-market-quality.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        3.138671875,
+        2.6025390625,
+        2.91943359375
+      ],
+      "load_after": [
+        3.138671875,
+        2.6025390625,
+        2.91943359375
+      ],
+      "returncode": 0,
+      "seconds": 1.8896473339991644,
+      "peak_rss_bytes": 516915200,
+      "peak_footprint_bytes": 1178788912,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/008-z-image-turbo-128x128-market-quality.log",
+        "bytes": 7535,
+        "sha256": "15ece320a569dbf603a511c6e38a2a4255283ba8dd488d0ba3d42c8d94c187b5"
+      },
+      "problems": [
+        "checkerboard-noise score=41.7 (sane<40)"
+      ],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/008-z-image-turbo-128x128-market-quality.png",
+          "bytes": 49650,
+          "sha256": "ac5c926f62e103aff73cbf189fd04437608a543a8ab1e72c0c24ca1f318ace28"
+        },
+        "size": [
+          128,
+          128
+        ],
+        "pixel_sha256": "d485b9196cc1536715730a2a0f8f5e5f81a669a2a95c651ce875b9346526769b",
+        "checker_score": 41.70338541666667,
+        "luma_std": 60.92002600893126,
+        "problems": [
+          "checkerboard-noise score=41.7 (sane<40)"
+        ]
+      },
+      "published_log": {
+        "path": "m4max-b/008-z-image-turbo-128x128-market-quality.log",
+        "sha256": "23d92bd62efd708c5374df1f70f21295a4466b6a44928f6473b2738d8fc47381"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          128,
+          128
+        ],
+        "prompt": "market",
+        "finding": "Recognisable thumbnail with visibly limited detail; no obvious blank or checkerboard corruption.",
+        "heuristic_problems": [
+          "checkerboard-noise score=41.7 (sane<40)"
+        ]
+      }
+    },
+    {
+      "case": "009-flux2-klein-4b-256x256-portrait-quality",
+      "model": "flux2-klein-4b",
+      "width": 256,
+      "height": 256,
+      "prompt": "portrait",
+      "phase": "quality",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "editorial portrait of a fashion designer in a bright studio",
+        "--width",
+        "256",
+        "--height",
+        "256",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/009-flux2-klein-4b-256x256-portrait-quality.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        3.138671875,
+        2.6025390625,
+        2.91943359375
+      ],
+      "load_after": [
+        3.12744140625,
+        2.60888671875,
+        2.91943359375
+      ],
+      "returncode": 0,
+      "seconds": 2.7905323749873787,
+      "peak_rss_bytes": 934248448,
+      "peak_footprint_bytes": 1540395208,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/009-flux2-klein-4b-256x256-portrait-quality.log",
+        "bytes": 4745,
+        "sha256": "13eac4acfd3adcb77bc548903de61f2597ad859ad99494c49e1eb919af81abe3"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/009-flux2-klein-4b-256x256-portrait-quality.png",
+          "bytes": 197244,
+          "sha256": "77a02f62f463b409a8277c9b00bd2429f9731832b989a9d8a5dced7c674093bb"
+        },
+        "size": [
+          256,
+          256
+        ],
+        "pixel_sha256": "6d282e08fb113ccaad09dd7d62f44606197561bf5fe943f3c80d44f629a2fce1",
+        "checker_score": 31.37819220430108,
+        "luma_std": 66.68206520654324,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-b/009-flux2-klein-4b-256x256-portrait-quality.log",
+        "sha256": "3f4835a8349993e39da963377f11ce76a14aaa7ff7a29b37de51f5cd932c276e"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "flux2-klein-4b",
+        "dimensions": [
+          256,
+          256
+        ],
+        "prompt": "portrait",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "010-flux2-klein-4b-256x256-market-quality",
+      "model": "flux2-klein-4b",
+      "width": 256,
+      "height": 256,
+      "prompt": "market",
+      "phase": "quality",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "a crowded spice market stall, dozens of open sacks, fine texture",
+        "--width",
+        "256",
+        "--height",
+        "256",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/010-flux2-klein-4b-256x256-market-quality.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        3.12744140625,
+        2.60888671875,
+        2.91943359375
+      ],
+      "load_after": [
+        3.037109375,
+        2.5986328125,
+        2.91357421875
+      ],
+      "returncode": 0,
+      "seconds": 2.7670720840105787,
+      "peak_rss_bytes": 932511744,
+      "peak_footprint_bytes": 1538691296,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/010-flux2-klein-4b-256x256-market-quality.log",
+        "bytes": 4746,
+        "sha256": "9da49a6d8fc83d7301c1f0015cf4fe0194a225d78e86d9e5b3bb3ac70d9c30be"
+      },
+      "problems": [
+        "checkerboard-noise score=44.0 (sane<40)"
+      ],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/010-flux2-klein-4b-256x256-market-quality.png",
+          "bytes": 197244,
+          "sha256": "57515bdb984c904607ddee90fb9368bc73946e19e0cb0f306249f5e5bb9088b2"
+        },
+        "size": [
+          256,
+          256
+        ],
+        "pixel_sha256": "c014328ebd8ec07a9891b83e6ec900f81e528b994aec629922b73407124aaba6",
+        "checker_score": 44.045562415994624,
+        "luma_std": 60.86341598539081,
+        "problems": [
+          "checkerboard-noise score=44.0 (sane<40)"
+        ]
+      },
+      "published_log": {
+        "path": "m4max-b/010-flux2-klein-4b-256x256-market-quality.log",
+        "sha256": "0281e0e681eb10797edc0ec7e12ade8b435f5adf0a012c3619963d6bc8b69295"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "flux2-klein-4b",
+        "dimensions": [
+          256,
+          256
+        ],
+        "prompt": "market",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": [
+          "checkerboard-noise score=44.0 (sane<40)"
+        ]
+      }
+    },
+    {
+      "case": "011-z-image-turbo-256x256-portrait-quality",
+      "model": "z-image-turbo",
+      "width": 256,
+      "height": 256,
+      "prompt": "portrait",
+      "phase": "quality",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "editorial portrait of a fashion designer in a bright studio",
+        "--width",
+        "256",
+        "--height",
+        "256",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/011-z-image-turbo-256x256-portrait-quality.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        3.037109375,
+        2.5986328125,
+        2.91357421875
+      ],
+      "load_after": [
+        3.037109375,
+        2.5986328125,
+        2.91357421875
+      ],
+      "returncode": 0,
+      "seconds": 2.5770417080493644,
+      "peak_rss_bytes": 853573632,
+      "peak_footprint_bytes": 1475503392,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/011-z-image-turbo-256x256-portrait-quality.log",
+        "bytes": 7541,
+        "sha256": "ffa2233caf8f4bd5427f3ff11e4cc1b1d1e9a5533bba55c64680e41890d43962"
+      },
+      "problems": [
+        "checkerboard-noise score=45.2 (sane<40)"
+      ],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/011-z-image-turbo-256x256-portrait-quality.png",
+          "bytes": 197249,
+          "sha256": "c2fb7b18769bc22e17db06a539b875f75e7f39549c1db46a1fb4d343ffff70fa"
+        },
+        "size": [
+          256,
+          256
+        ],
+        "pixel_sha256": "fdbc0f7b31f16da72db1db7645dd301cb4889f7b2d5da7e0dd71e24bffeafc36",
+        "checker_score": 45.224010836693544,
+        "luma_std": 93.0208710195314,
+        "problems": [
+          "checkerboard-noise score=45.2 (sane<40)"
+        ]
+      },
+      "published_log": {
+        "path": "m4max-b/011-z-image-turbo-256x256-portrait-quality.log",
+        "sha256": "478f427c16e6dca7b337cff303f0013fb2a0ab28295033beeb075454d5d2ab27"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          256,
+          256
+        ],
+        "prompt": "portrait",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": [
+          "checkerboard-noise score=45.2 (sane<40)"
+        ]
+      }
+    },
+    {
+      "case": "012-z-image-turbo-256x256-market-quality",
+      "model": "z-image-turbo",
+      "width": 256,
+      "height": 256,
+      "prompt": "market",
+      "phase": "quality",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "a crowded spice market stall, dozens of open sacks, fine texture",
+        "--width",
+        "256",
+        "--height",
+        "256",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/012-z-image-turbo-256x256-market-quality.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        3.037109375,
+        2.5986328125,
+        2.91357421875
+      ],
+      "load_after": [
+        3.11376953125,
+        2.62158203125,
+        2.919921875
+      ],
+      "returncode": 0,
+      "seconds": 2.666841416968964,
+      "peak_rss_bytes": 861765632,
+      "peak_footprint_bytes": 1483761096,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/012-z-image-turbo-256x256-market-quality.log",
+        "bytes": 7542,
+        "sha256": "9478f22296319bebf24d3bedeeddb72b516dcb410e43cc50e085fd9bc54ffe1f"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/012-z-image-turbo-256x256-market-quality.png",
+          "bytes": 197249,
+          "sha256": "c1a559c13e4943580eafab159396651bf2268335261cd80c3bd33b6bbe9dcfed"
+        },
+        "size": [
+          256,
+          256
+        ],
+        "pixel_sha256": "bb60ed88f4ded2e93710e5869058c53355c2ed68ae74774b7c15185073f3f565",
+        "checker_score": 34.54062710013441,
+        "luma_std": 56.635554173364405,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-b/012-z-image-turbo-256x256-market-quality.log",
+        "sha256": "ded6e257fe099e210271acbebca650d131f9ec21ab3ee20914e99a11e8905c0b"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          256,
+          256
+        ],
+        "prompt": "market",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "013-flux2-klein-4b-512x512-portrait-quality",
+      "model": "flux2-klein-4b",
+      "width": 512,
+      "height": 512,
+      "prompt": "portrait",
+      "phase": "quality",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "editorial portrait of a fashion designer in a bright studio",
+        "--width",
+        "512",
+        "--height",
+        "512",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/013-flux2-klein-4b-512x512-portrait-quality.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        3.11376953125,
+        2.62158203125,
+        2.919921875
+      ],
+      "load_after": [
+        3.1044921875,
+        2.62744140625,
+        2.919921875
+      ],
+      "returncode": 0,
+      "seconds": 5.169166999985464,
+      "peak_rss_bytes": 1589755904,
+      "peak_footprint_bytes": 2210370192,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/013-flux2-klein-4b-512x512-portrait-quality.log",
+        "bytes": 4745,
+        "sha256": "05c0af382e67fb9333dd0bc83620c6461d6e1732f53e2ca2f821752d7b4b736e"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/013-flux2-klein-4b-512x512-portrait-quality.png",
+          "bytes": 787369,
+          "sha256": "85ed8aa9256a62e93cf277a7279afef15c3572be57e47c7b1d831201c29552f3"
+        },
+        "size": [
+          512,
+          512
+        ],
+        "pixel_sha256": "1829faa860eb3d167d0c81895f4b854755796c1a9cdf8be42d0cbc7c50782607",
+        "checker_score": 19.807829034391535,
+        "luma_std": 77.18845605474172,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-b/013-flux2-klein-4b-512x512-portrait-quality.log",
+        "sha256": "e971b75e209664914aab52744b43ebf19e76fd9f16c509401fbafa83aa65fa15"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "flux2-klein-4b",
+        "dimensions": [
+          512,
+          512
+        ],
+        "prompt": "portrait",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "014-flux2-klein-4b-512x512-market-quality",
+      "model": "flux2-klein-4b",
+      "width": 512,
+      "height": 512,
+      "prompt": "market",
+      "phase": "quality",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "a crowded spice market stall, dozens of open sacks, fine texture",
+        "--width",
+        "512",
+        "--height",
+        "512",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/014-flux2-klein-4b-512x512-market-quality.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        3.1044921875,
+        2.62744140625,
+        2.919921875
+      ],
+      "load_after": [
+        2.935546875,
+        2.60009765625,
+        2.908203125
+      ],
+      "returncode": 0,
+      "seconds": 5.507514624972828,
+      "peak_rss_bytes": 1591394304,
+      "peak_footprint_bytes": 2212024976,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/014-flux2-klein-4b-512x512-market-quality.log",
+        "bytes": 4746,
+        "sha256": "18d4f22475891532562d63496626f1a35fedfe53d6c580eb8dc3cccb516bb7b8"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/014-flux2-klein-4b-512x512-market-quality.png",
+          "bytes": 787369,
+          "sha256": "1c4b5f8d65082b9961db66a68de94f8262941329a57016c16eae45a155a25cee"
+        },
+        "size": [
+          512,
+          512
+        ],
+        "pixel_sha256": "997abfbecae4a96d00015989fa333ba19568b4cae3c4fe338861138ad0f85d15",
+        "checker_score": 33.54551349619709,
+        "luma_std": 64.05046857559005,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-b/014-flux2-klein-4b-512x512-market-quality.log",
+        "sha256": "ba07be6c250a3b67edb0eec532f6ad920520526cd2cc6b3e993221255b559a76"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "flux2-klein-4b",
+        "dimensions": [
+          512,
+          512
+        ],
+        "prompt": "market",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "015-z-image-turbo-512x512-portrait-quality",
+      "model": "z-image-turbo",
+      "width": 512,
+      "height": 512,
+      "prompt": "portrait",
+      "phase": "quality",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "editorial portrait of a fashion designer in a bright studio",
+        "--width",
+        "512",
+        "--height",
+        "512",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/015-z-image-turbo-512x512-portrait-quality.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        2.935546875,
+        2.60009765625,
+        2.908203125
+      ],
+      "load_after": [
+        2.8603515625,
+        2.58984375,
+        2.90283203125
+      ],
+      "returncode": 0,
+      "seconds": 7.50699358410202,
+      "peak_rss_bytes": 1794080768,
+      "peak_footprint_bytes": 2445879112,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/015-z-image-turbo-512x512-portrait-quality.log",
+        "bytes": 7557,
+        "sha256": "362eb287a3c6150affa1909a274e0629fd91454986deebf178988c4dbf10a852"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/015-z-image-turbo-512x512-portrait-quality.png",
+          "bytes": 787374,
+          "sha256": "de0fb6b06cc54c28971f758d125dad684411c4ac156cbd3921cf57afaa273154"
+        },
+        "size": [
+          512,
+          512
+        ],
+        "pixel_sha256": "ae672fbcc87e3bd41fd710ed77c0e1c24b7dc15a2a9b2acd3a5d0baabae9f601",
+        "checker_score": 30.619572069279098,
+        "luma_std": 82.17766654441148,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-b/015-z-image-turbo-512x512-portrait-quality.log",
+        "sha256": "d0356dbdae5491700db7eb51f693c4bca3faf2526654aec72ea8e480da7e2f31"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          512,
+          512
+        ],
+        "prompt": "portrait",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "016-z-image-turbo-512x512-market-quality",
+      "model": "z-image-turbo",
+      "width": 512,
+      "height": 512,
+      "prompt": "market",
+      "phase": "quality",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "a crowded spice market stall, dozens of open sacks, fine texture",
+        "--width",
+        "512",
+        "--height",
+        "512",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/016-z-image-turbo-512x512-market-quality.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        2.8603515625,
+        2.58984375,
+        2.90283203125
+      ],
+      "load_after": [
+        2.96142578125,
+        2.619140625,
+        2.90966796875
+      ],
+      "returncode": 0,
+      "seconds": 7.781554583925754,
+      "peak_rss_bytes": 1804402688,
+      "peak_footprint_bytes": 2456594896,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/016-z-image-turbo-512x512-market-quality.log",
+        "bytes": 7560,
+        "sha256": "9c37ba5a62515f0cc10f9dc1376c23d78674faa50524cb225059a47e457c3dc2"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/016-z-image-turbo-512x512-market-quality.png",
+          "bytes": 787374,
+          "sha256": "73f20a294ced192f7955531eff628059c7f3a042431897e39688200a3eb6c3ac"
+        },
+        "size": [
+          512,
+          512
+        ],
+        "pixel_sha256": "cf89245c503df988d08e3d10badc55207b35646b9c3f7bb83358d865167c9212",
+        "checker_score": 24.41663566468254,
+        "luma_std": 51.971038803444934,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-b/016-z-image-turbo-512x512-market-quality.log",
+        "sha256": "006ceee722dce7921ff34574ac7299542df2f2d026d70042b916d64f7688ac6a"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          512,
+          512
+        ],
+        "prompt": "market",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "017-flux2-klein-4b-768x768-portrait-quality",
+      "model": "flux2-klein-4b",
+      "width": 768,
+      "height": 768,
+      "prompt": "portrait",
+      "phase": "quality",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "editorial portrait of a fashion designer in a bright studio",
+        "--width",
+        "768",
+        "--height",
+        "768",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/017-flux2-klein-4b-768x768-portrait-quality.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        2.96142578125,
+        2.619140625,
+        2.90966796875
+      ],
+      "load_after": [
+        2.826171875,
+        2.5986328125,
+        2.89892578125
+      ],
+      "returncode": 0,
+      "seconds": 9.789474750054069,
+      "peak_rss_bytes": 2696429568,
+      "peak_footprint_bytes": 3375715776,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/017-flux2-klein-4b-768x768-portrait-quality.log",
+        "bytes": 4745,
+        "sha256": "93e3f370804fbdd89a778299aa2db225a74f8df27847e4682695c8bcb985b79f"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/017-flux2-klein-4b-768x768-portrait-quality.png",
+          "bytes": 1770740,
+          "sha256": "342427332c657eda5437d0b9413d25181b886c28a14101d09ba040c406d372ad"
+        },
+        "size": [
+          768,
+          768
+        ],
+        "pixel_sha256": "6386714125040d9a5544a5d87071ce7ee743b9fcaf2a53c15de76159e5881bb7",
+        "checker_score": 22.068590095029244,
+        "luma_std": 70.89768015315218,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-b/017-flux2-klein-4b-768x768-portrait-quality.log",
+        "sha256": "0d327711f6231ba39611808399ad29ee9b4f64ea97f417b502c9f0df945bcbee"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "flux2-klein-4b",
+        "dimensions": [
+          768,
+          768
+        ],
+        "prompt": "portrait",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "018-flux2-klein-4b-768x768-market-quality",
+      "model": "flux2-klein-4b",
+      "width": 768,
+      "height": 768,
+      "prompt": "market",
+      "phase": "quality",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "a crowded spice market stall, dozens of open sacks, fine texture",
+        "--width",
+        "768",
+        "--height",
+        "768",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/018-flux2-klein-4b-768x768-market-quality.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        2.826171875,
+        2.5986328125,
+        2.89892578125
+      ],
+      "load_after": [
+        2.61865234375,
+        2.5615234375,
+        2.88232421875
+      ],
+      "returncode": 0,
+      "seconds": 9.878245249972679,
+      "peak_rss_bytes": 2696495104,
+      "peak_footprint_bytes": 3375830512,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/018-flux2-klein-4b-768x768-market-quality.log",
+        "bytes": 4746,
+        "sha256": "b16ffbf8f034b353c2ae33a470594c227bae5f8b94da13ef9c2f58966699fd41"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/018-flux2-klein-4b-768x768-market-quality.png",
+          "bytes": 1770740,
+          "sha256": "548e5bcbfb5f2b9f73e98c754c9378b487883cf1a47b6dafc64e78308eaa44c0"
+        },
+        "size": [
+          768,
+          768
+        ],
+        "pixel_sha256": "fe18e972e47849ace762a6657dcae5f6c7f8d78d5db70d71cbd39060f1ea0f62",
+        "checker_score": 30.40517292580409,
+        "luma_std": 58.87240603033841,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-b/018-flux2-klein-4b-768x768-market-quality.log",
+        "sha256": "3ac3f9fffe590b42e453e7f8eef4f0682a569749e43b7c01b1c4b47e3c2958e5"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "flux2-klein-4b",
+        "dimensions": [
+          768,
+          768
+        ],
+        "prompt": "market",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "019-z-image-turbo-768x768-portrait-quality",
+      "model": "z-image-turbo",
+      "width": 768,
+      "height": 768,
+      "prompt": "portrait",
+      "phase": "quality",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "editorial portrait of a fashion designer in a bright studio",
+        "--width",
+        "768",
+        "--height",
+        "768",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/019-z-image-turbo-768x768-portrait-quality.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        2.61865234375,
+        2.5615234375,
+        2.88232421875
+      ],
+      "load_after": [
+        3.5439453125,
+        2.755859375,
+        2.94287109375
+      ],
+      "returncode": 0,
+      "seconds": 20.687119457987137,
+      "peak_rss_bytes": 3389014016,
+      "peak_footprint_bytes": 4126911792,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/019-z-image-turbo-768x768-portrait-quality.log",
+        "bytes": 7566,
+        "sha256": "b87f56dc0f9d31e551746f503a8a1c24f972f7ae83fe5a77eef6605e059bffab"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/019-z-image-turbo-768x768-portrait-quality.png",
+          "bytes": 1770745,
+          "sha256": "0e560866b5991cdb66d187263a2e706ad8e4102ecc82ede63d5fdf707f518597"
+        },
+        "size": [
+          768,
+          768
+        ],
+        "pixel_sha256": "0255d9c8fcf7ea18e875236325622a66f03e888408b651c9f692684267a88997",
+        "checker_score": 23.177267224049704,
+        "luma_std": 77.9866298982977,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-b/019-z-image-turbo-768x768-portrait-quality.log",
+        "sha256": "b24e528787a8314b342d1ccd8f839d8432e9cd41d9b753851b84edfaf1350f0f"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          768,
+          768
+        ],
+        "prompt": "portrait",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "020-z-image-turbo-768x768-market-quality",
+      "model": "z-image-turbo",
+      "width": 768,
+      "height": 768,
+      "prompt": "market",
+      "phase": "quality",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "a crowded spice market stall, dozens of open sacks, fine texture",
+        "--width",
+        "768",
+        "--height",
+        "768",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/020-z-image-turbo-768x768-market-quality.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        3.5439453125,
+        2.755859375,
+        2.94287109375
+      ],
+      "load_after": [
+        3.33447265625,
+        2.77001953125,
+        2.9384765625
+      ],
+      "returncode": 0,
+      "seconds": 34.79156479204539,
+      "peak_rss_bytes": 3402530816,
+      "peak_footprint_bytes": 4139756536,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/020-z-image-turbo-768x768-market-quality.log",
+        "bytes": 7570,
+        "sha256": "7f43a6eb1d71730a92e8edb45839501a5f61cacdf7f49fb88188c16f699abcd1"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/020-z-image-turbo-768x768-market-quality.png",
+          "bytes": 1770745,
+          "sha256": "acd50b56b8b978eff2db20b1cf08a8d2eced273bb64948ec97f58e5463a59df0"
+        },
+        "size": [
+          768,
+          768
+        ],
+        "pixel_sha256": "19b0b690a6ab9f174993d4fdee50c7a2ff949ecbb60d768b40a494b328535426",
+        "checker_score": 22.204662372076026,
+        "luma_std": 51.824952623661545,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-b/020-z-image-turbo-768x768-market-quality.log",
+        "sha256": "c96ce995a78e843e8bac1b4ede94da6220702ae754111766ddc11429071d43ff"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          768,
+          768
+        ],
+        "prompt": "market",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "021-flux2-klein-4b-1024x1024-portrait-quality",
+      "model": "flux2-klein-4b",
+      "width": 1024,
+      "height": 1024,
+      "prompt": "portrait",
+      "phase": "quality",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "editorial portrait of a fashion designer in a bright studio",
+        "--width",
+        "1024",
+        "--height",
+        "1024",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/021-flux2-klein-4b-1024x1024-portrait-quality.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        3.33447265625,
+        2.77001953125,
+        2.9384765625
+      ],
+      "load_after": [
+        2.09130859375,
+        2.46484375,
+        2.79833984375
+      ],
+      "returncode": 0,
+      "seconds": 96.94983254093677,
+      "peak_rss_bytes": 4233330688,
+      "peak_footprint_bytes": 4969257248,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/021-flux2-klein-4b-1024x1024-portrait-quality.log",
+        "bytes": 4752,
+        "sha256": "4ef71c59a5816bb9821cbea0ab985c712a215d98d80ad37e80c0bb310798cb46"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/021-flux2-klein-4b-1024x1024-portrait-quality.png",
+          "bytes": 3147359,
+          "sha256": "f84a5c91a83a8332407ac497cdaf172d7c9bde0ed0763b2a33460cd11af14380"
+        },
+        "size": [
+          1024,
+          1024
+        ],
+        "pixel_sha256": "573879332c8d43b1b2cc1158d36e5e203c02a4bccf4170c9da234ce9388e7766",
+        "checker_score": 13.658793291707672,
+        "luma_std": 63.37700605963999,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-b/021-flux2-klein-4b-1024x1024-portrait-quality.log",
+        "sha256": "5b5f6bed0551dc4d0f64a3ebc59747d62fb8ec5342ac6353c607c923404b6c4f"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "flux2-klein-4b",
+        "dimensions": [
+          1024,
+          1024
+        ],
+        "prompt": "portrait",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "022-flux2-klein-4b-1024x1024-market-quality",
+      "model": "flux2-klein-4b",
+      "width": 1024,
+      "height": 1024,
+      "prompt": "market",
+      "phase": "quality",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "a crowded spice market stall, dozens of open sacks, fine texture",
+        "--width",
+        "1024",
+        "--height",
+        "1024",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/022-flux2-klein-4b-1024x1024-market-quality.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        2.09130859375,
+        2.46484375,
+        2.79833984375
+      ],
+      "load_after": [
+        2.43115234375,
+        2.50048828125,
+        2.79443359375
+      ],
+      "returncode": 0,
+      "seconds": 42.31832054199185,
+      "peak_rss_bytes": 4233248768,
+      "peak_footprint_bytes": 4969208120,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/022-flux2-klein-4b-1024x1024-market-quality.log",
+        "bytes": 4753,
+        "sha256": "a5d77448a1106df9bc8fbdacac0b90110ecfe330d8abbbc0797c79d2f99a7c86"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/022-flux2-klein-4b-1024x1024-market-quality.png",
+          "bytes": 3147359,
+          "sha256": "5d3a3a8a00a31c28603e26ef5647094c63a719e4b9ad16edb63a050d98a3f5f6"
+        },
+        "size": [
+          1024,
+          1024
+        ],
+        "pixel_sha256": "31464a6d4a952fc8d31660414b35e7e26721c00936c7d84d01aa57bb23b11dd6",
+        "checker_score": 25.802520351459975,
+        "luma_std": 61.34253403181316,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-b/022-flux2-klein-4b-1024x1024-market-quality.log",
+        "sha256": "2a6916ddf97f22aa4703ac6cad2e8d4e8a8afc5025b7da6103779a0e2d180ae5"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "flux2-klein-4b",
+        "dimensions": [
+          1024,
+          1024
+        ],
+        "prompt": "market",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "023-z-image-turbo-1024x1024-portrait-quality",
+      "model": "z-image-turbo",
+      "width": 1024,
+      "height": 1024,
+      "prompt": "portrait",
+      "phase": "quality",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "editorial portrait of a fashion designer in a bright studio",
+        "--width",
+        "1024",
+        "--height",
+        "1024",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/023-z-image-turbo-1024x1024-portrait-quality.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        2.43115234375,
+        2.50048828125,
+        2.79443359375
+      ],
+      "load_after": [
+        1.58203125,
+        2.2705078125,
+        2.69384765625
+      ],
+      "returncode": 0,
+      "seconds": 43.529546332894824,
+      "peak_rss_bytes": 5607030784,
+      "peak_footprint_bytes": 6442709640,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/023-z-image-turbo-1024x1024-portrait-quality.log",
+        "bytes": 7576,
+        "sha256": "f76ce4718804c1f8e8a6d8820311167c5d407bc47f2562ebf4b5fcd1e17f8ec9"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/023-z-image-turbo-1024x1024-portrait-quality.png",
+          "bytes": 3147364,
+          "sha256": "08798d9e6eec3c13969439ec374c09d5976a87772b2231a81db0ce5134d48a23"
+        },
+        "size": [
+          1024,
+          1024
+        ],
+        "pixel_sha256": "c0ad3d57db975eb23a6e2c63c232ddc6399c0a0e209671a31b81277a61005371",
+        "checker_score": 17.621582031250004,
+        "luma_std": 66.96834862130223,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-b/023-z-image-turbo-1024x1024-portrait-quality.log",
+        "sha256": "79907ec6a601379a726430fa1dd179bcf490a5be50e13cfd8d001dd6e44a5c89"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          1024,
+          1024
+        ],
+        "prompt": "portrait",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "024-z-image-turbo-1024x1024-market-quality",
+      "model": "z-image-turbo",
+      "width": 1024,
+      "height": 1024,
+      "prompt": "market",
+      "phase": "quality",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "a crowded spice market stall, dozens of open sacks, fine texture",
+        "--width",
+        "1024",
+        "--height",
+        "1024",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/024-z-image-turbo-1024x1024-market-quality.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        1.58203125,
+        2.2705078125,
+        2.69384765625
+      ],
+      "load_after": [
+        0.95751953125,
+        2.01708984375,
+        2.57958984375
+      ],
+      "returncode": 0,
+      "seconds": 40.33886537491344,
+      "peak_rss_bytes": 5624545280,
+      "peak_footprint_bytes": 6460010904,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/024-z-image-turbo-1024x1024-market-quality.log",
+        "bytes": 7573,
+        "sha256": "77c7e4174eed9abfb0f702eb0bd7ec033c5c75982fd3125d4b6d6fcfea3b1e22"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/024-z-image-turbo-1024x1024-market-quality.png",
+          "bytes": 3147364,
+          "sha256": "c685fa1a3218eda62a0ef7916d54f38367b1c7484b5811787c8d63386ca30a32"
+        },
+        "size": [
+          1024,
+          1024
+        ],
+        "pixel_sha256": "1d1f64077d2ff5a4a318339bcd7b74396ee365abfef3835fa08d9ee7e6edcaf3",
+        "checker_score": 20.839778389517715,
+        "luma_std": 48.790701900850074,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-b/024-z-image-turbo-1024x1024-market-quality.log",
+        "sha256": "1b08d1bc7b4fb241aecdb075b2c34536364031781e29f582ba40bc230c6c1c89"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          1024,
+          1024
+        ],
+        "prompt": "market",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "025-flux2-klein-4b-1536x1536-portrait-quality",
+      "model": "flux2-klein-4b",
+      "width": 1536,
+      "height": 1536,
+      "prompt": "portrait",
+      "phase": "quality",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "editorial portrait of a fashion designer in a bright studio",
+        "--width",
+        "1536",
+        "--height",
+        "1536",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/025-flux2-klein-4b-1536x1536-portrait-quality.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        0.95751953125,
+        2.01708984375,
+        2.57958984375
+      ],
+      "load_after": [
+        0.95751953125,
+        2.01708984375,
+        2.57958984375
+      ],
+      "returncode": 1,
+      "seconds": 0.07385683408938348,
+      "peak_rss_bytes": 80953344,
+      "peak_footprint_bytes": 69700224,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/025-flux2-klein-4b-1536x1536-portrait-quality.log",
+        "bytes": 1414,
+        "sha256": "1a1ffe42968ca44a6f107bd0b827d173ba0d7c4f6864f8d941847a806feba3fb"
+      },
+      "problems": [
+        "generation exited 1",
+        "image unavailable: [Errno 2] No such file or directory: '$HOME/repos/zdraw/runs/release-resolution-20261001/quality/025-flux2-klein-4b-1536x1536-portrait-quality.png'"
+      ],
+      "published_log": {
+        "path": "m4max-b/025-flux2-klein-4b-1536x1536-portrait-quality.log",
+        "sha256": "01adb4b458310f172a9ff75e7f4686315c5c20efb00a7529be6259e8a232cdc8"
+      }
+    },
+    {
+      "case": "026-flux2-klein-4b-1536x1536-market-quality",
+      "model": "flux2-klein-4b",
+      "width": 1536,
+      "height": 1536,
+      "prompt": "market",
+      "phase": "quality",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "a crowded spice market stall, dozens of open sacks, fine texture",
+        "--width",
+        "1536",
+        "--height",
+        "1536",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/026-flux2-klein-4b-1536x1536-market-quality.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        0.95751953125,
+        2.01708984375,
+        2.57958984375
+      ],
+      "load_after": [
+        0.95751953125,
+        2.01708984375,
+        2.57958984375
+      ],
+      "returncode": 1,
+      "seconds": 0.072683708043769,
+      "peak_rss_bytes": 80805888,
+      "peak_footprint_bytes": 69552768,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/026-flux2-klein-4b-1536x1536-market-quality.log",
+        "bytes": 1417,
+        "sha256": "97ae501352bee6a1586b16688e38b54accfbc7788c4f049ef3c4a786384b493e"
+      },
+      "problems": [
+        "generation exited 1",
+        "image unavailable: [Errno 2] No such file or directory: '$HOME/repos/zdraw/runs/release-resolution-20261001/quality/026-flux2-klein-4b-1536x1536-market-quality.png'"
+      ],
+      "published_log": {
+        "path": "m4max-b/026-flux2-klein-4b-1536x1536-market-quality.log",
+        "sha256": "7c7f7ca31b3ce2465e0588b8f80c2d6ff0a44c5103f46e4041259cf63c170944"
+      }
+    },
+    {
+      "case": "027-z-image-turbo-1536x1536-portrait-quality",
+      "model": "z-image-turbo",
+      "width": 1536,
+      "height": 1536,
+      "prompt": "portrait",
+      "phase": "quality",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "editorial portrait of a fashion designer in a bright studio",
+        "--width",
+        "1536",
+        "--height",
+        "1536",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/027-z-image-turbo-1536x1536-portrait-quality.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        0.95751953125,
+        2.01708984375,
+        2.57958984375
+      ],
+      "load_after": [
+        0.88623046875,
+        1.7138671875,
+        2.39501953125
+      ],
+      "returncode": 0,
+      "seconds": 105.32047658297233,
+      "peak_rss_bytes": 11939348480,
+      "peak_footprint_bytes": 13053215568,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/027-z-image-turbo-1536x1536-portrait-quality.log",
+        "bytes": 7607,
+        "sha256": "15d9fa382a6829a6b7d9c17e3ef36d93dfda3a219202332515526d9e1b913433"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/027-z-image-turbo-1536x1536-portrait-quality.png",
+          "bytes": 7080336,
+          "sha256": "464ea5257afe1e452535d6a01fbc4c7f527e02cdb9ef4bb4fb5bd13c8087fbb9"
+        },
+        "size": [
+          1536,
+          1536
+        ],
+        "pixel_sha256": "977c5fe763d5bdb00f18a2b51b1c0cb7d92a40f49eb394212aeb01d01f537907",
+        "checker_score": 13.623761827825044,
+        "luma_std": 72.09071117422913,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-b/027-z-image-turbo-1536x1536-portrait-quality.log",
+        "sha256": "cd15d9bba8f0f071c01ebbf354162a9a5f4c65e2a38aacbccc0d23bde9a22565"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          1536,
+          1536
+        ],
+        "prompt": "portrait",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "028-z-image-turbo-1536x1536-market-quality",
+      "model": "z-image-turbo",
+      "width": 1536,
+      "height": 1536,
+      "prompt": "market",
+      "phase": "quality",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "a crowded spice market stall, dozens of open sacks, fine texture",
+        "--width",
+        "1536",
+        "--height",
+        "1536",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/028-z-image-turbo-1536x1536-market-quality.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        0.88623046875,
+        1.7138671875,
+        2.39501953125
+      ],
+      "load_after": [
+        0.361328125,
+        1.265625,
+        2.1328125
+      ],
+      "returncode": 0,
+      "seconds": 111.78666812495794,
+      "peak_rss_bytes": 11951030272,
+      "peak_footprint_bytes": 13064930248,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/028-z-image-turbo-1536x1536-market-quality.log",
+        "bytes": 7608,
+        "sha256": "fe1c19d34c569cbd6c6d9703eecc9be29e531c9a70b16dca684b5d75f837936f"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/028-z-image-turbo-1536x1536-market-quality.png",
+          "bytes": 7080336,
+          "sha256": "80101b9d29b853fb131dfbc7c614b3ed354d279e9c8836e1010cb65b4a2772de"
+        },
+        "size": [
+          1536,
+          1536
+        ],
+        "pixel_sha256": "8d32876737a8b6fd83f0fcf4075cc23214bbc7b068426296017bb902356c95a4",
+        "checker_score": 17.090581142742877,
+        "luma_std": 51.568822622564966,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-b/028-z-image-turbo-1536x1536-market-quality.log",
+        "sha256": "3c568748fcc79f7d0ac8d9a37a7ac501969d905b809702220f912c2bfe10cf57"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          1536,
+          1536
+        ],
+        "prompt": "market",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "029-flux2-klein-4b-2048x2048-portrait-quality",
+      "model": "flux2-klein-4b",
+      "width": 2048,
+      "height": 2048,
+      "prompt": "portrait",
+      "phase": "quality",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "editorial portrait of a fashion designer in a bright studio",
+        "--width",
+        "2048",
+        "--height",
+        "2048",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/029-flux2-klein-4b-2048x2048-portrait-quality.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        0.361328125,
+        1.265625,
+        2.1328125
+      ],
+      "load_after": [
+        0.361328125,
+        1.265625,
+        2.1328125
+      ],
+      "returncode": 1,
+      "seconds": 0.07481283298693597,
+      "peak_rss_bytes": 80740352,
+      "peak_footprint_bytes": 69487232,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/029-flux2-klein-4b-2048x2048-portrait-quality.log",
+        "bytes": 1414,
+        "sha256": "828603e74448167104ee0ae1ba311de6902e06d3d322cf67f34a43c9c838a115"
+      },
+      "problems": [
+        "generation exited 1",
+        "image unavailable: [Errno 2] No such file or directory: '$HOME/repos/zdraw/runs/release-resolution-20261001/quality/029-flux2-klein-4b-2048x2048-portrait-quality.png'"
+      ],
+      "published_log": {
+        "path": "m4max-b/029-flux2-klein-4b-2048x2048-portrait-quality.log",
+        "sha256": "132029211169026698e601ff834631e3d16184326d04902541d79ed171dadca9"
+      }
+    },
+    {
+      "case": "030-flux2-klein-4b-2048x2048-market-quality",
+      "model": "flux2-klein-4b",
+      "width": 2048,
+      "height": 2048,
+      "prompt": "market",
+      "phase": "quality",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "a crowded spice market stall, dozens of open sacks, fine texture",
+        "--width",
+        "2048",
+        "--height",
+        "2048",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/030-flux2-klein-4b-2048x2048-market-quality.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        0.361328125,
+        1.265625,
+        2.1328125
+      ],
+      "load_after": [
+        0.361328125,
+        1.265625,
+        2.1328125
+      ],
+      "returncode": 1,
+      "seconds": 0.0729401670396328,
+      "peak_rss_bytes": 80855040,
+      "peak_footprint_bytes": 69618328,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/030-flux2-klein-4b-2048x2048-market-quality.log",
+        "bytes": 1417,
+        "sha256": "08f61c48dee12e32752a876cfa447750ca67be9e20fc7927e52d29a0f641eae2"
+      },
+      "problems": [
+        "generation exited 1",
+        "image unavailable: [Errno 2] No such file or directory: '$HOME/repos/zdraw/runs/release-resolution-20261001/quality/030-flux2-klein-4b-2048x2048-market-quality.png'"
+      ],
+      "published_log": {
+        "path": "m4max-b/030-flux2-klein-4b-2048x2048-market-quality.log",
+        "sha256": "5676b7b5225487fa7c98ba7ae95266566b96e32df7bf09e2ed86474fa9572b99"
+      }
+    },
+    {
+      "case": "031-z-image-turbo-2048x2048-portrait-quality",
+      "model": "z-image-turbo",
+      "width": 2048,
+      "height": 2048,
+      "prompt": "portrait",
+      "phase": "quality",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "editorial portrait of a fashion designer in a bright studio",
+        "--width",
+        "2048",
+        "--height",
+        "2048",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/031-z-image-turbo-2048x2048-portrait-quality.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        0.361328125,
+        1.265625,
+        2.1328125
+      ],
+      "load_after": [
+        0.64208984375,
+        0.82275390625,
+        1.7119140625
+      ],
+      "returncode": 0,
+      "seconds": 234.37657504098024,
+      "peak_rss_bytes": 20842332160,
+      "peak_footprint_bytes": 22345964584,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/031-z-image-turbo-2048x2048-portrait-quality.log",
+        "bytes": 7632,
+        "sha256": "cb91f81cf66bc572c773010c5ee95f4cc975a43f8bb5f6922167678f6d4ebf44"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/031-z-image-turbo-2048x2048-portrait-quality.png",
+          "bytes": 12586292,
+          "sha256": "07e0137c3305ba5e0aec48dad1c6ee5366c56acf6e76290bd71376d272c65209"
+        },
+        "size": [
+          2048,
+          2048
+        ],
+        "pixel_sha256": "6d9a8301eb4c1e5581a986f176a484578d21474329d499b59b4110a7275e7c7e",
+        "checker_score": 18.22423757914624,
+        "luma_std": 67.08987819312144,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-b/031-z-image-turbo-2048x2048-portrait-quality.log",
+        "sha256": "63b7e35a4672999e84fd60eb9c7f3049081d54876c5ab90a91d45d571e2a8661"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          2048,
+          2048
+        ],
+        "prompt": "portrait",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "032-z-image-turbo-2048x2048-market-quality",
+      "model": "z-image-turbo",
+      "width": 2048,
+      "height": 2048,
+      "prompt": "market",
+      "phase": "quality",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "a crowded spice market stall, dozens of open sacks, fine texture",
+        "--width",
+        "2048",
+        "--height",
+        "2048",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/032-z-image-turbo-2048x2048-market-quality.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        0.64208984375,
+        0.82275390625,
+        1.7119140625
+      ],
+      "load_after": [
+        2.0654296875,
+        1.322265625,
+        1.71044921875
+      ],
+      "returncode": 0,
+      "seconds": 234.5261722500436,
+      "peak_rss_bytes": 20855455744,
+      "peak_footprint_bytes": 22358989936,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/032-z-image-turbo-2048x2048-market-quality.log",
+        "bytes": 7633,
+        "sha256": "2ce7d6ab0fcb8e5aa8868cffdf012ba49840d72a1a7b1906b79b9f4fdb38b492"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/032-z-image-turbo-2048x2048-market-quality.png",
+          "bytes": 12586292,
+          "sha256": "5ebab6d75456b4692d7a1d4b28491003e5736e7e781c3de3bc5ab90ac9a19771"
+        },
+        "size": [
+          2048,
+          2048
+        ],
+        "pixel_sha256": "5498552ca1dc76a14a6bb4a013aafa20d9adab2432d0497402b73ee58f5eb508",
+        "checker_score": 15.777851339103343,
+        "luma_std": 58.99819943244718,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-b/032-z-image-turbo-2048x2048-market-quality.log",
+        "sha256": "c8252190d8f03c8f87678b24a183779da6a49f7eec2d2a7fc0cb83005605f67c"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          2048,
+          2048
+        ],
+        "prompt": "market",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "033-flux2-klein-4b-1024x768-portrait-quality",
+      "model": "flux2-klein-4b",
+      "width": 1024,
+      "height": 768,
+      "prompt": "portrait",
+      "phase": "quality",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "editorial portrait of a fashion designer in a bright studio",
+        "--width",
+        "1024",
+        "--height",
+        "768",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/033-flux2-klein-4b-1024x768-portrait-quality.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        2.0654296875,
+        1.322265625,
+        1.71044921875
+      ],
+      "load_after": [
+        1.78125,
+        1.30126953125,
+        1.69287109375
+      ],
+      "returncode": 0,
+      "seconds": 16.171609458047897,
+      "peak_rss_bytes": 3347906560,
+      "peak_footprint_bytes": 4051113864,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/033-flux2-klein-4b-1024x768-portrait-quality.log",
+        "bytes": 4749,
+        "sha256": "b1eee027ffc099739ce1d5587b28da9de8f8c03f29f53d2c278cbde9ee2aa592"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/033-flux2-klein-4b-1024x768-portrait-quality.png",
+          "bytes": 2360610,
+          "sha256": "d512dd81457f812319e291cefe48bc78da363048b88d2d12acaf61cf7065285b"
+        },
+        "size": [
+          1024,
+          768
+        ],
+        "pixel_sha256": "e2adddfd389beada1f68b5f46eebcb37a4972f44524838e406939e993aedab4d",
+        "checker_score": 18.260381636865702,
+        "luma_std": 62.46504114391797,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-b/033-flux2-klein-4b-1024x768-portrait-quality.log",
+        "sha256": "6f2ed9f633e0b4348ed6e1e7ccee6b97758802eaa5299de81f14799a9deba318"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "flux2-klein-4b",
+        "dimensions": [
+          1024,
+          768
+        ],
+        "prompt": "portrait",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "034-flux2-klein-4b-1024x768-market-quality",
+      "model": "flux2-klein-4b",
+      "width": 1024,
+      "height": 768,
+      "prompt": "market",
+      "phase": "quality",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "a crowded spice market stall, dozens of open sacks, fine texture",
+        "--width",
+        "1024",
+        "--height",
+        "768",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/034-flux2-klein-4b-1024x768-market-quality.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        1.78125,
+        1.30126953125,
+        1.69287109375
+      ],
+      "load_after": [
+        1.45947265625,
+        1.2529296875,
+        1.66796875
+      ],
+      "returncode": 0,
+      "seconds": 16.56096566596534,
+      "peak_rss_bytes": 3347791872,
+      "peak_footprint_bytes": 4051031968,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/034-flux2-klein-4b-1024x768-market-quality.log",
+        "bytes": 4750,
+        "sha256": "a6363e6e0d91dd6ed50841ce448911f1dcdccce798997fb99f6d2239d262c121"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/034-flux2-klein-4b-1024x768-market-quality.png",
+          "bytes": 2360610,
+          "sha256": "5498a6afcee85f90df6f73e6f0f51557d17105485574c6e147fd0701f8edf5e1"
+        },
+        "size": [
+          1024,
+          768
+        ],
+        "pixel_sha256": "fc277a69af8c363c0f70f119eab582d06b8da9075bf75b25bb7da1f1433b63c8",
+        "checker_score": 28.40348691765092,
+        "luma_std": 66.43386419471504,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-b/034-flux2-klein-4b-1024x768-market-quality.log",
+        "sha256": "075011ff1dc63433b84aa9376d50c5fa102d5b5d3fdac67904b8ca5c519ee65f"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "flux2-klein-4b",
+        "dimensions": [
+          1024,
+          768
+        ],
+        "prompt": "market",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "035-z-image-turbo-1024x768-portrait-quality",
+      "model": "z-image-turbo",
+      "width": 1024,
+      "height": 768,
+      "prompt": "portrait",
+      "phase": "quality",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "editorial portrait of a fashion designer in a bright studio",
+        "--width",
+        "1024",
+        "--height",
+        "768",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/035-z-image-turbo-1024x768-portrait-quality.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        1.45947265625,
+        1.2529296875,
+        1.66796875
+      ],
+      "load_after": [
+        2.220703125,
+        1.42578125,
+        1.71435546875
+      ],
+      "returncode": 0,
+      "seconds": 32.96397491602693,
+      "peak_rss_bytes": 4335484928,
+      "peak_footprint_bytes": 5114572656,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/035-z-image-turbo-1024x768-portrait-quality.log",
+        "bytes": 7569,
+        "sha256": "2c18c4a0d24316e8e260ce4842047dcdf53aa15bc874962073fbb65ce263991e"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/035-z-image-turbo-1024x768-portrait-quality.png",
+          "bytes": 2360615,
+          "sha256": "4cfd834fa525109af969aaba5b362b566ab93146118fe660754614e242d78608"
+        },
+        "size": [
+          1024,
+          768
+        ],
+        "pixel_sha256": "90591ee450a612b901e48da979c46c68102d42e34e21c8b6fbda1f88bbba5af2",
+        "checker_score": 19.60246814851269,
+        "luma_std": 75.15268925440161,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-b/035-z-image-turbo-1024x768-portrait-quality.log",
+        "sha256": "f5c0c0e4d8b1b1ae89ff7ee4f236753427e08df57148a269d4e4de7954a1f653"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          1024,
+          768
+        ],
+        "prompt": "portrait",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "036-z-image-turbo-1024x768-market-quality",
+      "model": "z-image-turbo",
+      "width": 1024,
+      "height": 768,
+      "prompt": "market",
+      "phase": "quality",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "a crowded spice market stall, dozens of open sacks, fine texture",
+        "--width",
+        "1024",
+        "--height",
+        "768",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/036-z-image-turbo-1024x768-market-quality.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        2.220703125,
+        1.42578125,
+        1.71435546875
+      ],
+      "load_after": [
+        2.13037109375,
+        1.47509765625,
+        1.71875
+      ],
+      "returncode": 0,
+      "seconds": 33.07221208396368,
+      "peak_rss_bytes": 4345774080,
+      "peak_footprint_bytes": 5124681392,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/036-z-image-turbo-1024x768-market-quality.log",
+        "bytes": 7570,
+        "sha256": "6f2fd93ae567428586d5c2b2900c3a8bd0e457f2213554785af01a048831bea2"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/036-z-image-turbo-1024x768-market-quality.png",
+          "bytes": 2360615,
+          "sha256": "a9a3da71b8988e00770498f364f8b9cd2538521cee80a1b439eca4ef558abdf3"
+        },
+        "size": [
+          1024,
+          768
+        ],
+        "pixel_sha256": "04b83f6ae78fcbd5c206cfaf13e7342291cce5c311f85b06cb38ca02e1d76a5d",
+        "checker_score": 22.36602211832896,
+        "luma_std": 54.01510476313045,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-b/036-z-image-turbo-1024x768-market-quality.log",
+        "sha256": "828d9b3ce17718689b018296220d5e9f146b080c648994aa282e3642db7325cc"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          1024,
+          768
+        ],
+        "prompt": "market",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "037-flux2-klein-4b-768x1024-portrait-quality",
+      "model": "flux2-klein-4b",
+      "width": 768,
+      "height": 1024,
+      "prompt": "portrait",
+      "phase": "quality",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "editorial portrait of a fashion designer in a bright studio",
+        "--width",
+        "768",
+        "--height",
+        "1024",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/037-flux2-klein-4b-768x1024-portrait-quality.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        2.13037109375,
+        1.47509765625,
+        1.71875
+      ],
+      "load_after": [
+        2.08837890625,
+        1.49951171875,
+        1.72314453125
+      ],
+      "returncode": 0,
+      "seconds": 17.00950379204005,
+      "peak_rss_bytes": 3347890176,
+      "peak_footprint_bytes": 4051081072,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/037-flux2-klein-4b-768x1024-portrait-quality.log",
+        "bytes": 4749,
+        "sha256": "8ec6e0ac8df4735a53b47b4ffb8657db789bd2294a39cb4c5bb6c003d0ab6195"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/037-flux2-klein-4b-768x1024-portrait-quality.png",
+          "bytes": 2360866,
+          "sha256": "5c8a1ffb11050038342c7906ef066f19310fb09a4a35bea2d2c3395c6094b898"
+        },
+        "size": [
+          768,
+          1024
+        ],
+        "pixel_sha256": "c521a20b5cdd09644a4bb15065f812a66f3dd1de1c5f04302bbc80685d3c4034",
+        "checker_score": 15.678004214638154,
+        "luma_std": 59.383943230278476,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-b/037-flux2-klein-4b-768x1024-portrait-quality.log",
+        "sha256": "669f2d51e1616ebc1c82ca593430ac23957fbbc3c4b52362390b384cd2686061"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "flux2-klein-4b",
+        "dimensions": [
+          768,
+          1024
+        ],
+        "prompt": "portrait",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "038-flux2-klein-4b-768x1024-market-quality",
+      "model": "flux2-klein-4b",
+      "width": 768,
+      "height": 1024,
+      "prompt": "market",
+      "phase": "quality",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "a crowded spice market stall, dozens of open sacks, fine texture",
+        "--width",
+        "768",
+        "--height",
+        "1024",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/038-flux2-klein-4b-768x1024-market-quality.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        2.08837890625,
+        1.49951171875,
+        1.72314453125
+      ],
+      "load_after": [
+        1.72216796875,
+        1.45068359375,
+        1.69970703125
+      ],
+      "returncode": 0,
+      "seconds": 16.38829645793885,
+      "peak_rss_bytes": 3348135936,
+      "peak_footprint_bytes": 4051392440,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/038-flux2-klein-4b-768x1024-market-quality.log",
+        "bytes": 4750,
+        "sha256": "19a6b128480b0b6eaa98e490c3141507db87db3ffb29a4944a8544b6dcce425a"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/038-flux2-klein-4b-768x1024-market-quality.png",
+          "bytes": 2360866,
+          "sha256": "2e87ba6655312f91d5f2b20f77cf835ffe947c37c506a553cb8d7c67af14b950"
+        },
+        "size": [
+          768,
+          1024
+        ],
+        "pixel_sha256": "5e8e15de7d4310f24d538b45276e328fdd5821ade3bf614509b97f90acb1dea0",
+        "checker_score": 35.741499623081125,
+        "luma_std": 65.76082607400946,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-b/038-flux2-klein-4b-768x1024-market-quality.log",
+        "sha256": "9780b132706d2d42ff1720caf3181f0de24ed707ad1600fe72323d807d45397c"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "flux2-klein-4b",
+        "dimensions": [
+          768,
+          1024
+        ],
+        "prompt": "market",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "039-z-image-turbo-768x1024-portrait-quality",
+      "model": "z-image-turbo",
+      "width": 768,
+      "height": 1024,
+      "prompt": "portrait",
+      "phase": "quality",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "editorial portrait of a fashion designer in a bright studio",
+        "--width",
+        "768",
+        "--height",
+        "1024",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/039-z-image-turbo-768x1024-portrait-quality.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        1.72216796875,
+        1.45068359375,
+        1.69970703125
+      ],
+      "load_after": [
+        1.50732421875,
+        1.42236328125,
+        1.67919921875
+      ],
+      "returncode": 0,
+      "seconds": 32.26104750006925,
+      "peak_rss_bytes": 4335091712,
+      "peak_footprint_bytes": 5114031768,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/039-z-image-turbo-768x1024-portrait-quality.log",
+        "bytes": 7569,
+        "sha256": "50ad0ddf169be98a9675f68e982755311cf9f9abeb7f7ea386615bccb36c9383"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/039-z-image-turbo-768x1024-portrait-quality.png",
+          "bytes": 2360871,
+          "sha256": "6ea0530d9d7c382314449a1c9b383af2787831e2e5ba90ff845dbf88b6532d34"
+        },
+        "size": [
+          768,
+          1024
+        ],
+        "pixel_sha256": "c84df1468076fb24d1454a0015eb8b165cea234a67f9b70b78e371e83f757c2a",
+        "checker_score": 19.04515059621711,
+        "luma_std": 74.17555292218644,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-b/039-z-image-turbo-768x1024-portrait-quality.log",
+        "sha256": "ba58c3026383907d489b608a8139f87393c4d36924731c85d2dfe999e221babe"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          768,
+          1024
+        ],
+        "prompt": "portrait",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "040-z-image-turbo-768x1024-market-quality",
+      "model": "z-image-turbo",
+      "width": 768,
+      "height": 1024,
+      "prompt": "market",
+      "phase": "quality",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "a crowded spice market stall, dozens of open sacks, fine texture",
+        "--width",
+        "768",
+        "--height",
+        "1024",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/040-z-image-turbo-768x1024-market-quality.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        1.50732421875,
+        1.42236328125,
+        1.67919921875
+      ],
+      "load_after": [
+        1.90966796875,
+        1.52001953125,
+        1.70166015625
+      ],
+      "returncode": 0,
+      "seconds": 33.73611633304972,
+      "peak_rss_bytes": 4345905152,
+      "peak_footprint_bytes": 5124861688,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/040-z-image-turbo-768x1024-market-quality.log",
+        "bytes": 7570,
+        "sha256": "0c74a4f7a5827a4ed72ef622c9f23eb0eb1271a2eaef2fb871117a7a6bc66ca1"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/040-z-image-turbo-768x1024-market-quality.png",
+          "bytes": 2360871,
+          "sha256": "afaf1ef67798426d465cd0aeb6a1a5d94a6b5cab2a23ed9e04f89da8a1d60caa"
+        },
+        "size": [
+          768,
+          1024
+        ],
+        "pixel_sha256": "300d94fcc1a63d44075ad87e0ef391097ad471e15a54caefeba95601df6a67fb",
+        "checker_score": 22.174266721491225,
+        "luma_std": 55.73095614511539,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-b/040-z-image-turbo-768x1024-market-quality.log",
+        "sha256": "530d6a1149830633ac2a140328629bac4f2b814c6a06063c572573fc6d823026"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          768,
+          1024
+        ],
+        "prompt": "market",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "041-flux2-klein-4b-544x800-portrait-quality",
+      "model": "flux2-klein-4b",
+      "width": 544,
+      "height": 800,
+      "prompt": "portrait",
+      "phase": "quality",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "editorial portrait of a fashion designer in a bright studio",
+        "--width",
+        "544",
+        "--height",
+        "800",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/041-flux2-klein-4b-544x800-portrait-quality.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        1.90966796875,
+        1.52001953125,
+        1.70166015625
+      ],
+      "load_after": [
+        1.90966796875,
+        1.52001953125,
+        1.70166015625
+      ],
+      "returncode": 1,
+      "seconds": 0.5604940829798579,
+      "peak_rss_bytes": 788725760,
+      "peak_footprint_bytes": 924912856,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/041-flux2-klein-4b-544x800-portrait-quality.log",
+        "bytes": 1413,
+        "sha256": "883f90ea94cfffe72d714225eb20040eab6719575e6908dc8f71ee0d7003fb53"
+      },
+      "problems": [
+        "generation exited 1",
+        "image unavailable: [Errno 2] No such file or directory: '$HOME/repos/zdraw/runs/release-resolution-20261001/quality/041-flux2-klein-4b-544x800-portrait-quality.png'"
+      ],
+      "published_log": {
+        "path": "m4max-b/041-flux2-klein-4b-544x800-portrait-quality.log",
+        "sha256": "7c90bfddfcc384b7ab422efba610b24e3f59fea602df568bbb8d78d534729686"
+      }
+    },
+    {
+      "case": "042-flux2-klein-4b-544x800-market-quality",
+      "model": "flux2-klein-4b",
+      "width": 544,
+      "height": 800,
+      "prompt": "market",
+      "phase": "quality",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "a crowded spice market stall, dozens of open sacks, fine texture",
+        "--width",
+        "544",
+        "--height",
+        "800",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/042-flux2-klein-4b-544x800-market-quality.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        1.90966796875,
+        1.52001953125,
+        1.70166015625
+      ],
+      "load_after": [
+        1.90966796875,
+        1.52001953125,
+        1.70166015625
+      ],
+      "returncode": 1,
+      "seconds": 0.6128547919215634,
+      "peak_rss_bytes": 788709376,
+      "peak_footprint_bytes": 924962080,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/042-flux2-klein-4b-544x800-market-quality.log",
+        "bytes": 1416,
+        "sha256": "fae045ff77a4582acaded5d78d816b2a0a5d87dcf8229f162945e55907496a3f"
+      },
+      "problems": [
+        "generation exited 1",
+        "image unavailable: [Errno 2] No such file or directory: '$HOME/repos/zdraw/runs/release-resolution-20261001/quality/042-flux2-klein-4b-544x800-market-quality.png'"
+      ],
+      "published_log": {
+        "path": "m4max-b/042-flux2-klein-4b-544x800-market-quality.log",
+        "sha256": "52ccd3570ce5a09717be61faffd403557a2a3f3251cc76c342b160b65ea736a2"
+      }
+    },
+    {
+      "case": "043-z-image-turbo-544x800-portrait-quality",
+      "model": "z-image-turbo",
+      "width": 544,
+      "height": 800,
+      "prompt": "portrait",
+      "phase": "quality",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "editorial portrait of a fashion designer in a bright studio",
+        "--width",
+        "544",
+        "--height",
+        "800",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/043-z-image-turbo-544x800-portrait-quality.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        1.90966796875,
+        1.52001953125,
+        1.70166015625
+      ],
+      "load_after": [
+        1.599609375,
+        1.49755859375,
+        1.68408203125
+      ],
+      "returncode": 0,
+      "seconds": 39.38992862496525,
+      "peak_rss_bytes": 2496823296,
+      "peak_footprint_bytes": 2723866800,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/043-z-image-turbo-544x800-portrait-quality.log",
+        "bytes": 7567,
+        "sha256": "c2a1fe9c5d570843fc8ffe8e0ab318595541d3e4e972dfdabe4793aacaa76628"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/043-z-image-turbo-544x800-portrait-quality.png",
+          "bytes": 1306865,
+          "sha256": "0aeeaacbcebab7de4c706f7698e4641e251765cd2a00b37b2f37f07f99d0947f"
+        },
+        "size": [
+          544,
+          800
+        ],
+        "pixel_sha256": "66b823363c7497a1d2543e321bf391b5388437bac426e5e1e2b01f10cec29d5e",
+        "checker_score": 21.610555037313432,
+        "luma_std": 83.0485685883201,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-b/043-z-image-turbo-544x800-portrait-quality.log",
+        "sha256": "8542e7dccb11fa57e8c3dfe6416a0ce9300f4ec2074ab20ffbd5c7dc617a8d50"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          544,
+          800
+        ],
+        "prompt": "portrait",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "044-z-image-turbo-544x800-market-quality",
+      "model": "z-image-turbo",
+      "width": 544,
+      "height": 800,
+      "prompt": "market",
+      "phase": "quality",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "a crowded spice market stall, dozens of open sacks, fine texture",
+        "--width",
+        "544",
+        "--height",
+        "800",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/044-z-image-turbo-544x800-market-quality.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        1.599609375,
+        1.49755859375,
+        1.68408203125
+      ],
+      "load_after": [
+        1.9404296875,
+        1.63525390625,
+        1.728515625
+      ],
+      "returncode": 0,
+      "seconds": 36.78464237495791,
+      "peak_rss_bytes": 2506473472,
+      "peak_footprint_bytes": 2732714472,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/044-z-image-turbo-544x800-market-quality.log",
+        "bytes": 7567,
+        "sha256": "ba7713d96ef1243a3da976880f3d13b412de11a3c64c9b3560679bf23033a0be"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/quality/044-z-image-turbo-544x800-market-quality.png",
+          "bytes": 1306865,
+          "sha256": "6b88fd39dabcedb4251cb52b80de565a299a3c43517a7933e1c0beb79c307931"
+        },
+        "size": [
+          544,
+          800
+        ],
+        "pixel_sha256": "bfda8c8099335b42c9fe4c1bd36b70f043d15a021fc7779983ee2bfccaf8a204",
+        "checker_score": 23.833372201492537,
+        "luma_std": 49.99960306940325,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-b/044-z-image-turbo-544x800-market-quality.log",
+        "sha256": "57c49f0052527d372d26aeff48bfccc155afdddf3cd07b215c4e8b3bceaab349"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          544,
+          800
+        ],
+        "prompt": "market",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    }
+  ],
+  "thermal_after": "Note: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded",
+  "swap_after": "total = 3072.00M  used = 1850.50M  free = 1221.50M  (encrypted)",
+  "finished_at": "2026-10-01T13:33:31.399377+00:00",
+  "raw_manifest_sha256": "7da5ab0d43501e78bf83d404e1bf7683cf8b5808ac9a003789704f6131b4b6c6",
+  "path_redaction": "Host home directory replaced with $HOME; original artifact hashes retained. Published log hashes are separate."
+}

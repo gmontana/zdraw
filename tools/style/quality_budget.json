@@ -1,0 +1,30 @@
+{
+  "_notes": "Run `tools/style/zig_guard.py --snapshot` to re-baseline. Bumps must accompany a deliberate decision; cleanups should lower numbers.",
+  "as_of_commit": "HEAD",
+  "counts": {
+    "align_cast": 0,
+    "anytype": 0,
+    "bit_cast": 3,
+    "c_allocator": 0,
+    "catch_unreachable": 0,
+    "const_cast": 0,
+    "functions_over_120": 0,
+    "functions_over_60": 21,
+    "int_from_ptr": 3,
+    "lines_over_100": 171,
+    "page_allocator": 4,
+    "ptr_cast": 1,
+    "ptr_from_int": 0,
+    "todo": 0
+  },
+  "sizes": {
+    "files_over_1500_loc": 2,
+    "largest_file_loc": 2102
+  },
+  "version": 1,
+  "zlint": {
+    "no-print": 13,
+    "unsafe-undefined": 7,
+    "unused-decls": 1
+  }
+}

@@ -1,0 +1,148 @@
+# Hardware gates on M1/M2-class runners (GitHub macos-14 = Apple Silicon).
+#
+# Runs the weight-free correctness layer on real non-M4 silicon: kernel
+# runtime compilation, fragment/threadgroup mapping assumptions, W6
+# dequant-GEMM correctness, SDPA D=512 numerics, gemm_half checks, and
+# the MFA variant PSO build for THIS family. Does NOT certify generation
+# speed/quality (needs model weights); it removes the structural
+# unknowns first. Also builds the shipped CLI and every tool executable.
+name: hardware-gates
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  m1m2-gates:
+    runs-on: macos-14 # Apple Silicon M1/M2 class
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: zdraw
+
+      # Pinned to the compiler build.zig.zon declares as the minimum; the
+      # stanza dependency is fetched by the package manager from the URL
+      # and hash in build.zig.zon, so no sibling checkout is needed.
+      - name: Install zig 0.16.0
+        uses: mlugg/setup-zig@v2
+        with:
+          version: 0.16.0
+
+      # The DonIsaac Zig linter, pinned to the version the ratchet budget
+      # was snapshotted with. Without it zig build qa's zlint gate warns
+      # and passes, which is a gate in name only.
+      - name: Install zlint v0.8.1
+        run: |
+          curl -fsSL -o /tmp/zlint \
+            https://github.com/DonIsaac/zlint/releases/download/v0.8.1/zlint-macos-aarch64
+          chmod +x /tmp/zlint
+          sudo mv /tmp/zlint /usr/local/bin/zlint
+          zlint --version
+
+      - name: Toolchain report
+        working-directory: zdraw
+        run: |
+          zig version
+          sw_vers -productVersion
+          sysctl -n machdep.cpu.brand_string hw.memsize
+
+      # Compile the CLI and every tool, including roots outside the unit suite.
+      - name: Build the CLI and tools (ReleaseFast)
+        working-directory: zdraw
+        run: |
+          zig build
+          zig build check
+          ls -la zig-out/bin/zdraw zig-out/lib/ 2>/dev/null || ls -la zig-out
+
+      # The steel metallib needs Xcode's Metal compiler, which a Mac with
+      # only the Command Line Tools cannot run; the runner's build is the
+      # portable copy (and a cross-compiler determinism probe: does a
+      # runner-built metallib reproduce the certified hash on an M4 Max?).
+      - name: Upload the steel metallib
+        uses: actions/upload-artifact@v4
+        with:
+          name: steel-metallib-${{ github.sha }}
+          path: zdraw/zig-out/lib/steel.metallib
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Version and doctor (no weights)
+        working-directory: zdraw
+        run: |
+          ./zig-out/bin/zdraw version
+          ./zig-out/bin/zdraw doctor
+          ./zig-out/bin/zdraw doctor --json | python3 -c 'import json,sys; d=json.load(sys.stdin); assert d["schema_version"]==1, d'
+
+      - name: CLI and interactive session smoke (no weights)
+        working-directory: zdraw
+        run: python3 tools/cli_smoke.py ./zig-out/bin/zdraw
+
+      - name: Unit tests (Debug safety build)
+        working-directory: zdraw
+        run: zig build -Doptimize=Debug test
+
+      - name: Style and lint gates
+        working-directory: zdraw
+        run: zig build qa
+
+      - name: GPU kernel gates (no weights needed)
+        working-directory: zdraw
+        run: |
+          # Correctness gates only (ZDRAW_GEMMBENCH_GATES): gemm exact/half,
+          # W6 dequant, VAE norm split, conv windows and the frag-map probe.
+          # The full gemmbench also races 1024-resolution VAE chains, which
+          # the runner's 7 GiB paravirtual GPU cannot hold.
+          ZDRAW_GEMMBENCH_GATES=1 zig build gemmbench 2>&1 | tee /tmp/gemmbench.log
+          grep -E "PASS" /tmp/gemmbench.log
+          ! grep -E "FAIL|MISMATCH" /tmp/gemmbench.log
+
+      - name: MFA variant PSO build (family-local)
+        working-directory: zdraw
+        run: |
+          cat > /tmp/psoprobe.m <<'OBJC'
+          #import <Metal/Metal.h>
+          int main() {
+              @autoreleasepool {
+                  // Headless runners: the default-device call can return
+                  // nil for bare binaries; enumerate instead.
+                  id<MTLDevice> dev = MTLCreateSystemDefaultDevice();
+                  if (!dev) dev = MTLCopyAllDevices().firstObject;
+                  if (!dev) { fprintf(stderr, "no Metal device\n"); return 2; }
+                  int apple9 = [dev supportsFamily:MTLGPUFamilyApple9] ? 1 : 0;
+                  const char* path = apple9 ? "vendor/mfa/mfa-fwd-d128.metal"
+                                            : "vendor/mfa/mfa-fwd-d128-m1m2.metal";
+                  printf("family apple9=%d -> %s\n", apple9, path);
+                  NSError* err = nil;
+                  NSString* code = [NSString stringWithContentsOfFile:
+                      [NSString stringWithUTF8String:path]
+                      encoding:NSUTF8StringEncoding error:&err];
+                  if (!code) { fprintf(stderr, "read fail\n"); return 2; }
+                  id<MTLLibrary> lib = [dev newLibraryWithSource:code options:nil error:&err];
+                  if (!lib) { fprintf(stderr, "COMPILE FAIL: %s\n",
+                      err.localizedDescription.UTF8String); return 1; }
+                  MTLFunctionConstantValues* fc = [MTLFunctionConstantValues new];
+                  uint32_t R = 4128, C = 4128;
+                  [fc setConstantValue:&R type:MTLDataTypeUInt atIndex:0];
+                  [fc setConstantValue:&C type:MTLDataTypeUInt atIndex:1];
+                  id<MTLFunction> fn = [lib newFunctionWithName:@"attention"
+                                              constantValues:fc error:&err];
+                  if (!fn) { fprintf(stderr, "FN FAIL\n"); return 1; }
+                  MTLComputePipelineDescriptor* pd = [MTLComputePipelineDescriptor new];
+                  pd.computeFunction = fn;
+                  pd.maxTotalThreadsPerThreadgroup = 1024;
+                  id<MTLComputePipelineState> pso = [dev
+                      newComputePipelineStateWithDescriptor:pd options:0
+                      reflection:nil error:&err];
+                  if (!pso) { fprintf(stderr, "PSO FAIL: %s\n",
+                      err.localizedDescription.UTF8String); return 1; }
+                  printf("PSO OK maxThreads=%lu\n",
+                         (unsigned long)pso.maxTotalThreadsPerThreadgroup);
+              }
+              return 0;
+          }
+          OBJC
+          clang -fobjc-arc -framework Metal -framework Foundation /tmp/psoprobe.m -o /tmp/psoprobe
+          /tmp/psoprobe

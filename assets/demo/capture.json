@@ -1,0 +1,108 @@
+{
+  "command": "zdraw session --model flux2-klein-4b \\\n  --width 1024 --height 1024 --steps 4 --seed 45 --out-dir progressive-demo",
+  "prompt": "a red fox sitting in deep snow, golden hour light",
+  "sessionSeed": 45,
+  "imageSeed": 46,
+  "submittedAt": 6.13740525,
+  "completedAt": 18.170225298000002,
+  "heroStoppedAt": 1790856259.432,
+  "workflow": [
+    "reroll",
+    "save selected-fox.png"
+  ],
+  "observedCommandSeconds": 12.032820048000001,
+  "frames": 604,
+  "firstFrame": 1790856239.529313,
+  "lastFrame": 1790856276.802345,
+  "stoppedAt": 1790856276.915,
+  "playbackRate": 1,
+  "transport": "SSH PTY; actual zdraw iTerm image output displayed with xterm.js",
+  "schema_version": 2,
+  "date": "2026-10-01",
+  "source_commit": "a47160f6ebda2894f8b3f43d3e29f80b076e570b",
+  "binary_sha256": "90339e6a1ba7c56a168698756ef84721e4ab80fe29bc97c2e8d3cfd3df231b11",
+  "metallib_sha256": "6fed206961cf9f1b25f4e185495a2dcdddbd4d8019bfba06fa3761579f252961",
+  "pack_sha256": "377b64d12acc589e5162753ff9a0edd06419901bbd286f334f087f038d261519",
+  "host": {
+    "device": "Apple M4 Max",
+    "ram_bytes": 137438953472,
+    "macos": "26.5.2",
+    "macos_build": "25F84",
+    "thermal_before": "pmset reports no thermal or performance warning",
+    "thermal_after": "pmset reports no thermal or performance warning",
+    "note": "These reports are not temperature measurements."
+  },
+  "size": [
+    1280,
+    1180
+  ],
+  "playback_rate": 1,
+  "scope": "First render in a new session with cached weight pages, then a resident reroll with cached conditioning and an explicit save. Complete inference intervals; no cuts or acceleration.",
+  "cli_reported_render_seconds": [
+    11.8,
+    11.32
+  ],
+  "cli_reported_completion_footprint_gib": [
+    4.6,
+    4.6
+  ],
+  "cli_memory_label_note": "The CLI currently labels this GB, but calculates GiB. It is completion physical footprint, not peak RSS or total RAM.",
+  "preview_frames_per_image": [
+    4,
+    4
+  ],
+  "final_inline_images": 2,
+  "preview_method": "Approximate linear latent projection after each denoising step; final image uses the full VAE decode.",
+  "final_visible_label_check": "pass; no approximate-preview label remains above either final image",
+  "output_pixel_sha256": "afa4c8fb1ecbd1ecadee4042bfa62351eacbe3a841f67f71a3f2da65bbc505bb",
+  "output_matches_certified": true,
+  "reroll_pixel_sha256": "628f596c70df671a496ec37875c55cf4eb2fb219dafe0116762d75aa76080777",
+  "saved_copy_byte_identical": true,
+  "capture_tools": {
+    "xterm": "6.0.0",
+    "xterm_addon_image": "0.9.0",
+    "puppeteer_core": "25.12.0",
+    "chromium": "152.0.7977.82",
+    "method": "Headless Chromium CDP screencast of a real SSH PTY terminal; original frame timestamps retained in ffconcat; ffmpeg resampled to 30 fps MP4 and 10 fps GIF."
+  },
+  "raw_transcript_sha256": "df88369aaa1f3f501a20c134d1efa0de463e15fa9fa491d82a80e25421f44565",
+  "frame_timestamps_sha256": "4600030004d9632cca8ed79ac242576f1dcc46efc60f2982181e12db12cd2756",
+  "quiet_gate": {
+    "load1m": [
+      1.17,
+      1.65,
+      1.31,
+      1.17,
+      1.27,
+      1.22
+    ],
+    "interval_seconds": 80,
+    "threshold": 2,
+    "passed": true,
+    "evidence": "docs/evidence/20261001/progressive-quiet.txt"
+  },
+  "capture_selection": "The first progressive take was rejected because compact progress output left an approximate label above the final image. After fixing and retesting that bug, this complete take passed the visible-text assertion and visual review. No take was selected for fastest timing.",
+  "assets": {
+    "klein-cli.mp4": {
+      "sha256": "3dbcc22b2af69fc1a64a4292f4c379b71c1c1ddba31ad0c7a6d185f88913af41",
+      "bytes": 551933,
+      "duration_seconds": 20.033333
+    },
+    "klein-cli.gif": {
+      "sha256": "dd25c3963404a31e1930650ffbbbf9b373f8b4e5a8405a8068d7aad78ded5f6d",
+      "bytes": 956794,
+      "duration_seconds": 20.0
+    },
+    "klein-workflow.mp4": {
+      "sha256": "4179e9be83c681f987318de715fd20952ab0be2fac30696eb869a2786e31d440",
+      "bytes": 1123890,
+      "duration_seconds": 37.533333
+    },
+    "klein-cli.png": {
+      "sha256": "f306dcb08ac43298701eef664616a62bc1ba47d9e2abbcec07848b97d30b15e4",
+      "bytes": 3147060
+    }
+  },
+  "duration_seconds": 20.033333,
+  "workflow_duration_seconds": 37.533333
+}

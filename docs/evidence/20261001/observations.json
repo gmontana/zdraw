@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "id": "release-readme-evidence-20261001-result",
+  "date": "2026-10-01",
+  "identity": {
+    "source_commit": "83f0bffb2749c51f9f805d49282079f2411175a0",
+    "version": "0.1.0-validation-20261001.2",
+    "binary_sha256": "8ccb5d46746e51c48fbd5111cd1ef0118237530a8f078bae9f61fc97f576f6a9",
+    "metallib_sha256": "6fed206961cf9f1b25f4e185495a2dcdddbd4d8019bfba06fa3761579f252961",
+    "zig": "0.16.0",
+    "metal": "32023.921 (metalfe-32023.921.6)",
+    "build_target": "aarch64-macos.14.0, apple_m1, ReleaseFast",
+    "host": {
+      "device": "Apple M4 Max",
+      "ram_bytes": 137438953472,
+      "macos": "26.5.2",
+      "macos_build": "25F84",
+      "thermal_before": "nominal",
+      "thermal_after": "nominal"
+    },
+    "packs": {
+      "flux2-klein-4b": {
+        "precision": "W16 transformer (f16), unquantized upstream text encoder and VAE",
+        "sha256": "377b64d12acc589e5162753ff9a0edd06419901bbd286f334f087f038d261519",
+        "checkpoint": "black-forest-labs/FLUX.2-klein-4B",
+        "snapshot": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "demo_pack_matches_benchmark_pack": true
+      },
+      "z-image-turbo": {
+        "precision": "W16 pack, unquantized upstream text encoder and VAE",
+        "sha256": "3e7726e4906354960b1992e6fd6349261939612e6a1b8f571447eacfab7d9c7b",
+        "checkpoint": "Tongyi-MAI/Z-Image-Turbo",
+        "snapshot": null,
+        "note": "Existing local checkpoint; upstream snapshot revision was not retained. Exact W16 pack is identified above."
+      }
+    }
+  },
+  "case": {
+    "prompt": "a red fox sitting in deep snow, golden hour light",
+    "width": 1024,
+    "height": 1024,
+    "steps": 4,
+    "seed": 46
+  },
+  "method": {
+    "harness": "tools/competitive_bench.py",
+    "protocol": "cold-process",
+    "page_cache": "warmed; one unreported warm-up per model before three measured fresh processes",
+    "memory_instrument": "/usr/bin/time -l",
+    "wall_instrument": "external Python time.perf_counter around the timed subprocess",
+    "environment": [
+      "ZDRAW_PROGRESS=quiet",
+      "ZDRAW_METRICS=1",
+      "ZDRAW_MEMTRACE=1",
+      "ZDRAW_REQUIRE_ZPACK=1",
+      "explicit per-model W16 pack path"
+    ],
+    "quiet_gate": "six consecutive load averages below 2, 80 seconds apart; quiet.txt",
+    "concurrent_gpu_work": false,
+    "competitors": "none requested or measured; harness comparative verdict incomplete as expected",
+    "log_path_substitution": "Only the host home directory is replaced with $HOME in published logs."
+  },
+  "results": [
+    {
+      "model": "flux2-klein-4b",
+      "protocol": "cold-process",
+      "tier": "product",
+      "status": "ok",
+      "seconds": [
+        11.484271165914834,
+        11.65344624966383,
+        12.05512575013563
+      ],
+      "median_seconds": 11.65344624966383,
+      "peak_rss_bytes": 4166778880,
+      "peak_footprint_bytes": 4902361328,
+      "content_status": "pass",
+      "content_detail": "ok   runs/release-demo-20261001/flux2-klein-4b/zdraw-cold.png (checker=9.0 std=56.5)",
+      "runs": [
+        {
+          "wall_seconds": 11.484271165914834,
+          "exit_code": 0,
+          "maximum_rss_bytes": 4166647808,
+          "peak_footprint_bytes": 4902213848
+        },
+        {
+          "wall_seconds": 11.65344624966383,
+          "exit_code": 0,
+          "maximum_rss_bytes": 4166778880,
+          "peak_footprint_bytes": 4902361328
+        },
+        {
+          "wall_seconds": 12.05512575013563,
+          "exit_code": 0,
+          "maximum_rss_bytes": 4166729728,
+          "peak_footprint_bytes": 4902344992
+        }
+      ],
+      "retained_output": {
+        "pixel_sha256": "afa4c8fb1ecbd1ecadee4042bfa62351eacbe3a841f67f71a3f2da65bbc505bb",
+        "matches_certified": true,
+        "visual_review": "pass; no blank areas or checkerboard corruption",
+        "note": "Harness retains the final image, overwriting the prior two; all three process exits and timings are in the log."
+      },
+      "log": "klein.txt",
+      "raw_log_sha256": "b84c3a90088227762bc75d1cb680b030ad41d99c455546acaf2825f1b890d35e"
+    },
+    {
+      "model": "z-image-turbo",
+      "protocol": "cold-process",
+      "tier": "product",
+      "status": "ok",
+      "seconds": [
+        21.699005791917443,
+        21.402173166163266,
+        22.426843417342752
+      ],
+      "median_seconds": 21.699005791917443,
+      "peak_rss_bytes": 5541412864,
+      "peak_footprint_bytes": 6376518088,
+      "content_status": "pass",
+      "content_detail": "ok   runs/release-demo-20261001/z-image-turbo/zdraw-cold.png (checker=11.2 std=49.5)",
+      "runs": [
+        {
+          "wall_seconds": 21.699005791917443,
+          "exit_code": 0,
+          "maximum_rss_bytes": 5541330944,
+          "peak_footprint_bytes": 6376386872
+        },
+        {
+          "wall_seconds": 21.402173166163266,
+          "exit_code": 0,
+          "maximum_rss_bytes": 5541363712,
+          "peak_footprint_bytes": 6376518088
+        },
+        {
+          "wall_seconds": 22.426843417342752,
+          "exit_code": 0,
+          "maximum_rss_bytes": 5541412864,
+          "peak_footprint_bytes": 6376485200
+        }
+      ],
+      "retained_output": {
+        "pixel_sha256": "c2ac10ec694ef04a01517fb11bd808c025e50c4e89a9a45eabe69f1109c59bb6",
+        "matches_certified": true,
+        "visual_review": "pass; no blank areas or checkerboard corruption",
+        "note": "Harness retains the final image, overwriting the prior two; all three process exits and timings are in the log."
+      },
+      "log": "zimage.txt",
+      "raw_log_sha256": "9f15f81ef8bd9c96e4a2f659e338045abda656070fd91962e3e76274cfde2718"
+    }
+  ],
+  "limits": [
+    "RSS and footprint are process-accounting figures, not minimum physical RAM. Clean mapped file pages can occupy RAM outside physical footprint.",
+    "One M4 Max 128 GiB host, one prompt, one size and step count; no general speed or competitor superiority claim.",
+    "Only the final timed output per model is retained; prior two successful process outputs are not independently pixel-hashed.",
+    "No new engine optimization or numerical route change."
+  ]
+}

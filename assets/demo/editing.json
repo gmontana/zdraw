@@ -1,0 +1,69 @@
+{
+  "schema": "zdraw.editing-demo.v1",
+  "date": "2026-10-01",
+  "host": "m4max-a",
+  "hardware": "M4 Max, 128 GiB",
+  "macos": "26.5.2",
+  "source_commit": "35613a549d73317bd23fde843589db4366b1feeb",
+  "version": "zdraw 0.1.0-validation-20261001.7\ncommit 35613a5\nengine abi 1\nmetal4 yes",
+  "binary_sha256": "045be1f1c10b8363bcf8f5ea614c5cb48e1ced454feda541a5cad54012f2955e",
+  "metallib_sha256": "6fed206961cf9f1b25f4e185495a2dcdddbd4d8019bfba06fa3761579f252961",
+  "pack_sha256": "377b64d12acc589e5162753ff9a0edd06419901bbd286f334f087f038d261519",
+  "command": [
+    "./zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "flux2-klein-4b",
+    "--edit",
+    "runs/release-resolution-20261001/edit-demo/before.png",
+    "--prompt",
+    "add a blue wool scarf around the fox's neck",
+    "--width",
+    "512",
+    "--height",
+    "512",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "runs/release-resolution-20261001/edit-demo/after.png"
+  ],
+  "environment": {
+    "HF_HOME": "$HOME/models/huggingface",
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+  },
+  "assets": {
+    "before.png": {
+      "sha256": "cd7c1341b32ed5d5ffe02ca0a3bf8bcddd412032cda7a5dcac1a83f4bf0719de",
+      "pixel_sha256": "044ef73b6d3711103acf356caa9061e0e3e78013b15845194e592fbddb3701a3",
+      "dimensions": [
+        512,
+        512
+      ]
+    },
+    "after.png": {
+      "sha256": "859b0603d3ec64d457843963785177907b243233c56617bcc8be67bbfcb5f9b9",
+      "pixel_sha256": "ec1ba029e7f77fda1cb6fb9c86ee53e66896f4854480b5513d553992841ab92c",
+      "dimensions": [
+        512,
+        512
+      ]
+    }
+  },
+  "input_provenance": "Generated fox retained from release baseline model-smoke at source34e9913; copied without changes.",
+  "timing_claim": false,
+  "selection": "First attempt of this specified instruction at final admission source; no speed selection.",
+  "visual_review": "Before and after inspected by assistant: blue knitted scarf added around the fox neck, coherent fur/snow/background; no blank areas or obvious checkerboard corruption. Instruction edits do not guarantee unchanged pixels elsewhere.",
+  "raw_metadata_sha256": "1989393c37171d55be72266d8fc35891f585f6941b822106089463c70585be9a",
+  "raw_log_sha256": "a3b47a2a9db946bb2ed174128f6ea9120492ab6abd15138525efad04d7dad972",
+  "published_log": "editing-log.txt",
+  "published_log_sha256": "a3b47a2a9db946bb2ed174128f6ea9120492ab6abd15138525efad04d7dad972",
+  "published_assets": {
+    "before.png": "editing-before.png",
+    "after.png": "editing-after.png"
+  },
+  "automated_content_check": "Both images passed dimensions, luma variation and checkerboard heuristic checks."
+}

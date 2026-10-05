@@ -1,0 +1,9 @@
+quiet gate: Mon Oct  5 16:45:41 UTC 2026 host=m4max-a threshold=2.0 reads=6 interval=80s
+command: python3 tools/quality/resolution_sweep.py --mode timing --models-home $HOME/models --out-dir runs/pub-20261006/timing
+Mon Oct  5 16:45:41 UTC 2026 load1m=0.41 consecutive=1
+Mon Oct  5 16:47:01 UTC 2026 load1m=1.09 consecutive=2
+Mon Oct  5 16:48:21 UTC 2026 load1m=1.36 consecutive=3
+Mon Oct  5 16:49:41 UTC 2026 load1m=1.19 consecutive=4
+Mon Oct  5 16:51:01 UTC 2026 load1m=1.10 consecutive=5
+Mon Oct  5 16:52:21 UTC 2026 load1m=1.12 consecutive=6
+QUIET_GATE_PASS

@@ -1,0 +1,669 @@
+{
+  "schema": "zdraw.visual-review.v1",
+  "date": "2026-10-01",
+  "scope": "Three prompts at successful tested shapes, four steps, default W16; rendering screen, not general perceptual quality certification.",
+  "images": {
+    "afa4c8fb1ecbd1ecadee4042bfa62351eacbe3a841f67f71a3f2da65bbc505bb": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "flux2-klein-4b",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "prompt": "fox",
+      "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+      "heuristic_problems": []
+    },
+    "c2ac10ec694ef04a01517fb11bd808c025e50c4e89a9a45eabe69f1109c59bb6": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "z-image-turbo",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "prompt": "fox",
+      "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+      "heuristic_problems": []
+    },
+    "7a8f6087a78ea258a9bb35a1ba7bbd551dc27cff32a4839d9dd1c6b49dfe276c": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "z-image-turbo",
+      "dimensions": [
+        64,
+        64
+      ],
+      "prompt": "fox",
+      "finding": "Recognisable thumbnail with visibly limited detail; no obvious blank or checkerboard corruption.",
+      "heuristic_problems": [
+        "checkerboard-noise score=41.9 (sane<40)"
+      ]
+    },
+    "fd29fd539753ee5e3e4bffa6cfc5ab60f88587dd2cd459b91613776d7f0af0fe": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "flux2-klein-4b",
+      "dimensions": [
+        128,
+        128
+      ],
+      "prompt": "fox",
+      "finding": "Recognisable thumbnail with visibly limited detail; no obvious blank or checkerboard corruption.",
+      "heuristic_problems": []
+    },
+    "191ccc2f1af88662b913ee4561ad170178c9bbc0ef039f433e26875e9b982423": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "z-image-turbo",
+      "dimensions": [
+        128,
+        128
+      ],
+      "prompt": "fox",
+      "finding": "Recognisable thumbnail with visibly limited detail; no obvious blank or checkerboard corruption.",
+      "heuristic_problems": []
+    },
+    "afcbf9226ad77af96c64de086090f0b0ea3c0d4c4f5991a82221d12ad1af64d0": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "flux2-klein-4b",
+      "dimensions": [
+        256,
+        256
+      ],
+      "prompt": "fox",
+      "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+      "heuristic_problems": []
+    },
+    "0b0831812e0d9c1f4924e2db96767c0c10f9b7b09b6ce8ba073cf6cf16326828": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "z-image-turbo",
+      "dimensions": [
+        256,
+        256
+      ],
+      "prompt": "fox",
+      "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+      "heuristic_problems": []
+    },
+    "d2930d37dee535f8e1db0fccb84958d5873c7ea2c2c7617a74f2c14556370f1f": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "flux2-klein-4b",
+      "dimensions": [
+        512,
+        512
+      ],
+      "prompt": "fox",
+      "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+      "heuristic_problems": []
+    },
+    "810425f8f2ba32944cf39facff2bee9622e88701fe13ad5c5b3b8cf58ddba282": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "z-image-turbo",
+      "dimensions": [
+        512,
+        512
+      ],
+      "prompt": "fox",
+      "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+      "heuristic_problems": []
+    },
+    "b3dbdc6a718b78a1649056cd8c5e778bdec17636afa5b456a49824d0da07b9b3": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "flux2-klein-4b",
+      "dimensions": [
+        768,
+        768
+      ],
+      "prompt": "fox",
+      "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+      "heuristic_problems": []
+    },
+    "7647ee57b8cda740ceeb2255a18b7550152ad4b606d847e63a9feec95088ecd7": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "z-image-turbo",
+      "dimensions": [
+        768,
+        768
+      ],
+      "prompt": "fox",
+      "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+      "heuristic_problems": []
+    },
+    "c2633fdbd5a6d57f1f7301476160e4185e93313c76ee162bafc8798f21f09901": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "z-image-turbo",
+      "dimensions": [
+        1536,
+        1536
+      ],
+      "prompt": "fox",
+      "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+      "heuristic_problems": []
+    },
+    "d7a0257f3d2009c58b682ede1490a03709fcb56621d97b13713b904a5350d802": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "z-image-turbo",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "prompt": "fox",
+      "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+      "heuristic_problems": []
+    },
+    "ae9beffca45d0c1adf7df048216b6749e6aebd18a0c199918377214fdabe8223": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "flux2-klein-4b",
+      "dimensions": [
+        1024,
+        768
+      ],
+      "prompt": "fox",
+      "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+      "heuristic_problems": []
+    },
+    "aae1a98036ec35e353b94826cc10551cf4b407acb50595f869ef2fa101a66aa5": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "z-image-turbo",
+      "dimensions": [
+        1024,
+        768
+      ],
+      "prompt": "fox",
+      "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+      "heuristic_problems": []
+    },
+    "47aa6817c8efc34f5ebc537abf9c23a9a3a7d45418240c2fc04e361e24d93987": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "flux2-klein-4b",
+      "dimensions": [
+        768,
+        1024
+      ],
+      "prompt": "fox",
+      "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+      "heuristic_problems": []
+    },
+    "fc2883e30eca36b84d7676946cc2309b7c72d36b79806a93d1f0e768ac2adbbd": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "z-image-turbo",
+      "dimensions": [
+        768,
+        1024
+      ],
+      "prompt": "fox",
+      "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+      "heuristic_problems": []
+    },
+    "4d3efd337dc3eb644d7b550010c386e2f7d7bb8e36cd3ebbc35ef3f1609b874d": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "z-image-turbo",
+      "dimensions": [
+        544,
+        800
+      ],
+      "prompt": "fox",
+      "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+      "heuristic_problems": []
+    },
+    "e1e620144110ef513f27cfad2ba29eafd46cc85c479e5553da3516c3c3c124cb": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "z-image-turbo",
+      "dimensions": [
+        64,
+        64
+      ],
+      "prompt": "portrait",
+      "finding": "Recognisable thumbnail with visibly limited detail; no obvious blank or checkerboard corruption.",
+      "heuristic_problems": [
+        "checkerboard-noise score=85.3 (sane<40)"
+      ]
+    },
+    "d56d2439e870d3e9957823f80657005d688202d2c85bac5a77ef8406ced645bd": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "z-image-turbo",
+      "dimensions": [
+        64,
+        64
+      ],
+      "prompt": "market",
+      "finding": "Recognisable thumbnail with visibly limited detail; no obvious blank or checkerboard corruption.",
+      "heuristic_problems": []
+    },
+    "39cacc97f3e5306953b470d6e8f1dfcc2056b9652cbc32f54f9848a4707eff9f": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "flux2-klein-4b",
+      "dimensions": [
+        128,
+        128
+      ],
+      "prompt": "portrait",
+      "finding": "Recognisable thumbnail with visibly limited detail; no obvious blank or checkerboard corruption.",
+      "heuristic_problems": [
+        "checkerboard-noise score=41.1 (sane<40)"
+      ]
+    },
+    "0875cfdb24a9d40b762d7a49770f263df3fba6d50ed9e9ab81d797636003c0fc": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "flux2-klein-4b",
+      "dimensions": [
+        128,
+        128
+      ],
+      "prompt": "market",
+      "finding": "Recognisable thumbnail with visibly limited detail; no obvious blank or checkerboard corruption.",
+      "heuristic_problems": [
+        "checkerboard-noise score=58.9 (sane<40)"
+      ]
+    },
+    "0bb5693f74f7575b14c775eb2fafa34b9d0ff2a9c5a8d1d197ea27929f557a72": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "z-image-turbo",
+      "dimensions": [
+        128,
+        128
+      ],
+      "prompt": "portrait",
+      "finding": "Recognisable thumbnail with visibly limited detail; no obvious blank or checkerboard corruption.",
+      "heuristic_problems": []
+    },
+    "d485b9196cc1536715730a2a0f8f5e5f81a669a2a95c651ce875b9346526769b": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "z-image-turbo",
+      "dimensions": [
+        128,
+        128
+      ],
+      "prompt": "market",
+      "finding": "Recognisable thumbnail with visibly limited detail; no obvious blank or checkerboard corruption.",
+      "heuristic_problems": [
+        "checkerboard-noise score=41.7 (sane<40)"
+      ]
+    },
+    "6d282e08fb113ccaad09dd7d62f44606197561bf5fe943f3c80d44f629a2fce1": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "flux2-klein-4b",
+      "dimensions": [
+        256,
+        256
+      ],
+      "prompt": "portrait",
+      "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+      "heuristic_problems": []
+    },
+    "c014328ebd8ec07a9891b83e6ec900f81e528b994aec629922b73407124aaba6": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "flux2-klein-4b",
+      "dimensions": [
+        256,
+        256
+      ],
+      "prompt": "market",
+      "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+      "heuristic_problems": [
+        "checkerboard-noise score=44.0 (sane<40)"
+      ]
+    },
+    "fdbc0f7b31f16da72db1db7645dd301cb4889f7b2d5da7e0dd71e24bffeafc36": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "z-image-turbo",
+      "dimensions": [
+        256,
+        256
+      ],
+      "prompt": "portrait",
+      "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+      "heuristic_problems": [
+        "checkerboard-noise score=45.2 (sane<40)"
+      ]
+    },
+    "bb60ed88f4ded2e93710e5869058c53355c2ed68ae74774b7c15185073f3f565": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "z-image-turbo",
+      "dimensions": [
+        256,
+        256
+      ],
+      "prompt": "market",
+      "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+      "heuristic_problems": []
+    },
+    "1829faa860eb3d167d0c81895f4b854755796c1a9cdf8be42d0cbc7c50782607": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "flux2-klein-4b",
+      "dimensions": [
+        512,
+        512
+      ],
+      "prompt": "portrait",
+      "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+      "heuristic_problems": []
+    },
+    "997abfbecae4a96d00015989fa333ba19568b4cae3c4fe338861138ad0f85d15": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "flux2-klein-4b",
+      "dimensions": [
+        512,
+        512
+      ],
+      "prompt": "market",
+      "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+      "heuristic_problems": []
+    },
+    "ae672fbcc87e3bd41fd710ed77c0e1c24b7dc15a2a9b2acd3a5d0baabae9f601": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "z-image-turbo",
+      "dimensions": [
+        512,
+        512
+      ],
+      "prompt": "portrait",
+      "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+      "heuristic_problems": []
+    },
+    "cf89245c503df988d08e3d10badc55207b35646b9c3f7bb83358d865167c9212": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "z-image-turbo",
+      "dimensions": [
+        512,
+        512
+      ],
+      "prompt": "market",
+      "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+      "heuristic_problems": []
+    },
+    "6386714125040d9a5544a5d87071ce7ee743b9fcaf2a53c15de76159e5881bb7": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "flux2-klein-4b",
+      "dimensions": [
+        768,
+        768
+      ],
+      "prompt": "portrait",
+      "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+      "heuristic_problems": []
+    },
+    "fe18e972e47849ace762a6657dcae5f6c7f8d78d5db70d71cbd39060f1ea0f62": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "flux2-klein-4b",
+      "dimensions": [
+        768,
+        768
+      ],
+      "prompt": "market",
+      "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+      "heuristic_problems": []
+    },
+    "0255d9c8fcf7ea18e875236325622a66f03e888408b651c9f692684267a88997": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "z-image-turbo",
+      "dimensions": [
+        768,
+        768
+      ],
+      "prompt": "portrait",
+      "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+      "heuristic_problems": []
+    },
+    "19b0b690a6ab9f174993d4fdee50c7a2ff949ecbb60d768b40a494b328535426": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "z-image-turbo",
+      "dimensions": [
+        768,
+        768
+      ],
+      "prompt": "market",
+      "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+      "heuristic_problems": []
+    },
+    "573879332c8d43b1b2cc1158d36e5e203c02a4bccf4170c9da234ce9388e7766": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "flux2-klein-4b",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "prompt": "portrait",
+      "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+      "heuristic_problems": []
+    },
+    "31464a6d4a952fc8d31660414b35e7e26721c00936c7d84d01aa57bb23b11dd6": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "flux2-klein-4b",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "prompt": "market",
+      "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+      "heuristic_problems": []
+    },
+    "c0ad3d57db975eb23a6e2c63c232ddc6399c0a0e209671a31b81277a61005371": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "z-image-turbo",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "prompt": "portrait",
+      "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+      "heuristic_problems": []
+    },
+    "1d1f64077d2ff5a4a318339bcd7b74396ee365abfef3835fa08d9ee7e6edcaf3": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "z-image-turbo",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "prompt": "market",
+      "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+      "heuristic_problems": []
+    },
+    "977c5fe763d5bdb00f18a2b51b1c0cb7d92a40f49eb394212aeb01d01f537907": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "z-image-turbo",
+      "dimensions": [
+        1536,
+        1536
+      ],
+      "prompt": "portrait",
+      "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+      "heuristic_problems": []
+    },
+    "8d32876737a8b6fd83f0fcf4075cc23214bbc7b068426296017bb902356c95a4": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "z-image-turbo",
+      "dimensions": [
+        1536,
+        1536
+      ],
+      "prompt": "market",
+      "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+      "heuristic_problems": []
+    },
+    "6d9a8301eb4c1e5581a986f176a484578d21474329d499b59b4110a7275e7c7e": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "z-image-turbo",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "prompt": "portrait",
+      "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+      "heuristic_problems": []
+    },
+    "5498552ca1dc76a14a6bb4a013aafa20d9adab2432d0497402b73ee58f5eb508": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "z-image-turbo",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "prompt": "market",
+      "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+      "heuristic_problems": []
+    },
+    "e2adddfd389beada1f68b5f46eebcb37a4972f44524838e406939e993aedab4d": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "flux2-klein-4b",
+      "dimensions": [
+        1024,
+        768
+      ],
+      "prompt": "portrait",
+      "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+      "heuristic_problems": []
+    },
+    "fc277a69af8c363c0f70f119eab582d06b8da9075bf75b25bb7da1f1433b63c8": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "flux2-klein-4b",
+      "dimensions": [
+        1024,
+        768
+      ],
+      "prompt": "market",
+      "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+      "heuristic_problems": []
+    },
+    "90591ee450a612b901e48da979c46c68102d42e34e21c8b6fbda1f88bbba5af2": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "z-image-turbo",
+      "dimensions": [
+        1024,
+        768
+      ],
+      "prompt": "portrait",
+      "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+      "heuristic_problems": []
+    },
+    "04b83f6ae78fcbd5c206cfaf13e7342291cce5c311f85b06cb38ca02e1d76a5d": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "z-image-turbo",
+      "dimensions": [
+        1024,
+        768
+      ],
+      "prompt": "market",
+      "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+      "heuristic_problems": []
+    },
+    "c521a20b5cdd09644a4bb15065f812a66f3dd1de1c5f04302bbc80685d3c4034": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "flux2-klein-4b",
+      "dimensions": [
+        768,
+        1024
+      ],
+      "prompt": "portrait",
+      "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+      "heuristic_problems": []
+    },
+    "5e8e15de7d4310f24d538b45276e328fdd5821ade3bf614509b97f90acb1dea0": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "flux2-klein-4b",
+      "dimensions": [
+        768,
+        1024
+      ],
+      "prompt": "market",
+      "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+      "heuristic_problems": []
+    },
+    "c84df1468076fb24d1454a0015eb8b165cea234a67f9b70b78e371e83f757c2a": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "z-image-turbo",
+      "dimensions": [
+        768,
+        1024
+      ],
+      "prompt": "portrait",
+      "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+      "heuristic_problems": []
+    },
+    "300d94fcc1a63d44075ad87e0ef391097ad471e15a54caefeba95601df6a67fb": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "z-image-turbo",
+      "dimensions": [
+        768,
+        1024
+      ],
+      "prompt": "market",
+      "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+      "heuristic_problems": []
+    },
+    "66b823363c7497a1d2543e321bf391b5388437bac426e5e1e2b01f10cec29d5e": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "z-image-turbo",
+      "dimensions": [
+        544,
+        800
+      ],
+      "prompt": "portrait",
+      "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+      "heuristic_problems": []
+    },
+    "bfda8c8099335b42c9fe4c1bd36b70f043d15a021fc7779983ee2bfccaf8a204": {
+      "reviewer": "assistant",
+      "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+      "model": "z-image-turbo",
+      "dimensions": [
+        544,
+        800
+      ],
+      "prompt": "market",
+      "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+      "heuristic_problems": []
+    }
+  }
+}

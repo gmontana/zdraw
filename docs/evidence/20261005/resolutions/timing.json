@@ -1,0 +1,4747 @@
+{
+ "schema": "zdraw.resolution-sweep.v1",
+ "started_at": "2026-10-05T16:52:29.824968+00:00",
+ "mode": "timing",
+ "source_commit": "1843018e6fb570fe56bd1352d86f9f30caedbd2b",
+ "harness": {
+  "path": "$HOME/repos/zdraw/tools/quality/resolution_sweep.py",
+  "bytes": 9839,
+  "sha256": "799ed93805685695ef4fb0505393daa1fdaeec75a18771f1feadc809ff0be989"
+ },
+ "binary": {
+  "path": "$HOME/repos/zdraw/zig-out/bin/zdraw",
+  "bytes": 3912184,
+  "sha256": "da6397ecaf0347a9f71c678e37b691cd8251cfc78746b7b17067a8bf2206b9d2"
+ },
+ "version": "zdraw 0.1.0\ncommit v0.1.0-validation-20261001.7-8-g1843018\nengine abi 1\nmetal4 yes",
+ "metallib": {
+  "path": "$HOME/repos/zdraw/zig-out/lib/steel.metallib",
+  "bytes": 265363,
+  "sha256": "d5c0d2346f5f78f595aca73a33aba0b1c34024a5c290c4e697246e33efe8aa31"
+ },
+ "host": {
+  "name": "m4max-a",
+  "macos": "26.5.2",
+  "chip": "Apple M4 Max",
+  "ram_bytes": 137438953472
+ },
+ "models": {
+  "flux2-klein-4b": {
+   "weights": "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+   "pack": {
+    "path": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack",
+    "bytes": 7409765616,
+    "sha256": "377b64d12acc589e5162753ff9a0edd06419901bbd286f334f087f038d261519"
+   }
+  },
+  "z-image-turbo": {
+   "weights": "$HOME/models/Z-Image-Turbo",
+   "pack": {
+    "path": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack",
+    "bytes": 17380155920,
+    "sha256": "3e7726e4906354960b1992e6fd6349261939612e6a1b8f571447eacfab7d9c7b"
+   }
+  }
+ },
+ "steps": 4,
+ "seed": 46,
+ "prompts": {
+  "fox": "a red fox sitting in deep snow, golden hour light",
+  "portrait": "editorial portrait of a fashion designer in a bright studio",
+  "market": "a crowded spice market stall, dozens of open sacks, fine texture"
+ },
+ "sizes": [
+  [
+   64,
+   64
+  ],
+  [
+   128,
+   128
+  ],
+  [
+   256,
+   256
+  ],
+  [
+   512,
+   512
+  ],
+  [
+   768,
+   768
+  ],
+  [
+   1024,
+   1024
+  ],
+  [
+   1536,
+   1536
+  ],
+  [
+   2048,
+   2048
+  ],
+  [
+   1024,
+   768
+  ],
+  [
+   768,
+   1024
+  ],
+  [
+   544,
+   800
+  ]
+ ],
+ "planned": 68,
+ "completed": 68,
+ "regime": "fresh processes with cached weight pages",
+ "thermal_before": "Note: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded",
+ "swap_before": "total = 4096.00M  used = 2508.50M  free = 1587.50M  (encrypted)",
+ "status": "automated-fail",
+ "visual_review": "not-reviewed",
+ "results": [
+  {
+   "case": "001-flux2-klein-4b-1024x1024-fox-warmup",
+   "model": "flux2-klein-4b",
+   "width": 1024,
+   "height": 1024,
+   "prompt": "fox",
+   "phase": "warmup",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "flux2-klein-4b",
+    "--weights",
+    "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "1024",
+    "--height",
+    "1024",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/001-flux2-klein-4b-1024x1024-fox-warmup.png"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+   },
+   "load_before": [
+    1.17626953125,
+    1.11767578125,
+    1.24560546875
+   ],
+   "load_after": [
+    1.06884765625,
+    1.0966796875,
+    1.23681640625
+   ],
+   "returncode": 0,
+   "seconds": 11.333710417151451,
+   "peak_rss_bytes": 2510438400,
+   "peak_footprint_bytes": 3245134960,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/001-flux2-klein-4b-1024x1024-fox-warmup.log",
+    "bytes": 4217,
+    "sha256": "becc4d5f0983c07cc8e06c05065b233f14ba6a5182fc781d076fe293d9e6e328"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/001-flux2-klein-4b-1024x1024-fox-warmup.png",
+     "bytes": 3147359,
+     "sha256": "63f643c004712c46ed4498960b4c4d140a58483f577c79c4549449e2d720e8e6"
+    },
+    "size": [
+     1024,
+     1024
+    ],
+    "pixel_sha256": "afa4c8fb1ecbd1ecadee4042bfa62351eacbe3a841f67f71a3f2da65bbc505bb",
+    "checker_score": 8.985477797941272,
+    "luma_std": 56.46909117943018,
+    "problems": []
+   },
+   "certified_match": true
+  },
+  {
+   "case": "002-z-image-turbo-1024x1024-fox-warmup",
+   "model": "z-image-turbo",
+   "width": 1024,
+   "height": 1024,
+   "prompt": "fox",
+   "phase": "warmup",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "z-image-turbo",
+    "--weights",
+    "$HOME/models/Z-Image-Turbo",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "1024",
+    "--height",
+    "1024",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/002-z-image-turbo-1024x1024-fox-warmup.png",
+    "--profile",
+    "product"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+   },
+   "load_before": [
+    1.06884765625,
+    1.0966796875,
+    1.23681640625
+   ],
+   "load_after": [
+    0.82666015625,
+    1.04052734375,
+    1.21337890625
+   ],
+   "returncode": 0,
+   "seconds": 21.602058957796544,
+   "peak_rss_bytes": 4232790016,
+   "peak_footprint_bytes": 5067124184,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/002-z-image-turbo-1024x1024-fox-warmup.log",
+    "bytes": 6174,
+    "sha256": "f54c82c7e7211d38da6ae7ba15da1da15880724e61e6aa1ac20f55f648e018ac"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/002-z-image-turbo-1024x1024-fox-warmup.png",
+     "bytes": 3147364,
+     "sha256": "f462da7aebb38b8ed36690d9a0583c632ea5fbc6fc0fd27f483bcf7ae5bccca6"
+    },
+    "size": [
+     1024,
+     1024
+    ],
+    "pixel_sha256": "c2ac10ec694ef04a01517fb11bd808c025e50c4e89a9a45eabe69f1109c59bb6",
+    "checker_score": 11.160113957923228,
+    "luma_std": 49.5128427442391,
+    "problems": []
+   },
+   "certified_match": true
+  },
+  {
+   "case": "003-flux2-klein-4b-64x64-fox-round1",
+   "model": "flux2-klein-4b",
+   "width": 64,
+   "height": 64,
+   "prompt": "fox",
+   "phase": "round1",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "flux2-klein-4b",
+    "--weights",
+    "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "64",
+    "--height",
+    "64",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/003-flux2-klein-4b-64x64-fox-round1.png"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+   },
+   "load_before": [
+    0.82666015625,
+    1.04052734375,
+    1.21337890625
+   ],
+   "load_after": [
+    0.82666015625,
+    1.04052734375,
+    1.21337890625
+   ],
+   "returncode": 1,
+   "seconds": 0.00752537464722991,
+   "peak_rss_bytes": 6733824,
+   "peak_footprint_bytes": 1950056,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/003-flux2-klein-4b-64x64-fox-round1.log",
+    "bytes": 1547,
+    "sha256": "27d8ec05b236b58bc08999b0ed424235283b3234577455b248ccf3e54ad3d2f4"
+   },
+   "problems": [
+    "generation exited 1",
+    "image unavailable: [Errno 2] No such file or directory: '$HOME/repos/zdraw/runs/pub-20261006/timing/003-flux2-klein-4b-64x64-fox-round1.png'"
+   ]
+  },
+  {
+   "case": "004-z-image-turbo-64x64-fox-round1",
+   "model": "z-image-turbo",
+   "width": 64,
+   "height": 64,
+   "prompt": "fox",
+   "phase": "round1",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "z-image-turbo",
+    "--weights",
+    "$HOME/models/Z-Image-Turbo",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "64",
+    "--height",
+    "64",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/004-z-image-turbo-64x64-fox-round1.png",
+    "--profile",
+    "product"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+   },
+   "load_before": [
+    0.82666015625,
+    1.04052734375,
+    1.21337890625
+   ],
+   "load_after": [
+    0.82666015625,
+    1.04052734375,
+    1.21337890625
+   ],
+   "returncode": 0,
+   "seconds": 1.2236689166165888,
+   "peak_rss_bytes": 289488896,
+   "peak_footprint_bytes": 978985696,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/004-z-image-turbo-64x64-fox-round1.log",
+    "bytes": 6130,
+    "sha256": "b77c6106bf66a494c93496d0df0d3e35974a2c6e6daafd13457f967a1fd50d75"
+   },
+   "problems": [
+    "checkerboard-noise score=41.9 (sane<40)"
+   ],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/004-z-image-turbo-64x64-fox-round1.png",
+     "bytes": 12720,
+     "sha256": "4f98ad9a6b79bf9e3d3f263d288b191af434d4069eb3014eb48dd6d906b078f8"
+    },
+    "size": [
+     64,
+     64
+    ],
+    "pixel_sha256": "7a8f6087a78ea258a9bb35a1ba7bbd551dc27cff32a4839d9dd1c6b49dfe276c",
+    "checker_score": 41.852120535714285,
+    "luma_std": 65.940241870601,
+    "problems": [
+     "checkerboard-noise score=41.9 (sane<40)"
+    ]
+   }
+  },
+  {
+   "case": "005-flux2-klein-4b-128x128-fox-round1",
+   "model": "flux2-klein-4b",
+   "width": 128,
+   "height": 128,
+   "prompt": "fox",
+   "phase": "round1",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "flux2-klein-4b",
+    "--weights",
+    "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "128",
+    "--height",
+    "128",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/005-flux2-klein-4b-128x128-fox-round1.png"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+   },
+   "load_before": [
+    0.82666015625,
+    1.04052734375,
+    1.21337890625
+   ],
+   "load_after": [
+    0.76025390625,
+    1.02294921875,
+    1.2060546875
+   ],
+   "returncode": 0,
+   "seconds": 1.9455160410143435,
+   "peak_rss_bytes": 571195392,
+   "peak_footprint_bytes": 1221824304,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/005-flux2-klein-4b-128x128-fox-round1.log",
+    "bytes": 4210,
+    "sha256": "69723307a76cbb05c52f2d2463d7c54948231ca6bd87651b0c4f0134db091fc9"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/005-flux2-klein-4b-128x128-fox-round1.png",
+     "bytes": 49645,
+     "sha256": "96047e0a4bbd9c2c92be7e4ddbbfdd90b5c0ad13e036f3c4d44cb8fc7b582b7b"
+    },
+    "size": [
+     128,
+     128
+    ],
+    "pixel_sha256": "fd29fd539753ee5e3e4bffa6cfc5ab60f88587dd2cd459b91613776d7f0af0fe",
+    "checker_score": 24.872960069444442,
+    "luma_std": 56.750339828650425,
+    "problems": []
+   }
+  },
+  {
+   "case": "006-z-image-turbo-128x128-fox-round1",
+   "model": "z-image-turbo",
+   "width": 128,
+   "height": 128,
+   "prompt": "fox",
+   "phase": "round1",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "z-image-turbo",
+    "--weights",
+    "$HOME/models/Z-Image-Turbo",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "128",
+    "--height",
+    "128",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/006-z-image-turbo-128x128-fox-round1.png",
+    "--profile",
+    "product"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+   },
+   "load_before": [
+    0.76025390625,
+    1.02294921875,
+    1.2060546875
+   ],
+   "load_after": [
+    0.76025390625,
+    1.02294921875,
+    1.2060546875
+   ],
+   "returncode": 0,
+   "seconds": 1.4616322093643248,
+   "peak_rss_bytes": 432979968,
+   "peak_footprint_bytes": 1095443240,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/006-z-image-turbo-128x128-fox-round1.log",
+    "bytes": 6136,
+    "sha256": "a2878075c0676b2837c07aa3d8478f688bcb333482e37844d9ecdd02febdc9cc"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/006-z-image-turbo-128x128-fox-round1.png",
+     "bytes": 49650,
+     "sha256": "a2521e1fec753013340c0c0496d6de8629a3e35dabe297c2124431c989cbb5f2"
+    },
+    "size": [
+     128,
+     128
+    ],
+    "pixel_sha256": "191ccc2f1af88662b913ee4561ad170178c9bbc0ef039f433e26875e9b982423",
+    "checker_score": 32.854166666666664,
+    "luma_std": 59.13880520087506,
+    "problems": []
+   }
+  },
+  {
+   "case": "007-flux2-klein-4b-256x256-fox-round1",
+   "model": "flux2-klein-4b",
+   "width": 256,
+   "height": 256,
+   "prompt": "fox",
+   "phase": "round1",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "flux2-klein-4b",
+    "--weights",
+    "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "256",
+    "--height",
+    "256",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/007-flux2-klein-4b-256x256-fox-round1.png"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+   },
+   "load_before": [
+    0.76025390625,
+    1.02294921875,
+    1.2060546875
+   ],
+   "load_after": [
+    0.76025390625,
+    1.02294921875,
+    1.2060546875
+   ],
+   "returncode": 0,
+   "seconds": 2.309020916931331,
+   "peak_rss_bytes": 759857152,
+   "peak_footprint_bytes": 1366347640,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/007-flux2-klein-4b-256x256-fox-round1.log",
+    "bytes": 4210,
+    "sha256": "99e260e2a7ec3d572b895f3bd364a67835370b2f87dc405c14bc81a911601024"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/007-flux2-klein-4b-256x256-fox-round1.png",
+     "bytes": 197244,
+     "sha256": "bb18163efc6f5fcc19181c7262cbe9084dbce1e07d11932620897ae686942c89"
+    },
+    "size": [
+     256,
+     256
+    ],
+    "pixel_sha256": "afcbf9226ad77af96c64de086090f0b0ea3c0d4c4f5991a82221d12ad1af64d0",
+    "checker_score": 16.54331527217742,
+    "luma_std": 61.281298820221885,
+    "problems": []
+   }
+  },
+  {
+   "case": "008-z-image-turbo-256x256-fox-round1",
+   "model": "z-image-turbo",
+   "width": 256,
+   "height": 256,
+   "prompt": "fox",
+   "phase": "round1",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "z-image-turbo",
+    "--weights",
+    "$HOME/models/Z-Image-Turbo",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "256",
+    "--height",
+    "256",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/008-z-image-turbo-256x256-fox-round1.png",
+    "--profile",
+    "product"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+   },
+   "load_before": [
+    0.76025390625,
+    1.02294921875,
+    1.2060546875
+   ],
+   "load_after": [
+    0.69921875,
+    1.005859375,
+    1.19873046875
+   ],
+   "returncode": 0,
+   "seconds": 2.160537667106837,
+   "peak_rss_bytes": 700858368,
+   "peak_footprint_bytes": 1323066344,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/008-z-image-turbo-256x256-fox-round1.log",
+    "bytes": 6143,
+    "sha256": "dca706a59a9eeffd89852d6c2f74bd0f93309042ca4b8b13ea9b314e1d11470b"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/008-z-image-turbo-256x256-fox-round1.png",
+     "bytes": 197249,
+     "sha256": "309dc8d1618bc9237e1c1b1cdeaec1b950b52158d94b6cc88ff5ce6aaede0b4b"
+    },
+    "size": [
+     256,
+     256
+    ],
+    "pixel_sha256": "0b0831812e0d9c1f4924e2db96767c0c10f9b7b09b6ce8ba073cf6cf16326828",
+    "checker_score": 23.29171917002688,
+    "luma_std": 58.52131627820275,
+    "problems": []
+   }
+  },
+  {
+   "case": "009-flux2-klein-4b-512x512-fox-round1",
+   "model": "flux2-klein-4b",
+   "width": 512,
+   "height": 512,
+   "prompt": "fox",
+   "phase": "round1",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "flux2-klein-4b",
+    "--weights",
+    "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "512",
+    "--height",
+    "512",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/009-flux2-klein-4b-512x512-fox-round1.png"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+   },
+   "load_before": [
+    0.69921875,
+    1.005859375,
+    1.19873046875
+   ],
+   "load_after": [
+    0.72314453125,
+    1.00537109375,
+    1.197265625
+   ],
+   "returncode": 0,
+   "seconds": 4.28939462499693,
+   "peak_rss_bytes": 1107509248,
+   "peak_footprint_bytes": 1728335976,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/009-flux2-klein-4b-512x512-fox-round1.log",
+    "bytes": 4210,
+    "sha256": "41a66e03ac7dbf18756a8b6243c4ad9468b4e968c46d9b5747faecaa044efdde"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/009-flux2-klein-4b-512x512-fox-round1.png",
+     "bytes": 787369,
+     "sha256": "3db345dc4c2cdc9388f0e445029b44515b262ed18d04f6997690bd883c6c1823"
+    },
+    "size": [
+     512,
+     512
+    ],
+    "pixel_sha256": "d2930d37dee535f8e1db0fccb84958d5873c7ea2c2c7617a74f2c14556370f1f",
+    "checker_score": 9.957186259920634,
+    "luma_std": 57.51971169841822,
+    "problems": []
+   }
+  },
+  {
+   "case": "010-z-image-turbo-512x512-fox-round1",
+   "model": "z-image-turbo",
+   "width": 512,
+   "height": 512,
+   "prompt": "fox",
+   "phase": "round1",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "z-image-turbo",
+    "--weights",
+    "$HOME/models/Z-Image-Turbo",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "512",
+    "--height",
+    "512",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/010-z-image-turbo-512x512-fox-round1.png",
+    "--profile",
+    "product"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+   },
+   "load_before": [
+    0.72314453125,
+    1.00537109375,
+    1.197265625
+   ],
+   "load_after": [
+    0.6650390625,
+    0.98828125,
+    1.18994140625
+   ],
+   "returncode": 0,
+   "seconds": 5.7206012909300625,
+   "peak_rss_bytes": 1394065408,
+   "peak_footprint_bytes": 2046306048,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/010-z-image-turbo-512x512-fox-round1.log",
+    "bytes": 6159,
+    "sha256": "622edec3cfab74e007547579cd7eac91ee64e29fba7d27b1c5b23324af1e1844"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/010-z-image-turbo-512x512-fox-round1.png",
+     "bytes": 787374,
+     "sha256": "5fca2d19018a9225900dd7e4da84b8dd56c25003bcd99398e697fbb45757e850"
+    },
+    "size": [
+     512,
+     512
+    ],
+    "pixel_sha256": "810425f8f2ba32944cf39facff2bee9622e88701fe13ad5c5b3b8cf58ddba282",
+    "checker_score": 16.028253141534393,
+    "luma_std": 54.02290528701195,
+    "problems": []
+   }
+  },
+  {
+   "case": "011-flux2-klein-4b-768x768-fox-round1",
+   "model": "flux2-klein-4b",
+   "width": 768,
+   "height": 768,
+   "prompt": "fox",
+   "phase": "round1",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "flux2-klein-4b",
+    "--weights",
+    "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "768",
+    "--height",
+    "768",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/011-flux2-klein-4b-768x768-fox-round1.png"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+   },
+   "load_before": [
+    0.6650390625,
+    0.98828125,
+    1.18994140625
+   ],
+   "load_after": [
+    0.611328125,
+    0.9716796875,
+    1.1826171875
+   ],
+   "returncode": 0,
+   "seconds": 7.125204500276595,
+   "peak_rss_bytes": 1693679616,
+   "peak_footprint_bytes": 2372882992,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/011-flux2-klein-4b-768x768-fox-round1.log",
+    "bytes": 4210,
+    "sha256": "bf9ee56f97571c2ff99c173f8f1018de9c69c1fe9280a21c4e7fc288c98d16c7"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/011-flux2-klein-4b-768x768-fox-round1.png",
+     "bytes": 1770740,
+     "sha256": "bed402ba6e0acb6915faad919e3f7c126de1a6b8769bf35202a65b428ecc00a3"
+    },
+    "size": [
+     768,
+     768
+    ],
+    "pixel_sha256": "b3dbdc6a718b78a1649056cd8c5e778bdec17636afa5b456a49824d0da07b9b3",
+    "checker_score": 8.495254248903509,
+    "luma_std": 51.76948864869355,
+    "problems": []
+   }
+  },
+  {
+   "case": "012-z-image-turbo-768x768-fox-round1",
+   "model": "z-image-turbo",
+   "width": 768,
+   "height": 768,
+   "prompt": "fox",
+   "phase": "round1",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "z-image-turbo",
+    "--weights",
+    "$HOME/models/Z-Image-Turbo",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "768",
+    "--height",
+    "768",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/012-z-image-turbo-768x768-fox-round1.png",
+    "--profile",
+    "product"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+   },
+   "load_before": [
+    0.611328125,
+    0.9716796875,
+    1.1826171875
+   ],
+   "load_after": [
+    0.74609375,
+    0.9873046875,
+    1.18408203125
+   ],
+   "returncode": 0,
+   "seconds": 12.149225915782154,
+   "peak_rss_bytes": 2587426816,
+   "peak_footprint_bytes": 3324635552,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/012-z-image-turbo-768x768-fox-round1.log",
+    "bytes": 6168,
+    "sha256": "e885acd9c54b05eb370e7b0ddc29d83b1671a2e5e320320be6f9a4df1b32cf87"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/012-z-image-turbo-768x768-fox-round1.png",
+     "bytes": 1770745,
+     "sha256": "6f2a1b2a8e445b0834e8b16d00bb4e6de92908c3d810a7ce5947a40ad8075660"
+    },
+    "size": [
+     768,
+     768
+    ],
+    "pixel_sha256": "7647ee57b8cda740ceeb2255a18b7550152ad4b606d847e63a9feec95088ecd7",
+    "checker_score": 14.363887746710525,
+    "luma_std": 56.261978588182146,
+    "problems": []
+   }
+  },
+  {
+   "case": "013-flux2-klein-4b-1024x1024-fox-round1",
+   "model": "flux2-klein-4b",
+   "width": 1024,
+   "height": 1024,
+   "prompt": "fox",
+   "phase": "round1",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "flux2-klein-4b",
+    "--weights",
+    "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "1024",
+    "--height",
+    "1024",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/013-flux2-klein-4b-1024x1024-fox-round1.png"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+   },
+   "load_before": [
+    0.74609375,
+    0.9873046875,
+    1.18408203125
+   ],
+   "load_after": [
+    0.70458984375,
+    0.970703125,
+    1.17529296875
+   ],
+   "returncode": 0,
+   "seconds": 11.960036916658282,
+   "peak_rss_bytes": 2506080256,
+   "peak_footprint_bytes": 3240809632,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/013-flux2-klein-4b-1024x1024-fox-round1.log",
+    "bytes": 4217,
+    "sha256": "8403ed9a558a1ffa7d2c263c44af515d4a523f7615a7b340cad7dc58f1dde47e"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/013-flux2-klein-4b-1024x1024-fox-round1.png",
+     "bytes": 3147359,
+     "sha256": "63f643c004712c46ed4498960b4c4d140a58483f577c79c4549449e2d720e8e6"
+    },
+    "size": [
+     1024,
+     1024
+    ],
+    "pixel_sha256": "afa4c8fb1ecbd1ecadee4042bfa62351eacbe3a841f67f71a3f2da65bbc505bb",
+    "checker_score": 8.985477797941272,
+    "luma_std": 56.46909117943018,
+    "problems": []
+   },
+   "certified_match": true
+  },
+  {
+   "case": "014-z-image-turbo-1024x1024-fox-round1",
+   "model": "z-image-turbo",
+   "width": 1024,
+   "height": 1024,
+   "prompt": "fox",
+   "phase": "round1",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "z-image-turbo",
+    "--weights",
+    "$HOME/models/Z-Image-Turbo",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "1024",
+    "--height",
+    "1024",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/014-z-image-turbo-1024x1024-fox-round1.png",
+    "--profile",
+    "product"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+   },
+   "load_before": [
+    0.70458984375,
+    0.970703125,
+    1.17529296875
+   ],
+   "load_after": [
+    0.6337890625,
+    0.93798828125,
+    1.158203125
+   ],
+   "returncode": 0,
+   "seconds": 21.762939082924277,
+   "peak_rss_bytes": 4232822784,
+   "peak_footprint_bytes": 5067419480,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/014-z-image-turbo-1024x1024-fox-round1.log",
+    "bytes": 6174,
+    "sha256": "cc472bee4127a2cd6380025623461cb81bf2d35b29d7acbfabf6d2b1209d1e10"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/014-z-image-turbo-1024x1024-fox-round1.png",
+     "bytes": 3147364,
+     "sha256": "f462da7aebb38b8ed36690d9a0583c632ea5fbc6fc0fd27f483bcf7ae5bccca6"
+    },
+    "size": [
+     1024,
+     1024
+    ],
+    "pixel_sha256": "c2ac10ec694ef04a01517fb11bd808c025e50c4e89a9a45eabe69f1109c59bb6",
+    "checker_score": 11.160113957923228,
+    "luma_std": 49.5128427442391,
+    "problems": []
+   },
+   "certified_match": true
+  },
+  {
+   "case": "015-flux2-klein-4b-1536x1536-fox-round1",
+   "model": "flux2-klein-4b",
+   "width": 1536,
+   "height": 1536,
+   "prompt": "fox",
+   "phase": "round1",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "flux2-klein-4b",
+    "--weights",
+    "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "1536",
+    "--height",
+    "1536",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/015-flux2-klein-4b-1536x1536-fox-round1.png"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+   },
+   "load_before": [
+    0.6337890625,
+    0.93798828125,
+    1.158203125
+   ],
+   "load_after": [
+    0.6337890625,
+    0.93798828125,
+    1.158203125
+   ],
+   "returncode": 1,
+   "seconds": 0.007855166681110859,
+   "peak_rss_bytes": 6733824,
+   "peak_footprint_bytes": 1950056,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/015-flux2-klein-4b-1536x1536-fox-round1.log",
+    "bytes": 1555,
+    "sha256": "f55086c93b9241da6387529e025b030638b19d8edc4873afd563ce57219ed390"
+   },
+   "problems": [
+    "generation exited 1",
+    "image unavailable: [Errno 2] No such file or directory: '$HOME/repos/zdraw/runs/pub-20261006/timing/015-flux2-klein-4b-1536x1536-fox-round1.png'"
+   ]
+  },
+  {
+   "case": "016-z-image-turbo-1536x1536-fox-round1",
+   "model": "z-image-turbo",
+   "width": 1536,
+   "height": 1536,
+   "prompt": "fox",
+   "phase": "round1",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "z-image-turbo",
+    "--weights",
+    "$HOME/models/Z-Image-Turbo",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "1536",
+    "--height",
+    "1536",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/016-z-image-turbo-1536x1536-fox-round1.png",
+    "--profile",
+    "product"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+   },
+   "load_before": [
+    0.6337890625,
+    0.93798828125,
+    1.158203125
+   ],
+   "load_after": [
+    0.6083984375,
+    0.87158203125,
+    1.1181640625
+   ],
+   "returncode": 0,
+   "seconds": 55.16319162538275,
+   "peak_rss_bytes": 8928657408,
+   "peak_footprint_bytes": 10040589120,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/016-z-image-turbo-1536x1536-fox-round1.log",
+    "bytes": 6190,
+    "sha256": "68fd6b71c487eef4b035adde6f4b052b888a1ef3cd7215c462db97627a428742"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/016-z-image-turbo-1536x1536-fox-round1.png",
+     "bytes": 7080336,
+     "sha256": "853556f02e87f421498bbc330ed33c5a44360f08c9bff7f76aaa41e24803bcf5"
+    },
+    "size": [
+     1536,
+     1536
+    ],
+    "pixel_sha256": "c2633fdbd5a6d57f1f7301476160e4185e93313c76ee162bafc8798f21f09901",
+    "checker_score": 8.634288137634526,
+    "luma_std": 46.12108700543315,
+    "problems": []
+   }
+  },
+  {
+   "case": "017-flux2-klein-4b-2048x2048-fox-round1",
+   "model": "flux2-klein-4b",
+   "width": 2048,
+   "height": 2048,
+   "prompt": "fox",
+   "phase": "round1",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "flux2-klein-4b",
+    "--weights",
+    "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "2048",
+    "--height",
+    "2048",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/017-flux2-klein-4b-2048x2048-fox-round1.png"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+   },
+   "load_before": [
+    0.6083984375,
+    0.87158203125,
+    1.1181640625
+   ],
+   "load_after": [
+    0.6083984375,
+    0.87158203125,
+    1.1181640625
+   ],
+   "returncode": 1,
+   "seconds": 0.008171958848834038,
+   "peak_rss_bytes": 6733824,
+   "peak_footprint_bytes": 1966464,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/017-flux2-klein-4b-2048x2048-fox-round1.log",
+    "bytes": 1555,
+    "sha256": "cd8216d48a4661d4660bccbe817c04bd2e7a9f0e08f7acf9651c57c344345120"
+   },
+   "problems": [
+    "generation exited 1",
+    "image unavailable: [Errno 2] No such file or directory: '$HOME/repos/zdraw/runs/pub-20261006/timing/017-flux2-klein-4b-2048x2048-fox-round1.png'"
+   ]
+  },
+  {
+   "case": "018-z-image-turbo-2048x2048-fox-round1",
+   "model": "z-image-turbo",
+   "width": 2048,
+   "height": 2048,
+   "prompt": "fox",
+   "phase": "round1",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "z-image-turbo",
+    "--weights",
+    "$HOME/models/Z-Image-Turbo",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "2048",
+    "--height",
+    "2048",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/018-z-image-turbo-2048x2048-fox-round1.png",
+    "--profile",
+    "product"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+   },
+   "load_before": [
+    0.6083984375,
+    0.87158203125,
+    1.1181640625
+   ],
+   "load_after": [
+    0.373046875,
+    0.69140625,
+    1.0068359375
+   ],
+   "returncode": 0,
+   "seconds": 127.16412887489423,
+   "peak_rss_bytes": 15543664640,
+   "peak_footprint_bytes": 17044147568,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/018-z-image-turbo-2048x2048-fox-round1.log",
+    "bytes": 6199,
+    "sha256": "b384478eae44d10d821d3fb43eedf169395bd42da96ef1be2ba53e8063b8043e"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/018-z-image-turbo-2048x2048-fox-round1.png",
+     "bytes": 12586292,
+     "sha256": "590dbb42df63f02b58c859fd61506f8792e4933242bcb2131cfcaae02f696269"
+    },
+    "size": [
+     2048,
+     2048
+    ],
+    "pixel_sha256": "d7a0257f3d2009c58b682ede1490a03709fcb56621d97b13713b904a5350d802",
+    "checker_score": 7.284103892207924,
+    "luma_std": 54.01853967978328,
+    "problems": []
+   }
+  },
+  {
+   "case": "019-flux2-klein-4b-1024x768-fox-round1",
+   "model": "flux2-klein-4b",
+   "width": 1024,
+   "height": 768,
+   "prompt": "fox",
+   "phase": "round1",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "flux2-klein-4b",
+    "--weights",
+    "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "1024",
+    "--height",
+    "768",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/019-flux2-klein-4b-1024x768-fox-round1.png"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+   },
+   "load_before": [
+    0.373046875,
+    0.69140625,
+    1.0068359375
+   ],
+   "load_after": [
+    0.47509765625,
+    0.701171875,
+    1.005859375
+   ],
+   "returncode": 0,
+   "seconds": 9.76866754097864,
+   "peak_rss_bytes": 2038087680,
+   "peak_footprint_bytes": 2741064504,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/019-flux2-klein-4b-1024x768-fox-round1.log",
+    "bytes": 4213,
+    "sha256": "c3cc168c536948e7473f3c2899b320d49f9dd7c4deb67e3f77c425575a50cca8"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/019-flux2-klein-4b-1024x768-fox-round1.png",
+     "bytes": 2360610,
+     "sha256": "f1d029c718955aa8ea53ef3612248b16f3b746b27105aa547de5497d361459b0"
+    },
+    "size": [
+     1024,
+     768
+    ],
+    "pixel_sha256": "ae9beffca45d0c1adf7df048216b6749e6aebd18a0c199918377214fdabe8223",
+    "checker_score": 10.46414571713692,
+    "luma_std": 51.03034488722049,
+    "problems": []
+   }
+  },
+  {
+   "case": "020-z-image-turbo-1024x768-fox-round1",
+   "model": "z-image-turbo",
+   "width": 1024,
+   "height": 768,
+   "prompt": "fox",
+   "phase": "round1",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "z-image-turbo",
+    "--weights",
+    "$HOME/models/Z-Image-Turbo",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "1024",
+    "--height",
+    "768",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/020-z-image-turbo-1024x768-fox-round1.png",
+    "--profile",
+    "product"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+   },
+   "load_before": [
+    0.47509765625,
+    0.701171875,
+    1.005859375
+   ],
+   "load_after": [
+    0.36962890625,
+    0.666015625,
+    0.98779296875
+   ],
+   "returncode": 0,
+   "seconds": 18.516785957850516,
+   "peak_rss_bytes": 3283730432,
+   "peak_footprint_bytes": 4062538600,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/020-z-image-turbo-1024x768-fox-round1.log",
+    "bytes": 6171,
+    "sha256": "1c4a7c770466e9fc5c05508c2653678e5a2681b7b4af7f2a499bf4c3e1d5f91e"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/020-z-image-turbo-1024x768-fox-round1.png",
+     "bytes": 2360615,
+     "sha256": "8cc11ffb81b04729e1933a1205b6f403a9522962250272d09be724a58210ad80"
+    },
+    "size": [
+     1024,
+     768
+    ],
+    "pixel_sha256": "aae1a98036ec35e353b94826cc10551cf4b407acb50595f869ef2fa101a66aa5",
+    "checker_score": 12.30484128937008,
+    "luma_std": 51.95165116022688,
+    "problems": []
+   }
+  },
+  {
+   "case": "021-flux2-klein-4b-768x1024-fox-round1",
+   "model": "flux2-klein-4b",
+   "width": 768,
+   "height": 1024,
+   "prompt": "fox",
+   "phase": "round1",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "flux2-klein-4b",
+    "--weights",
+    "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "768",
+    "--height",
+    "1024",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/021-flux2-klein-4b-768x1024-fox-round1.png"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+   },
+   "load_before": [
+    0.36962890625,
+    0.666015625,
+    0.98779296875
+   ],
+   "load_after": [
+    0.3125,
+    0.6435546875,
+    0.97607421875
+   ],
+   "returncode": 0,
+   "seconds": 9.898468332830817,
+   "peak_rss_bytes": 2037989376,
+   "peak_footprint_bytes": 2741015280,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/021-flux2-klein-4b-768x1024-fox-round1.log",
+    "bytes": 4213,
+    "sha256": "220c7fdb4c543a266cbacab25b189bf2d4e28f4d31493819979ddaed6788ed3d"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/021-flux2-klein-4b-768x1024-fox-round1.png",
+     "bytes": 2360866,
+     "sha256": "1d2c79bcc1539a6906d1cce1142e603a76f61684c78355a776aaf68907aefefa"
+    },
+    "size": [
+     768,
+     1024
+    ],
+    "pixel_sha256": "47aa6817c8efc34f5ebc537abf9c23a9a3a7d45418240c2fc04e361e24d93987",
+    "checker_score": 10.722478926809211,
+    "luma_std": 53.88361774052423,
+    "problems": []
+   }
+  },
+  {
+   "case": "022-z-image-turbo-768x1024-fox-round1",
+   "model": "z-image-turbo",
+   "width": 768,
+   "height": 1024,
+   "prompt": "fox",
+   "phase": "round1",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "z-image-turbo",
+    "--weights",
+    "$HOME/models/Z-Image-Turbo",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "768",
+    "--height",
+    "1024",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/022-z-image-turbo-768x1024-fox-round1.png",
+    "--profile",
+    "product"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+   },
+   "load_before": [
+    0.3125,
+    0.6435546875,
+    0.97607421875
+   ],
+   "load_after": [
+    0.22265625,
+    0.60107421875,
+    0.95263671875
+   ],
+   "returncode": 0,
+   "seconds": 18.472928709350526,
+   "peak_rss_bytes": 3283533824,
+   "peak_footprint_bytes": 4062243544,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/022-z-image-turbo-768x1024-fox-round1.log",
+    "bytes": 6171,
+    "sha256": "0a2fd5581be61536aacef92958e5267bdd680ba64d1afcff8496d64e1d567f10"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/022-z-image-turbo-768x1024-fox-round1.png",
+     "bytes": 2360871,
+     "sha256": "6e33d93d8b23af6530b21c33768f2951d11647f6b289ff5430b2b0f6354cb230"
+    },
+    "size": [
+     768,
+     1024
+    ],
+    "pixel_sha256": "fc2883e30eca36b84d7676946cc2309b7c72d36b79806a93d1f0e768ac2adbbd",
+    "checker_score": 11.735283888432019,
+    "luma_std": 56.68147103555787,
+    "problems": []
+   }
+  },
+  {
+   "case": "023-flux2-klein-4b-544x800-fox-round1",
+   "model": "flux2-klein-4b",
+   "width": 544,
+   "height": 800,
+   "prompt": "fox",
+   "phase": "round1",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "flux2-klein-4b",
+    "--weights",
+    "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "544",
+    "--height",
+    "800",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/023-flux2-klein-4b-544x800-fox-round1.png"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+   },
+   "load_before": [
+    0.22265625,
+    0.60107421875,
+    0.95263671875
+   ],
+   "load_after": [
+    0.22265625,
+    0.60107421875,
+    0.95263671875
+   ],
+   "returncode": 1,
+   "seconds": 0.008242540992796421,
+   "peak_rss_bytes": 6733824,
+   "peak_footprint_bytes": 1950056,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/023-flux2-klein-4b-544x800-fox-round1.log",
+    "bytes": 1551,
+    "sha256": "4f3fa523ae18709e1dfa458b23cc2173d1cf12c52bc6944380c1158dc7f33e54"
+   },
+   "problems": [
+    "generation exited 1",
+    "image unavailable: [Errno 2] No such file or directory: '$HOME/repos/zdraw/runs/pub-20261006/timing/023-flux2-klein-4b-544x800-fox-round1.png'"
+   ]
+  },
+  {
+   "case": "024-z-image-turbo-544x800-fox-round1",
+   "model": "z-image-turbo",
+   "width": 544,
+   "height": 800,
+   "prompt": "fox",
+   "phase": "round1",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "z-image-turbo",
+    "--weights",
+    "$HOME/models/Z-Image-Turbo",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "544",
+    "--height",
+    "800",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/024-z-image-turbo-544x800-fox-round1.png",
+    "--profile",
+    "product"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+   },
+   "load_before": [
+    0.22265625,
+    0.60107421875,
+    0.95263671875
+   ],
+   "load_after": [
+    0.65234375,
+    0.66943359375,
+    0.96435546875
+   ],
+   "returncode": 0,
+   "seconds": 32.16037658415735,
+   "peak_rss_bytes": 2426568704,
+   "peak_footprint_bytes": 2653579968,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/024-z-image-turbo-544x800-fox-round1.log",
+    "bytes": 6168,
+    "sha256": "3966c3e8336c3fa84ff40314d0ff87336b67fdbce36903416618ce23a71c88d0"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/024-z-image-turbo-544x800-fox-round1.png",
+     "bytes": 1306865,
+     "sha256": "38f5d56b4195a15f923fca8d762e20d50b5e13428553df7ae6dde43b8ef03918"
+    },
+    "size": [
+     544,
+     800
+    ],
+    "pixel_sha256": "4d3efd337dc3eb644d7b550010c386e2f7d7bb8e36cd3ebbc35ef3f1609b874d",
+    "checker_score": 14.199353233830845,
+    "luma_std": 50.07879643520581,
+    "problems": []
+   }
+  },
+  {
+   "case": "025-z-image-turbo-544x800-fox-round2",
+   "model": "z-image-turbo",
+   "width": 544,
+   "height": 800,
+   "prompt": "fox",
+   "phase": "round2",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "z-image-turbo",
+    "--weights",
+    "$HOME/models/Z-Image-Turbo",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "544",
+    "--height",
+    "800",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/025-z-image-turbo-544x800-fox-round2.png",
+    "--profile",
+    "product"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+   },
+   "load_before": [
+    0.65234375,
+    0.66943359375,
+    0.96435546875
+   ],
+   "load_after": [
+    1.21630859375,
+    0.8134765625,
+    1.0048828125
+   ],
+   "returncode": 0,
+   "seconds": 31.67593308305368,
+   "peak_rss_bytes": 2431418368,
+   "peak_footprint_bytes": 2658495264,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/025-z-image-turbo-544x800-fox-round2.log",
+    "bytes": 6168,
+    "sha256": "d5c61cdd5f869185384269451f8764c0be7de94a4fa613c93bbe452159c86397"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/025-z-image-turbo-544x800-fox-round2.png",
+     "bytes": 1306865,
+     "sha256": "38f5d56b4195a15f923fca8d762e20d50b5e13428553df7ae6dde43b8ef03918"
+    },
+    "size": [
+     544,
+     800
+    ],
+    "pixel_sha256": "4d3efd337dc3eb644d7b550010c386e2f7d7bb8e36cd3ebbc35ef3f1609b874d",
+    "checker_score": 14.199353233830845,
+    "luma_std": 50.07879643520581,
+    "problems": []
+   }
+  },
+  {
+   "case": "026-flux2-klein-4b-544x800-fox-round2",
+   "model": "flux2-klein-4b",
+   "width": 544,
+   "height": 800,
+   "prompt": "fox",
+   "phase": "round2",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "flux2-klein-4b",
+    "--weights",
+    "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "544",
+    "--height",
+    "800",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/026-flux2-klein-4b-544x800-fox-round2.png"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+   },
+   "load_before": [
+    1.21630859375,
+    0.8134765625,
+    1.0048828125
+   ],
+   "load_after": [
+    1.21630859375,
+    0.8134765625,
+    1.0048828125
+   ],
+   "returncode": 1,
+   "seconds": 0.00801783287897706,
+   "peak_rss_bytes": 6733824,
+   "peak_footprint_bytes": 1950056,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/026-flux2-klein-4b-544x800-fox-round2.log",
+    "bytes": 1551,
+    "sha256": "d312163ba25caa10b85a72e66f0c99d51c5b498e554dd95a4dfea663fd98c576"
+   },
+   "problems": [
+    "generation exited 1",
+    "image unavailable: [Errno 2] No such file or directory: '$HOME/repos/zdraw/runs/pub-20261006/timing/026-flux2-klein-4b-544x800-fox-round2.png'"
+   ]
+  },
+  {
+   "case": "027-z-image-turbo-768x1024-fox-round2",
+   "model": "z-image-turbo",
+   "width": 768,
+   "height": 1024,
+   "prompt": "fox",
+   "phase": "round2",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "z-image-turbo",
+    "--weights",
+    "$HOME/models/Z-Image-Turbo",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "768",
+    "--height",
+    "1024",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/027-z-image-turbo-768x1024-fox-round2.png",
+    "--profile",
+    "product"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+   },
+   "load_before": [
+    1.21630859375,
+    0.8134765625,
+    1.0048828125
+   ],
+   "load_after": [
+    1.30859375,
+    0.8544921875,
+    1.01513671875
+   ],
+   "returncode": 0,
+   "seconds": 16.681660584174097,
+   "peak_rss_bytes": 3283697664,
+   "peak_footprint_bytes": 4062817560,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/027-z-image-turbo-768x1024-fox-round2.log",
+    "bytes": 6171,
+    "sha256": "bc68d80436f6e1ebaf333a90a4ab520cb9da38f1fe866ac16e9a0b571788323f"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/027-z-image-turbo-768x1024-fox-round2.png",
+     "bytes": 2360871,
+     "sha256": "6e33d93d8b23af6530b21c33768f2951d11647f6b289ff5430b2b0f6354cb230"
+    },
+    "size": [
+     768,
+     1024
+    ],
+    "pixel_sha256": "fc2883e30eca36b84d7676946cc2309b7c72d36b79806a93d1f0e768ac2adbbd",
+    "checker_score": 11.735283888432019,
+    "luma_std": 56.68147103555787,
+    "problems": []
+   }
+  },
+  {
+   "case": "028-flux2-klein-4b-768x1024-fox-round2",
+   "model": "flux2-klein-4b",
+   "width": 768,
+   "height": 1024,
+   "prompt": "fox",
+   "phase": "round2",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "flux2-klein-4b",
+    "--weights",
+    "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "768",
+    "--height",
+    "1024",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/028-flux2-klein-4b-768x1024-fox-round2.png"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+   },
+   "load_before": [
+    1.30859375,
+    0.8544921875,
+    1.01513671875
+   ],
+   "load_after": [
+    1.10693359375,
+    0.82568359375,
+    1.00244140625
+   ],
+   "returncode": 0,
+   "seconds": 8.692941999994218,
+   "peak_rss_bytes": 2038038528,
+   "peak_footprint_bytes": 2740982536,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/028-flux2-klein-4b-768x1024-fox-round2.log",
+    "bytes": 4213,
+    "sha256": "e88f6245ab8b4f8405abacf25d254f54bd26af4a1851b70e69c32f3168dc62b1"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/028-flux2-klein-4b-768x1024-fox-round2.png",
+     "bytes": 2360866,
+     "sha256": "1d2c79bcc1539a6906d1cce1142e603a76f61684c78355a776aaf68907aefefa"
+    },
+    "size": [
+     768,
+     1024
+    ],
+    "pixel_sha256": "47aa6817c8efc34f5ebc537abf9c23a9a3a7d45418240c2fc04e361e24d93987",
+    "checker_score": 10.722478926809211,
+    "luma_std": 53.88361774052423,
+    "problems": []
+   }
+  },
+  {
+   "case": "029-z-image-turbo-1024x768-fox-round2",
+   "model": "z-image-turbo",
+   "width": 1024,
+   "height": 768,
+   "prompt": "fox",
+   "phase": "round2",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "z-image-turbo",
+    "--weights",
+    "$HOME/models/Z-Image-Turbo",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "1024",
+    "--height",
+    "768",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/029-z-image-turbo-1024x768-fox-round2.png",
+    "--profile",
+    "product"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+   },
+   "load_before": [
+    1.10693359375,
+    0.82568359375,
+    1.00244140625
+   ],
+   "load_after": [
+    1.01513671875,
+    0.8173828125,
+    0.99609375
+   ],
+   "returncode": 0,
+   "seconds": 15.910038833040744,
+   "peak_rss_bytes": 3283566592,
+   "peak_footprint_bytes": 4062391168,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/029-z-image-turbo-1024x768-fox-round2.log",
+    "bytes": 6171,
+    "sha256": "3ab365010346561f2a8a87389a3b447b7015ee389383a10518f0336e0f33d63a"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/029-z-image-turbo-1024x768-fox-round2.png",
+     "bytes": 2360615,
+     "sha256": "8cc11ffb81b04729e1933a1205b6f403a9522962250272d09be724a58210ad80"
+    },
+    "size": [
+     1024,
+     768
+    ],
+    "pixel_sha256": "aae1a98036ec35e353b94826cc10551cf4b407acb50595f869ef2fa101a66aa5",
+    "checker_score": 12.30484128937008,
+    "luma_std": 51.95165116022688,
+    "problems": []
+   }
+  },
+  {
+   "case": "030-flux2-klein-4b-1024x768-fox-round2",
+   "model": "flux2-klein-4b",
+   "width": 1024,
+   "height": 768,
+   "prompt": "fox",
+   "phase": "round2",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "flux2-klein-4b",
+    "--weights",
+    "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "1024",
+    "--height",
+    "768",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/030-flux2-klein-4b-1024x768-fox-round2.png"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+   },
+   "load_before": [
+    1.01513671875,
+    0.8173828125,
+    0.99609375
+   ],
+   "load_after": [
+    1.005859375,
+    0.82275390625,
+    0.99560546875
+   ],
+   "returncode": 0,
+   "seconds": 8.669754874892533,
+   "peak_rss_bytes": 2037956608,
+   "peak_footprint_bytes": 2740917024,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/030-flux2-klein-4b-1024x768-fox-round2.log",
+    "bytes": 4213,
+    "sha256": "a89ba5e3815e47c184258c7655c0427a123c362f67861960a3f408de4c46613a"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/030-flux2-klein-4b-1024x768-fox-round2.png",
+     "bytes": 2360610,
+     "sha256": "f1d029c718955aa8ea53ef3612248b16f3b746b27105aa547de5497d361459b0"
+    },
+    "size": [
+     1024,
+     768
+    ],
+    "pixel_sha256": "ae9beffca45d0c1adf7df048216b6749e6aebd18a0c199918377214fdabe8223",
+    "checker_score": 10.46414571713692,
+    "luma_std": 51.03034488722049,
+    "problems": []
+   }
+  },
+  {
+   "case": "031-z-image-turbo-2048x2048-fox-round2",
+   "model": "z-image-turbo",
+   "width": 2048,
+   "height": 2048,
+   "prompt": "fox",
+   "phase": "round2",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "z-image-turbo",
+    "--weights",
+    "$HOME/models/Z-Image-Turbo",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "2048",
+    "--height",
+    "2048",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/031-z-image-turbo-2048x2048-fox-round2.png",
+    "--profile",
+    "product"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+   },
+   "load_before": [
+    1.005859375,
+    0.82275390625,
+    0.99560546875
+   ],
+   "load_after": [
+    0.4169921875,
+    0.65771484375,
+    0.90283203125
+   ],
+   "returncode": 0,
+   "seconds": 124.79408908262849,
+   "peak_rss_bytes": 15543517184,
+   "peak_footprint_bytes": 17044246232,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/031-z-image-turbo-2048x2048-fox-round2.log",
+    "bytes": 6199,
+    "sha256": "5b20fa3a73fc88d704e6a6c1bbe8e690ac38d72c8c3980218b12e51c0701ec4f"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/031-z-image-turbo-2048x2048-fox-round2.png",
+     "bytes": 12586292,
+     "sha256": "590dbb42df63f02b58c859fd61506f8792e4933242bcb2131cfcaae02f696269"
+    },
+    "size": [
+     2048,
+     2048
+    ],
+    "pixel_sha256": "d7a0257f3d2009c58b682ede1490a03709fcb56621d97b13713b904a5350d802",
+    "checker_score": 7.284103892207924,
+    "luma_std": 54.01853967978328,
+    "problems": []
+   }
+  },
+  {
+   "case": "032-flux2-klein-4b-2048x2048-fox-round2",
+   "model": "flux2-klein-4b",
+   "width": 2048,
+   "height": 2048,
+   "prompt": "fox",
+   "phase": "round2",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "flux2-klein-4b",
+    "--weights",
+    "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "2048",
+    "--height",
+    "2048",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/032-flux2-klein-4b-2048x2048-fox-round2.png"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+   },
+   "load_before": [
+    0.4169921875,
+    0.65771484375,
+    0.90283203125
+   ],
+   "load_after": [
+    0.4169921875,
+    0.65771484375,
+    0.90283203125
+   ],
+   "returncode": 1,
+   "seconds": 0.009214541409164667,
+   "peak_rss_bytes": 6733824,
+   "peak_footprint_bytes": 1950056,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/032-flux2-klein-4b-2048x2048-fox-round2.log",
+    "bytes": 1555,
+    "sha256": "ad2716028bd0ce372df80eeddead5ec420a248f974df82c03009143fe3ea3b82"
+   },
+   "problems": [
+    "generation exited 1",
+    "image unavailable: [Errno 2] No such file or directory: '$HOME/repos/zdraw/runs/pub-20261006/timing/032-flux2-klein-4b-2048x2048-fox-round2.png'"
+   ]
+  },
+  {
+   "case": "033-z-image-turbo-1536x1536-fox-round2",
+   "model": "z-image-turbo",
+   "width": 1536,
+   "height": 1536,
+   "prompt": "fox",
+   "phase": "round2",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "z-image-turbo",
+    "--weights",
+    "$HOME/models/Z-Image-Turbo",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "1536",
+    "--height",
+    "1536",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/033-z-image-turbo-1536x1536-fox-round2.png",
+    "--profile",
+    "product"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+   },
+   "load_before": [
+    0.4169921875,
+    0.65771484375,
+    0.90283203125
+   ],
+   "load_after": [
+    0.337890625,
+    0.5859375,
+    0.8564453125
+   ],
+   "returncode": 0,
+   "seconds": 64.54044345812872,
+   "peak_rss_bytes": 8933343232,
+   "peak_footprint_bytes": 10045209312,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/033-z-image-turbo-1536x1536-fox-round2.log",
+    "bytes": 6193,
+    "sha256": "2fbe80ee94041882d30695fe57fd2e35378630bbaf14f7d7598dbd99e74612bb"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/033-z-image-turbo-1536x1536-fox-round2.png",
+     "bytes": 7080336,
+     "sha256": "853556f02e87f421498bbc330ed33c5a44360f08c9bff7f76aaa41e24803bcf5"
+    },
+    "size": [
+     1536,
+     1536
+    ],
+    "pixel_sha256": "c2633fdbd5a6d57f1f7301476160e4185e93313c76ee162bafc8798f21f09901",
+    "checker_score": 8.634288137634526,
+    "luma_std": 46.12108700543315,
+    "problems": []
+   }
+  },
+  {
+   "case": "034-flux2-klein-4b-1536x1536-fox-round2",
+   "model": "flux2-klein-4b",
+   "width": 1536,
+   "height": 1536,
+   "prompt": "fox",
+   "phase": "round2",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "flux2-klein-4b",
+    "--weights",
+    "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "1536",
+    "--height",
+    "1536",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/034-flux2-klein-4b-1536x1536-fox-round2.png"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+   },
+   "load_before": [
+    0.337890625,
+    0.5859375,
+    0.8564453125
+   ],
+   "load_after": [
+    0.337890625,
+    0.5859375,
+    0.8564453125
+   ],
+   "returncode": 1,
+   "seconds": 0.008863209281116724,
+   "peak_rss_bytes": 6733824,
+   "peak_footprint_bytes": 1950056,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/034-flux2-klein-4b-1536x1536-fox-round2.log",
+    "bytes": 1555,
+    "sha256": "b5431077faa1c0a90af77d33baadcf34d479829137b92cdca048c9bd5e3529df"
+   },
+   "problems": [
+    "generation exited 1",
+    "image unavailable: [Errno 2] No such file or directory: '$HOME/repos/zdraw/runs/pub-20261006/timing/034-flux2-klein-4b-1536x1536-fox-round2.png'"
+   ]
+  },
+  {
+   "case": "035-z-image-turbo-1024x1024-fox-round2",
+   "model": "z-image-turbo",
+   "width": 1024,
+   "height": 1024,
+   "prompt": "fox",
+   "phase": "round2",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "z-image-turbo",
+    "--weights",
+    "$HOME/models/Z-Image-Turbo",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "1024",
+    "--height",
+    "1024",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/035-z-image-turbo-1024x1024-fox-round2.png",
+    "--profile",
+    "product"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+   },
+   "load_before": [
+    0.337890625,
+    0.5859375,
+    0.8564453125
+   ],
+   "load_after": [
+    0.29541015625,
+    0.55419921875,
+    0.83544921875
+   ],
+   "returncode": 0,
+   "seconds": 25.367221209220588,
+   "peak_rss_bytes": 4236312576,
+   "peak_footprint_bytes": 5070597520,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/035-z-image-turbo-1024x1024-fox-round2.log",
+    "bytes": 6174,
+    "sha256": "43888fd45daf211e137d645348d74d63621e6a78aca91b8edebd2904fa14ddeb"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/035-z-image-turbo-1024x1024-fox-round2.png",
+     "bytes": 3147364,
+     "sha256": "f462da7aebb38b8ed36690d9a0583c632ea5fbc6fc0fd27f483bcf7ae5bccca6"
+    },
+    "size": [
+     1024,
+     1024
+    ],
+    "pixel_sha256": "c2ac10ec694ef04a01517fb11bd808c025e50c4e89a9a45eabe69f1109c59bb6",
+    "checker_score": 11.160113957923228,
+    "luma_std": 49.5128427442391,
+    "problems": []
+   },
+   "certified_match": true
+  },
+  {
+   "case": "036-flux2-klein-4b-1024x1024-fox-round2",
+   "model": "flux2-klein-4b",
+   "width": 1024,
+   "height": 1024,
+   "prompt": "fox",
+   "phase": "round2",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "flux2-klein-4b",
+    "--weights",
+    "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "1024",
+    "--height",
+    "1024",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/036-flux2-klein-4b-1024x1024-fox-round2.png"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+   },
+   "load_before": [
+    0.29541015625,
+    0.55419921875,
+    0.83544921875
+   ],
+   "load_after": [
+    0.3095703125,
+    0.54296875,
+    0.826171875
+   ],
+   "returncode": 0,
+   "seconds": 13.202953833155334,
+   "peak_rss_bytes": 2506227712,
+   "peak_footprint_bytes": 3240940680,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/036-flux2-klein-4b-1024x1024-fox-round2.log",
+    "bytes": 4217,
+    "sha256": "b223257b0549d14a56f1568acbf5c6fc7e6cb54d3b29991cca8dcc1358c016ff"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/036-flux2-klein-4b-1024x1024-fox-round2.png",
+     "bytes": 3147359,
+     "sha256": "63f643c004712c46ed4498960b4c4d140a58483f577c79c4549449e2d720e8e6"
+    },
+    "size": [
+     1024,
+     1024
+    ],
+    "pixel_sha256": "afa4c8fb1ecbd1ecadee4042bfa62351eacbe3a841f67f71a3f2da65bbc505bb",
+    "checker_score": 8.985477797941272,
+    "luma_std": 56.46909117943018,
+    "problems": []
+   },
+   "certified_match": true
+  },
+  {
+   "case": "037-z-image-turbo-768x768-fox-round2",
+   "model": "z-image-turbo",
+   "width": 768,
+   "height": 768,
+   "prompt": "fox",
+   "phase": "round2",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "z-image-turbo",
+    "--weights",
+    "$HOME/models/Z-Image-Turbo",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "768",
+    "--height",
+    "768",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/037-z-image-turbo-768x768-fox-round2.png",
+    "--profile",
+    "product"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+   },
+   "load_before": [
+    0.3095703125,
+    0.54296875,
+    0.826171875
+   ],
+   "load_after": [
+    0.32080078125,
+    0.5322265625,
+    0.8173828125
+   ],
+   "returncode": 0,
+   "seconds": 13.441239666193724,
+   "peak_rss_bytes": 2587557888,
+   "peak_footprint_bytes": 3324963520,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/037-z-image-turbo-768x768-fox-round2.log",
+    "bytes": 6168,
+    "sha256": "5a3380b6b8a0349534ddace24f8137d1d1a2e2ea55919267e3ad4c1af72c20ba"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/037-z-image-turbo-768x768-fox-round2.png",
+     "bytes": 1770745,
+     "sha256": "6f2a1b2a8e445b0834e8b16d00bb4e6de92908c3d810a7ce5947a40ad8075660"
+    },
+    "size": [
+     768,
+     768
+    ],
+    "pixel_sha256": "7647ee57b8cda740ceeb2255a18b7550152ad4b606d847e63a9feec95088ecd7",
+    "checker_score": 14.363887746710525,
+    "luma_std": 56.261978588182146,
+    "problems": []
+   }
+  },
+  {
+   "case": "038-flux2-klein-4b-768x768-fox-round2",
+   "model": "flux2-klein-4b",
+   "width": 768,
+   "height": 768,
+   "prompt": "fox",
+   "phase": "round2",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "flux2-klein-4b",
+    "--weights",
+    "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "768",
+    "--height",
+    "768",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/038-flux2-klein-4b-768x768-fox-round2.png"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+   },
+   "load_before": [
+    0.32080078125,
+    0.5322265625,
+    0.8173828125
+   ],
+   "load_after": [
+    0.294921875,
+    0.52294921875,
+    0.8125
+   ],
+   "returncode": 0,
+   "seconds": 7.477502416819334,
+   "peak_rss_bytes": 1693843456,
+   "peak_footprint_bytes": 2373030424,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/038-flux2-klein-4b-768x768-fox-round2.log",
+    "bytes": 4210,
+    "sha256": "75d2a133e4fb30fb3a5462546c018e5cc51c8c6f67597aa93cce150c8b320074"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/038-flux2-klein-4b-768x768-fox-round2.png",
+     "bytes": 1770740,
+     "sha256": "bed402ba6e0acb6915faad919e3f7c126de1a6b8769bf35202a65b428ecc00a3"
+    },
+    "size": [
+     768,
+     768
+    ],
+    "pixel_sha256": "b3dbdc6a718b78a1649056cd8c5e778bdec17636afa5b456a49824d0da07b9b3",
+    "checker_score": 8.495254248903509,
+    "luma_std": 51.76948864869355,
+    "problems": []
+   }
+  },
+  {
+   "case": "039-z-image-turbo-512x512-fox-round2",
+   "model": "z-image-turbo",
+   "width": 512,
+   "height": 512,
+   "prompt": "fox",
+   "phase": "round2",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "z-image-turbo",
+    "--weights",
+    "$HOME/models/Z-Image-Turbo",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "512",
+    "--height",
+    "512",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/039-z-image-turbo-512x512-fox-round2.png",
+    "--profile",
+    "product"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+   },
+   "load_before": [
+    0.294921875,
+    0.52294921875,
+    0.8125
+   ],
+   "load_after": [
+    0.35107421875,
+    0.53076171875,
+    0.8134765625
+   ],
+   "returncode": 0,
+   "seconds": 6.141357167158276,
+   "peak_rss_bytes": 1393950720,
+   "peak_footprint_bytes": 2045961648,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/039-z-image-turbo-512x512-fox-round2.log",
+    "bytes": 6159,
+    "sha256": "7fc529ece03844520d30c7701c4e943a9c878d9012543255263ed5e461e06647"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/039-z-image-turbo-512x512-fox-round2.png",
+     "bytes": 787374,
+     "sha256": "5fca2d19018a9225900dd7e4da84b8dd56c25003bcd99398e697fbb45757e850"
+    },
+    "size": [
+     512,
+     512
+    ],
+    "pixel_sha256": "810425f8f2ba32944cf39facff2bee9622e88701fe13ad5c5b3b8cf58ddba282",
+    "checker_score": 16.028253141534393,
+    "luma_std": 54.02290528701195,
+    "problems": []
+   }
+  },
+  {
+   "case": "040-flux2-klein-4b-512x512-fox-round2",
+   "model": "flux2-klein-4b",
+   "width": 512,
+   "height": 512,
+   "prompt": "fox",
+   "phase": "round2",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "flux2-klein-4b",
+    "--weights",
+    "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "512",
+    "--height",
+    "512",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/040-flux2-klein-4b-512x512-fox-round2.png"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+   },
+   "load_before": [
+    0.35107421875,
+    0.53076171875,
+    0.8134765625
+   ],
+   "load_after": [
+    0.32275390625,
+    0.521484375,
+    0.80859375
+   ],
+   "returncode": 0,
+   "seconds": 4.507588541135192,
+   "peak_rss_bytes": 1107476480,
+   "peak_footprint_bytes": 1728286800,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/040-flux2-klein-4b-512x512-fox-round2.log",
+    "bytes": 4210,
+    "sha256": "b11491baf6832497a9b456dc31846acee1f8e04120cccdc62bdb7f7cb74744ce"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/040-flux2-klein-4b-512x512-fox-round2.png",
+     "bytes": 787369,
+     "sha256": "3db345dc4c2cdc9388f0e445029b44515b262ed18d04f6997690bd883c6c1823"
+    },
+    "size": [
+     512,
+     512
+    ],
+    "pixel_sha256": "d2930d37dee535f8e1db0fccb84958d5873c7ea2c2c7617a74f2c14556370f1f",
+    "checker_score": 9.957186259920634,
+    "luma_std": 57.51971169841822,
+    "problems": []
+   }
+  },
+  {
+   "case": "041-z-image-turbo-256x256-fox-round2",
+   "model": "z-image-turbo",
+   "width": 256,
+   "height": 256,
+   "prompt": "fox",
+   "phase": "round2",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "z-image-turbo",
+    "--weights",
+    "$HOME/models/Z-Image-Turbo",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "256",
+    "--height",
+    "256",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/041-z-image-turbo-256x256-fox-round2.png",
+    "--profile",
+    "product"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+   },
+   "load_before": [
+    0.32275390625,
+    0.521484375,
+    0.80859375
+   ],
+   "load_after": [
+    0.45703125,
+    0.5458984375,
+    0.8154296875
+   ],
+   "returncode": 0,
+   "seconds": 2.233822583220899,
+   "peak_rss_bytes": 700874752,
+   "peak_footprint_bytes": 1323328848,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/041-z-image-turbo-256x256-fox-round2.log",
+    "bytes": 6143,
+    "sha256": "e6038acd13cc751fff682ecd4945e2b057e9c5be34a7c48f7afde5ac7a61ab22"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/041-z-image-turbo-256x256-fox-round2.png",
+     "bytes": 197249,
+     "sha256": "309dc8d1618bc9237e1c1b1cdeaec1b950b52158d94b6cc88ff5ce6aaede0b4b"
+    },
+    "size": [
+     256,
+     256
+    ],
+    "pixel_sha256": "0b0831812e0d9c1f4924e2db96767c0c10f9b7b09b6ce8ba073cf6cf16326828",
+    "checker_score": 23.29171917002688,
+    "luma_std": 58.52131627820275,
+    "problems": []
+   }
+  },
+  {
+   "case": "042-flux2-klein-4b-256x256-fox-round2",
+   "model": "flux2-klein-4b",
+   "width": 256,
+   "height": 256,
+   "prompt": "fox",
+   "phase": "round2",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "flux2-klein-4b",
+    "--weights",
+    "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "256",
+    "--height",
+    "256",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/042-flux2-klein-4b-256x256-fox-round2.png"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+   },
+   "load_before": [
+    0.45703125,
+    0.5458984375,
+    0.8154296875
+   ],
+   "load_after": [
+    0.45703125,
+    0.5458984375,
+    0.8154296875
+   ],
+   "returncode": 0,
+   "seconds": 2.3656568750739098,
+   "peak_rss_bytes": 759857152,
+   "peak_footprint_bytes": 1366347640,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/042-flux2-klein-4b-256x256-fox-round2.log",
+    "bytes": 4210,
+    "sha256": "d282b083b0123c2a4890c9f936583d2758eaef8d6c5d33a2b9f939c15fab20dc"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/042-flux2-klein-4b-256x256-fox-round2.png",
+     "bytes": 197244,
+     "sha256": "bb18163efc6f5fcc19181c7262cbe9084dbce1e07d11932620897ae686942c89"
+    },
+    "size": [
+     256,
+     256
+    ],
+    "pixel_sha256": "afcbf9226ad77af96c64de086090f0b0ea3c0d4c4f5991a82221d12ad1af64d0",
+    "checker_score": 16.54331527217742,
+    "luma_std": 61.281298820221885,
+    "problems": []
+   }
+  },
+  {
+   "case": "043-z-image-turbo-128x128-fox-round2",
+   "model": "z-image-turbo",
+   "width": 128,
+   "height": 128,
+   "prompt": "fox",
+   "phase": "round2",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "z-image-turbo",
+    "--weights",
+    "$HOME/models/Z-Image-Turbo",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "128",
+    "--height",
+    "128",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/043-z-image-turbo-128x128-fox-round2.png",
+    "--profile",
+    "product"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+   },
+   "load_before": [
+    0.45703125,
+    0.5458984375,
+    0.8154296875
+   ],
+   "load_after": [
+    0.45703125,
+    0.5458984375,
+    0.8154296875
+   ],
+   "returncode": 0,
+   "seconds": 1.465418000239879,
+   "peak_rss_bytes": 433127424,
+   "peak_footprint_bytes": 1095525064,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/043-z-image-turbo-128x128-fox-round2.log",
+    "bytes": 6136,
+    "sha256": "1de4e61f0a8d654af7646ef2606a8efff5493af7a6f80658414d525b5d362fde"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/043-z-image-turbo-128x128-fox-round2.png",
+     "bytes": 49650,
+     "sha256": "a2521e1fec753013340c0c0496d6de8629a3e35dabe297c2124431c989cbb5f2"
+    },
+    "size": [
+     128,
+     128
+    ],
+    "pixel_sha256": "191ccc2f1af88662b913ee4561ad170178c9bbc0ef039f433e26875e9b982423",
+    "checker_score": 32.854166666666664,
+    "luma_std": 59.13880520087506,
+    "problems": []
+   }
+  },
+  {
+   "case": "044-flux2-klein-4b-128x128-fox-round2",
+   "model": "flux2-klein-4b",
+   "width": 128,
+   "height": 128,
+   "prompt": "fox",
+   "phase": "round2",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "flux2-klein-4b",
+    "--weights",
+    "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "128",
+    "--height",
+    "128",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/044-flux2-klein-4b-128x128-fox-round2.png"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+   },
+   "load_before": [
+    0.45703125,
+    0.5458984375,
+    0.8154296875
+   ],
+   "load_after": [
+    0.50048828125,
+    0.55322265625,
+    0.81640625
+   ],
+   "returncode": 0,
+   "seconds": 1.9682395840063691,
+   "peak_rss_bytes": 571162624,
+   "peak_footprint_bytes": 1221742312,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/044-flux2-klein-4b-128x128-fox-round2.log",
+    "bytes": 4210,
+    "sha256": "9d8de714a60991e1b92fab39d77a9c6e8c38a2d22f19cbb136165634c5d04f18"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/044-flux2-klein-4b-128x128-fox-round2.png",
+     "bytes": 49645,
+     "sha256": "96047e0a4bbd9c2c92be7e4ddbbfdd90b5c0ad13e036f3c4d44cb8fc7b582b7b"
+    },
+    "size": [
+     128,
+     128
+    ],
+    "pixel_sha256": "fd29fd539753ee5e3e4bffa6cfc5ab60f88587dd2cd459b91613776d7f0af0fe",
+    "checker_score": 24.872960069444442,
+    "luma_std": 56.750339828650425,
+    "problems": []
+   }
+  },
+  {
+   "case": "045-z-image-turbo-64x64-fox-round2",
+   "model": "z-image-turbo",
+   "width": 64,
+   "height": 64,
+   "prompt": "fox",
+   "phase": "round2",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "z-image-turbo",
+    "--weights",
+    "$HOME/models/Z-Image-Turbo",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "64",
+    "--height",
+    "64",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/045-z-image-turbo-64x64-fox-round2.png",
+    "--profile",
+    "product"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+   },
+   "load_before": [
+    0.50048828125,
+    0.55322265625,
+    0.81640625
+   ],
+   "load_after": [
+    0.50048828125,
+    0.55322265625,
+    0.81640625
+   ],
+   "returncode": 0,
+   "seconds": 1.217403084039688,
+   "peak_rss_bytes": 289587200,
+   "peak_footprint_bytes": 979133224,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/045-z-image-turbo-64x64-fox-round2.log",
+    "bytes": 6130,
+    "sha256": "0b9a6381d815305eb2e6f3e62024b952bc6dcdd80daac3ad9ccf4afd61dee7ee"
+   },
+   "problems": [
+    "checkerboard-noise score=41.9 (sane<40)"
+   ],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/045-z-image-turbo-64x64-fox-round2.png",
+     "bytes": 12720,
+     "sha256": "4f98ad9a6b79bf9e3d3f263d288b191af434d4069eb3014eb48dd6d906b078f8"
+    },
+    "size": [
+     64,
+     64
+    ],
+    "pixel_sha256": "7a8f6087a78ea258a9bb35a1ba7bbd551dc27cff32a4839d9dd1c6b49dfe276c",
+    "checker_score": 41.852120535714285,
+    "luma_std": 65.940241870601,
+    "problems": [
+     "checkerboard-noise score=41.9 (sane<40)"
+    ]
+   }
+  },
+  {
+   "case": "046-flux2-klein-4b-64x64-fox-round2",
+   "model": "flux2-klein-4b",
+   "width": 64,
+   "height": 64,
+   "prompt": "fox",
+   "phase": "round2",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "flux2-klein-4b",
+    "--weights",
+    "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "64",
+    "--height",
+    "64",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/046-flux2-klein-4b-64x64-fox-round2.png"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+   },
+   "load_before": [
+    0.50048828125,
+    0.55322265625,
+    0.81640625
+   ],
+   "load_after": [
+    0.50048828125,
+    0.55322265625,
+    0.81640625
+   ],
+   "returncode": 1,
+   "seconds": 0.0084389578551054,
+   "peak_rss_bytes": 6733824,
+   "peak_footprint_bytes": 1950056,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/046-flux2-klein-4b-64x64-fox-round2.log",
+    "bytes": 1547,
+    "sha256": "c880168d4a6f1f0135012451bd084029079c1a8e74498a9e17c9e33939a4c74e"
+   },
+   "problems": [
+    "generation exited 1",
+    "image unavailable: [Errno 2] No such file or directory: '$HOME/repos/zdraw/runs/pub-20261006/timing/046-flux2-klein-4b-64x64-fox-round2.png'"
+   ]
+  },
+  {
+   "case": "047-z-image-turbo-1024x1024-fox-round3",
+   "model": "z-image-turbo",
+   "width": 1024,
+   "height": 1024,
+   "prompt": "fox",
+   "phase": "round3",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "z-image-turbo",
+    "--weights",
+    "$HOME/models/Z-Image-Turbo",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "1024",
+    "--height",
+    "1024",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/047-z-image-turbo-1024x1024-fox-round3.png",
+    "--profile",
+    "product"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+   },
+   "load_before": [
+    0.50048828125,
+    0.55322265625,
+    0.81640625
+   ],
+   "load_after": [
+    0.47021484375,
+    0.5400390625,
+    0.8037109375
+   ],
+   "returncode": 0,
+   "seconds": 24.51991366688162,
+   "peak_rss_bytes": 4232904704,
+   "peak_footprint_bytes": 5067452176,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/047-z-image-turbo-1024x1024-fox-round3.log",
+    "bytes": 6174,
+    "sha256": "c852d7dd8eaf911767d60bd31a461874873eb37e7d00eab5c6be8d9cc2737b46"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/047-z-image-turbo-1024x1024-fox-round3.png",
+     "bytes": 3147364,
+     "sha256": "f462da7aebb38b8ed36690d9a0583c632ea5fbc6fc0fd27f483bcf7ae5bccca6"
+    },
+    "size": [
+     1024,
+     1024
+    ],
+    "pixel_sha256": "c2ac10ec694ef04a01517fb11bd808c025e50c4e89a9a45eabe69f1109c59bb6",
+    "checker_score": 11.160113957923228,
+    "luma_std": 49.5128427442391,
+    "problems": []
+   },
+   "certified_match": true
+  },
+  {
+   "case": "048-flux2-klein-4b-1536x1536-fox-round3",
+   "model": "flux2-klein-4b",
+   "width": 1536,
+   "height": 1536,
+   "prompt": "fox",
+   "phase": "round3",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "flux2-klein-4b",
+    "--weights",
+    "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "1536",
+    "--height",
+    "1536",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/048-flux2-klein-4b-1536x1536-fox-round3.png"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+   },
+   "load_before": [
+    0.47021484375,
+    0.5400390625,
+    0.8037109375
+   ],
+   "load_after": [
+    0.47021484375,
+    0.5400390625,
+    0.8037109375
+   ],
+   "returncode": 1,
+   "seconds": 0.009266917128115892,
+   "peak_rss_bytes": 6733824,
+   "peak_footprint_bytes": 1950056,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/048-flux2-klein-4b-1536x1536-fox-round3.log",
+    "bytes": 1555,
+    "sha256": "d6234a43fd751b403b94a2faae033db224a5c6a3a4edd5da41c3854566ea99c0"
+   },
+   "problems": [
+    "generation exited 1",
+    "image unavailable: [Errno 2] No such file or directory: '$HOME/repos/zdraw/runs/pub-20261006/timing/048-flux2-klein-4b-1536x1536-fox-round3.png'"
+   ]
+  },
+  {
+   "case": "049-z-image-turbo-1536x1536-fox-round3",
+   "model": "z-image-turbo",
+   "width": 1536,
+   "height": 1536,
+   "prompt": "fox",
+   "phase": "round3",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "z-image-turbo",
+    "--weights",
+    "$HOME/models/Z-Image-Turbo",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "1536",
+    "--height",
+    "1536",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/049-z-image-turbo-1536x1536-fox-round3.png",
+    "--profile",
+    "product"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+   },
+   "load_before": [
+    0.47021484375,
+    0.5400390625,
+    0.8037109375
+   ],
+   "load_after": [
+    0.35888671875,
+    0.49853515625,
+    0.7685546875
+   ],
+   "returncode": 0,
+   "seconds": 63.06303049996495,
+   "peak_rss_bytes": 8926445568,
+   "peak_footprint_bytes": 10038508544,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/049-z-image-turbo-1536x1536-fox-round3.log",
+    "bytes": 6193,
+    "sha256": "44c4a01e690369cf8320b893729c568439c8a40e8f78119816dfddc8bd7a5ff5"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/049-z-image-turbo-1536x1536-fox-round3.png",
+     "bytes": 7080336,
+     "sha256": "853556f02e87f421498bbc330ed33c5a44360f08c9bff7f76aaa41e24803bcf5"
+    },
+    "size": [
+     1536,
+     1536
+    ],
+    "pixel_sha256": "c2633fdbd5a6d57f1f7301476160e4185e93313c76ee162bafc8798f21f09901",
+    "checker_score": 8.634288137634526,
+    "luma_std": 46.12108700543315,
+    "problems": []
+   }
+  },
+  {
+   "case": "050-flux2-klein-4b-2048x2048-fox-round3",
+   "model": "flux2-klein-4b",
+   "width": 2048,
+   "height": 2048,
+   "prompt": "fox",
+   "phase": "round3",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "flux2-klein-4b",
+    "--weights",
+    "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "2048",
+    "--height",
+    "2048",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/050-flux2-klein-4b-2048x2048-fox-round3.png"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+   },
+   "load_before": [
+    0.35888671875,
+    0.49853515625,
+    0.7685546875
+   ],
+   "load_after": [
+    0.35888671875,
+    0.49853515625,
+    0.7685546875
+   ],
+   "returncode": 1,
+   "seconds": 0.009664500132203102,
+   "peak_rss_bytes": 6733824,
+   "peak_footprint_bytes": 1950056,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/050-flux2-klein-4b-2048x2048-fox-round3.log",
+    "bytes": 1555,
+    "sha256": "ac4c0b44ab56272343d13c9b72ca27ee0117778ee0ef14dba132dfa92c8e8632"
+   },
+   "problems": [
+    "generation exited 1",
+    "image unavailable: [Errno 2] No such file or directory: '$HOME/repos/zdraw/runs/pub-20261006/timing/050-flux2-klein-4b-2048x2048-fox-round3.png'"
+   ]
+  },
+  {
+   "case": "051-z-image-turbo-2048x2048-fox-round3",
+   "model": "z-image-turbo",
+   "width": 2048,
+   "height": 2048,
+   "prompt": "fox",
+   "phase": "round3",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "z-image-turbo",
+    "--weights",
+    "$HOME/models/Z-Image-Turbo",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "2048",
+    "--height",
+    "2048",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/051-z-image-turbo-2048x2048-fox-round3.png",
+    "--profile",
+    "product"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+   },
+   "load_before": [
+    0.35888671875,
+    0.49853515625,
+    0.7685546875
+   ],
+   "load_after": [
+    0.39306640625,
+    0.470703125,
+    0.7158203125
+   ],
+   "returncode": 0,
+   "seconds": 134.71702008275315,
+   "peak_rss_bytes": 15543468032,
+   "peak_footprint_bytes": 17044114896,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/051-z-image-turbo-2048x2048-fox-round3.log",
+    "bytes": 6199,
+    "sha256": "0cd15cc5579101919d89f59c0edc052a5ae7af6f385f5f8605c7df4d96e55451"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/051-z-image-turbo-2048x2048-fox-round3.png",
+     "bytes": 12586292,
+     "sha256": "590dbb42df63f02b58c859fd61506f8792e4933242bcb2131cfcaae02f696269"
+    },
+    "size": [
+     2048,
+     2048
+    ],
+    "pixel_sha256": "d7a0257f3d2009c58b682ede1490a03709fcb56621d97b13713b904a5350d802",
+    "checker_score": 7.284103892207924,
+    "luma_std": 54.01853967978328,
+    "problems": []
+   }
+  },
+  {
+   "case": "052-flux2-klein-4b-1024x768-fox-round3",
+   "model": "flux2-klein-4b",
+   "width": 1024,
+   "height": 768,
+   "prompt": "fox",
+   "phase": "round3",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "flux2-klein-4b",
+    "--weights",
+    "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "1024",
+    "--height",
+    "768",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/052-flux2-klein-4b-1024x768-fox-round3.png"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+   },
+   "load_before": [
+    0.39306640625,
+    0.470703125,
+    0.7158203125
+   ],
+   "load_after": [
+    0.33203125,
+    0.45458984375,
+    0.70703125
+   ],
+   "returncode": 0,
+   "seconds": 9.639670500066131,
+   "peak_rss_bytes": 2037907456,
+   "peak_footprint_bytes": 2740884280,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/052-flux2-klein-4b-1024x768-fox-round3.log",
+    "bytes": 4213,
+    "sha256": "d13075744dea35171b9d253e959c2b403b5c0f52b8f62935c3010b4c9152208e"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/052-flux2-klein-4b-1024x768-fox-round3.png",
+     "bytes": 2360610,
+     "sha256": "f1d029c718955aa8ea53ef3612248b16f3b746b27105aa547de5497d361459b0"
+    },
+    "size": [
+     1024,
+     768
+    ],
+    "pixel_sha256": "ae9beffca45d0c1adf7df048216b6749e6aebd18a0c199918377214fdabe8223",
+    "checker_score": 10.46414571713692,
+    "luma_std": 51.03034488722049,
+    "problems": []
+   }
+  },
+  {
+   "case": "053-z-image-turbo-1024x768-fox-round3",
+   "model": "z-image-turbo",
+   "width": 1024,
+   "height": 768,
+   "prompt": "fox",
+   "phase": "round3",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "z-image-turbo",
+    "--weights",
+    "$HOME/models/Z-Image-Turbo",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "1024",
+    "--height",
+    "768",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/053-z-image-turbo-1024x768-fox-round3.png",
+    "--profile",
+    "product"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+   },
+   "load_before": [
+    0.33203125,
+    0.45458984375,
+    0.70703125
+   ],
+   "load_after": [
+    0.43994140625,
+    0.47216796875,
+    0.70703125
+   ],
+   "returncode": 0,
+   "seconds": 18.074590832926333,
+   "peak_rss_bytes": 3283550208,
+   "peak_footprint_bytes": 4062588088,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/053-z-image-turbo-1024x768-fox-round3.log",
+    "bytes": 6171,
+    "sha256": "c22e1783b5c7c809a821864ec63432a3b01e5be6bef9c4eb222ad50b850dad93"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/053-z-image-turbo-1024x768-fox-round3.png",
+     "bytes": 2360615,
+     "sha256": "8cc11ffb81b04729e1933a1205b6f403a9522962250272d09be724a58210ad80"
+    },
+    "size": [
+     1024,
+     768
+    ],
+    "pixel_sha256": "aae1a98036ec35e353b94826cc10551cf4b407acb50595f869ef2fa101a66aa5",
+    "checker_score": 12.30484128937008,
+    "luma_std": 51.95165116022688,
+    "problems": []
+   }
+  },
+  {
+   "case": "054-flux2-klein-4b-768x1024-fox-round3",
+   "model": "flux2-klein-4b",
+   "width": 768,
+   "height": 1024,
+   "prompt": "fox",
+   "phase": "round3",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "flux2-klein-4b",
+    "--weights",
+    "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "768",
+    "--height",
+    "1024",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/054-flux2-klein-4b-768x1024-fox-round3.png"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+   },
+   "load_before": [
+    0.43994140625,
+    0.47216796875,
+    0.70703125
+   ],
+   "load_after": [
+    0.37158203125,
+    0.4560546875,
+    0.6982421875
+   ],
+   "returncode": 0,
+   "seconds": 9.682537542190403,
+   "peak_rss_bytes": 2037874688,
+   "peak_footprint_bytes": 2740818696,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/054-flux2-klein-4b-768x1024-fox-round3.log",
+    "bytes": 4213,
+    "sha256": "afd76d9630ff56334e24b69d19d1c7dac603f2c03291c2ddda451b8959b93f9f"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/054-flux2-klein-4b-768x1024-fox-round3.png",
+     "bytes": 2360866,
+     "sha256": "1d2c79bcc1539a6906d1cce1142e603a76f61684c78355a776aaf68907aefefa"
+    },
+    "size": [
+     768,
+     1024
+    ],
+    "pixel_sha256": "47aa6817c8efc34f5ebc537abf9c23a9a3a7d45418240c2fc04e361e24d93987",
+    "checker_score": 10.722478926809211,
+    "luma_std": 53.88361774052423,
+    "problems": []
+   }
+  },
+  {
+   "case": "055-z-image-turbo-768x1024-fox-round3",
+   "model": "z-image-turbo",
+   "width": 768,
+   "height": 1024,
+   "prompt": "fox",
+   "phase": "round3",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "z-image-turbo",
+    "--weights",
+    "$HOME/models/Z-Image-Turbo",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "768",
+    "--height",
+    "1024",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/055-z-image-turbo-768x1024-fox-round3.png",
+    "--profile",
+    "product"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+   },
+   "load_before": [
+    0.37158203125,
+    0.4560546875,
+    0.6982421875
+   ],
+   "load_after": [
+    0.36865234375,
+    0.44970703125,
+    0.69091796875
+   ],
+   "returncode": 0,
+   "seconds": 18.06314770830795,
+   "peak_rss_bytes": 3285925888,
+   "peak_footprint_bytes": 4064619200,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/055-z-image-turbo-768x1024-fox-round3.log",
+    "bytes": 6171,
+    "sha256": "777c15b17c7c8e8c410da64bedc1a57db1a81c5086e5896c945e788b29eca093"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/055-z-image-turbo-768x1024-fox-round3.png",
+     "bytes": 2360871,
+     "sha256": "6e33d93d8b23af6530b21c33768f2951d11647f6b289ff5430b2b0f6354cb230"
+    },
+    "size": [
+     768,
+     1024
+    ],
+    "pixel_sha256": "fc2883e30eca36b84d7676946cc2309b7c72d36b79806a93d1f0e768ac2adbbd",
+    "checker_score": 11.735283888432019,
+    "luma_std": 56.68147103555787,
+    "problems": []
+   }
+  },
+  {
+   "case": "056-flux2-klein-4b-544x800-fox-round3",
+   "model": "flux2-klein-4b",
+   "width": 544,
+   "height": 800,
+   "prompt": "fox",
+   "phase": "round3",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "flux2-klein-4b",
+    "--weights",
+    "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "544",
+    "--height",
+    "800",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/056-flux2-klein-4b-544x800-fox-round3.png"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+   },
+   "load_before": [
+    0.36865234375,
+    0.44970703125,
+    0.69091796875
+   ],
+   "load_after": [
+    0.36865234375,
+    0.44970703125,
+    0.69091796875
+   ],
+   "returncode": 1,
+   "seconds": 0.009029167238622904,
+   "peak_rss_bytes": 6733824,
+   "peak_footprint_bytes": 1950056,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/056-flux2-klein-4b-544x800-fox-round3.log",
+    "bytes": 1551,
+    "sha256": "de35d5e271fa7182fa1825cab2787e340c648e90282d4d12ae4832a7e462ec00"
+   },
+   "problems": [
+    "generation exited 1",
+    "image unavailable: [Errno 2] No such file or directory: '$HOME/repos/zdraw/runs/pub-20261006/timing/056-flux2-klein-4b-544x800-fox-round3.png'"
+   ]
+  },
+  {
+   "case": "057-z-image-turbo-544x800-fox-round3",
+   "model": "z-image-turbo",
+   "width": 544,
+   "height": 800,
+   "prompt": "fox",
+   "phase": "round3",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "z-image-turbo",
+    "--weights",
+    "$HOME/models/Z-Image-Turbo",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "544",
+    "--height",
+    "800",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/057-z-image-turbo-544x800-fox-round3.png",
+    "--profile",
+    "product"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+   },
+   "load_before": [
+    0.36865234375,
+    0.44970703125,
+    0.69091796875
+   ],
+   "load_after": [
+    0.78564453125,
+    0.5283203125,
+    0.70703125
+   ],
+   "returncode": 0,
+   "seconds": 31.94656908325851,
+   "peak_rss_bytes": 2431238144,
+   "peak_footprint_bytes": 2658167368,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/057-z-image-turbo-544x800-fox-round3.log",
+    "bytes": 6168,
+    "sha256": "5a4512778ddf6fc151dcc32b02295266738e5405cf137b954be19d9b156ed5f4"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/057-z-image-turbo-544x800-fox-round3.png",
+     "bytes": 1306865,
+     "sha256": "38f5d56b4195a15f923fca8d762e20d50b5e13428553df7ae6dde43b8ef03918"
+    },
+    "size": [
+     544,
+     800
+    ],
+    "pixel_sha256": "4d3efd337dc3eb644d7b550010c386e2f7d7bb8e36cd3ebbc35ef3f1609b874d",
+    "checker_score": 14.199353233830845,
+    "luma_std": 50.07879643520581,
+    "problems": []
+   }
+  },
+  {
+   "case": "058-flux2-klein-4b-64x64-fox-round3",
+   "model": "flux2-klein-4b",
+   "width": 64,
+   "height": 64,
+   "prompt": "fox",
+   "phase": "round3",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "flux2-klein-4b",
+    "--weights",
+    "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "64",
+    "--height",
+    "64",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/058-flux2-klein-4b-64x64-fox-round3.png"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+   },
+   "load_before": [
+    0.78564453125,
+    0.5283203125,
+    0.70703125
+   ],
+   "load_after": [
+    0.78564453125,
+    0.5283203125,
+    0.70703125
+   ],
+   "returncode": 1,
+   "seconds": 0.008660874795168638,
+   "peak_rss_bytes": 6733824,
+   "peak_footprint_bytes": 1950056,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/058-flux2-klein-4b-64x64-fox-round3.log",
+    "bytes": 1547,
+    "sha256": "0254e94a5c17f336c3b364a0ac98490c2e5028864c4faeefc5c558e910ef8b74"
+   },
+   "problems": [
+    "generation exited 1",
+    "image unavailable: [Errno 2] No such file or directory: '$HOME/repos/zdraw/runs/pub-20261006/timing/058-flux2-klein-4b-64x64-fox-round3.png'"
+   ]
+  },
+  {
+   "case": "059-z-image-turbo-64x64-fox-round3",
+   "model": "z-image-turbo",
+   "width": 64,
+   "height": 64,
+   "prompt": "fox",
+   "phase": "round3",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "z-image-turbo",
+    "--weights",
+    "$HOME/models/Z-Image-Turbo",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "64",
+    "--height",
+    "64",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/059-z-image-turbo-64x64-fox-round3.png",
+    "--profile",
+    "product"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+   },
+   "load_before": [
+    0.78564453125,
+    0.5283203125,
+    0.70703125
+   ],
+   "load_after": [
+    0.78564453125,
+    0.5283203125,
+    0.70703125
+   ],
+   "returncode": 0,
+   "seconds": 1.1966982502490282,
+   "peak_rss_bytes": 289472512,
+   "peak_footprint_bytes": 978969312,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/059-z-image-turbo-64x64-fox-round3.log",
+    "bytes": 6130,
+    "sha256": "17bac648e170211bd30c122421e3dfa1757435ac6635f0388eb0d963e9a56773"
+   },
+   "problems": [
+    "checkerboard-noise score=41.9 (sane<40)"
+   ],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/059-z-image-turbo-64x64-fox-round3.png",
+     "bytes": 12720,
+     "sha256": "4f98ad9a6b79bf9e3d3f263d288b191af434d4069eb3014eb48dd6d906b078f8"
+    },
+    "size": [
+     64,
+     64
+    ],
+    "pixel_sha256": "7a8f6087a78ea258a9bb35a1ba7bbd551dc27cff32a4839d9dd1c6b49dfe276c",
+    "checker_score": 41.852120535714285,
+    "luma_std": 65.940241870601,
+    "problems": [
+     "checkerboard-noise score=41.9 (sane<40)"
+    ]
+   }
+  },
+  {
+   "case": "060-flux2-klein-4b-128x128-fox-round3",
+   "model": "flux2-klein-4b",
+   "width": 128,
+   "height": 128,
+   "prompt": "fox",
+   "phase": "round3",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "flux2-klein-4b",
+    "--weights",
+    "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "128",
+    "--height",
+    "128",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/060-flux2-klein-4b-128x128-fox-round3.png"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+   },
+   "load_before": [
+    0.78564453125,
+    0.5283203125,
+    0.70703125
+   ],
+   "load_after": [
+    0.78564453125,
+    0.5283203125,
+    0.70703125
+   ],
+   "returncode": 0,
+   "seconds": 1.942270917352289,
+   "peak_rss_bytes": 571441152,
+   "peak_footprint_bytes": 1222053656,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/060-flux2-klein-4b-128x128-fox-round3.log",
+    "bytes": 4210,
+    "sha256": "c2d4a5c0ebf1028190bd339163e87387ed3f781507a813161ef1983d56899419"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/060-flux2-klein-4b-128x128-fox-round3.png",
+     "bytes": 49645,
+     "sha256": "96047e0a4bbd9c2c92be7e4ddbbfdd90b5c0ad13e036f3c4d44cb8fc7b582b7b"
+    },
+    "size": [
+     128,
+     128
+    ],
+    "pixel_sha256": "fd29fd539753ee5e3e4bffa6cfc5ab60f88587dd2cd459b91613776d7f0af0fe",
+    "checker_score": 24.872960069444442,
+    "luma_std": 56.750339828650425,
+    "problems": []
+   }
+  },
+  {
+   "case": "061-z-image-turbo-128x128-fox-round3",
+   "model": "z-image-turbo",
+   "width": 128,
+   "height": 128,
+   "prompt": "fox",
+   "phase": "round3",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "z-image-turbo",
+    "--weights",
+    "$HOME/models/Z-Image-Turbo",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "128",
+    "--height",
+    "128",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/061-z-image-turbo-128x128-fox-round3.png",
+    "--profile",
+    "product"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+   },
+   "load_before": [
+    0.78564453125,
+    0.5283203125,
+    0.70703125
+   ],
+   "load_after": [
+    0.72265625,
+    0.51953125,
+    0.70263671875
+   ],
+   "returncode": 0,
+   "seconds": 1.447998583316803,
+   "peak_rss_bytes": 436371456,
+   "peak_footprint_bytes": 1098851136,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/061-z-image-turbo-128x128-fox-round3.log",
+    "bytes": 6136,
+    "sha256": "0dc6430ca5330d35cd8215d006453bae2b43ce3cd4905c63720124b884668e47"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/061-z-image-turbo-128x128-fox-round3.png",
+     "bytes": 49650,
+     "sha256": "a2521e1fec753013340c0c0496d6de8629a3e35dabe297c2124431c989cbb5f2"
+    },
+    "size": [
+     128,
+     128
+    ],
+    "pixel_sha256": "191ccc2f1af88662b913ee4561ad170178c9bbc0ef039f433e26875e9b982423",
+    "checker_score": 32.854166666666664,
+    "luma_std": 59.13880520087506,
+    "problems": []
+   }
+  },
+  {
+   "case": "062-flux2-klein-4b-256x256-fox-round3",
+   "model": "flux2-klein-4b",
+   "width": 256,
+   "height": 256,
+   "prompt": "fox",
+   "phase": "round3",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "flux2-klein-4b",
+    "--weights",
+    "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "256",
+    "--height",
+    "256",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/062-flux2-klein-4b-256x256-fox-round3.png"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+   },
+   "load_before": [
+    0.72265625,
+    0.51953125,
+    0.70263671875
+   ],
+   "load_after": [
+    0.72265625,
+    0.51953125,
+    0.70263671875
+   ],
+   "returncode": 0,
+   "seconds": 2.321654750034213,
+   "peak_rss_bytes": 760086528,
+   "peak_footprint_bytes": 1366577016,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/062-flux2-klein-4b-256x256-fox-round3.log",
+    "bytes": 4210,
+    "sha256": "5538107f465fdae50524d724eb1c433d0267c2403245e963271bec4e7406d839"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/062-flux2-klein-4b-256x256-fox-round3.png",
+     "bytes": 197244,
+     "sha256": "bb18163efc6f5fcc19181c7262cbe9084dbce1e07d11932620897ae686942c89"
+    },
+    "size": [
+     256,
+     256
+    ],
+    "pixel_sha256": "afcbf9226ad77af96c64de086090f0b0ea3c0d4c4f5991a82221d12ad1af64d0",
+    "checker_score": 16.54331527217742,
+    "luma_std": 61.281298820221885,
+    "problems": []
+   }
+  },
+  {
+   "case": "063-z-image-turbo-256x256-fox-round3",
+   "model": "z-image-turbo",
+   "width": 256,
+   "height": 256,
+   "prompt": "fox",
+   "phase": "round3",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "z-image-turbo",
+    "--weights",
+    "$HOME/models/Z-Image-Turbo",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "256",
+    "--height",
+    "256",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/063-z-image-turbo-256x256-fox-round3.png",
+    "--profile",
+    "product"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+   },
+   "load_before": [
+    0.72265625,
+    0.51953125,
+    0.70263671875
+   ],
+   "load_after": [
+    0.72265625,
+    0.51953125,
+    0.70263671875
+   ],
+   "returncode": 0,
+   "seconds": 2.1503256247378886,
+   "peak_rss_bytes": 700841984,
+   "peak_footprint_bytes": 1323000736,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/063-z-image-turbo-256x256-fox-round3.log",
+    "bytes": 6143,
+    "sha256": "78534ef2b755d1968ba841c7f0f15c15677a972028664fc238cd5ddfd851bc3d"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/063-z-image-turbo-256x256-fox-round3.png",
+     "bytes": 197249,
+     "sha256": "309dc8d1618bc9237e1c1b1cdeaec1b950b52158d94b6cc88ff5ce6aaede0b4b"
+    },
+    "size": [
+     256,
+     256
+    ],
+    "pixel_sha256": "0b0831812e0d9c1f4924e2db96767c0c10f9b7b09b6ce8ba073cf6cf16326828",
+    "checker_score": 23.29171917002688,
+    "luma_std": 58.52131627820275,
+    "problems": []
+   }
+  },
+  {
+   "case": "064-flux2-klein-4b-512x512-fox-round3",
+   "model": "flux2-klein-4b",
+   "width": 512,
+   "height": 512,
+   "prompt": "fox",
+   "phase": "round3",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "flux2-klein-4b",
+    "--weights",
+    "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "512",
+    "--height",
+    "512",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/064-flux2-klein-4b-512x512-fox-round3.png"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+   },
+   "load_before": [
+    0.72265625,
+    0.51953125,
+    0.70263671875
+   ],
+   "load_after": [
+    0.66455078125,
+    0.5107421875,
+    0.6982421875
+   ],
+   "returncode": 0,
+   "seconds": 4.36739999987185,
+   "peak_rss_bytes": 1107230720,
+   "peak_footprint_bytes": 1728073856,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/064-flux2-klein-4b-512x512-fox-round3.log",
+    "bytes": 4210,
+    "sha256": "3a85c6c627ba186621765754734640e5e205398576f71afb96d381b7ad371132"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/064-flux2-klein-4b-512x512-fox-round3.png",
+     "bytes": 787369,
+     "sha256": "3db345dc4c2cdc9388f0e445029b44515b262ed18d04f6997690bd883c6c1823"
+    },
+    "size": [
+     512,
+     512
+    ],
+    "pixel_sha256": "d2930d37dee535f8e1db0fccb84958d5873c7ea2c2c7617a74f2c14556370f1f",
+    "checker_score": 9.957186259920634,
+    "luma_std": 57.51971169841822,
+    "problems": []
+   }
+  },
+  {
+   "case": "065-z-image-turbo-512x512-fox-round3",
+   "model": "z-image-turbo",
+   "width": 512,
+   "height": 512,
+   "prompt": "fox",
+   "phase": "round3",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "z-image-turbo",
+    "--weights",
+    "$HOME/models/Z-Image-Turbo",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "512",
+    "--height",
+    "512",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/065-z-image-turbo-512x512-fox-round3.png",
+    "--profile",
+    "product"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+   },
+   "load_before": [
+    0.66455078125,
+    0.5107421875,
+    0.6982421875
+   ],
+   "load_after": [
+    0.611328125,
+    0.501953125,
+    0.69384765625
+   ],
+   "returncode": 0,
+   "seconds": 5.726562125142664,
+   "peak_rss_bytes": 1393721344,
+   "peak_footprint_bytes": 2045797904,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/065-z-image-turbo-512x512-fox-round3.log",
+    "bytes": 6159,
+    "sha256": "3be4fee83ae6e3927c23820cda32323f83d1ee2d8e6e044d7df31693fc92eb1c"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/065-z-image-turbo-512x512-fox-round3.png",
+     "bytes": 787374,
+     "sha256": "5fca2d19018a9225900dd7e4da84b8dd56c25003bcd99398e697fbb45757e850"
+    },
+    "size": [
+     512,
+     512
+    ],
+    "pixel_sha256": "810425f8f2ba32944cf39facff2bee9622e88701fe13ad5c5b3b8cf58ddba282",
+    "checker_score": 16.028253141534393,
+    "luma_std": 54.02290528701195,
+    "problems": []
+   }
+  },
+  {
+   "case": "066-flux2-klein-4b-768x768-fox-round3",
+   "model": "flux2-klein-4b",
+   "width": 768,
+   "height": 768,
+   "prompt": "fox",
+   "phase": "round3",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "flux2-klein-4b",
+    "--weights",
+    "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "768",
+    "--height",
+    "768",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/066-flux2-klein-4b-768x768-fox-round3.png"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+   },
+   "load_before": [
+    0.611328125,
+    0.501953125,
+    0.69384765625
+   ],
+   "load_after": [
+    0.5166015625,
+    0.48486328125,
+    0.68505859375
+   ],
+   "returncode": 0,
+   "seconds": 6.947374083101749,
+   "peak_rss_bytes": 1693908992,
+   "peak_footprint_bytes": 2373095960,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/066-flux2-klein-4b-768x768-fox-round3.log",
+    "bytes": 4210,
+    "sha256": "4f95aade1b68eb8d1129c12b9e6ae44b818daeee1a884f1f5d280ad5126219fb"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/066-flux2-klein-4b-768x768-fox-round3.png",
+     "bytes": 1770740,
+     "sha256": "bed402ba6e0acb6915faad919e3f7c126de1a6b8769bf35202a65b428ecc00a3"
+    },
+    "size": [
+     768,
+     768
+    ],
+    "pixel_sha256": "b3dbdc6a718b78a1649056cd8c5e778bdec17636afa5b456a49824d0da07b9b3",
+    "checker_score": 8.495254248903509,
+    "luma_std": 51.76948864869355,
+    "problems": []
+   }
+  },
+  {
+   "case": "067-z-image-turbo-768x768-fox-round3",
+   "model": "z-image-turbo",
+   "width": 768,
+   "height": 768,
+   "prompt": "fox",
+   "phase": "round3",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "z-image-turbo",
+    "--weights",
+    "$HOME/models/Z-Image-Turbo",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "768",
+    "--height",
+    "768",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/067-z-image-turbo-768x768-fox-round3.png",
+    "--profile",
+    "product"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+   },
+   "load_before": [
+    0.5166015625,
+    0.48486328125,
+    0.68505859375
+   ],
+   "load_after": [
+    0.59033203125,
+    0.50146484375,
+    0.68798828125
+   ],
+   "returncode": 0,
+   "seconds": 12.414821583312005,
+   "peak_rss_bytes": 2587443200,
+   "peak_footprint_bytes": 3324569896,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/067-z-image-turbo-768x768-fox-round3.log",
+    "bytes": 6168,
+    "sha256": "c34614c92d1be1d512b6dae8fc3a500470a0586be66b99159204a97e270f4b13"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/067-z-image-turbo-768x768-fox-round3.png",
+     "bytes": 1770745,
+     "sha256": "6f2a1b2a8e445b0834e8b16d00bb4e6de92908c3d810a7ce5947a40ad8075660"
+    },
+    "size": [
+     768,
+     768
+    ],
+    "pixel_sha256": "7647ee57b8cda740ceeb2255a18b7550152ad4b606d847e63a9feec95088ecd7",
+    "checker_score": 14.363887746710525,
+    "luma_std": 56.261978588182146,
+    "problems": []
+   }
+  },
+  {
+   "case": "068-flux2-klein-4b-1024x1024-fox-round3",
+   "model": "flux2-klein-4b",
+   "width": 1024,
+   "height": 1024,
+   "prompt": "fox",
+   "phase": "round3",
+   "command": [
+    "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "generate",
+    "--model",
+    "flux2-klein-4b",
+    "--weights",
+    "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+    "--prompt",
+    "a red fox sitting in deep snow, golden hour light",
+    "--width",
+    "1024",
+    "--height",
+    "1024",
+    "--steps",
+    "4",
+    "--seed",
+    "46",
+    "--out",
+    "$HOME/repos/zdraw/runs/pub-20261006/timing/068-flux2-klein-4b-1024x1024-fox-round3.png"
+   ],
+   "env": {
+    "ZDRAW_PROGRESS": "quiet",
+    "ZDRAW_METRICS": "1",
+    "ZDRAW_REQUIRE_ZPACK": "1",
+    "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+   },
+   "load_before": [
+    0.59033203125,
+    0.50146484375,
+    0.68798828125
+   ],
+   "load_after": [
+    0.59423828125,
+    0.50830078125,
+    0.6865234375
+   ],
+   "returncode": 0,
+   "seconds": 11.950132499914616,
+   "peak_rss_bytes": 2506080256,
+   "peak_footprint_bytes": 3240793224,
+   "log": {
+    "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/068-flux2-klein-4b-1024x1024-fox-round3.log",
+    "bytes": 4217,
+    "sha256": "10e8e55c569827587bf7cb907a8af528aa62cdfe3f6007407251739a2fa1a7a7"
+   },
+   "problems": [],
+   "image": {
+    "file": {
+     "path": "$HOME/repos/zdraw/runs/pub-20261006/timing/068-flux2-klein-4b-1024x1024-fox-round3.png",
+     "bytes": 3147359,
+     "sha256": "63f643c004712c46ed4498960b4c4d140a58483f577c79c4549449e2d720e8e6"
+    },
+    "size": [
+     1024,
+     1024
+    ],
+    "pixel_sha256": "afa4c8fb1ecbd1ecadee4042bfa62351eacbe3a841f67f71a3f2da65bbc505bb",
+    "checker_score": 8.985477797941272,
+    "luma_std": 56.46909117943018,
+    "problems": []
+   },
+   "certified_match": true
+  }
+ ],
+ "thermal_after": "Note: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded",
+ "swap_after": "total = 4096.00M  used = 2412.50M  free = 1683.50M  (encrypted)",
+ "finished_at": "2026-10-05T17:10:37.510851+00:00"
+}

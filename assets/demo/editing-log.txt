@@ -1,0 +1,56 @@
+wrote runs/release-resolution-20261001/edit-demo/after.png
+--- timing (ms): median / min / max ---
+  loading Klein zpack sidecar     5.38     5.38     5.38  (n=1)
+  encoding prompt      371.29   371.29   371.29  (n=1)
+  klein-encode         371.29   371.29   371.29  (n=1)
+  encoding reference  2835.26  2835.26  2835.26  (n=1)
+  klein-ref           2835.35  2835.35  2835.35  (n=1)
+  sampling latents    5225.92  5225.92  5225.92  (n=1)
+  klein-denoise       8063.69  8063.69  8063.69  (n=1)
+  vae-in                 2.95     2.95     2.95  (n=1)
+  vae-mid               50.93    50.93    50.93  (n=1)
+  vae-res-0             11.83    11.83    11.83  (n=1)
+  vae-upconv-0           3.73     3.73     3.73  (n=1)
+  vae-up-0              15.58    15.58    15.58  (n=1)
+  vae-res-1             24.28    24.28    24.28  (n=1)
+  vae-upconv-1          10.35    10.35    10.35  (n=1)
+  vae-up-1              34.65    34.65    34.65  (n=1)
+  vae-res-2             29.32    29.32    29.32  (n=1)
+  vae-upconv-2          10.32    10.32    10.32  (n=1)
+  vae-up-2              39.66    39.66    39.66  (n=1)
+  vae-res-3             36.14    36.14    36.14  (n=1)
+  vae-up-3              36.15    36.15    36.15  (n=1)
+  vae-up               126.04   126.04   126.04  (n=1)
+  vae-finish            16.87    16.87    16.87  (n=1)
+  decoding image       207.43   207.43   207.43  (n=1)
+  klein-vae            207.43   207.43   207.43  (n=1)
+  generate            8642.82  8642.82  8642.82  (n=1)
+--- Metal by stage: dispatch / cmd / read / gemm / exact / half / W8 / W6 / W4 / W2 / MPS / fallback / GPU ms ---
+  encoding prompt      408     1     1   189      0    189     0     0     0     0     0        0    319.2
+  klein-encode         408     1     1   189      0    189     0     0     0     0     0        0    319.2
+  encoding reference    53    34    28    12      4      8     0     0     0     0     0        0   1084.5
+  sampling latents    1665     4     4   649      0    649     0     0     0     0     0        0   5101.2
+  klein-denoise       1718    38    32   661      4    657     0     0     0     0     0        0   6185.7
+  decoding image       728    19     2    12      4      8     0     0     0     0     0        0    135.1
+  klein-vae            728    19     2    12      4      8     0     0     0     0     0        0    135.1
+--- memory / round-trips ---
+  peak RSS            2426.8 MB
+  phys footprint      3061.6 MB
+  peak GPU live       1464.3 MB
+  weights wrapped     7532.8 MB
+  GPU busy ms           6640
+  Metal dispatches      2854
+  command buffers         58
+  completion waits        59
+    of which GEMM        862
+      exact GEMM           8
+      half GEMM          854
+      W8 GEMM              0
+      W6 GEMM              0
+      W4 GEMM              0
+      W2 GEMM              0
+      MPS GEMM             0
+      MPS fallback         0
+      steel fallback         0
+      MPP fallback         0
+  GPU readbacks           35

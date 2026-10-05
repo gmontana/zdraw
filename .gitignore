@@ -1,0 +1,12 @@
+.zig-cache/
+zig-out/
+zig-pkg/
+runs/
+dist/
+__pycache__/
+.venv/
+.DS_Store
+.codegraph/
+graphify-out/
+.zdraw_history
+zdraw-bench-*.png

@@ -1,0 +1,21 @@
+quiet gate: Thu Oct  1 11:56:21 UTC 2026 host=m4max-a threshold=2.0 reads=6 interval=80s
+command: bash runs/release-progressive-20261001/record_ready.sh
+Thu Oct  1 11:56:21 UTC 2026 load1m=1.17 consecutive=1
+Thu Oct  1 11:57:41 UTC 2026 load1m=1.65 consecutive=2
+Thu Oct  1 11:59:01 UTC 2026 load1m=1.31 consecutive=3
+Thu Oct  1 12:00:21 UTC 2026 load1m=1.17 consecutive=4
+Thu Oct  1 12:01:41 UTC 2026 load1m=1.27 consecutive=5
+Thu Oct  1 12:03:01 UTC 2026 load1m=1.22 consecutive=6
+QUIET_GATE_PASS
+zdraw 0.1.0-validation-20261001.5
+commit a47160f
+engine abi 1
+metal4 yes
+90339e6a1ba7c56a168698756ef84721e4ab80fe29bc97c2e8d3cfd3df231b11  zig-out/bin/zdraw
+6fed206961cf9f1b25f4e185495a2dcdddbd4d8019bfba06fa3761579f252961  zig-out/lib/steel.metallib
+Note: No thermal warning level has been recorded
+Note: No performance warning level has been recorded
+Note: No CPU power status has been recorded
+COMMAND_PASS
+
+Post-recording pmset -g therm: no thermal or performance warning level recorded.

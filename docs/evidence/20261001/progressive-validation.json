@@ -1,0 +1,170 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-01",
+  "preview_commit": "3ebd410beb6d2d78c6787bb66c896252f6f8ab8f",
+  "final_cli_commit": "a47160f6ebda2894f8b3f43d3e29f80b076e570b",
+  "scope": "CLI display and Apache-2.0 release preparation; no inference kernel or certified hash changes.",
+  "hosts": [
+    {
+      "name": "m4max-b",
+      "chip": "Apple M4 Max",
+      "ram_gib": 128,
+      "macos": "26.6.2"
+    },
+    {
+      "name": "m4max-a",
+      "chip": "Apple M4 Max",
+      "ram_gib": 128,
+      "macos": "26.5.2"
+    }
+  ],
+  "builds": {
+    "native_build_qa_debug_cli": "passed on m4max-a before committing the preview implementation; version identified the d2f3b6a dirty tree",
+    "portable_archive": "clean a47160f, macOS14/apple_m1 target; built and relocated smoke passed on m4max-a",
+    "archive_sha256": "09dba1f76e7899af421eaacf5ccc2abc390d24436182acf9b5ccd868a18f072f",
+    "binary_sha256": "90339e6a1ba7c56a168698756ef84721e4ab80fe29bc97c2e8d3cfd3df231b11",
+    "metallib_sha256": "6fed206961cf9f1b25f4e185495a2dcdddbd4d8019bfba06fa3761579f252961",
+    "display_cleanup_followup": "Full QA and five progress/observer unit tests passed on m4max-a after routing compact bars through the observer."
+  },
+  "progressive_pty": {
+    "m4max-a": {
+      "kind": "functional checks, not performance measurements",
+      "binary_sha256": "90339e6a1ba7c56a168698756ef84721e4ab80fe29bc97c2e8d3cfd3df231b11",
+      "results": [
+        {
+          "case": "iterm",
+          "previews": 4,
+          "size": 1024,
+          "pixel_sha256": "afa4c8fb1ecbd1ecadee4042bfa62351eacbe3a841f67f71a3f2da65bbc505bb"
+        },
+        {
+          "case": "kitty",
+          "previews": 4,
+          "size": 512,
+          "pixel_sha256": "d2930d37dee535f8e1db0fccb84958d5873c7ea2c2c7617a74f2c14556370f1f"
+        },
+        {
+          "case": "ansi",
+          "previews": 4,
+          "size": 512,
+          "pixel_sha256": "d2930d37dee535f8e1db0fccb84958d5873c7ea2c2c7617a74f2c14556370f1f"
+        },
+        {
+          "case": "final-only",
+          "previews": 0,
+          "size": 512,
+          "pixel_sha256": "d2930d37dee535f8e1db0fccb84958d5873c7ea2c2c7617a74f2c14556370f1f"
+        },
+        {
+          "case": "no-show",
+          "previews": 0,
+          "size": 512,
+          "pixel_sha256": "d2930d37dee535f8e1db0fccb84958d5873c7ea2c2c7617a74f2c14556370f1f"
+        },
+        {
+          "case": "redirected",
+          "previews": 0,
+          "size": 512,
+          "pixel_sha256": "d2930d37dee535f8e1db0fccb84958d5873c7ea2c2c7617a74f2c14556370f1f"
+        }
+      ]
+    },
+    "m4max-b": {
+      "kind": "functional checks, not performance measurements",
+      "binary_sha256": "90339e6a1ba7c56a168698756ef84721e4ab80fe29bc97c2e8d3cfd3df231b11",
+      "results": [
+        {
+          "case": "iterm",
+          "previews": 4,
+          "size": 1024,
+          "pixel_sha256": "afa4c8fb1ecbd1ecadee4042bfa62351eacbe3a841f67f71a3f2da65bbc505bb"
+        },
+        {
+          "case": "kitty",
+          "previews": 4,
+          "size": 512,
+          "pixel_sha256": "d2930d37dee535f8e1db0fccb84958d5873c7ea2c2c7617a74f2c14556370f1f"
+        },
+        {
+          "case": "ansi",
+          "previews": 4,
+          "size": 512,
+          "pixel_sha256": "d2930d37dee535f8e1db0fccb84958d5873c7ea2c2c7617a74f2c14556370f1f"
+        },
+        {
+          "case": "final-only",
+          "previews": 0,
+          "size": 512,
+          "pixel_sha256": "d2930d37dee535f8e1db0fccb84958d5873c7ea2c2c7617a74f2c14556370f1f"
+        },
+        {
+          "case": "no-show",
+          "previews": 0,
+          "size": 512,
+          "pixel_sha256": "d2930d37dee535f8e1db0fccb84958d5873c7ea2c2c7617a74f2c14556370f1f"
+        },
+        {
+          "case": "redirected",
+          "previews": 0,
+          "size": 512,
+          "pixel_sha256": "d2930d37dee535f8e1db0fccb84958d5873c7ea2c2c7617a74f2c14556370f1f"
+        }
+      ]
+    },
+    "terminal_visual_review": "iTerm preview frames inspected in xterm.js; all four update in the same bounded image region",
+    "initial_event_check": "Initial native and portable checks observed four preview frames before the final PNG existed."
+  },
+  "quality": {
+    "klein": {
+      "host": "m4max-a",
+      "passed": 8,
+      "total": 8,
+      "visual_review": "pass; all eight images inspected"
+    },
+    "zimage": {
+      "host": "m4max-b",
+      "passed": 12,
+      "total": 12,
+      "visual_review": {
+        "reviewer": "Codex assistant; all 12 images inspected",
+        "status": "pass"
+      },
+      "receipt_sha256": "c6aab5880999edf8ce30df6a8681f88987c480c257d21ef47d9ea7ba74dba5eb"
+    },
+    "note": "Quality suites used the preview implementation at 3ebd410. Subsequent changes only order diagnostics and route compact progress-bar output through the observer; final packaged inference hashes were rechecked."
+  },
+  "relocated_zimage": {
+    "source_commit": "a47160f6ebda2894f8b3f43d3e29f80b076e570b",
+    "archive_sha256": "09dba1f76e7899af421eaacf5ccc2abc390d24436182acf9b5ccd868a18f072f",
+    "model": "z-image-turbo",
+    "pixel_sha256": "c2ac10ec694ef04a01517fb11bd808c025e50c4e89a9a45eabe69f1109c59bb6",
+    "matches_certified": true,
+    "fallbacks": {
+      "MPS GEMM": [
+        0
+      ],
+      "MPS fallback": [
+        0
+      ],
+      "steel fallback": [
+        0
+      ],
+      "MPP fallback": [
+        0
+      ]
+    },
+    "visual_review": "pass; certified fox image inspected"
+  },
+  "unchanged": [
+    "certified pixel hashes",
+    "inference kernels and numerical routes",
+    "QA budgets"
+  ],
+  "limitations": [
+    "M4 Max 128 GiB only; portable build target is not certification of macOS14 or M1 runtime behaviour.",
+    "No new speedup, competitor comparison or minimum physical RAM claim.",
+    "Z-Image strict1024 retains its CPU VAE attention fallback.",
+    "Hosted release CI, signing and notarization remain untested."
+  ],
+  "display_cleanup_regression": "The first progressive capture revealed that compact progress bars bypassed the observer and left the approximate label on the final image. Fixed in e3f4d2e; unit and six-mode real CLI checks now cover the bypass."
+}

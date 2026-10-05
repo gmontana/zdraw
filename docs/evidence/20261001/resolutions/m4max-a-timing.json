@@ -1,0 +1,5767 @@
+{
+  "schema": "zdraw.resolution-sweep.v1",
+  "started_at": "2026-10-01T13:17:53.808618+00:00",
+  "mode": "timing",
+  "source_commit": "421ae7ba8e3604c8b7cedfaa8f0384095558c589",
+  "harness": {
+    "path": "$HOME/repos/zdraw/tools/quality/resolution_sweep.py",
+    "bytes": 9761,
+    "sha256": "1d92f0973f3e794da96f9fd28fcc422e54cc942a868d1eb83d7bc842d06abd7d"
+  },
+  "binary": {
+    "path": "$HOME/repos/zdraw/zig-out/bin/zdraw",
+    "bytes": 3776088,
+    "sha256": "90339e6a1ba7c56a168698756ef84721e4ab80fe29bc97c2e8d3cfd3df231b11"
+  },
+  "version": "zdraw 0.1.0-validation-20261001.5\ncommit a47160f\nengine abi 1\nmetal4 yes",
+  "metallib": {
+    "path": "$HOME/repos/zdraw/zig-out/lib/steel.metallib",
+    "bytes": 265363,
+    "sha256": "6fed206961cf9f1b25f4e185495a2dcdddbd4d8019bfba06fa3761579f252961"
+  },
+  "host": {
+    "name": "m4max-a",
+    "macos": "26.5.2",
+    "chip": "Apple M4 Max",
+    "ram_bytes": 137438953472
+  },
+  "models": {
+    "flux2-klein-4b": {
+      "weights": "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+      "pack": {
+        "path": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack",
+        "bytes": 7409765616,
+        "sha256": "377b64d12acc589e5162753ff9a0edd06419901bbd286f334f087f038d261519"
+      }
+    },
+    "z-image-turbo": {
+      "weights": "$HOME/models/Z-Image-Turbo",
+      "pack": {
+        "path": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack",
+        "bytes": 17380155920,
+        "sha256": "3e7726e4906354960b1992e6fd6349261939612e6a1b8f571447eacfab7d9c7b"
+      }
+    }
+  },
+  "steps": 4,
+  "seed": 46,
+  "prompts": {
+    "fox": "a red fox sitting in deep snow, golden hour light",
+    "portrait": "editorial portrait of a fashion designer in a bright studio",
+    "market": "a crowded spice market stall, dozens of open sacks, fine texture"
+  },
+  "sizes": [
+    [
+      64,
+      64
+    ],
+    [
+      128,
+      128
+    ],
+    [
+      256,
+      256
+    ],
+    [
+      512,
+      512
+    ],
+    [
+      768,
+      768
+    ],
+    [
+      1024,
+      1024
+    ],
+    [
+      1536,
+      1536
+    ],
+    [
+      2048,
+      2048
+    ],
+    [
+      1024,
+      768
+    ],
+    [
+      768,
+      1024
+    ],
+    [
+      544,
+      800
+    ]
+  ],
+  "planned": 68,
+  "completed": 68,
+  "regime": "fresh processes with cached weight pages",
+  "thermal_before": "Note: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded",
+  "swap_before": "total = 2048.00M  used = 326.81M  free = 1721.19M  (encrypted)",
+  "status": "automated-fail",
+  "visual_review": "not-reviewed",
+  "results": [
+    {
+      "case": "001-flux2-klein-4b-1024x1024-fox-warmup",
+      "model": "flux2-klein-4b",
+      "width": 1024,
+      "height": 1024,
+      "prompt": "fox",
+      "phase": "warmup",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "1024",
+        "--height",
+        "1024",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/001-flux2-klein-4b-1024x1024-fox-warmup.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        2.19921875,
+        1.29541015625,
+        1.10009765625
+      ],
+      "load_after": [
+        2.02099609375,
+        1.28515625,
+        1.09814453125
+      ],
+      "returncode": 0,
+      "seconds": 11.412518790923059,
+      "peak_rss_bytes": 4166598656,
+      "peak_footprint_bytes": 4902181200,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/001-flux2-klein-4b-1024x1024-fox-warmup.log",
+        "bytes": 4728,
+        "sha256": "579c966fed74f696b5edfe5ddbdbf0da8dc563bd1d2453ab7cd0874c19f372f4"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/001-flux2-klein-4b-1024x1024-fox-warmup.png",
+          "bytes": 3147359,
+          "sha256": "63f643c004712c46ed4498960b4c4d140a58483f577c79c4549449e2d720e8e6"
+        },
+        "size": [
+          1024,
+          1024
+        ],
+        "pixel_sha256": "afa4c8fb1ecbd1ecadee4042bfa62351eacbe3a841f67f71a3f2da65bbc505bb",
+        "checker_score": 8.985477797941272,
+        "luma_std": 56.46909117943018,
+        "problems": []
+      },
+      "certified_match": true,
+      "published_log": {
+        "path": "m4max-a/001-flux2-klein-4b-1024x1024-fox-warmup.log",
+        "sha256": "b9dc0382036c148861c220448a9b3cf3d5d526bb01996897823b7c35b6d784d4"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "flux2-klein-4b",
+        "dimensions": [
+          1024,
+          1024
+        ],
+        "prompt": "fox",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "002-z-image-turbo-1024x1024-fox-warmup",
+      "model": "z-image-turbo",
+      "width": 1024,
+      "height": 1024,
+      "prompt": "fox",
+      "phase": "warmup",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "1024",
+        "--height",
+        "1024",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/002-z-image-turbo-1024x1024-fox-warmup.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        2.02099609375,
+        1.28515625,
+        1.09814453125
+      ],
+      "load_after": [
+        1.5283203125,
+        1.22900390625,
+        1.08154296875
+      ],
+      "returncode": 0,
+      "seconds": 24.876333457883447,
+      "peak_rss_bytes": 5541265408,
+      "peak_footprint_bytes": 6376272184,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/002-z-image-turbo-1024x1024-fox-warmup.log",
+        "bytes": 7549,
+        "sha256": "0218f6e296cb18f63575966813b293a6079df6cd326e717874f8ab98b9235ab2"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/002-z-image-turbo-1024x1024-fox-warmup.png",
+          "bytes": 3147364,
+          "sha256": "f462da7aebb38b8ed36690d9a0583c632ea5fbc6fc0fd27f483bcf7ae5bccca6"
+        },
+        "size": [
+          1024,
+          1024
+        ],
+        "pixel_sha256": "c2ac10ec694ef04a01517fb11bd808c025e50c4e89a9a45eabe69f1109c59bb6",
+        "checker_score": 11.160113957923228,
+        "luma_std": 49.5128427442391,
+        "problems": []
+      },
+      "certified_match": true,
+      "published_log": {
+        "path": "m4max-a/002-z-image-turbo-1024x1024-fox-warmup.log",
+        "sha256": "516af884149f73cbf96adc725b17da1de06b51b036fdc1371f76fd753e5530b0"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          1024,
+          1024
+        ],
+        "prompt": "fox",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "003-flux2-klein-4b-64x64-fox-round1",
+      "model": "flux2-klein-4b",
+      "width": 64,
+      "height": 64,
+      "prompt": "fox",
+      "phase": "round1",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "64",
+        "--height",
+        "64",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/003-flux2-klein-4b-64x64-fox-round1.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        1.5283203125,
+        1.22900390625,
+        1.08154296875
+      ],
+      "load_after": [
+        1.5283203125,
+        1.22900390625,
+        1.08154296875
+      ],
+      "returncode": 1,
+      "seconds": 0.46860820800065994,
+      "peak_rss_bytes": 382648320,
+      "peak_footprint_bytes": 518425600,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/003-flux2-klein-4b-64x64-fox-round1.log",
+        "bytes": 1392,
+        "sha256": "b5efb6242ba7bafe3e2a30ec174290cdf4ccf2435ce29e9eb5c46d9f5d5df8a8"
+      },
+      "problems": [
+        "generation exited 1",
+        "image unavailable: [Errno 2] No such file or directory: '$HOME/repos/zdraw/runs/release-resolution-20261001/timing/003-flux2-klein-4b-64x64-fox-round1.png'"
+      ],
+      "published_log": {
+        "path": "m4max-a/003-flux2-klein-4b-64x64-fox-round1.log",
+        "sha256": "9df792a6d1bee18b050b4320148deb54ccbbb283911278c8908958576dce5863"
+      }
+    },
+    {
+      "case": "004-z-image-turbo-64x64-fox-round1",
+      "model": "z-image-turbo",
+      "width": 64,
+      "height": 64,
+      "prompt": "fox",
+      "phase": "round1",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "64",
+        "--height",
+        "64",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/004-z-image-turbo-64x64-fox-round1.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        1.5283203125,
+        1.22900390625,
+        1.08154296875
+      ],
+      "load_after": [
+        1.56591796875,
+        1.24169921875,
+        1.0869140625
+      ],
+      "returncode": 0,
+      "seconds": 1.1811376246623695,
+      "peak_rss_bytes": 291717120,
+      "peak_footprint_bytes": 981181104,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/004-z-image-turbo-64x64-fox-round1.log",
+        "bytes": 7504,
+        "sha256": "72fa9d07819291696d0c001e5490de7b6332b36f6133da8154c20cbfbb4d5155"
+      },
+      "problems": [
+        "checkerboard-noise score=41.9 (sane<40)"
+      ],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/004-z-image-turbo-64x64-fox-round1.png",
+          "bytes": 12720,
+          "sha256": "4f98ad9a6b79bf9e3d3f263d288b191af434d4069eb3014eb48dd6d906b078f8"
+        },
+        "size": [
+          64,
+          64
+        ],
+        "pixel_sha256": "7a8f6087a78ea258a9bb35a1ba7bbd551dc27cff32a4839d9dd1c6b49dfe276c",
+        "checker_score": 41.852120535714285,
+        "luma_std": 65.940241870601,
+        "problems": [
+          "checkerboard-noise score=41.9 (sane<40)"
+        ]
+      },
+      "published_log": {
+        "path": "m4max-a/004-z-image-turbo-64x64-fox-round1.log",
+        "sha256": "7883905e8dc93551cf90a611fc73846dae190bdb6116ef4bb3c6c93566199107"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          64,
+          64
+        ],
+        "prompt": "fox",
+        "finding": "Recognisable thumbnail with visibly limited detail; no obvious blank or checkerboard corruption.",
+        "heuristic_problems": [
+          "checkerboard-noise score=41.9 (sane<40)"
+        ]
+      }
+    },
+    {
+      "case": "005-flux2-klein-4b-128x128-fox-round1",
+      "model": "flux2-klein-4b",
+      "width": 128,
+      "height": 128,
+      "prompt": "fox",
+      "phase": "round1",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "128",
+        "--height",
+        "128",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/005-flux2-klein-4b-128x128-fox-round1.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        1.56591796875,
+        1.24169921875,
+        1.0869140625
+      ],
+      "load_after": [
+        1.56591796875,
+        1.24169921875,
+        1.0869140625
+      ],
+      "returncode": 0,
+      "seconds": 1.9353362917900085,
+      "peak_rss_bytes": 583680000,
+      "peak_footprint_bytes": 1234210536,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/005-flux2-klein-4b-128x128-fox-round1.log",
+        "bytes": 4721,
+        "sha256": "7a3fd2fa29c36f71c2ae8b82421462a9f2131800b8731fbee0fdc77115444ff5"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/005-flux2-klein-4b-128x128-fox-round1.png",
+          "bytes": 49645,
+          "sha256": "96047e0a4bbd9c2c92be7e4ddbbfdd90b5c0ad13e036f3c4d44cb8fc7b582b7b"
+        },
+        "size": [
+          128,
+          128
+        ],
+        "pixel_sha256": "fd29fd539753ee5e3e4bffa6cfc5ab60f88587dd2cd459b91613776d7f0af0fe",
+        "checker_score": 24.872960069444442,
+        "luma_std": 56.750339828650425,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-a/005-flux2-klein-4b-128x128-fox-round1.log",
+        "sha256": "769211515b1c666cddc428174caa7ee346586520a887eae980b6ecbdeb0fbe49"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "flux2-klein-4b",
+        "dimensions": [
+          128,
+          128
+        ],
+        "prompt": "fox",
+        "finding": "Recognisable thumbnail with visibly limited detail; no obvious blank or checkerboard corruption.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "006-z-image-turbo-128x128-fox-round1",
+      "model": "z-image-turbo",
+      "width": 128,
+      "height": 128,
+      "prompt": "fox",
+      "phase": "round1",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "128",
+        "--height",
+        "128",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/006-z-image-turbo-128x128-fox-round1.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        1.56591796875,
+        1.24169921875,
+        1.0869140625
+      ],
+      "load_after": [
+        1.56591796875,
+        1.24169921875,
+        1.0869140625
+      ],
+      "returncode": 0,
+      "seconds": 1.4320935001596808,
+      "peak_rss_bytes": 433127424,
+      "peak_footprint_bytes": 1095607104,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/006-z-image-turbo-128x128-fox-round1.log",
+        "bytes": 7510,
+        "sha256": "29b667c1c36f58c6d3c18870bab97880cb27b98ff4bcd331ab0e6fbf5257acc2"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/006-z-image-turbo-128x128-fox-round1.png",
+          "bytes": 49650,
+          "sha256": "a2521e1fec753013340c0c0496d6de8629a3e35dabe297c2124431c989cbb5f2"
+        },
+        "size": [
+          128,
+          128
+        ],
+        "pixel_sha256": "191ccc2f1af88662b913ee4561ad170178c9bbc0ef039f433e26875e9b982423",
+        "checker_score": 32.854166666666664,
+        "luma_std": 59.13880520087506,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-a/006-z-image-turbo-128x128-fox-round1.log",
+        "sha256": "b67d626032de5b15df8083a9e58d3e40395f416dd4f260408a8b0597f6a0c14b"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          128,
+          128
+        ],
+        "prompt": "fox",
+        "finding": "Recognisable thumbnail with visibly limited detail; no obvious blank or checkerboard corruption.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "007-flux2-klein-4b-256x256-fox-round1",
+      "model": "flux2-klein-4b",
+      "width": 256,
+      "height": 256,
+      "prompt": "fox",
+      "phase": "round1",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "256",
+        "--height",
+        "256",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/007-flux2-klein-4b-256x256-fox-round1.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        1.56591796875,
+        1.24169921875,
+        1.0869140625
+      ],
+      "load_after": [
+        1.4404296875,
+        1.220703125,
+        1.080078125
+      ],
+      "returncode": 0,
+      "seconds": 2.305259875021875,
+      "peak_rss_bytes": 864780288,
+      "peak_footprint_bytes": 1471369176,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/007-flux2-klein-4b-256x256-fox-round1.log",
+        "bytes": 4721,
+        "sha256": "40fc91832836318f8ec9b430ad3623fe25ad2e3b57b4aa99e60e9224ab3d16eb"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/007-flux2-klein-4b-256x256-fox-round1.png",
+          "bytes": 197244,
+          "sha256": "bb18163efc6f5fcc19181c7262cbe9084dbce1e07d11932620897ae686942c89"
+        },
+        "size": [
+          256,
+          256
+        ],
+        "pixel_sha256": "afcbf9226ad77af96c64de086090f0b0ea3c0d4c4f5991a82221d12ad1af64d0",
+        "checker_score": 16.54331527217742,
+        "luma_std": 61.281298820221885,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-a/007-flux2-klein-4b-256x256-fox-round1.log",
+        "sha256": "1cf4542e9a4f13252cfc543508b53022eb86975a56c889450cab1986a08395aa"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "flux2-klein-4b",
+        "dimensions": [
+          256,
+          256
+        ],
+        "prompt": "fox",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "008-z-image-turbo-256x256-fox-round1",
+      "model": "z-image-turbo",
+      "width": 256,
+      "height": 256,
+      "prompt": "fox",
+      "phase": "round1",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "256",
+        "--height",
+        "256",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/008-z-image-turbo-256x256-fox-round1.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        1.4404296875,
+        1.220703125,
+        1.080078125
+      ],
+      "load_after": [
+        1.4404296875,
+        1.220703125,
+        1.080078125
+      ],
+      "returncode": 0,
+      "seconds": 2.130106749944389,
+      "peak_rss_bytes": 782680064,
+      "peak_footprint_bytes": 1405101224,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/008-z-image-turbo-256x256-fox-round1.log",
+        "bytes": 7517,
+        "sha256": "1fd54ef3d7a02f80ba79e743e64f72faca90f91b680052e5a449a1858420fce3"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/008-z-image-turbo-256x256-fox-round1.png",
+          "bytes": 197249,
+          "sha256": "309dc8d1618bc9237e1c1b1cdeaec1b950b52158d94b6cc88ff5ce6aaede0b4b"
+        },
+        "size": [
+          256,
+          256
+        ],
+        "pixel_sha256": "0b0831812e0d9c1f4924e2db96767c0c10f9b7b09b6ce8ba073cf6cf16326828",
+        "checker_score": 23.29171917002688,
+        "luma_std": 58.52131627820275,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-a/008-z-image-turbo-256x256-fox-round1.log",
+        "sha256": "4eb14692257b263bf231f352c1a6fcca36e9e9bcf0b4316f318ff2ad9d55bfbf"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          256,
+          256
+        ],
+        "prompt": "fox",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "009-flux2-klein-4b-512x512-fox-round1",
+      "model": "flux2-klein-4b",
+      "width": 512,
+      "height": 512,
+      "prompt": "fox",
+      "phase": "round1",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "512",
+        "--height",
+        "512",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/009-flux2-klein-4b-512x512-fox-round1.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        1.4404296875,
+        1.220703125,
+        1.080078125
+      ],
+      "load_after": [
+        1.32470703125,
+        1.2001953125,
+        1.07373046875
+      ],
+      "returncode": 0,
+      "seconds": 4.287678707856685,
+      "peak_rss_bytes": 1522237440,
+      "peak_footprint_bytes": 2143277448,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/009-flux2-klein-4b-512x512-fox-round1.log",
+        "bytes": 4721,
+        "sha256": "71e8cb69224fdd59d4ec39d1c8e1aa6273f45f01f894442fd8d6f99d9271aff4"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/009-flux2-klein-4b-512x512-fox-round1.png",
+          "bytes": 787369,
+          "sha256": "3db345dc4c2cdc9388f0e445029b44515b262ed18d04f6997690bd883c6c1823"
+        },
+        "size": [
+          512,
+          512
+        ],
+        "pixel_sha256": "d2930d37dee535f8e1db0fccb84958d5873c7ea2c2c7617a74f2c14556370f1f",
+        "checker_score": 9.957186259920634,
+        "luma_std": 57.51971169841822,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-a/009-flux2-klein-4b-512x512-fox-round1.log",
+        "sha256": "b303b1725da4389eec130d17dee5c315336259dfcf204927dcac478755f555db"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "flux2-klein-4b",
+        "dimensions": [
+          512,
+          512
+        ],
+        "prompt": "fox",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "010-z-image-turbo-512x512-fox-round1",
+      "model": "z-image-turbo",
+      "width": 512,
+      "height": 512,
+      "prompt": "fox",
+      "phase": "round1",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "512",
+        "--height",
+        "512",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/010-z-image-turbo-512x512-fox-round1.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        1.32470703125,
+        1.2001953125,
+        1.07373046875
+      ],
+      "load_after": [
+        1.29833984375,
+        1.19677734375,
+        1.0732421875
+      ],
+      "returncode": 0,
+      "seconds": 5.517354083713144,
+      "peak_rss_bytes": 1721024512,
+      "peak_footprint_bytes": 2373642416,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/010-z-image-turbo-512x512-fox-round1.log",
+        "bytes": 7533,
+        "sha256": "ab206c8bd9add238841f2dfd38a057a4d8c0ecdb6f87524034520cb23ca2df82"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/010-z-image-turbo-512x512-fox-round1.png",
+          "bytes": 787374,
+          "sha256": "5fca2d19018a9225900dd7e4da84b8dd56c25003bcd99398e697fbb45757e850"
+        },
+        "size": [
+          512,
+          512
+        ],
+        "pixel_sha256": "810425f8f2ba32944cf39facff2bee9622e88701fe13ad5c5b3b8cf58ddba282",
+        "checker_score": 16.028253141534393,
+        "luma_std": 54.02290528701195,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-a/010-z-image-turbo-512x512-fox-round1.log",
+        "sha256": "b9d991e4d6dbb9a75eeff9843f3ef6de33fbd76de6f09b8c479c75f5d921fbe7"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          512,
+          512
+        ],
+        "prompt": "fox",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "011-flux2-klein-4b-768x768-fox-round1",
+      "model": "flux2-klein-4b",
+      "width": 768,
+      "height": 768,
+      "prompt": "fox",
+      "phase": "round1",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "768",
+        "--height",
+        "768",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/011-flux2-klein-4b-768x768-fox-round1.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        1.29833984375,
+        1.19677734375,
+        1.0732421875
+      ],
+      "load_after": [
+        1.0986328125,
+        1.15673828125,
+        1.060546875
+      ],
+      "returncode": 0,
+      "seconds": 6.9948753751814365,
+      "peak_rss_bytes": 2627764224,
+      "peak_footprint_bytes": 3307459792,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/011-flux2-klein-4b-768x768-fox-round1.log",
+        "bytes": 4721,
+        "sha256": "c73d0441ed6bab04d2e7cf9357966ea6b520ffdbfc34f4514a3a6e46063406d5"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/011-flux2-klein-4b-768x768-fox-round1.png",
+          "bytes": 1770740,
+          "sha256": "bed402ba6e0acb6915faad919e3f7c126de1a6b8769bf35202a65b428ecc00a3"
+        },
+        "size": [
+          768,
+          768
+        ],
+        "pixel_sha256": "b3dbdc6a718b78a1649056cd8c5e778bdec17636afa5b456a49824d0da07b9b3",
+        "checker_score": 8.495254248903509,
+        "luma_std": 51.76948864869355,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-a/011-flux2-klein-4b-768x768-fox-round1.log",
+        "sha256": "1090fb2da9603fdc4a01861d8f6c3f3cb4f4de9541b6a8679ea6c2ef1b277caf"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "flux2-klein-4b",
+        "dimensions": [
+          768,
+          768
+        ],
+        "prompt": "fox",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "012-z-image-turbo-768x768-fox-round1",
+      "model": "z-image-turbo",
+      "width": 768,
+      "height": 768,
+      "prompt": "fox",
+      "phase": "round1",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "768",
+        "--height",
+        "768",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/012-z-image-turbo-768x768-fox-round1.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        1.0986328125,
+        1.15673828125,
+        1.060546875
+      ],
+      "load_after": [
+        0.92919921875,
+        1.1181640625,
+        1.0478515625
+      ],
+      "returncode": 0,
+      "seconds": 12.049039292149246,
+      "peak_rss_bytes": 3323396096,
+      "peak_footprint_bytes": 4061326664,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/012-z-image-turbo-768x768-fox-round1.log",
+        "bytes": 7542,
+        "sha256": "33a671cab5295f374623cfbf9ca51324759929530137e188680441e510f0012c"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/012-z-image-turbo-768x768-fox-round1.png",
+          "bytes": 1770745,
+          "sha256": "6f2a1b2a8e445b0834e8b16d00bb4e6de92908c3d810a7ce5947a40ad8075660"
+        },
+        "size": [
+          768,
+          768
+        ],
+        "pixel_sha256": "7647ee57b8cda740ceeb2255a18b7550152ad4b606d847e63a9feec95088ecd7",
+        "checker_score": 14.363887746710525,
+        "luma_std": 56.261978588182146,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-a/012-z-image-turbo-768x768-fox-round1.log",
+        "sha256": "fb16b0f3c770d6d6c31e4eb868a27df243a47aed47d1bf6573f607793c71d01d"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          768,
+          768
+        ],
+        "prompt": "fox",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "013-flux2-klein-4b-1024x1024-fox-round1",
+      "model": "flux2-klein-4b",
+      "width": 1024,
+      "height": 1024,
+      "prompt": "fox",
+      "phase": "round1",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "1024",
+        "--height",
+        "1024",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/013-flux2-klein-4b-1024x1024-fox-round1.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        0.92919921875,
+        1.1181640625,
+        1.0478515625
+      ],
+      "load_after": [
+        0.86572265625,
+        1.09716796875,
+        1.041015625
+      ],
+      "returncode": 0,
+      "seconds": 11.86825400032103,
+      "peak_rss_bytes": 4166582272,
+      "peak_footprint_bytes": 4902164816,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/013-flux2-klein-4b-1024x1024-fox-round1.log",
+        "bytes": 4728,
+        "sha256": "76da0b613777746f65916af30a3fe0a8c671ebdf8e605700a3734debe0445338"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/013-flux2-klein-4b-1024x1024-fox-round1.png",
+          "bytes": 3147359,
+          "sha256": "63f643c004712c46ed4498960b4c4d140a58483f577c79c4549449e2d720e8e6"
+        },
+        "size": [
+          1024,
+          1024
+        ],
+        "pixel_sha256": "afa4c8fb1ecbd1ecadee4042bfa62351eacbe3a841f67f71a3f2da65bbc505bb",
+        "checker_score": 8.985477797941272,
+        "luma_std": 56.46909117943018,
+        "problems": []
+      },
+      "certified_match": true,
+      "published_log": {
+        "path": "m4max-a/013-flux2-klein-4b-1024x1024-fox-round1.log",
+        "sha256": "6fcc998ddf382bcdf7e1534f905640e4a9b091a98daba2b6033244db23df3199"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "flux2-klein-4b",
+        "dimensions": [
+          1024,
+          1024
+        ],
+        "prompt": "fox",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "014-z-image-turbo-1024x1024-fox-round1",
+      "model": "z-image-turbo",
+      "width": 1024,
+      "height": 1024,
+      "prompt": "fox",
+      "phase": "round1",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "1024",
+        "--height",
+        "1024",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/014-z-image-turbo-1024x1024-fox-round1.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        0.86572265625,
+        1.09716796875,
+        1.041015625
+      ],
+      "load_after": [
+        0.70703125,
+        1.0400390625,
+        1.02099609375
+      ],
+      "returncode": 0,
+      "seconds": 21.938821707852185,
+      "peak_rss_bytes": 5541265408,
+      "peak_footprint_bytes": 6376337816,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/014-z-image-turbo-1024x1024-fox-round1.log",
+        "bytes": 7548,
+        "sha256": "fa18d29b29ad4dacb30e04dbf181b2a5d935b32e241e369fba1e73927836616f"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/014-z-image-turbo-1024x1024-fox-round1.png",
+          "bytes": 3147364,
+          "sha256": "f462da7aebb38b8ed36690d9a0583c632ea5fbc6fc0fd27f483bcf7ae5bccca6"
+        },
+        "size": [
+          1024,
+          1024
+        ],
+        "pixel_sha256": "c2ac10ec694ef04a01517fb11bd808c025e50c4e89a9a45eabe69f1109c59bb6",
+        "checker_score": 11.160113957923228,
+        "luma_std": 49.5128427442391,
+        "problems": []
+      },
+      "certified_match": true,
+      "published_log": {
+        "path": "m4max-a/014-z-image-turbo-1024x1024-fox-round1.log",
+        "sha256": "c2e21fe5cd7facf4e81bcc5e37e9a45fcafa1e7f39b695d8d55adc141b3c6b51"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          1024,
+          1024
+        ],
+        "prompt": "fox",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "015-flux2-klein-4b-1536x1536-fox-round1",
+      "model": "flux2-klein-4b",
+      "width": 1536,
+      "height": 1536,
+      "prompt": "fox",
+      "phase": "round1",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "1536",
+        "--height",
+        "1536",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/015-flux2-klein-4b-1536x1536-fox-round1.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        0.70703125,
+        1.0400390625,
+        1.02099609375
+      ],
+      "load_after": [
+        0.70703125,
+        1.0400390625,
+        1.02099609375
+      ],
+      "returncode": 1,
+      "seconds": 0.07455333275720477,
+      "peak_rss_bytes": 81969152,
+      "peak_footprint_bytes": 70453936,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/015-flux2-klein-4b-1536x1536-fox-round1.log",
+        "bytes": 1397,
+        "sha256": "3a3271470eaae17d9740e5702f33b308e0937995cee9744345d7d7df71942cd9"
+      },
+      "problems": [
+        "generation exited 1",
+        "image unavailable: [Errno 2] No such file or directory: '$HOME/repos/zdraw/runs/release-resolution-20261001/timing/015-flux2-klein-4b-1536x1536-fox-round1.png'"
+      ],
+      "published_log": {
+        "path": "m4max-a/015-flux2-klein-4b-1536x1536-fox-round1.log",
+        "sha256": "0d776118b26e4aa663a548757cdb772a1a7507c3165eccb2b938204e3bf06225"
+      }
+    },
+    {
+      "case": "016-z-image-turbo-1536x1536-fox-round1",
+      "model": "z-image-turbo",
+      "width": 1536,
+      "height": 1536,
+      "prompt": "fox",
+      "phase": "round1",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "1536",
+        "--height",
+        "1536",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/016-z-image-turbo-1536x1536-fox-round1.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        0.70703125,
+        1.0400390625,
+        1.02099609375
+      ],
+      "load_after": [
+        0.4765625,
+        0.92236328125,
+        0.9765625
+      ],
+      "returncode": 0,
+      "seconds": 56.21132058277726,
+      "peak_rss_bytes": 11872796672,
+      "peak_footprint_bytes": 12986369064,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/016-z-image-turbo-1536x1536-fox-round1.log",
+        "bytes": 7574,
+        "sha256": "008fdf6c200753c0e990728715e630334dcfc77f52626a8e52f723e2e8654b67"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/016-z-image-turbo-1536x1536-fox-round1.png",
+          "bytes": 7080336,
+          "sha256": "853556f02e87f421498bbc330ed33c5a44360f08c9bff7f76aaa41e24803bcf5"
+        },
+        "size": [
+          1536,
+          1536
+        ],
+        "pixel_sha256": "c2633fdbd5a6d57f1f7301476160e4185e93313c76ee162bafc8798f21f09901",
+        "checker_score": 8.634288137634526,
+        "luma_std": 46.12108700543315,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-a/016-z-image-turbo-1536x1536-fox-round1.log",
+        "sha256": "a54f8a9c676e1a28644210a4541a511f315d87f9f1eb03c9ed03630892c270df"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          1536,
+          1536
+        ],
+        "prompt": "fox",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "017-flux2-klein-4b-2048x2048-fox-round1",
+      "model": "flux2-klein-4b",
+      "width": 2048,
+      "height": 2048,
+      "prompt": "fox",
+      "phase": "round1",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "2048",
+        "--height",
+        "2048",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/017-flux2-klein-4b-2048x2048-fox-round1.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        0.4765625,
+        0.92236328125,
+        0.9765625
+      ],
+      "load_after": [
+        0.4765625,
+        0.92236328125,
+        0.9765625
+      ],
+      "returncode": 1,
+      "seconds": 0.07517054164782166,
+      "peak_rss_bytes": 82001920,
+      "peak_footprint_bytes": 70535928,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/017-flux2-klein-4b-2048x2048-fox-round1.log",
+        "bytes": 1397,
+        "sha256": "94b983ed6936fb7bb83a8a6b628ce71a34e833617d70ba3614b8366f149d65a8"
+      },
+      "problems": [
+        "generation exited 1",
+        "image unavailable: [Errno 2] No such file or directory: '$HOME/repos/zdraw/runs/release-resolution-20261001/timing/017-flux2-klein-4b-2048x2048-fox-round1.png'"
+      ],
+      "published_log": {
+        "path": "m4max-a/017-flux2-klein-4b-2048x2048-fox-round1.log",
+        "sha256": "92e38e2c4251c7572fe325c4cd13fd1431d5d91f0e8d5a515c8c80fe0388d03c"
+      }
+    },
+    {
+      "case": "018-z-image-turbo-2048x2048-fox-round1",
+      "model": "z-image-turbo",
+      "width": 2048,
+      "height": 2048,
+      "prompt": "fox",
+      "phase": "round1",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "2048",
+        "--height",
+        "2048",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/018-z-image-turbo-2048x2048-fox-round1.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        0.4765625,
+        0.92236328125,
+        0.9765625
+      ],
+      "load_after": [
+        0.16259765625,
+        0.6748046875,
+        0.869140625
+      ],
+      "returncode": 0,
+      "seconds": 120.3446885002777,
+      "peak_rss_bytes": 20777467904,
+      "peak_footprint_bytes": 22280576040,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/018-z-image-turbo-2048x2048-fox-round1.log",
+        "bytes": 7608,
+        "sha256": "eed7fe35494332183b1a3f07faf1000c3f5292032fd1947e57b58dbaf23be970"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/018-z-image-turbo-2048x2048-fox-round1.png",
+          "bytes": 12586292,
+          "sha256": "590dbb42df63f02b58c859fd61506f8792e4933242bcb2131cfcaae02f696269"
+        },
+        "size": [
+          2048,
+          2048
+        ],
+        "pixel_sha256": "d7a0257f3d2009c58b682ede1490a03709fcb56621d97b13713b904a5350d802",
+        "checker_score": 7.284103892207924,
+        "luma_std": 54.01853967978328,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-a/018-z-image-turbo-2048x2048-fox-round1.log",
+        "sha256": "22bf75ae81ca2f2f4c479632e050abc2b415e4c4a0c36665666e02d1e5668ca6"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          2048,
+          2048
+        ],
+        "prompt": "fox",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "019-flux2-klein-4b-1024x768-fox-round1",
+      "model": "flux2-klein-4b",
+      "width": 1024,
+      "height": 768,
+      "prompt": "fox",
+      "phase": "round1",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "1024",
+        "--height",
+        "768",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/019-flux2-klein-4b-1024x768-fox-round1.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        0.16259765625,
+        0.6748046875,
+        0.869140625
+      ],
+      "load_after": [
+        0.1494140625,
+        0.66357421875,
+        0.86376953125
+      ],
+      "returncode": 0,
+      "seconds": 8.741422541905195,
+      "peak_rss_bytes": 3283369984,
+      "peak_footprint_bytes": 3986970240,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/019-flux2-klein-4b-1024x768-fox-round1.log",
+        "bytes": 4724,
+        "sha256": "1cc6b9850c1be03a3c9b2c09c2ac37da1f33ea321256bf06bb33b344969e50c9"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/019-flux2-klein-4b-1024x768-fox-round1.png",
+          "bytes": 2360610,
+          "sha256": "f1d029c718955aa8ea53ef3612248b16f3b746b27105aa547de5497d361459b0"
+        },
+        "size": [
+          1024,
+          768
+        ],
+        "pixel_sha256": "ae9beffca45d0c1adf7df048216b6749e6aebd18a0c199918377214fdabe8223",
+        "checker_score": 10.46414571713692,
+        "luma_std": 51.03034488722049,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-a/019-flux2-klein-4b-1024x768-fox-round1.log",
+        "sha256": "38d63127b65c8450216e4b0b159e4b0319961b88637f6def74b747361529ffb4"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "flux2-klein-4b",
+        "dimensions": [
+          1024,
+          768
+        ],
+        "prompt": "fox",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "020-z-image-turbo-1024x768-fox-round1",
+      "model": "z-image-turbo",
+      "width": 1024,
+      "height": 768,
+      "prompt": "fox",
+      "phase": "round1",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "1024",
+        "--height",
+        "768",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/020-z-image-turbo-1024x768-fox-round1.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        0.1494140625,
+        0.66357421875,
+        0.86376953125
+      ],
+      "load_after": [
+        0.298828125,
+        0.6669921875,
+        0.85986328125
+      ],
+      "returncode": 0,
+      "seconds": 16.262411249801517,
+      "peak_rss_bytes": 4264935424,
+      "peak_footprint_bytes": 5044235688,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/020-z-image-turbo-1024x768-fox-round1.log",
+        "bytes": 7545,
+        "sha256": "698d156bf85600d4d5474bdc09cf152988a9821af6e349a5bc80248b7da2ef77"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/020-z-image-turbo-1024x768-fox-round1.png",
+          "bytes": 2360615,
+          "sha256": "8cc11ffb81b04729e1933a1205b6f403a9522962250272d09be724a58210ad80"
+        },
+        "size": [
+          1024,
+          768
+        ],
+        "pixel_sha256": "aae1a98036ec35e353b94826cc10551cf4b407acb50595f869ef2fa101a66aa5",
+        "checker_score": 12.30484128937008,
+        "luma_std": 51.95165116022688,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-a/020-z-image-turbo-1024x768-fox-round1.log",
+        "sha256": "472140b73fc56ab45d690f7f36e0a679f1dea995f935ba04d602b86a06b62bc8"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          1024,
+          768
+        ],
+        "prompt": "fox",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "021-flux2-klein-4b-768x1024-fox-round1",
+      "model": "flux2-klein-4b",
+      "width": 768,
+      "height": 1024,
+      "prompt": "fox",
+      "phase": "round1",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "768",
+        "--height",
+        "1024",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/021-flux2-klein-4b-768x1024-fox-round1.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        0.298828125,
+        0.6669921875,
+        0.85986328125
+      ],
+      "load_after": [
+        0.32568359375,
+        0.6611328125,
+        0.85498046875
+      ],
+      "returncode": 0,
+      "seconds": 9.035609874874353,
+      "peak_rss_bytes": 3283386368,
+      "peak_footprint_bytes": 3987003032,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/021-flux2-klein-4b-768x1024-fox-round1.log",
+        "bytes": 4724,
+        "sha256": "3bfe67d55484ba61b7fa6c6066454a009fb8b01e00746d51284b7799a448156f"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/021-flux2-klein-4b-768x1024-fox-round1.png",
+          "bytes": 2360866,
+          "sha256": "1d2c79bcc1539a6906d1cce1142e603a76f61684c78355a776aaf68907aefefa"
+        },
+        "size": [
+          768,
+          1024
+        ],
+        "pixel_sha256": "47aa6817c8efc34f5ebc537abf9c23a9a3a7d45418240c2fc04e361e24d93987",
+        "checker_score": 10.722478926809211,
+        "luma_std": 53.88361774052423,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-a/021-flux2-klein-4b-768x1024-fox-round1.log",
+        "sha256": "58b224838401244caf3f925d371bb216fb654a43845407811d5073c59069871b"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "flux2-klein-4b",
+        "dimensions": [
+          768,
+          1024
+        ],
+        "prompt": "fox",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "022-z-image-turbo-768x1024-fox-round1",
+      "model": "z-image-turbo",
+      "width": 768,
+      "height": 1024,
+      "prompt": "fox",
+      "phase": "round1",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "768",
+        "--height",
+        "1024",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/022-z-image-turbo-768x1024-fox-round1.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        0.32568359375,
+        0.6611328125,
+        0.85498046875
+      ],
+      "load_after": [
+        0.25244140625,
+        0.6279296875,
+        0.8388671875
+      ],
+      "returncode": 0,
+      "seconds": 17.037865417078137,
+      "peak_rss_bytes": 4265558016,
+      "peak_footprint_bytes": 5044809056,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/022-z-image-turbo-768x1024-fox-round1.log",
+        "bytes": 7545,
+        "sha256": "8e4c37a1715628826088d18aa419a49f13aec9ca4237cbf7679fbfd3d67ac07c"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/022-z-image-turbo-768x1024-fox-round1.png",
+          "bytes": 2360871,
+          "sha256": "6e33d93d8b23af6530b21c33768f2951d11647f6b289ff5430b2b0f6354cb230"
+        },
+        "size": [
+          768,
+          1024
+        ],
+        "pixel_sha256": "fc2883e30eca36b84d7676946cc2309b7c72d36b79806a93d1f0e768ac2adbbd",
+        "checker_score": 11.735283888432019,
+        "luma_std": 56.68147103555787,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-a/022-z-image-turbo-768x1024-fox-round1.log",
+        "sha256": "0689e202e006e09eda1d9c09ea3f5027a9b4c80e12951b020d07d1f21c319b35"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          768,
+          1024
+        ],
+        "prompt": "fox",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "023-flux2-klein-4b-544x800-fox-round1",
+      "model": "flux2-klein-4b",
+      "width": 544,
+      "height": 800,
+      "prompt": "fox",
+      "phase": "round1",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "544",
+        "--height",
+        "800",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/023-flux2-klein-4b-544x800-fox-round1.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        0.25244140625,
+        0.6279296875,
+        0.8388671875
+      ],
+      "load_after": [
+        0.25244140625,
+        0.6279296875,
+        0.8388671875
+      ],
+      "returncode": 1,
+      "seconds": 0.5057620829902589,
+      "peak_rss_bytes": 790315008,
+      "peak_footprint_bytes": 926305568,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/023-flux2-klein-4b-544x800-fox-round1.log",
+        "bytes": 1396,
+        "sha256": "c46062263a30ceea12912ebafbdae0763bd89752072c832f72b1523634e5cae6"
+      },
+      "problems": [
+        "generation exited 1",
+        "image unavailable: [Errno 2] No such file or directory: '$HOME/repos/zdraw/runs/release-resolution-20261001/timing/023-flux2-klein-4b-544x800-fox-round1.png'"
+      ],
+      "published_log": {
+        "path": "m4max-a/023-flux2-klein-4b-544x800-fox-round1.log",
+        "sha256": "21c240ca59195814d46d92a4d3e7e785d71308a2630370fcf7c012fb29fb8027"
+      }
+    },
+    {
+      "case": "024-z-image-turbo-544x800-fox-round1",
+      "model": "z-image-turbo",
+      "width": 544,
+      "height": 800,
+      "prompt": "fox",
+      "phase": "round1",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "544",
+        "--height",
+        "800",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/024-z-image-turbo-544x800-fox-round1.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        0.25244140625,
+        0.6279296875,
+        0.8388671875
+      ],
+      "load_after": [
+        0.435546875,
+        0.63134765625,
+        0.83203125
+      ],
+      "returncode": 0,
+      "seconds": 31.263239707797766,
+      "peak_rss_bytes": 2431238144,
+      "peak_footprint_bytes": 2658019552,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/024-z-image-turbo-544x800-fox-round1.log",
+        "bytes": 7542,
+        "sha256": "4340d79bd59345fbd70e9eb85f797ac79cc3cb1ac9ec09f3ec7d890385e105f6"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/024-z-image-turbo-544x800-fox-round1.png",
+          "bytes": 1306865,
+          "sha256": "38f5d56b4195a15f923fca8d762e20d50b5e13428553df7ae6dde43b8ef03918"
+        },
+        "size": [
+          544,
+          800
+        ],
+        "pixel_sha256": "4d3efd337dc3eb644d7b550010c386e2f7d7bb8e36cd3ebbc35ef3f1609b874d",
+        "checker_score": 14.199353233830845,
+        "luma_std": 50.07879643520581,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-a/024-z-image-turbo-544x800-fox-round1.log",
+        "sha256": "cd7be3d62a8a28bf9d4b6e26778e76eb5ad451462fd5b12423aa4b504166bbe6"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          544,
+          800
+        ],
+        "prompt": "fox",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "025-z-image-turbo-544x800-fox-round2",
+      "model": "z-image-turbo",
+      "width": 544,
+      "height": 800,
+      "prompt": "fox",
+      "phase": "round2",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "544",
+        "--height",
+        "800",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/025-z-image-turbo-544x800-fox-round2.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        0.435546875,
+        0.63134765625,
+        0.83203125
+      ],
+      "load_after": [
+        0.599609375,
+        0.64990234375,
+        0.83203125
+      ],
+      "returncode": 0,
+      "seconds": 31.281036875210702,
+      "peak_rss_bytes": 2431156224,
+      "peak_footprint_bytes": 2658003264,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/025-z-image-turbo-544x800-fox-round2.log",
+        "bytes": 7542,
+        "sha256": "14c0fd9f8b185b78157e589833d078f2db72d3bc8be8591e67d7ff6afdc46392"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/025-z-image-turbo-544x800-fox-round2.png",
+          "bytes": 1306865,
+          "sha256": "38f5d56b4195a15f923fca8d762e20d50b5e13428553df7ae6dde43b8ef03918"
+        },
+        "size": [
+          544,
+          800
+        ],
+        "pixel_sha256": "4d3efd337dc3eb644d7b550010c386e2f7d7bb8e36cd3ebbc35ef3f1609b874d",
+        "checker_score": 14.199353233830845,
+        "luma_std": 50.07879643520581,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-a/025-z-image-turbo-544x800-fox-round2.log",
+        "sha256": "b4f0acb0bc4250bcbe4dbc4d02d56fd4718245ded72e989c04ad00d87bf6303d"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          544,
+          800
+        ],
+        "prompt": "fox",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "026-flux2-klein-4b-544x800-fox-round2",
+      "model": "flux2-klein-4b",
+      "width": 544,
+      "height": 800,
+      "prompt": "fox",
+      "phase": "round2",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "544",
+        "--height",
+        "800",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/026-flux2-klein-4b-544x800-fox-round2.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        0.599609375,
+        0.64990234375,
+        0.83203125
+      ],
+      "load_after": [
+        0.55126953125,
+        0.638671875,
+        0.8271484375
+      ],
+      "returncode": 1,
+      "seconds": 0.5017720418982208,
+      "peak_rss_bytes": 790495232,
+      "peak_footprint_bytes": 926502200,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/026-flux2-klein-4b-544x800-fox-round2.log",
+        "bytes": 1396,
+        "sha256": "d58dbf4d0bc97ad7ee0354c8e2a63225576be68a0e79168391725ac1df541149"
+      },
+      "problems": [
+        "generation exited 1",
+        "image unavailable: [Errno 2] No such file or directory: '$HOME/repos/zdraw/runs/release-resolution-20261001/timing/026-flux2-klein-4b-544x800-fox-round2.png'"
+      ],
+      "published_log": {
+        "path": "m4max-a/026-flux2-klein-4b-544x800-fox-round2.log",
+        "sha256": "33ee3184dc134e2d914b799903bb5c81c16a943ed693d596645068b92b1e10f2"
+      }
+    },
+    {
+      "case": "027-z-image-turbo-768x1024-fox-round2",
+      "model": "z-image-turbo",
+      "width": 768,
+      "height": 1024,
+      "prompt": "fox",
+      "phase": "round2",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "768",
+        "--height",
+        "1024",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/027-z-image-turbo-768x1024-fox-round2.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        0.55126953125,
+        0.638671875,
+        0.8271484375
+      ],
+      "load_after": [
+        0.501953125,
+        0.623046875,
+        0.818359375
+      ],
+      "returncode": 0,
+      "seconds": 16.018655917141587,
+      "peak_rss_bytes": 4267212800,
+      "peak_footprint_bytes": 5046545880,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/027-z-image-turbo-768x1024-fox-round2.log",
+        "bytes": 7545,
+        "sha256": "6b0e996f80a0142dead645b88260d008a02262b34a588616889fead5de87cfab"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/027-z-image-turbo-768x1024-fox-round2.png",
+          "bytes": 2360871,
+          "sha256": "6e33d93d8b23af6530b21c33768f2951d11647f6b289ff5430b2b0f6354cb230"
+        },
+        "size": [
+          768,
+          1024
+        ],
+        "pixel_sha256": "fc2883e30eca36b84d7676946cc2309b7c72d36b79806a93d1f0e768ac2adbbd",
+        "checker_score": 11.735283888432019,
+        "luma_std": 56.68147103555787,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-a/027-z-image-turbo-768x1024-fox-round2.log",
+        "sha256": "11c37de8db8d6155b6aa734e0ba016b0c94e969aa156b126c4171967f4c66871"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          768,
+          1024
+        ],
+        "prompt": "fox",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "028-flux2-klein-4b-768x1024-fox-round2",
+      "model": "flux2-klein-4b",
+      "width": 768,
+      "height": 1024,
+      "prompt": "fox",
+      "phase": "round2",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "768",
+        "--height",
+        "1024",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/028-flux2-klein-4b-768x1024-fox-round2.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        0.501953125,
+        0.623046875,
+        0.818359375
+      ],
+      "load_after": [
+        0.54150390625,
+        0.62890625,
+        0.8193359375
+      ],
+      "returncode": 0,
+      "seconds": 8.693721082992852,
+      "peak_rss_bytes": 3283222528,
+      "peak_footprint_bytes": 3986822784,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/028-flux2-klein-4b-768x1024-fox-round2.log",
+        "bytes": 4724,
+        "sha256": "9691e27041811a6aca243a429bd856965083524025fb44f743ffd2b8861e1308"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/028-flux2-klein-4b-768x1024-fox-round2.png",
+          "bytes": 2360866,
+          "sha256": "1d2c79bcc1539a6906d1cce1142e603a76f61684c78355a776aaf68907aefefa"
+        },
+        "size": [
+          768,
+          1024
+        ],
+        "pixel_sha256": "47aa6817c8efc34f5ebc537abf9c23a9a3a7d45418240c2fc04e361e24d93987",
+        "checker_score": 10.722478926809211,
+        "luma_std": 53.88361774052423,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-a/028-flux2-klein-4b-768x1024-fox-round2.log",
+        "sha256": "93bf84d9eb432db2e0e41a7635e1ed2bedafd5f9d1e7c5b9bb7d8cf1725c2001"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "flux2-klein-4b",
+        "dimensions": [
+          768,
+          1024
+        ],
+        "prompt": "fox",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "029-z-image-turbo-1024x768-fox-round2",
+      "model": "z-image-turbo",
+      "width": 1024,
+      "height": 768,
+      "prompt": "fox",
+      "phase": "round2",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "1024",
+        "--height",
+        "768",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/029-z-image-turbo-1024x768-fox-round2.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        0.54150390625,
+        0.62890625,
+        0.8193359375
+      ],
+      "load_after": [
+        0.51708984375,
+        0.619140625,
+        0.8115234375
+      ],
+      "returncode": 0,
+      "seconds": 15.947084833402187,
+      "peak_rss_bytes": 4267524096,
+      "peak_footprint_bytes": 5047136112,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/029-z-image-turbo-1024x768-fox-round2.log",
+        "bytes": 7545,
+        "sha256": "2f4e768e51b940278822adf70f789ffaa57dd2b559e4af9fee24bc1eb52de735"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/029-z-image-turbo-1024x768-fox-round2.png",
+          "bytes": 2360615,
+          "sha256": "8cc11ffb81b04729e1933a1205b6f403a9522962250272d09be724a58210ad80"
+        },
+        "size": [
+          1024,
+          768
+        ],
+        "pixel_sha256": "aae1a98036ec35e353b94826cc10551cf4b407acb50595f869ef2fa101a66aa5",
+        "checker_score": 12.30484128937008,
+        "luma_std": 51.95165116022688,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-a/029-z-image-turbo-1024x768-fox-round2.log",
+        "sha256": "ffb376a6e90bc621a22ba5c57ad687998b91b259ad137c61c0cc1e5d38ba4c09"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          1024,
+          768
+        ],
+        "prompt": "fox",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "030-flux2-klein-4b-1024x768-fox-round2",
+      "model": "flux2-klein-4b",
+      "width": 1024,
+      "height": 768,
+      "prompt": "fox",
+      "phase": "round2",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "1024",
+        "--height",
+        "768",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/030-flux2-klein-4b-1024x768-fox-round2.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        0.51708984375,
+        0.619140625,
+        0.8115234375
+      ],
+      "load_after": [
+        0.4755859375,
+        0.6083984375,
+        0.806640625
+      ],
+      "returncode": 0,
+      "seconds": 8.745095959398896,
+      "peak_rss_bytes": 3283042304,
+      "peak_footprint_bytes": 3986675376,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/030-flux2-klein-4b-1024x768-fox-round2.log",
+        "bytes": 4724,
+        "sha256": "455cca7f8fe8e33207d2d9d41877bdf723f1ed34494e549c87452e9559615768"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/030-flux2-klein-4b-1024x768-fox-round2.png",
+          "bytes": 2360610,
+          "sha256": "f1d029c718955aa8ea53ef3612248b16f3b746b27105aa547de5497d361459b0"
+        },
+        "size": [
+          1024,
+          768
+        ],
+        "pixel_sha256": "ae9beffca45d0c1adf7df048216b6749e6aebd18a0c199918377214fdabe8223",
+        "checker_score": 10.46414571713692,
+        "luma_std": 51.03034488722049,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-a/030-flux2-klein-4b-1024x768-fox-round2.log",
+        "sha256": "57a8e39d35b223803b0b34a0d24171ca3b4d2498d46af3977b4f7489eeeca7b8"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "flux2-klein-4b",
+        "dimensions": [
+          1024,
+          768
+        ],
+        "prompt": "fox",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "031-z-image-turbo-2048x2048-fox-round2",
+      "model": "z-image-turbo",
+      "width": 2048,
+      "height": 2048,
+      "prompt": "fox",
+      "phase": "round2",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "2048",
+        "--height",
+        "2048",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/031-z-image-turbo-2048x2048-fox-round2.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        0.4755859375,
+        0.6083984375,
+        0.806640625
+      ],
+      "load_after": [
+        0.244140625,
+        0.47509765625,
+        0.7236328125
+      ],
+      "returncode": 0,
+      "seconds": 122.59342958359048,
+      "peak_rss_bytes": 20779581440,
+      "peak_footprint_bytes": 22282820696,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/031-z-image-turbo-2048x2048-fox-round2.log",
+        "bytes": 7608,
+        "sha256": "b45fd89241e3cde27114a400221f3005744a38be3054c6a33ac707d9c8c28de7"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/031-z-image-turbo-2048x2048-fox-round2.png",
+          "bytes": 12586292,
+          "sha256": "590dbb42df63f02b58c859fd61506f8792e4933242bcb2131cfcaae02f696269"
+        },
+        "size": [
+          2048,
+          2048
+        ],
+        "pixel_sha256": "d7a0257f3d2009c58b682ede1490a03709fcb56621d97b13713b904a5350d802",
+        "checker_score": 7.284103892207924,
+        "luma_std": 54.01853967978328,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-a/031-z-image-turbo-2048x2048-fox-round2.log",
+        "sha256": "f2917f01db9c6ac5b7e56f327fc345c4bcfdd972570a63f0dfda459848145e31"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          2048,
+          2048
+        ],
+        "prompt": "fox",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "032-flux2-klein-4b-2048x2048-fox-round2",
+      "model": "flux2-klein-4b",
+      "width": 2048,
+      "height": 2048,
+      "prompt": "fox",
+      "phase": "round2",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "2048",
+        "--height",
+        "2048",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/032-flux2-klein-4b-2048x2048-fox-round2.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        0.244140625,
+        0.47509765625,
+        0.7236328125
+      ],
+      "load_after": [
+        0.244140625,
+        0.47509765625,
+        0.7236328125
+      ],
+      "returncode": 1,
+      "seconds": 0.07485537510365248,
+      "peak_rss_bytes": 81887232,
+      "peak_footprint_bytes": 70372016,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/032-flux2-klein-4b-2048x2048-fox-round2.log",
+        "bytes": 1397,
+        "sha256": "9fce45b57f564d447c78b014984c04281c784d17553de29e4f49bf187923f1a2"
+      },
+      "problems": [
+        "generation exited 1",
+        "image unavailable: [Errno 2] No such file or directory: '$HOME/repos/zdraw/runs/release-resolution-20261001/timing/032-flux2-klein-4b-2048x2048-fox-round2.png'"
+      ],
+      "published_log": {
+        "path": "m4max-a/032-flux2-klein-4b-2048x2048-fox-round2.log",
+        "sha256": "ab462224d71818a3600f10e87fd05a18169a24c45bb33036b8049fe3d4ebaab9"
+      }
+    },
+    {
+      "case": "033-z-image-turbo-1536x1536-fox-round2",
+      "model": "z-image-turbo",
+      "width": 1536,
+      "height": 1536,
+      "prompt": "fox",
+      "phase": "round2",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "1536",
+        "--height",
+        "1536",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/033-z-image-turbo-1536x1536-fox-round2.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        0.244140625,
+        0.47509765625,
+        0.7236328125
+      ],
+      "load_after": [
+        2.65185546875,
+        0.9951171875,
+        0.8916015625
+      ],
+      "returncode": 0,
+      "seconds": 62.120345667004585,
+      "peak_rss_bytes": 11870584832,
+      "peak_footprint_bytes": 12984009552,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/033-z-image-turbo-1536x1536-fox-round2.log",
+        "bytes": 7577,
+        "sha256": "ac5b0d554674e6a9a7888ed0a0e1c9008a0799bb62b7caa4b93eb1ef283c3b4a"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/033-z-image-turbo-1536x1536-fox-round2.png",
+          "bytes": 7080336,
+          "sha256": "853556f02e87f421498bbc330ed33c5a44360f08c9bff7f76aaa41e24803bcf5"
+        },
+        "size": [
+          1536,
+          1536
+        ],
+        "pixel_sha256": "c2633fdbd5a6d57f1f7301476160e4185e93313c76ee162bafc8798f21f09901",
+        "checker_score": 8.634288137634526,
+        "luma_std": 46.12108700543315,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-a/033-z-image-turbo-1536x1536-fox-round2.log",
+        "sha256": "80b54319cf9dddc5b829160c77117cffe1ffc7495072a9cd6bd7056559e89088"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          1536,
+          1536
+        ],
+        "prompt": "fox",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "034-flux2-klein-4b-1536x1536-fox-round2",
+      "model": "flux2-klein-4b",
+      "width": 1536,
+      "height": 1536,
+      "prompt": "fox",
+      "phase": "round2",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "1536",
+        "--height",
+        "1536",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/034-flux2-klein-4b-1536x1536-fox-round2.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        2.65185546875,
+        0.9951171875,
+        0.8916015625
+      ],
+      "load_after": [
+        2.65185546875,
+        0.9951171875,
+        0.8916015625
+      ],
+      "returncode": 1,
+      "seconds": 0.07426174962893128,
+      "peak_rss_bytes": 81969152,
+      "peak_footprint_bytes": 70453936,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/034-flux2-klein-4b-1536x1536-fox-round2.log",
+        "bytes": 1397,
+        "sha256": "0f4e93b9a07176f9bc0237b80637a00551c9e58cda284e3a23d1e9985fc7aa88"
+      },
+      "problems": [
+        "generation exited 1",
+        "image unavailable: [Errno 2] No such file or directory: '$HOME/repos/zdraw/runs/release-resolution-20261001/timing/034-flux2-klein-4b-1536x1536-fox-round2.png'"
+      ],
+      "published_log": {
+        "path": "m4max-a/034-flux2-klein-4b-1536x1536-fox-round2.log",
+        "sha256": "1a57a137254669e3455ed70829f101748aad77871b55795d0db97855fbe60eef"
+      }
+    },
+    {
+      "case": "035-z-image-turbo-1024x1024-fox-round2",
+      "model": "z-image-turbo",
+      "width": 1024,
+      "height": 1024,
+      "prompt": "fox",
+      "phase": "round2",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "1024",
+        "--height",
+        "1024",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/035-z-image-turbo-1024x1024-fox-round2.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        2.65185546875,
+        0.9951171875,
+        0.8916015625
+      ],
+      "load_after": [
+        1.81396484375,
+        0.93017578125,
+        0.87060546875
+      ],
+      "returncode": 0,
+      "seconds": 24.83471708279103,
+      "peak_rss_bytes": 5541363712,
+      "peak_footprint_bytes": 6376764280,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/035-z-image-turbo-1024x1024-fox-round2.log",
+        "bytes": 7548,
+        "sha256": "8f724a395be3140e18113d42d6c82293c3715e299cc631899049ae1471548d35"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/035-z-image-turbo-1024x1024-fox-round2.png",
+          "bytes": 3147364,
+          "sha256": "f462da7aebb38b8ed36690d9a0583c632ea5fbc6fc0fd27f483bcf7ae5bccca6"
+        },
+        "size": [
+          1024,
+          1024
+        ],
+        "pixel_sha256": "c2ac10ec694ef04a01517fb11bd808c025e50c4e89a9a45eabe69f1109c59bb6",
+        "checker_score": 11.160113957923228,
+        "luma_std": 49.5128427442391,
+        "problems": []
+      },
+      "certified_match": true,
+      "published_log": {
+        "path": "m4max-a/035-z-image-turbo-1024x1024-fox-round2.log",
+        "sha256": "0013f364ac171f5c3fa11cf8c779e57155636e83aa6e38a1abbd850dda3d699a"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          1024,
+          1024
+        ],
+        "prompt": "fox",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "036-flux2-klein-4b-1024x1024-fox-round2",
+      "model": "flux2-klein-4b",
+      "width": 1024,
+      "height": 1024,
+      "prompt": "fox",
+      "phase": "round2",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "1024",
+        "--height",
+        "1024",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/036-flux2-klein-4b-1024x1024-fox-round2.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        1.81396484375,
+        0.93017578125,
+        0.87060546875
+      ],
+      "load_after": [
+        1.55908203125,
+        0.91650390625,
+        0.8662109375
+      ],
+      "returncode": 0,
+      "seconds": 13.179000249598175,
+      "peak_rss_bytes": 4166696960,
+      "peak_footprint_bytes": 4902279504,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/036-flux2-klein-4b-1024x1024-fox-round2.log",
+        "bytes": 4728,
+        "sha256": "ddda3668eed2a94cc9711e1c303d66cb43ccfe6a2333bf90e110a4fda10e2b31"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/036-flux2-klein-4b-1024x1024-fox-round2.png",
+          "bytes": 3147359,
+          "sha256": "63f643c004712c46ed4498960b4c4d140a58483f577c79c4549449e2d720e8e6"
+        },
+        "size": [
+          1024,
+          1024
+        ],
+        "pixel_sha256": "afa4c8fb1ecbd1ecadee4042bfa62351eacbe3a841f67f71a3f2da65bbc505bb",
+        "checker_score": 8.985477797941272,
+        "luma_std": 56.46909117943018,
+        "problems": []
+      },
+      "certified_match": true,
+      "published_log": {
+        "path": "m4max-a/036-flux2-klein-4b-1024x1024-fox-round2.log",
+        "sha256": "9218a42bdd7b463d84aa7221238f73bc09d3b0307698f314215b187aee25a4e5"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "flux2-klein-4b",
+        "dimensions": [
+          1024,
+          1024
+        ],
+        "prompt": "fox",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "037-z-image-turbo-768x768-fox-round2",
+      "model": "z-image-turbo",
+      "width": 768,
+      "height": 768,
+      "prompt": "fox",
+      "phase": "round2",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "768",
+        "--height",
+        "768",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/037-z-image-turbo-768x768-fox-round2.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        1.55908203125,
+        0.91650390625,
+        0.8662109375
+      ],
+      "load_after": [
+        1.54638671875,
+        0.93505859375,
+        0.873046875
+      ],
+      "returncode": 0,
+      "seconds": 13.426612417213619,
+      "peak_rss_bytes": 3328360448,
+      "peak_footprint_bytes": 4065930040,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/037-z-image-turbo-768x768-fox-round2.log",
+        "bytes": 7542,
+        "sha256": "23db8ee43e713f3b132793f461d96c81c41abd04d59cc1b8d2da5422fcb4240e"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/037-z-image-turbo-768x768-fox-round2.png",
+          "bytes": 1770745,
+          "sha256": "6f2a1b2a8e445b0834e8b16d00bb4e6de92908c3d810a7ce5947a40ad8075660"
+        },
+        "size": [
+          768,
+          768
+        ],
+        "pixel_sha256": "7647ee57b8cda740ceeb2255a18b7550152ad4b606d847e63a9feec95088ecd7",
+        "checker_score": 14.363887746710525,
+        "luma_std": 56.261978588182146,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-a/037-z-image-turbo-768x768-fox-round2.log",
+        "sha256": "c9ed2404f01b1b3fe8c65a2a50045b122ab53437a017226104e81b97de56107a"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          768,
+          768
+        ],
+        "prompt": "fox",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "038-flux2-klein-4b-768x768-fox-round2",
+      "model": "flux2-klein-4b",
+      "width": 768,
+      "height": 768,
+      "prompt": "fox",
+      "phase": "round2",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "768",
+        "--height",
+        "768",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/038-flux2-klein-4b-768x768-fox-round2.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        1.54638671875,
+        0.93505859375,
+        0.873046875
+      ],
+      "load_after": [
+        1.38818359375,
+        0.92041015625,
+        0.8681640625
+      ],
+      "returncode": 0,
+      "seconds": 7.527424708008766,
+      "peak_rss_bytes": 2627584000,
+      "peak_footprint_bytes": 3307279568,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/038-flux2-klein-4b-768x768-fox-round2.log",
+        "bytes": 4721,
+        "sha256": "a27cb315790ed6fb5e6b9bfe76f80674126a377565545562aa7054f8632d9d30"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/038-flux2-klein-4b-768x768-fox-round2.png",
+          "bytes": 1770740,
+          "sha256": "bed402ba6e0acb6915faad919e3f7c126de1a6b8769bf35202a65b428ecc00a3"
+        },
+        "size": [
+          768,
+          768
+        ],
+        "pixel_sha256": "b3dbdc6a718b78a1649056cd8c5e778bdec17636afa5b456a49824d0da07b9b3",
+        "checker_score": 8.495254248903509,
+        "luma_std": 51.76948864869355,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-a/038-flux2-klein-4b-768x768-fox-round2.log",
+        "sha256": "42315d146098fc39d29797408afbb75eaca4a4d5222392d06fc7c1abd74ab04b"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "flux2-klein-4b",
+        "dimensions": [
+          768,
+          768
+        ],
+        "prompt": "fox",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "039-z-image-turbo-512x512-fox-round2",
+      "model": "z-image-turbo",
+      "width": 512,
+      "height": 512,
+      "prompt": "fox",
+      "phase": "round2",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "512",
+        "--height",
+        "512",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/039-z-image-turbo-512x512-fox-round2.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        1.38818359375,
+        0.92041015625,
+        0.8681640625
+      ],
+      "load_after": [
+        1.27685546875,
+        0.90478515625,
+        0.86279296875
+      ],
+      "returncode": 0,
+      "seconds": 6.114155165851116,
+      "peak_rss_bytes": 1720958976,
+      "peak_footprint_bytes": 2373199496,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/039-z-image-turbo-512x512-fox-round2.log",
+        "bytes": 7533,
+        "sha256": "36504a02cc59b26c4635775022ea4f125340bd089722fe0daf8ccae9f9b6639e"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/039-z-image-turbo-512x512-fox-round2.png",
+          "bytes": 787374,
+          "sha256": "5fca2d19018a9225900dd7e4da84b8dd56c25003bcd99398e697fbb45757e850"
+        },
+        "size": [
+          512,
+          512
+        ],
+        "pixel_sha256": "810425f8f2ba32944cf39facff2bee9622e88701fe13ad5c5b3b8cf58ddba282",
+        "checker_score": 16.028253141534393,
+        "luma_std": 54.02290528701195,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-a/039-z-image-turbo-512x512-fox-round2.log",
+        "sha256": "332295f0a9ad32ee7218cb576bc10b25b8cf27759e4a654e931f7960c605e900"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          512,
+          512
+        ],
+        "prompt": "fox",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "040-flux2-klein-4b-512x512-fox-round2",
+      "model": "flux2-klein-4b",
+      "width": 512,
+      "height": 512,
+      "prompt": "fox",
+      "phase": "round2",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "512",
+        "--height",
+        "512",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/040-flux2-klein-4b-512x512-fox-round2.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        1.27685546875,
+        0.90478515625,
+        0.86279296875
+      ],
+      "load_after": [
+        1.17431640625,
+        0.8896484375,
+        0.857421875
+      ],
+      "returncode": 0,
+      "seconds": 4.540265957824886,
+      "peak_rss_bytes": 1522335744,
+      "peak_footprint_bytes": 2143392160,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/040-flux2-klein-4b-512x512-fox-round2.log",
+        "bytes": 4721,
+        "sha256": "c5e8dc40ad2db0e87438c5c45956fe639e4a1ad33b8966e024a70a7878e4cb42"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/040-flux2-klein-4b-512x512-fox-round2.png",
+          "bytes": 787369,
+          "sha256": "3db345dc4c2cdc9388f0e445029b44515b262ed18d04f6997690bd883c6c1823"
+        },
+        "size": [
+          512,
+          512
+        ],
+        "pixel_sha256": "d2930d37dee535f8e1db0fccb84958d5873c7ea2c2c7617a74f2c14556370f1f",
+        "checker_score": 9.957186259920634,
+        "luma_std": 57.51971169841822,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-a/040-flux2-klein-4b-512x512-fox-round2.log",
+        "sha256": "dd19a1cb99c5c589547f04115bcc78246405ab1384508b1559d470f8336e7bec"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "flux2-klein-4b",
+        "dimensions": [
+          512,
+          512
+        ],
+        "prompt": "fox",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "041-z-image-turbo-256x256-fox-round2",
+      "model": "z-image-turbo",
+      "width": 256,
+      "height": 256,
+      "prompt": "fox",
+      "phase": "round2",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "256",
+        "--height",
+        "256",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/041-z-image-turbo-256x256-fox-round2.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        1.17431640625,
+        0.8896484375,
+        0.857421875
+      ],
+      "load_after": [
+        1.17431640625,
+        0.8896484375,
+        0.857421875
+      ],
+      "returncode": 0,
+      "seconds": 2.232115457765758,
+      "peak_rss_bytes": 782598144,
+      "peak_footprint_bytes": 1404888040,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/041-z-image-turbo-256x256-fox-round2.log",
+        "bytes": 7517,
+        "sha256": "161294244dcd598a194265998911d8aa1831df13e121839082635a7869eaf126"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/041-z-image-turbo-256x256-fox-round2.png",
+          "bytes": 197249,
+          "sha256": "309dc8d1618bc9237e1c1b1cdeaec1b950b52158d94b6cc88ff5ce6aaede0b4b"
+        },
+        "size": [
+          256,
+          256
+        ],
+        "pixel_sha256": "0b0831812e0d9c1f4924e2db96767c0c10f9b7b09b6ce8ba073cf6cf16326828",
+        "checker_score": 23.29171917002688,
+        "luma_std": 58.52131627820275,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-a/041-z-image-turbo-256x256-fox-round2.log",
+        "sha256": "d195b73e110003e83618019fffdefd676146c229444bc2bea1b6043a5c526a12"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          256,
+          256
+        ],
+        "prompt": "fox",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "042-flux2-klein-4b-256x256-fox-round2",
+      "model": "flux2-klein-4b",
+      "width": 256,
+      "height": 256,
+      "prompt": "fox",
+      "phase": "round2",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "256",
+        "--height",
+        "256",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/042-flux2-klein-4b-256x256-fox-round2.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        1.17431640625,
+        0.8896484375,
+        0.857421875
+      ],
+      "load_after": [
+        1.240234375,
+        0.90771484375,
+        0.86376953125
+      ],
+      "returncode": 0,
+      "seconds": 2.376087292097509,
+      "peak_rss_bytes": 863551488,
+      "peak_footprint_bytes": 1470123968,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/042-flux2-klein-4b-256x256-fox-round2.log",
+        "bytes": 4721,
+        "sha256": "64f784a8019b7e8568c5dbcab154d2ed3f8a930d81b7352a4324daa024f89099"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/042-flux2-klein-4b-256x256-fox-round2.png",
+          "bytes": 197244,
+          "sha256": "bb18163efc6f5fcc19181c7262cbe9084dbce1e07d11932620897ae686942c89"
+        },
+        "size": [
+          256,
+          256
+        ],
+        "pixel_sha256": "afcbf9226ad77af96c64de086090f0b0ea3c0d4c4f5991a82221d12ad1af64d0",
+        "checker_score": 16.54331527217742,
+        "luma_std": 61.281298820221885,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-a/042-flux2-klein-4b-256x256-fox-round2.log",
+        "sha256": "9ce1fcb4443d02520329f165987a6ec25801392097ed513b37f43683ae1b9579"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "flux2-klein-4b",
+        "dimensions": [
+          256,
+          256
+        ],
+        "prompt": "fox",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "043-z-image-turbo-128x128-fox-round2",
+      "model": "z-image-turbo",
+      "width": 128,
+      "height": 128,
+      "prompt": "fox",
+      "phase": "round2",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "128",
+        "--height",
+        "128",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/043-z-image-turbo-128x128-fox-round2.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        1.240234375,
+        0.90771484375,
+        0.86376953125
+      ],
+      "load_after": [
+        1.240234375,
+        0.90771484375,
+        0.86376953125
+      ],
+      "returncode": 0,
+      "seconds": 1.436128499917686,
+      "peak_rss_bytes": 432865280,
+      "peak_footprint_bytes": 1095344960,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/043-z-image-turbo-128x128-fox-round2.log",
+        "bytes": 7510,
+        "sha256": "fb49032e848f7045680cfbf5a96f9a5920109d855391f1d9d14c1dc72baaa7c5"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/043-z-image-turbo-128x128-fox-round2.png",
+          "bytes": 49650,
+          "sha256": "a2521e1fec753013340c0c0496d6de8629a3e35dabe297c2124431c989cbb5f2"
+        },
+        "size": [
+          128,
+          128
+        ],
+        "pixel_sha256": "191ccc2f1af88662b913ee4561ad170178c9bbc0ef039f433e26875e9b982423",
+        "checker_score": 32.854166666666664,
+        "luma_std": 59.13880520087506,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-a/043-z-image-turbo-128x128-fox-round2.log",
+        "sha256": "71aac90d14d66c6c0d688ac94c0c1332fa08cebec4ba1a33154c0035f22df328"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          128,
+          128
+        ],
+        "prompt": "fox",
+        "finding": "Recognisable thumbnail with visibly limited detail; no obvious blank or checkerboard corruption.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "044-flux2-klein-4b-128x128-fox-round2",
+      "model": "flux2-klein-4b",
+      "width": 128,
+      "height": 128,
+      "prompt": "fox",
+      "phase": "round2",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "128",
+        "--height",
+        "128",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/044-flux2-klein-4b-128x128-fox-round2.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        1.240234375,
+        0.90771484375,
+        0.86376953125
+      ],
+      "load_after": [
+        1.140625,
+        0.892578125,
+        0.8583984375
+      ],
+      "returncode": 0,
+      "seconds": 1.9845382920466363,
+      "peak_rss_bytes": 583680000,
+      "peak_footprint_bytes": 1234243352,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/044-flux2-klein-4b-128x128-fox-round2.log",
+        "bytes": 4721,
+        "sha256": "a539a1bffadc111c79c62d7a1fd3d9e4b396ce41b654317c04402a5bd62e1277"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/044-flux2-klein-4b-128x128-fox-round2.png",
+          "bytes": 49645,
+          "sha256": "96047e0a4bbd9c2c92be7e4ddbbfdd90b5c0ad13e036f3c4d44cb8fc7b582b7b"
+        },
+        "size": [
+          128,
+          128
+        ],
+        "pixel_sha256": "fd29fd539753ee5e3e4bffa6cfc5ab60f88587dd2cd459b91613776d7f0af0fe",
+        "checker_score": 24.872960069444442,
+        "luma_std": 56.750339828650425,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-a/044-flux2-klein-4b-128x128-fox-round2.log",
+        "sha256": "3672adb7c5fd8f35c690fe70968f694e146f58d20401c45b87b17b210a4e9762"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "flux2-klein-4b",
+        "dimensions": [
+          128,
+          128
+        ],
+        "prompt": "fox",
+        "finding": "Recognisable thumbnail with visibly limited detail; no obvious blank or checkerboard corruption.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "045-z-image-turbo-64x64-fox-round2",
+      "model": "z-image-turbo",
+      "width": 64,
+      "height": 64,
+      "prompt": "fox",
+      "phase": "round2",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "64",
+        "--height",
+        "64",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/045-z-image-turbo-64x64-fox-round2.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        1.140625,
+        0.892578125,
+        0.8583984375
+      ],
+      "load_after": [
+        1.140625,
+        0.892578125,
+        0.8583984375
+      ],
+      "returncode": 0,
+      "seconds": 1.1888677910901606,
+      "peak_rss_bytes": 291602432,
+      "peak_footprint_bytes": 981033600,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/045-z-image-turbo-64x64-fox-round2.log",
+        "bytes": 7504,
+        "sha256": "452809d3d86ce847c5446a2a80368f403e6db81455216ad473aa84a7c99bd06e"
+      },
+      "problems": [
+        "checkerboard-noise score=41.9 (sane<40)"
+      ],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/045-z-image-turbo-64x64-fox-round2.png",
+          "bytes": 12720,
+          "sha256": "4f98ad9a6b79bf9e3d3f263d288b191af434d4069eb3014eb48dd6d906b078f8"
+        },
+        "size": [
+          64,
+          64
+        ],
+        "pixel_sha256": "7a8f6087a78ea258a9bb35a1ba7bbd551dc27cff32a4839d9dd1c6b49dfe276c",
+        "checker_score": 41.852120535714285,
+        "luma_std": 65.940241870601,
+        "problems": [
+          "checkerboard-noise score=41.9 (sane<40)"
+        ]
+      },
+      "published_log": {
+        "path": "m4max-a/045-z-image-turbo-64x64-fox-round2.log",
+        "sha256": "9a14181bf1f2d4e5dd577955a6178afd948a72e97009f1ec157af1cde16e74a8"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          64,
+          64
+        ],
+        "prompt": "fox",
+        "finding": "Recognisable thumbnail with visibly limited detail; no obvious blank or checkerboard corruption.",
+        "heuristic_problems": [
+          "checkerboard-noise score=41.9 (sane<40)"
+        ]
+      }
+    },
+    {
+      "case": "046-flux2-klein-4b-64x64-fox-round2",
+      "model": "flux2-klein-4b",
+      "width": 64,
+      "height": 64,
+      "prompt": "fox",
+      "phase": "round2",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "64",
+        "--height",
+        "64",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/046-flux2-klein-4b-64x64-fox-round2.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        1.140625,
+        0.892578125,
+        0.8583984375
+      ],
+      "load_after": [
+        1.140625,
+        0.892578125,
+        0.8583984375
+      ],
+      "returncode": 1,
+      "seconds": 0.47266670782119036,
+      "peak_rss_bytes": 382550016,
+      "peak_footprint_bytes": 518360112,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/046-flux2-klein-4b-64x64-fox-round2.log",
+        "bytes": 1392,
+        "sha256": "46da002dfd119129341e065ebe1f7a5f44659131f8f8f60d3130ce3fd7c5ee3d"
+      },
+      "problems": [
+        "generation exited 1",
+        "image unavailable: [Errno 2] No such file or directory: '$HOME/repos/zdraw/runs/release-resolution-20261001/timing/046-flux2-klein-4b-64x64-fox-round2.png'"
+      ],
+      "published_log": {
+        "path": "m4max-a/046-flux2-klein-4b-64x64-fox-round2.log",
+        "sha256": "47c7a42b07ce6ba071863b596145eb5cdfedcd9d4e8f7d4478db7c65019cd4e9"
+      }
+    },
+    {
+      "case": "047-z-image-turbo-1024x1024-fox-round3",
+      "model": "z-image-turbo",
+      "width": 1024,
+      "height": 1024,
+      "prompt": "fox",
+      "phase": "round3",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "1024",
+        "--height",
+        "1024",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/047-z-image-turbo-1024x1024-fox-round3.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        1.140625,
+        0.892578125,
+        0.8583984375
+      ],
+      "load_after": [
+        0.8876953125,
+        0.85205078125,
+        0.84326171875
+      ],
+      "returncode": 0,
+      "seconds": 24.66552787506953,
+      "peak_rss_bytes": 5541347328,
+      "peak_footprint_bytes": 6376436144,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/047-z-image-turbo-1024x1024-fox-round3.log",
+        "bytes": 7548,
+        "sha256": "438c621eb88bea7f57e1e67dbc4837103b2abee36f11e5fcb41836b2c84d5014"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/047-z-image-turbo-1024x1024-fox-round3.png",
+          "bytes": 3147364,
+          "sha256": "f462da7aebb38b8ed36690d9a0583c632ea5fbc6fc0fd27f483bcf7ae5bccca6"
+        },
+        "size": [
+          1024,
+          1024
+        ],
+        "pixel_sha256": "c2ac10ec694ef04a01517fb11bd808c025e50c4e89a9a45eabe69f1109c59bb6",
+        "checker_score": 11.160113957923228,
+        "luma_std": 49.5128427442391,
+        "problems": []
+      },
+      "certified_match": true,
+      "published_log": {
+        "path": "m4max-a/047-z-image-turbo-1024x1024-fox-round3.log",
+        "sha256": "903de2ca7f627779f8e361893fc0b06cb68fbf2e738946575cdd2fcebefd7e38"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          1024,
+          1024
+        ],
+        "prompt": "fox",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "048-flux2-klein-4b-1536x1536-fox-round3",
+      "model": "flux2-klein-4b",
+      "width": 1536,
+      "height": 1536,
+      "prompt": "fox",
+      "phase": "round3",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "1536",
+        "--height",
+        "1536",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/048-flux2-klein-4b-1536x1536-fox-round3.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        0.8876953125,
+        0.85205078125,
+        0.84326171875
+      ],
+      "load_after": [
+        0.8876953125,
+        0.85205078125,
+        0.84326171875
+      ],
+      "returncode": 1,
+      "seconds": 0.07586220791563392,
+      "peak_rss_bytes": 81969152,
+      "peak_footprint_bytes": 70470344,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/048-flux2-klein-4b-1536x1536-fox-round3.log",
+        "bytes": 1397,
+        "sha256": "5f8ec333041be0cceca838eb0cb1a2db37ec913f14ff868c86f91579d202bb58"
+      },
+      "problems": [
+        "generation exited 1",
+        "image unavailable: [Errno 2] No such file or directory: '$HOME/repos/zdraw/runs/release-resolution-20261001/timing/048-flux2-klein-4b-1536x1536-fox-round3.png'"
+      ],
+      "published_log": {
+        "path": "m4max-a/048-flux2-klein-4b-1536x1536-fox-round3.log",
+        "sha256": "05bf9e065d423cd6d432ee26f821afd326a9cc1561978e86d676d546c791265a"
+      }
+    },
+    {
+      "case": "049-z-image-turbo-1536x1536-fox-round3",
+      "model": "z-image-turbo",
+      "width": 1536,
+      "height": 1536,
+      "prompt": "fox",
+      "phase": "round3",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "1536",
+        "--height",
+        "1536",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/049-z-image-turbo-1536x1536-fox-round3.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        0.8876953125,
+        0.85205078125,
+        0.84326171875
+      ],
+      "load_after": [
+        0.36865234375,
+        0.708984375,
+        0.78955078125
+      ],
+      "returncode": 0,
+      "seconds": 63.7582316249609,
+      "peak_rss_bytes": 11870568448,
+      "peak_footprint_bytes": 12984157248,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/049-z-image-turbo-1536x1536-fox-round3.log",
+        "bytes": 7577,
+        "sha256": "06f78c2c7245dd5437a7bd995fa24fbdbd430558fd622861b7e8c4c1ed682b99"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/049-z-image-turbo-1536x1536-fox-round3.png",
+          "bytes": 7080336,
+          "sha256": "853556f02e87f421498bbc330ed33c5a44360f08c9bff7f76aaa41e24803bcf5"
+        },
+        "size": [
+          1536,
+          1536
+        ],
+        "pixel_sha256": "c2633fdbd5a6d57f1f7301476160e4185e93313c76ee162bafc8798f21f09901",
+        "checker_score": 8.634288137634526,
+        "luma_std": 46.12108700543315,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-a/049-z-image-turbo-1536x1536-fox-round3.log",
+        "sha256": "1b39a0493ad19062b6f7dda352c572163f41996098d1415b3e6bb957a68597ce"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          1536,
+          1536
+        ],
+        "prompt": "fox",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "050-flux2-klein-4b-2048x2048-fox-round3",
+      "model": "flux2-klein-4b",
+      "width": 2048,
+      "height": 2048,
+      "prompt": "fox",
+      "phase": "round3",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "2048",
+        "--height",
+        "2048",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/050-flux2-klein-4b-2048x2048-fox-round3.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        0.36865234375,
+        0.708984375,
+        0.78955078125
+      ],
+      "load_after": [
+        0.4189453125,
+        0.71337890625,
+        0.79052734375
+      ],
+      "returncode": 1,
+      "seconds": 0.0761034581810236,
+      "peak_rss_bytes": 81969152,
+      "peak_footprint_bytes": 70453936,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/050-flux2-klein-4b-2048x2048-fox-round3.log",
+        "bytes": 1397,
+        "sha256": "8312e9d33ff1b9e7652b3cdf2904df61c9dc1fc3210bae7fd4569f87a6383677"
+      },
+      "problems": [
+        "generation exited 1",
+        "image unavailable: [Errno 2] No such file or directory: '$HOME/repos/zdraw/runs/release-resolution-20261001/timing/050-flux2-klein-4b-2048x2048-fox-round3.png'"
+      ],
+      "published_log": {
+        "path": "m4max-a/050-flux2-klein-4b-2048x2048-fox-round3.log",
+        "sha256": "618757aef8ddcd7f9dcdf2546489b0939b3734d981ce00ec16279db1b899749b"
+      }
+    },
+    {
+      "case": "051-z-image-turbo-2048x2048-fox-round3",
+      "model": "z-image-turbo",
+      "width": 2048,
+      "height": 2048,
+      "prompt": "fox",
+      "phase": "round3",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "2048",
+        "--height",
+        "2048",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/051-z-image-turbo-2048x2048-fox-round3.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        0.4189453125,
+        0.71337890625,
+        0.79052734375
+      ],
+      "load_after": [
+        0.318359375,
+        0.61279296875,
+        0.74072265625
+      ],
+      "returncode": 0,
+      "seconds": 135.788543459028,
+      "peak_rss_bytes": 20779745280,
+      "peak_footprint_bytes": 22283148760,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/051-z-image-turbo-2048x2048-fox-round3.log",
+        "bytes": 7608,
+        "sha256": "fc70c62a82c450dbe14fe75b3d3f1ee655938af2cc9e36c83b7c0f714cd45313"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/051-z-image-turbo-2048x2048-fox-round3.png",
+          "bytes": 12586292,
+          "sha256": "590dbb42df63f02b58c859fd61506f8792e4933242bcb2131cfcaae02f696269"
+        },
+        "size": [
+          2048,
+          2048
+        ],
+        "pixel_sha256": "d7a0257f3d2009c58b682ede1490a03709fcb56621d97b13713b904a5350d802",
+        "checker_score": 7.284103892207924,
+        "luma_std": 54.01853967978328,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-a/051-z-image-turbo-2048x2048-fox-round3.log",
+        "sha256": "430ef4bd53ff1c518774516d1e42e0f24ce8a0c798fa4e99a8bf07c3be0787ea"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          2048,
+          2048
+        ],
+        "prompt": "fox",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "052-flux2-klein-4b-1024x768-fox-round3",
+      "model": "flux2-klein-4b",
+      "width": 1024,
+      "height": 768,
+      "prompt": "fox",
+      "phase": "round3",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "1024",
+        "--height",
+        "768",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/052-flux2-klein-4b-1024x768-fox-round3.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        0.318359375,
+        0.61279296875,
+        0.74072265625
+      ],
+      "load_after": [
+        0.49609375,
+        0.6416015625,
+        0.74951171875
+      ],
+      "returncode": 0,
+      "seconds": 9.710674166213721,
+      "peak_rss_bytes": 3283320832,
+      "peak_footprint_bytes": 3986904680,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/052-flux2-klein-4b-1024x768-fox-round3.log",
+        "bytes": 4724,
+        "sha256": "511aeeb77d6fbc11b433698405c7b76c3599e50016c5f991cf96858abae4b870"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/052-flux2-klein-4b-1024x768-fox-round3.png",
+          "bytes": 2360610,
+          "sha256": "f1d029c718955aa8ea53ef3612248b16f3b746b27105aa547de5497d361459b0"
+        },
+        "size": [
+          1024,
+          768
+        ],
+        "pixel_sha256": "ae9beffca45d0c1adf7df048216b6749e6aebd18a0c199918377214fdabe8223",
+        "checker_score": 10.46414571713692,
+        "luma_std": 51.03034488722049,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-a/052-flux2-klein-4b-1024x768-fox-round3.log",
+        "sha256": "be2b3bdfed298360fece5ce537ca1bb48eea4c377ee2e7fc94802d82eff09af6"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "flux2-klein-4b",
+        "dimensions": [
+          1024,
+          768
+        ],
+        "prompt": "fox",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "053-z-image-turbo-1024x768-fox-round3",
+      "model": "z-image-turbo",
+      "width": 1024,
+      "height": 768,
+      "prompt": "fox",
+      "phase": "round3",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "1024",
+        "--height",
+        "768",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/053-z-image-turbo-1024x768-fox-round3.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        0.49609375,
+        0.6416015625,
+        0.74951171875
+      ],
+      "load_after": [
+        0.55908203125,
+        0.6474609375,
+        0.74853515625
+      ],
+      "returncode": 0,
+      "seconds": 18.225687082856894,
+      "peak_rss_bytes": 4264787968,
+      "peak_footprint_bytes": 5044055416,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/053-z-image-turbo-1024x768-fox-round3.log",
+        "bytes": 7545,
+        "sha256": "c5af91ac739fbd9cf4a02a927ff339cb9fbda250879c2afb334fedeaee1bc3e7"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/053-z-image-turbo-1024x768-fox-round3.png",
+          "bytes": 2360615,
+          "sha256": "8cc11ffb81b04729e1933a1205b6f403a9522962250272d09be724a58210ad80"
+        },
+        "size": [
+          1024,
+          768
+        ],
+        "pixel_sha256": "aae1a98036ec35e353b94826cc10551cf4b407acb50595f869ef2fa101a66aa5",
+        "checker_score": 12.30484128937008,
+        "luma_std": 51.95165116022688,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-a/053-z-image-turbo-1024x768-fox-round3.log",
+        "sha256": "f7f4434375cd01ba0d57d1e21ce3bbe4bcbf1823c936ce4e986be60e7e963385"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          1024,
+          768
+        ],
+        "prompt": "fox",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "054-flux2-klein-4b-768x1024-fox-round3",
+      "model": "flux2-klein-4b",
+      "width": 768,
+      "height": 1024,
+      "prompt": "fox",
+      "phase": "round3",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "768",
+        "--height",
+        "1024",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/054-flux2-klein-4b-768x1024-fox-round3.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        0.55908203125,
+        0.6474609375,
+        0.74853515625
+      ],
+      "load_after": [
+        0.47265625,
+        0.62548828125,
+        0.73974609375
+      ],
+      "returncode": 0,
+      "seconds": 9.809102084022015,
+      "peak_rss_bytes": 3283173376,
+      "peak_footprint_bytes": 3986806448,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/054-flux2-klein-4b-768x1024-fox-round3.log",
+        "bytes": 4724,
+        "sha256": "bf5d77f8b7311a039bf72b3ebea78101369467a4b5c625f18c4ed6cf05b1e49d"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/054-flux2-klein-4b-768x1024-fox-round3.png",
+          "bytes": 2360866,
+          "sha256": "1d2c79bcc1539a6906d1cce1142e603a76f61684c78355a776aaf68907aefefa"
+        },
+        "size": [
+          768,
+          1024
+        ],
+        "pixel_sha256": "47aa6817c8efc34f5ebc537abf9c23a9a3a7d45418240c2fc04e361e24d93987",
+        "checker_score": 10.722478926809211,
+        "luma_std": 53.88361774052423,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-a/054-flux2-klein-4b-768x1024-fox-round3.log",
+        "sha256": "515ce5111abc223b1e77c04c5f6522c5d47618e8397b53738419ba63f27c778b"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "flux2-klein-4b",
+        "dimensions": [
+          768,
+          1024
+        ],
+        "prompt": "fox",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "055-z-image-turbo-768x1024-fox-round3",
+      "model": "z-image-turbo",
+      "width": 768,
+      "height": 1024,
+      "prompt": "fox",
+      "phase": "round3",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "768",
+        "--height",
+        "1024",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/055-z-image-turbo-768x1024-fox-round3.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        0.47265625,
+        0.62548828125,
+        0.73974609375
+      ],
+      "load_after": [
+        0.33740234375,
+        0.583984375,
+        0.72216796875
+      ],
+      "returncode": 0,
+      "seconds": 18.11717625008896,
+      "peak_rss_bytes": 4264919040,
+      "peak_footprint_bytes": 5044268528,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/055-z-image-turbo-768x1024-fox-round3.log",
+        "bytes": 7545,
+        "sha256": "48ce1304033064cd355df83db827ed7e7d47f761df72e40510a37bf4b44485fa"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/055-z-image-turbo-768x1024-fox-round3.png",
+          "bytes": 2360871,
+          "sha256": "6e33d93d8b23af6530b21c33768f2951d11647f6b289ff5430b2b0f6354cb230"
+        },
+        "size": [
+          768,
+          1024
+        ],
+        "pixel_sha256": "fc2883e30eca36b84d7676946cc2309b7c72d36b79806a93d1f0e768ac2adbbd",
+        "checker_score": 11.735283888432019,
+        "luma_std": 56.68147103555787,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-a/055-z-image-turbo-768x1024-fox-round3.log",
+        "sha256": "f35cfeeb409ee8ba0bfb622b40ba3c77b225aed8ebc05eee0a08f1f20e27f1f1"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          768,
+          1024
+        ],
+        "prompt": "fox",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "056-flux2-klein-4b-544x800-fox-round3",
+      "model": "flux2-klein-4b",
+      "width": 544,
+      "height": 800,
+      "prompt": "fox",
+      "phase": "round3",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "544",
+        "--height",
+        "800",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/056-flux2-klein-4b-544x800-fox-round3.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        0.33740234375,
+        0.583984375,
+        0.72216796875
+      ],
+      "load_after": [
+        0.33740234375,
+        0.583984375,
+        0.72216796875
+      ],
+      "returncode": 1,
+      "seconds": 0.5123926661908627,
+      "peak_rss_bytes": 790315008,
+      "peak_footprint_bytes": 926321976,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/056-flux2-klein-4b-544x800-fox-round3.log",
+        "bytes": 1396,
+        "sha256": "11548b6cc72058878d982acaa24dcdcb828250fce832cd022e11abaf8240e158"
+      },
+      "problems": [
+        "generation exited 1",
+        "image unavailable: [Errno 2] No such file or directory: '$HOME/repos/zdraw/runs/release-resolution-20261001/timing/056-flux2-klein-4b-544x800-fox-round3.png'"
+      ],
+      "published_log": {
+        "path": "m4max-a/056-flux2-klein-4b-544x800-fox-round3.log",
+        "sha256": "ab46f3319e432dc13b3df1f31680591163ace873870d0ebbfa3f28729a1307d3"
+      }
+    },
+    {
+      "case": "057-z-image-turbo-544x800-fox-round3",
+      "model": "z-image-turbo",
+      "width": 544,
+      "height": 800,
+      "prompt": "fox",
+      "phase": "round3",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "544",
+        "--height",
+        "800",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/057-z-image-turbo-544x800-fox-round3.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        0.33740234375,
+        0.583984375,
+        0.72216796875
+      ],
+      "load_after": [
+        0.4072265625,
+        0.5751953125,
+        0.71337890625
+      ],
+      "returncode": 0,
+      "seconds": 31.931353374850005,
+      "peak_rss_bytes": 2426454016,
+      "peak_footprint_bytes": 2653268240,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/057-z-image-turbo-544x800-fox-round3.log",
+        "bytes": 7542,
+        "sha256": "35ff26aec721243c1953b55da443ed490eecf6beafba3e60768da1f0f5c91bdf"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/057-z-image-turbo-544x800-fox-round3.png",
+          "bytes": 1306865,
+          "sha256": "38f5d56b4195a15f923fca8d762e20d50b5e13428553df7ae6dde43b8ef03918"
+        },
+        "size": [
+          544,
+          800
+        ],
+        "pixel_sha256": "4d3efd337dc3eb644d7b550010c386e2f7d7bb8e36cd3ebbc35ef3f1609b874d",
+        "checker_score": 14.199353233830845,
+        "luma_std": 50.07879643520581,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-a/057-z-image-turbo-544x800-fox-round3.log",
+        "sha256": "8c2b3575c0cb2729d13538242bbfa3c5a1565168994e6f06c4861f3f90ccd0c5"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          544,
+          800
+        ],
+        "prompt": "fox",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "058-flux2-klein-4b-64x64-fox-round3",
+      "model": "flux2-klein-4b",
+      "width": 64,
+      "height": 64,
+      "prompt": "fox",
+      "phase": "round3",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "64",
+        "--height",
+        "64",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/058-flux2-klein-4b-64x64-fox-round3.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        0.4072265625,
+        0.5751953125,
+        0.71337890625
+      ],
+      "load_after": [
+        0.4072265625,
+        0.5751953125,
+        0.71337890625
+      ],
+      "returncode": 1,
+      "seconds": 0.4671264160424471,
+      "peak_rss_bytes": 382566400,
+      "peak_footprint_bytes": 518360088,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/058-flux2-klein-4b-64x64-fox-round3.log",
+        "bytes": 1392,
+        "sha256": "1003598829cb29414ef9d79065c935b4f850e7b81ba05f96b41aa084c2c7aad4"
+      },
+      "problems": [
+        "generation exited 1",
+        "image unavailable: [Errno 2] No such file or directory: '$HOME/repos/zdraw/runs/release-resolution-20261001/timing/058-flux2-klein-4b-64x64-fox-round3.png'"
+      ],
+      "published_log": {
+        "path": "m4max-a/058-flux2-klein-4b-64x64-fox-round3.log",
+        "sha256": "c8213ad035eac5af283264ad7e6ef41099b70a1e3c8d365029b2676c1733d5a8"
+      }
+    },
+    {
+      "case": "059-z-image-turbo-64x64-fox-round3",
+      "model": "z-image-turbo",
+      "width": 64,
+      "height": 64,
+      "prompt": "fox",
+      "phase": "round3",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "64",
+        "--height",
+        "64",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/059-z-image-turbo-64x64-fox-round3.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        0.4072265625,
+        0.5751953125,
+        0.71337890625
+      ],
+      "load_after": [
+        0.4072265625,
+        0.5751953125,
+        0.71337890625
+      ],
+      "returncode": 0,
+      "seconds": 1.1522663328796625,
+      "peak_rss_bytes": 291504128,
+      "peak_footprint_bytes": 980968112,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/059-z-image-turbo-64x64-fox-round3.log",
+        "bytes": 7504,
+        "sha256": "511224830cf2cf3f88252250b6e6685487997518d0034c7292687c87bdbf8a03"
+      },
+      "problems": [
+        "checkerboard-noise score=41.9 (sane<40)"
+      ],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/059-z-image-turbo-64x64-fox-round3.png",
+          "bytes": 12720,
+          "sha256": "4f98ad9a6b79bf9e3d3f263d288b191af434d4069eb3014eb48dd6d906b078f8"
+        },
+        "size": [
+          64,
+          64
+        ],
+        "pixel_sha256": "7a8f6087a78ea258a9bb35a1ba7bbd551dc27cff32a4839d9dd1c6b49dfe276c",
+        "checker_score": 41.852120535714285,
+        "luma_std": 65.940241870601,
+        "problems": [
+          "checkerboard-noise score=41.9 (sane<40)"
+        ]
+      },
+      "published_log": {
+        "path": "m4max-a/059-z-image-turbo-64x64-fox-round3.log",
+        "sha256": "55f9e547a1ddbfe1e524ad5d61aed86815e63fe5ec0c330d84df002bc2c078f8"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          64,
+          64
+        ],
+        "prompt": "fox",
+        "finding": "Recognisable thumbnail with visibly limited detail; no obvious blank or checkerboard corruption.",
+        "heuristic_problems": [
+          "checkerboard-noise score=41.9 (sane<40)"
+        ]
+      }
+    },
+    {
+      "case": "060-flux2-klein-4b-128x128-fox-round3",
+      "model": "flux2-klein-4b",
+      "width": 128,
+      "height": 128,
+      "prompt": "fox",
+      "phase": "round3",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "128",
+        "--height",
+        "128",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/060-flux2-klein-4b-128x128-fox-round3.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        0.4072265625,
+        0.5751953125,
+        0.71337890625
+      ],
+      "load_after": [
+        0.37451171875,
+        0.5654296875,
+        0.708984375
+      ],
+      "returncode": 0,
+      "seconds": 1.9434411250986159,
+      "peak_rss_bytes": 583729152,
+      "peak_footprint_bytes": 1234308912,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/060-flux2-klein-4b-128x128-fox-round3.log",
+        "bytes": 4721,
+        "sha256": "a0d2ebe2bc67d8e880f7598974ea607d869dcfea4ba313741889b888fe62beb8"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/060-flux2-klein-4b-128x128-fox-round3.png",
+          "bytes": 49645,
+          "sha256": "96047e0a4bbd9c2c92be7e4ddbbfdd90b5c0ad13e036f3c4d44cb8fc7b582b7b"
+        },
+        "size": [
+          128,
+          128
+        ],
+        "pixel_sha256": "fd29fd539753ee5e3e4bffa6cfc5ab60f88587dd2cd459b91613776d7f0af0fe",
+        "checker_score": 24.872960069444442,
+        "luma_std": 56.750339828650425,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-a/060-flux2-klein-4b-128x128-fox-round3.log",
+        "sha256": "06ed31487d498a63166f63bafe225759451ad6b5754806a795ba9af9aea4230c"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "flux2-klein-4b",
+        "dimensions": [
+          128,
+          128
+        ],
+        "prompt": "fox",
+        "finding": "Recognisable thumbnail with visibly limited detail; no obvious blank or checkerboard corruption.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "061-z-image-turbo-128x128-fox-round3",
+      "model": "z-image-turbo",
+      "width": 128,
+      "height": 128,
+      "prompt": "fox",
+      "phase": "round3",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "128",
+        "--height",
+        "128",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/061-z-image-turbo-128x128-fox-round3.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        0.37451171875,
+        0.5654296875,
+        0.708984375
+      ],
+      "load_after": [
+        0.37451171875,
+        0.5654296875,
+        0.708984375
+      ],
+      "returncode": 0,
+      "seconds": 1.421531249769032,
+      "peak_rss_bytes": 432963584,
+      "peak_footprint_bytes": 1095410448,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/061-z-image-turbo-128x128-fox-round3.log",
+        "bytes": 7510,
+        "sha256": "11da2cc107bea9f6d776f0a81c30158f4bf5246c8eadb2fff393c52c5103c526"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/061-z-image-turbo-128x128-fox-round3.png",
+          "bytes": 49650,
+          "sha256": "a2521e1fec753013340c0c0496d6de8629a3e35dabe297c2124431c989cbb5f2"
+        },
+        "size": [
+          128,
+          128
+        ],
+        "pixel_sha256": "191ccc2f1af88662b913ee4561ad170178c9bbc0ef039f433e26875e9b982423",
+        "checker_score": 32.854166666666664,
+        "luma_std": 59.13880520087506,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-a/061-z-image-turbo-128x128-fox-round3.log",
+        "sha256": "6acfa9fd3f24aa8440af505c0c82c11517e47b2d0237d77e3d758d519f82ae46"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          128,
+          128
+        ],
+        "prompt": "fox",
+        "finding": "Recognisable thumbnail with visibly limited detail; no obvious blank or checkerboard corruption.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "062-flux2-klein-4b-256x256-fox-round3",
+      "model": "flux2-klein-4b",
+      "width": 256,
+      "height": 256,
+      "prompt": "fox",
+      "phase": "round3",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "256",
+        "--height",
+        "256",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/062-flux2-klein-4b-256x256-fox-round3.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        0.37451171875,
+        0.5654296875,
+        0.708984375
+      ],
+      "load_after": [
+        0.42431640625,
+        0.572265625,
+        0.71044921875
+      ],
+      "returncode": 0,
+      "seconds": 2.2985333339311182,
+      "peak_rss_bytes": 863436800,
+      "peak_footprint_bytes": 1469976464,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/062-flux2-klein-4b-256x256-fox-round3.log",
+        "bytes": 4721,
+        "sha256": "181eb8f30ac1a52f6b24487e8d072a8a82d4ad2719e2990ca19aecb2166aa0e7"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/062-flux2-klein-4b-256x256-fox-round3.png",
+          "bytes": 197244,
+          "sha256": "bb18163efc6f5fcc19181c7262cbe9084dbce1e07d11932620897ae686942c89"
+        },
+        "size": [
+          256,
+          256
+        ],
+        "pixel_sha256": "afcbf9226ad77af96c64de086090f0b0ea3c0d4c4f5991a82221d12ad1af64d0",
+        "checker_score": 16.54331527217742,
+        "luma_std": 61.281298820221885,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-a/062-flux2-klein-4b-256x256-fox-round3.log",
+        "sha256": "2a416c72014dc70941880591fd095ee9a147e43a75046e667b6dc051e9f05e52"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "flux2-klein-4b",
+        "dimensions": [
+          256,
+          256
+        ],
+        "prompt": "fox",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "063-z-image-turbo-256x256-fox-round3",
+      "model": "z-image-turbo",
+      "width": 256,
+      "height": 256,
+      "prompt": "fox",
+      "phase": "round3",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "256",
+        "--height",
+        "256",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/063-z-image-turbo-256x256-fox-round3.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        0.42431640625,
+        0.572265625,
+        0.71044921875
+      ],
+      "load_after": [
+        0.42431640625,
+        0.572265625,
+        0.71044921875
+      ],
+      "returncode": 0,
+      "seconds": 2.117323333863169,
+      "peak_rss_bytes": 782680064,
+      "peak_footprint_bytes": 1405199672,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/063-z-image-turbo-256x256-fox-round3.log",
+        "bytes": 7517,
+        "sha256": "1ee5dedcc922ac61becae82a052ff9cd56b3c418545f111d0efba43260546c14"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/063-z-image-turbo-256x256-fox-round3.png",
+          "bytes": 197249,
+          "sha256": "309dc8d1618bc9237e1c1b1cdeaec1b950b52158d94b6cc88ff5ce6aaede0b4b"
+        },
+        "size": [
+          256,
+          256
+        ],
+        "pixel_sha256": "0b0831812e0d9c1f4924e2db96767c0c10f9b7b09b6ce8ba073cf6cf16326828",
+        "checker_score": 23.29171917002688,
+        "luma_std": 58.52131627820275,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-a/063-z-image-turbo-256x256-fox-round3.log",
+        "sha256": "cd1b8adfe39958b06726bf79d01dfe94e334db17b4d2f5f6e30dfdef8b6c4af8"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          256,
+          256
+        ],
+        "prompt": "fox",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "064-flux2-klein-4b-512x512-fox-round3",
+      "model": "flux2-klein-4b",
+      "width": 512,
+      "height": 512,
+      "prompt": "fox",
+      "phase": "round3",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "512",
+        "--height",
+        "512",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/064-flux2-klein-4b-512x512-fox-round3.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        0.42431640625,
+        0.572265625,
+        0.71044921875
+      ],
+      "load_after": [
+        0.47021484375,
+        0.5791015625,
+        0.7119140625
+      ],
+      "returncode": 0,
+      "seconds": 4.377838583197445,
+      "peak_rss_bytes": 1522171904,
+      "peak_footprint_bytes": 2143211912,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/064-flux2-klein-4b-512x512-fox-round3.log",
+        "bytes": 4721,
+        "sha256": "0ea9931be975c70cc03ab1f904f457593be935cee8b3bd15309d99c4fa3357be"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/064-flux2-klein-4b-512x512-fox-round3.png",
+          "bytes": 787369,
+          "sha256": "3db345dc4c2cdc9388f0e445029b44515b262ed18d04f6997690bd883c6c1823"
+        },
+        "size": [
+          512,
+          512
+        ],
+        "pixel_sha256": "d2930d37dee535f8e1db0fccb84958d5873c7ea2c2c7617a74f2c14556370f1f",
+        "checker_score": 9.957186259920634,
+        "luma_std": 57.51971169841822,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-a/064-flux2-klein-4b-512x512-fox-round3.log",
+        "sha256": "9999a2d451425b974961ecc1aeca06e631d7ef0277737afcb9e57ffff9371b7d"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "flux2-klein-4b",
+        "dimensions": [
+          512,
+          512
+        ],
+        "prompt": "fox",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "065-z-image-turbo-512x512-fox-round3",
+      "model": "z-image-turbo",
+      "width": 512,
+      "height": 512,
+      "prompt": "fox",
+      "phase": "round3",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "512",
+        "--height",
+        "512",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/065-z-image-turbo-512x512-fox-round3.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        0.47021484375,
+        0.5791015625,
+        0.7119140625
+      ],
+      "load_after": [
+        0.43212890625,
+        0.5693359375,
+        0.70751953125
+      ],
+      "returncode": 0,
+      "seconds": 5.769135041162372,
+      "peak_rss_bytes": 1721024512,
+      "peak_footprint_bytes": 2373363480,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/065-z-image-turbo-512x512-fox-round3.log",
+        "bytes": 7533,
+        "sha256": "550b45fd2f9d9ec981cc48e21f2c45de245751beb82f7b16d318271c22f45c6f"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/065-z-image-turbo-512x512-fox-round3.png",
+          "bytes": 787374,
+          "sha256": "5fca2d19018a9225900dd7e4da84b8dd56c25003bcd99398e697fbb45757e850"
+        },
+        "size": [
+          512,
+          512
+        ],
+        "pixel_sha256": "810425f8f2ba32944cf39facff2bee9622e88701fe13ad5c5b3b8cf58ddba282",
+        "checker_score": 16.028253141534393,
+        "luma_std": 54.02290528701195,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-a/065-z-image-turbo-512x512-fox-round3.log",
+        "sha256": "8b1cd20f86b38c63aee1efe795c37f152afec0569a71c3e8f16420d6e3352923"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          512,
+          512
+        ],
+        "prompt": "fox",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "066-flux2-klein-4b-768x768-fox-round3",
+      "model": "flux2-klein-4b",
+      "width": 768,
+      "height": 768,
+      "prompt": "fox",
+      "phase": "round3",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "768",
+        "--height",
+        "768",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/066-flux2-klein-4b-768x768-fox-round3.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        0.43212890625,
+        0.5693359375,
+        0.70751953125
+      ],
+      "load_after": [
+        0.3974609375,
+        0.5595703125,
+        0.703125
+      ],
+      "returncode": 0,
+      "seconds": 7.015235832892358,
+      "peak_rss_bytes": 2627584000,
+      "peak_footprint_bytes": 3307295976,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/066-flux2-klein-4b-768x768-fox-round3.log",
+        "bytes": 4721,
+        "sha256": "e0f6e534502f541e28ffa4234f9b9ad357212963e76751555a0b58bcea81919e"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/066-flux2-klein-4b-768x768-fox-round3.png",
+          "bytes": 1770740,
+          "sha256": "bed402ba6e0acb6915faad919e3f7c126de1a6b8769bf35202a65b428ecc00a3"
+        },
+        "size": [
+          768,
+          768
+        ],
+        "pixel_sha256": "b3dbdc6a718b78a1649056cd8c5e778bdec17636afa5b456a49824d0da07b9b3",
+        "checker_score": 8.495254248903509,
+        "luma_std": 51.76948864869355,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-a/066-flux2-klein-4b-768x768-fox-round3.log",
+        "sha256": "9c5fc11668ecf4050456381c7331d068fd12f3b248af9388cbc88c761cdb6ce8"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "flux2-klein-4b",
+        "dimensions": [
+          768,
+          768
+        ],
+        "prompt": "fox",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "067-z-image-turbo-768x768-fox-round3",
+      "model": "z-image-turbo",
+      "width": 768,
+      "height": 768,
+      "prompt": "fox",
+      "phase": "round3",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "z-image-turbo",
+        "--weights",
+        "$HOME/models/Z-Image-Turbo",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "768",
+        "--height",
+        "768",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/067-z-image-turbo-768x768-fox-round3.png",
+        "--profile",
+        "product"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_ZPACK": "$HOME/repos/zdraw/runs/zdraw-w16-all.zpack"
+      },
+      "load_before": [
+        0.3974609375,
+        0.5595703125,
+        0.703125
+      ],
+      "load_after": [
+        0.30859375,
+        0.53125,
+        0.68994140625
+      ],
+      "returncode": 0,
+      "seconds": 12.474408667068928,
+      "peak_rss_bytes": 3323412480,
+      "peak_footprint_bytes": 4061047704,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/067-z-image-turbo-768x768-fox-round3.log",
+        "bytes": 7542,
+        "sha256": "f29cf6d2fbe807afa7e146a5552500e954dab4618be77143ce648e5da2f768fa"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/067-z-image-turbo-768x768-fox-round3.png",
+          "bytes": 1770745,
+          "sha256": "6f2a1b2a8e445b0834e8b16d00bb4e6de92908c3d810a7ce5947a40ad8075660"
+        },
+        "size": [
+          768,
+          768
+        ],
+        "pixel_sha256": "7647ee57b8cda740ceeb2255a18b7550152ad4b606d847e63a9feec95088ecd7",
+        "checker_score": 14.363887746710525,
+        "luma_std": 56.261978588182146,
+        "problems": []
+      },
+      "published_log": {
+        "path": "m4max-a/067-z-image-turbo-768x768-fox-round3.log",
+        "sha256": "b96d696ffc39ad33d530a70191e2d9411bca15a123f9d822784a2311f570b521"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "z-image-turbo",
+        "dimensions": [
+          768,
+          768
+        ],
+        "prompt": "fox",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    },
+    {
+      "case": "068-flux2-klein-4b-1024x1024-fox-round3",
+      "model": "flux2-klein-4b",
+      "width": 1024,
+      "height": 1024,
+      "prompt": "fox",
+      "phase": "round3",
+      "command": [
+        "$HOME/repos/zdraw/zig-out/bin/zdraw",
+        "generate",
+        "--model",
+        "flux2-klein-4b",
+        "--weights",
+        "$HOME/.cache/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "--prompt",
+        "a red fox sitting in deep snow, golden hour light",
+        "--width",
+        "1024",
+        "--height",
+        "1024",
+        "--steps",
+        "4",
+        "--seed",
+        "46",
+        "--out",
+        "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/068-flux2-klein-4b-1024x1024-fox-round3.png"
+      ],
+      "env": {
+        "ZDRAW_PROGRESS": "quiet",
+        "ZDRAW_MEMTRACE": "1",
+        "ZDRAW_METRICS": "1",
+        "ZDRAW_REQUIRE_ZPACK": "1",
+        "ZDRAW_KLEIN_ZPACK": "$HOME/repos/zdraw/runs/zdraw-klein-w16.zpack"
+      },
+      "load_before": [
+        0.30859375,
+        0.53125,
+        0.68994140625
+      ],
+      "load_after": [
+        0.2607421875,
+        0.51318359375,
+        0.68115234375
+      ],
+      "returncode": 0,
+      "seconds": 12.099115167278796,
+      "peak_rss_bytes": 4166713344,
+      "peak_footprint_bytes": 4902295888,
+      "log": {
+        "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/068-flux2-klein-4b-1024x1024-fox-round3.log",
+        "bytes": 4728,
+        "sha256": "357fc8fc54e6993cf6a41ab825722259313af2825bc7d0f49c038253ffb58860"
+      },
+      "problems": [],
+      "image": {
+        "file": {
+          "path": "$HOME/repos/zdraw/runs/release-resolution-20261001/timing/068-flux2-klein-4b-1024x1024-fox-round3.png",
+          "bytes": 3147359,
+          "sha256": "63f643c004712c46ed4498960b4c4d140a58483f577c79c4549449e2d720e8e6"
+        },
+        "size": [
+          1024,
+          1024
+        ],
+        "pixel_sha256": "afa4c8fb1ecbd1ecadee4042bfa62351eacbe3a841f67f71a3f2da65bbc505bb",
+        "checker_score": 8.985477797941272,
+        "luma_std": 56.46909117943018,
+        "problems": []
+      },
+      "certified_match": true,
+      "published_log": {
+        "path": "m4max-a/068-flux2-klein-4b-1024x1024-fox-round3.log",
+        "sha256": "a08dd4413b54e1594e4b88cf4c6db0ac8fc5ac46ba45aa4cccc91f0ff72b6ef0"
+      },
+      "visual_review": {
+        "reviewer": "assistant",
+        "method": "Visual inspection of labelled contact sheets; Z-Image 2048 portrait and market also inspected at larger scale. Identical timed pixels reviewed once.",
+        "model": "flux2-klein-4b",
+        "dimensions": [
+          1024,
+          1024
+        ],
+        "prompt": "fox",
+        "finding": "Coherent scene; no obvious blank areas or checkerboard corruption. Model anatomy/text/prompt fidelity are not certified.",
+        "heuristic_problems": []
+      }
+    }
+  ],
+  "thermal_after": "Note: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded",
+  "swap_after": "total = 2048.00M  used = 326.81M  free = 1721.19M  (encrypted)",
+  "finished_at": "2026-10-01T13:35:51.792282+00:00",
+  "raw_manifest_sha256": "ea408c18bd84eccc661ad34045220ce7f50e064c3997e1295318800b6c2a83ea",
+  "path_redaction": "Host home directory replaced with $HOME; original artifact hashes retained. Published log hashes are separate."
+}

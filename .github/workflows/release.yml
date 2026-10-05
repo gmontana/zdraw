@@ -1,0 +1,72 @@
+name: release
+# On a v* tag: build ReleaseFast on Apple silicon, run the gates, package the
+# archive (CLI, metallib, notices), sign and
+# notarise when the secrets are present, and publish a GitHub Release.
+on:
+  push:
+    tags: ["v*"]
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: macos-14
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Install zig 0.16.0
+        uses: mlugg/setup-zig@v2
+        with:
+          version: 0.16.0
+      - name: Toolchain
+        run: |
+          zig version
+          xcrun --find metal || echo "no metal toolchain on this runner"
+          xcodebuild -version || true
+      - name: Install zlint v0.8.1
+        run: |
+          curl -fsSL -o /tmp/zlint \
+            https://github.com/DonIsaac/zlint/releases/download/v0.8.1/zlint-macos-aarch64
+          chmod +x /tmp/zlint
+          sudo mv /tmp/zlint /usr/local/bin/zlint
+          zlint --version
+      - name: Gates
+        run: |
+          zig build qa
+          zig build -Doptimize=Debug test
+      - name: Import the Developer ID certificate
+        if: ${{ env.DEVID_CERT_P12_B64 != '' }}
+        env:
+          DEVID_CERT_P12_B64: ${{ secrets.DEVID_CERT_P12_B64 }}
+          DEVID_CERT_PASSWORD: ${{ secrets.DEVID_CERT_PASSWORD }}
+          KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
+        run: |
+          echo "$DEVID_CERT_P12_B64" | base64 --decode > /tmp/devid.p12
+          security create-keychain -p "$KEYCHAIN_PASSWORD" build.keychain
+          security default-keychain -s build.keychain
+          security unlock-keychain -p "$KEYCHAIN_PASSWORD" build.keychain
+          security import /tmp/devid.p12 -k build.keychain -P "$DEVID_CERT_PASSWORD" -T /usr/bin/codesign
+          security set-key-partition-list -S apple-tool:,apple: -s -k "$KEYCHAIN_PASSWORD" build.keychain
+          echo "SIGN_IDENTITY=Developer ID Application" >> "$GITHUB_ENV"
+      - name: Release archive
+        run: bash tools/release_assets.sh "${GITHUB_REF_NAME}"
+      - name: Notarise
+        if: ${{ env.SIGN_IDENTITY != '' }}
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
+        run: |
+          echo "$ASC_KEY_P8" > /tmp/asc.p8
+          NAME="zdraw-${GITHUB_REF_NAME}-macos-arm64"
+          ditto -c -k --keepParent "dist/$NAME" "dist/$NAME.zip"
+          xcrun notarytool submit "dist/$NAME.zip" --key /tmp/asc.p8 --key-id "$ASC_KEY_ID" --issuer "$ASC_ISSUER_ID" --wait
+      - name: Publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          NAME="zdraw-${GITHUB_REF_NAME}-macos-arm64"
+          gh release create "${GITHUB_REF_NAME}" \
+            "dist/$NAME.tar.gz" "dist/$NAME.sha256" "dist/$NAME.manifest.sha256" \
+            --title "zdraw ${GITHUB_REF_NAME}" --notes-file CHANGELOG.md

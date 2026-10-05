@@ -1,0 +1,147 @@
+quiet gate: Thu Oct  1 13:11:05 UTC 2026 host=m4max-a threshold=2.0 reads=6 interval=80s
+command: python3 tools/quality/resolution_sweep.py --mode timing --out-dir runs/release-resolution-20261001/timing
+Thu Oct  1 13:11:05 UTC 2026 load1m=1.17 consecutive=1
+Thu Oct  1 13:12:25 UTC 2026 load1m=0.97 consecutive=2
+Thu Oct  1 13:13:45 UTC 2026 load1m=0.99 consecutive=3
+Thu Oct  1 13:15:05 UTC 2026 load1m=1.07 consecutive=4
+Thu Oct  1 13:16:25 UTC 2026 load1m=1.20 consecutive=5
+Thu Oct  1 13:17:45 UTC 2026 load1m=1.02 consecutive=6
+QUIET_GATE_PASS
+START 1/68 001-flux2-klein-4b-1024x1024-fox-warmup
+DONE 001-flux2-klein-4b-1024x1024-fox-warmup 11.41s problems=[]
+START 2/68 002-z-image-turbo-1024x1024-fox-warmup
+DONE 002-z-image-turbo-1024x1024-fox-warmup 24.88s problems=[]
+START 3/68 003-flux2-klein-4b-64x64-fox-round1
+DONE 003-flux2-klein-4b-64x64-fox-round1 0.47s problems=['generation exited 1', "image unavailable: [Errno 2] No such file or directory: '$HOME/repos/zdraw/runs/release-resolution-20261001/timing/003-flux2-klein-4b-64x64-fox-round1.png'"]
+START 4/68 004-z-image-turbo-64x64-fox-round1
+DONE 004-z-image-turbo-64x64-fox-round1 1.18s problems=['checkerboard-noise score=41.9 (sane<40)']
+START 5/68 005-flux2-klein-4b-128x128-fox-round1
+DONE 005-flux2-klein-4b-128x128-fox-round1 1.94s problems=[]
+START 6/68 006-z-image-turbo-128x128-fox-round1
+DONE 006-z-image-turbo-128x128-fox-round1 1.43s problems=[]
+START 7/68 007-flux2-klein-4b-256x256-fox-round1
+DONE 007-flux2-klein-4b-256x256-fox-round1 2.31s problems=[]
+START 8/68 008-z-image-turbo-256x256-fox-round1
+DONE 008-z-image-turbo-256x256-fox-round1 2.13s problems=[]
+START 9/68 009-flux2-klein-4b-512x512-fox-round1
+DONE 009-flux2-klein-4b-512x512-fox-round1 4.29s problems=[]
+START 10/68 010-z-image-turbo-512x512-fox-round1
+DONE 010-z-image-turbo-512x512-fox-round1 5.52s problems=[]
+START 11/68 011-flux2-klein-4b-768x768-fox-round1
+DONE 011-flux2-klein-4b-768x768-fox-round1 6.99s problems=[]
+START 12/68 012-z-image-turbo-768x768-fox-round1
+DONE 012-z-image-turbo-768x768-fox-round1 12.05s problems=[]
+START 13/68 013-flux2-klein-4b-1024x1024-fox-round1
+DONE 013-flux2-klein-4b-1024x1024-fox-round1 11.87s problems=[]
+START 14/68 014-z-image-turbo-1024x1024-fox-round1
+DONE 014-z-image-turbo-1024x1024-fox-round1 21.94s problems=[]
+START 15/68 015-flux2-klein-4b-1536x1536-fox-round1
+DONE 015-flux2-klein-4b-1536x1536-fox-round1 0.07s problems=['generation exited 1', "image unavailable: [Errno 2] No such file or directory: '$HOME/repos/zdraw/runs/release-resolution-20261001/timing/015-flux2-klein-4b-1536x1536-fox-round1.png'"]
+START 16/68 016-z-image-turbo-1536x1536-fox-round1
+DONE 016-z-image-turbo-1536x1536-fox-round1 56.21s problems=[]
+START 17/68 017-flux2-klein-4b-2048x2048-fox-round1
+DONE 017-flux2-klein-4b-2048x2048-fox-round1 0.08s problems=['generation exited 1', "image unavailable: [Errno 2] No such file or directory: '$HOME/repos/zdraw/runs/release-resolution-20261001/timing/017-flux2-klein-4b-2048x2048-fox-round1.png'"]
+START 18/68 018-z-image-turbo-2048x2048-fox-round1
+DONE 018-z-image-turbo-2048x2048-fox-round1 120.34s problems=[]
+START 19/68 019-flux2-klein-4b-1024x768-fox-round1
+DONE 019-flux2-klein-4b-1024x768-fox-round1 8.74s problems=[]
+START 20/68 020-z-image-turbo-1024x768-fox-round1
+DONE 020-z-image-turbo-1024x768-fox-round1 16.26s problems=[]
+START 21/68 021-flux2-klein-4b-768x1024-fox-round1
+DONE 021-flux2-klein-4b-768x1024-fox-round1 9.04s problems=[]
+START 22/68 022-z-image-turbo-768x1024-fox-round1
+DONE 022-z-image-turbo-768x1024-fox-round1 17.04s problems=[]
+START 23/68 023-flux2-klein-4b-544x800-fox-round1
+DONE 023-flux2-klein-4b-544x800-fox-round1 0.51s problems=['generation exited 1', "image unavailable: [Errno 2] No such file or directory: '$HOME/repos/zdraw/runs/release-resolution-20261001/timing/023-flux2-klein-4b-544x800-fox-round1.png'"]
+START 24/68 024-z-image-turbo-544x800-fox-round1
+DONE 024-z-image-turbo-544x800-fox-round1 31.26s problems=[]
+START 25/68 025-z-image-turbo-544x800-fox-round2
+DONE 025-z-image-turbo-544x800-fox-round2 31.28s problems=[]
+START 26/68 026-flux2-klein-4b-544x800-fox-round2
+DONE 026-flux2-klein-4b-544x800-fox-round2 0.50s problems=['generation exited 1', "image unavailable: [Errno 2] No such file or directory: '$HOME/repos/zdraw/runs/release-resolution-20261001/timing/026-flux2-klein-4b-544x800-fox-round2.png'"]
+START 27/68 027-z-image-turbo-768x1024-fox-round2
+DONE 027-z-image-turbo-768x1024-fox-round2 16.02s problems=[]
+START 28/68 028-flux2-klein-4b-768x1024-fox-round2
+DONE 028-flux2-klein-4b-768x1024-fox-round2 8.69s problems=[]
+START 29/68 029-z-image-turbo-1024x768-fox-round2
+DONE 029-z-image-turbo-1024x768-fox-round2 15.95s problems=[]
+START 30/68 030-flux2-klein-4b-1024x768-fox-round2
+DONE 030-flux2-klein-4b-1024x768-fox-round2 8.75s problems=[]
+START 31/68 031-z-image-turbo-2048x2048-fox-round2
+DONE 031-z-image-turbo-2048x2048-fox-round2 122.59s problems=[]
+START 32/68 032-flux2-klein-4b-2048x2048-fox-round2
+DONE 032-flux2-klein-4b-2048x2048-fox-round2 0.07s problems=['generation exited 1', "image unavailable: [Errno 2] No such file or directory: '$HOME/repos/zdraw/runs/release-resolution-20261001/timing/032-flux2-klein-4b-2048x2048-fox-round2.png'"]
+START 33/68 033-z-image-turbo-1536x1536-fox-round2
+DONE 033-z-image-turbo-1536x1536-fox-round2 62.12s problems=[]
+START 34/68 034-flux2-klein-4b-1536x1536-fox-round2
+DONE 034-flux2-klein-4b-1536x1536-fox-round2 0.07s problems=['generation exited 1', "image unavailable: [Errno 2] No such file or directory: '$HOME/repos/zdraw/runs/release-resolution-20261001/timing/034-flux2-klein-4b-1536x1536-fox-round2.png'"]
+START 35/68 035-z-image-turbo-1024x1024-fox-round2
+DONE 035-z-image-turbo-1024x1024-fox-round2 24.83s problems=[]
+START 36/68 036-flux2-klein-4b-1024x1024-fox-round2
+DONE 036-flux2-klein-4b-1024x1024-fox-round2 13.18s problems=[]
+START 37/68 037-z-image-turbo-768x768-fox-round2
+DONE 037-z-image-turbo-768x768-fox-round2 13.43s problems=[]
+START 38/68 038-flux2-klein-4b-768x768-fox-round2
+DONE 038-flux2-klein-4b-768x768-fox-round2 7.53s problems=[]
+START 39/68 039-z-image-turbo-512x512-fox-round2
+DONE 039-z-image-turbo-512x512-fox-round2 6.11s problems=[]
+START 40/68 040-flux2-klein-4b-512x512-fox-round2
+DONE 040-flux2-klein-4b-512x512-fox-round2 4.54s problems=[]
+START 41/68 041-z-image-turbo-256x256-fox-round2
+DONE 041-z-image-turbo-256x256-fox-round2 2.23s problems=[]
+START 42/68 042-flux2-klein-4b-256x256-fox-round2
+DONE 042-flux2-klein-4b-256x256-fox-round2 2.38s problems=[]
+START 43/68 043-z-image-turbo-128x128-fox-round2
+DONE 043-z-image-turbo-128x128-fox-round2 1.44s problems=[]
+START 44/68 044-flux2-klein-4b-128x128-fox-round2
+DONE 044-flux2-klein-4b-128x128-fox-round2 1.98s problems=[]
+START 45/68 045-z-image-turbo-64x64-fox-round2
+DONE 045-z-image-turbo-64x64-fox-round2 1.19s problems=['checkerboard-noise score=41.9 (sane<40)']
+START 46/68 046-flux2-klein-4b-64x64-fox-round2
+DONE 046-flux2-klein-4b-64x64-fox-round2 0.47s problems=['generation exited 1', "image unavailable: [Errno 2] No such file or directory: '$HOME/repos/zdraw/runs/release-resolution-20261001/timing/046-flux2-klein-4b-64x64-fox-round2.png'"]
+START 47/68 047-z-image-turbo-1024x1024-fox-round3
+DONE 047-z-image-turbo-1024x1024-fox-round3 24.67s problems=[]
+START 48/68 048-flux2-klein-4b-1536x1536-fox-round3
+DONE 048-flux2-klein-4b-1536x1536-fox-round3 0.08s problems=['generation exited 1', "image unavailable: [Errno 2] No such file or directory: '$HOME/repos/zdraw/runs/release-resolution-20261001/timing/048-flux2-klein-4b-1536x1536-fox-round3.png'"]
+START 49/68 049-z-image-turbo-1536x1536-fox-round3
+DONE 049-z-image-turbo-1536x1536-fox-round3 63.76s problems=[]
+START 50/68 050-flux2-klein-4b-2048x2048-fox-round3
+DONE 050-flux2-klein-4b-2048x2048-fox-round3 0.08s problems=['generation exited 1', "image unavailable: [Errno 2] No such file or directory: '$HOME/repos/zdraw/runs/release-resolution-20261001/timing/050-flux2-klein-4b-2048x2048-fox-round3.png'"]
+START 51/68 051-z-image-turbo-2048x2048-fox-round3
+DONE 051-z-image-turbo-2048x2048-fox-round3 135.79s problems=[]
+START 52/68 052-flux2-klein-4b-1024x768-fox-round3
+DONE 052-flux2-klein-4b-1024x768-fox-round3 9.71s problems=[]
+START 53/68 053-z-image-turbo-1024x768-fox-round3
+DONE 053-z-image-turbo-1024x768-fox-round3 18.23s problems=[]
+START 54/68 054-flux2-klein-4b-768x1024-fox-round3
+DONE 054-flux2-klein-4b-768x1024-fox-round3 9.81s problems=[]
+START 55/68 055-z-image-turbo-768x1024-fox-round3
+DONE 055-z-image-turbo-768x1024-fox-round3 18.12s problems=[]
+START 56/68 056-flux2-klein-4b-544x800-fox-round3
+DONE 056-flux2-klein-4b-544x800-fox-round3 0.51s problems=['generation exited 1', "image unavailable: [Errno 2] No such file or directory: '$HOME/repos/zdraw/runs/release-resolution-20261001/timing/056-flux2-klein-4b-544x800-fox-round3.png'"]
+START 57/68 057-z-image-turbo-544x800-fox-round3
+DONE 057-z-image-turbo-544x800-fox-round3 31.93s problems=[]
+START 58/68 058-flux2-klein-4b-64x64-fox-round3
+DONE 058-flux2-klein-4b-64x64-fox-round3 0.47s problems=['generation exited 1', "image unavailable: [Errno 2] No such file or directory: '$HOME/repos/zdraw/runs/release-resolution-20261001/timing/058-flux2-klein-4b-64x64-fox-round3.png'"]
+START 59/68 059-z-image-turbo-64x64-fox-round3
+DONE 059-z-image-turbo-64x64-fox-round3 1.15s problems=['checkerboard-noise score=41.9 (sane<40)']
+START 60/68 060-flux2-klein-4b-128x128-fox-round3
+DONE 060-flux2-klein-4b-128x128-fox-round3 1.94s problems=[]
+START 61/68 061-z-image-turbo-128x128-fox-round3
+DONE 061-z-image-turbo-128x128-fox-round3 1.42s problems=[]
+START 62/68 062-flux2-klein-4b-256x256-fox-round3
+DONE 062-flux2-klein-4b-256x256-fox-round3 2.30s problems=[]
+START 63/68 063-z-image-turbo-256x256-fox-round3
+DONE 063-z-image-turbo-256x256-fox-round3 2.12s problems=[]
+START 64/68 064-flux2-klein-4b-512x512-fox-round3
+DONE 064-flux2-klein-4b-512x512-fox-round3 4.38s problems=[]
+START 65/68 065-z-image-turbo-512x512-fox-round3
+DONE 065-z-image-turbo-512x512-fox-round3 5.77s problems=[]
+START 66/68 066-flux2-klein-4b-768x768-fox-round3
+DONE 066-flux2-klein-4b-768x768-fox-round3 7.02s problems=[]
+START 67/68 067-z-image-turbo-768x768-fox-round3
+DONE 067-z-image-turbo-768x768-fox-round3 12.47s problems=[]
+START 68/68 068-flux2-klein-4b-1024x1024-fox-round3
+DONE 068-flux2-klein-4b-1024x1024-fox-round3 12.10s problems=[]
+automated-fail
+COMMAND_FAILED rc=1

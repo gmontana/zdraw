@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "note": "Prompt-side rules for the categories the Klein 4B model card names. A category fires when every one of its groups has at least one phrase present as whole words (case-folded, punctuation ignored). Regex-free by design; partial by nature - the image stage is the second line.",
+  "categories": [
+    {
+      "name": "csam",
+      "message": "sexual content involving minors is refused",
+      "groups": [
+        ["csam", "child porn", "child pornography", "cp video", "lolicon", "shotacon", "pedo", "pedophile", "paedophile"]
+      ]
+    },
+    {
+      "name": "minors-sexual",
+      "message": "sexual content involving minors is refused",
+      "groups": [
+        ["child", "children", "kid", "kids", "minor", "minors", "toddler", "toddlers", "baby", "babies", "infant", "preteen", "preteens", "teen", "teens", "teenager", "teenagers", "underage", "schoolgirl", "schoolgirls", "schoolboy", "schoolboys", "little girl", "little boy", "young girl", "young boy", "12 year old", "13 year old", "14 year old", "15 year old", "16 year old", "17 year old", "year old girl", "year old boy"],
+        ["nude", "naked", "nudity", "topless", "undressed", "sex", "sexual", "sexy", "erotic", "erotica", "porn", "pornographic", "nsfw", "lingerie", "bikini", "seductive", "breasts", "genitals", "penis", "vagina", "orgasm", "masturbating", "fellatio", "intercourse"]
+      ]
+    },
+    {
+      "name": "ncii-real-person-sexual",
+      "message": "sexual imagery of real people without their consent is refused",
+      "groups": [
+        ["deepfake", "deep fake", "face swap", "faceswap", "without consent", "non consensual", "nonconsensual", "revenge porn", "leaked nudes", "my ex", "my classmate", "my coworker", "my neighbor", "my neighbour", "my teacher", "my boss", "celebrity", "actress", "singer", "influencer", "politician", "real person", "looks exactly like"],
+        ["nude", "naked", "nudity", "topless", "undressed", "sex", "sexual", "porn", "pornographic", "nsfw", "genitals", "breasts", "orgasm", "intercourse"]
+      ]
+    },
+    {
+      "name": "extreme-violence",
+      "message": "gore and torture imagery is refused",
+      "groups": [
+        ["gore", "gory", "torture", "tortured", "torturing", "mutilated", "mutilation", "dismembered", "dismemberment", "beheaded", "beheading", "decapitated", "decapitation", "disemboweled", "disembowelment", "eviscerated", "flayed", "snuff", "execution video", "severed head", "severed limbs", "entrails", "blood splatter", "bloody corpse", "mangled corpse", "dead child", "dead children", "murdered child", "shooting spree", "mass shooting"]
+      ]
+    }
+  ]
+}
