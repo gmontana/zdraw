@@ -117,7 +117,8 @@ def parser() -> argparse.ArgumentParser:
     ap.add_argument("--mflux-python", default=sys.executable)
     ap.add_argument("--mflux-model-path")
     ap.add_argument("--mflux-prequantized", action="store_true")
-    ap.add_argument("--mflux-quantize", type=int, choices=(4, 8), default=8)
+    ap.add_argument("--mflux-quantize", type=int, choices=(0, 4, 8), default=8,
+                    help="mflux load-time quantisation; 0 runs its unquantised bf16 weights")
     ap.add_argument("--diffusers-python", default=sys.executable)
     ap.add_argument("--ollama-bin", default="ollama")
     ap.add_argument("--ollama-model")

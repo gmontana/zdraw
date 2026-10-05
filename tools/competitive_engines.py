@@ -352,7 +352,9 @@ def run_zdraw(
 ) -> list[Result]:
     results = []
     env = os.environ.copy()
-    env.update({"ZDRAW_PROGRESS": "quiet", "ZDRAW_MEMTRACE": "1"})
+    # Memory comes from /usr/bin/time -l like every other arm; ZDRAW_MEMTRACE
+    # would add its exact page walk to zdraw's wall time.
+    env.update({"ZDRAW_PROGRESS": "quiet"})
     if args.zdraw_metrics:
         env["ZDRAW_METRICS"] = "1"
     vae_strip = getattr(args, "zdraw_vae_strip", None)
@@ -440,7 +442,7 @@ def run_mflux(
     ]
     if args.mflux_model_path:
         base.extend(("--model-path", str(Path(args.mflux_model_path).expanduser())))
-    if case.tier == "product" and not args.mflux_prequantized:
+    if case.tier == "product" and not args.mflux_prequantized and args.mflux_quantize:
         base.extend(("--quantize", str(args.mflux_quantize)))
     env = os.environ.copy()
     env["HF_HUB_DISABLE_XET"] = "1"
