@@ -35,7 +35,8 @@ fi
   echo "zdraw $TAG"; echo "commit $COMMIT"; echo "zig $(zig version)"
   echo "built $(date -u +%Y-%m-%dT%H:%MZ) on $(sysctl -n machdep.cpu.brand_string) macOS $(sw_vers -productVersion)"
 } > "dist/$NAME/BUILD.txt"
-( cd dist && tar -czf "$NAME.tar.gz" "$NAME" && shasum -a 256 "$NAME.tar.gz" > "$NAME.sha256" )
+# COPYFILE_DISABLE keeps macOS tar from adding AppleDouble ._ sidecars for extended attributes.
+( cd dist && COPYFILE_DISABLE=1 tar -czf "$NAME.tar.gz" "$NAME" && shasum -a 256 "$NAME.tar.gz" > "$NAME.sha256" )
 ( cd "dist/$NAME" && shasum -a 256 zdraw lib/steel.metallib ) > "dist/$NAME.manifest.sha256"
 python3 tools/release_smoke.py "dist/$NAME.tar.gz"
 echo "RELEASE-ASSETS dist/$NAME.tar.gz"; cat "dist/$NAME.sha256"
