@@ -25,6 +25,7 @@
 
 #import <Foundation/Foundation.h>
 #include "zdraw_abi.h"
+#include <unistd.h>
 #include <sys/sysctl.h>
 #include <mach-o/dyld.h>
 #import <Metal/Metal.h>
@@ -348,6 +349,7 @@ static uint64_t g_gemm_mps = 0;
 static uint64_t g_gemm_mps_fallback = 0;
 static uint64_t g_attn_steel_fallback = 0; // steel attention asked for, kernel unavailable -> MFA ran
 static uint64_t g_gemm_mpp_fallback = 0;   // Metal 4 tensor GEMM asked for, unavailable -> direct kernel ran
+static uint64_t g_gemm_ours16_missing = 0; // ours16 GEMM asked for, pipeline nil -> generic kernel ran
 static double g_gpu_seconds = 0.0; // summed GPUEndTime-GPUStartTime over waits
 
 enum {
@@ -456,6 +458,7 @@ uint64_t zdraw_metal_gemm_mps_count(void) { return g_gemm_mps; }
 uint64_t zdraw_metal_gemm_mps_fallback_count(void) { return g_gemm_mps_fallback; }
 uint64_t zdraw_metal_attn_steel_fallback_count(void) { return g_attn_steel_fallback; }
 uint64_t zdraw_metal_gemm_mpp_fallback_count(void) { return g_gemm_mpp_fallback; }
+uint64_t zdraw_metal_gemm_ours16_missing_count(void) { return g_gemm_ours16_missing; }
 void zdraw_metal_note_mpp_fallback(void) { g_gemm_mpp_fallback++; }
 void zdraw_metal_warn_mpp_unavailable(void) {
     fprintf(stderr, "zdraw: WARNING Metal 4 tensor GEMM unavailable (needs macOS 26); Klein GEMMs "
@@ -613,8 +616,17 @@ void* zdraw_metal_create_buffer_no_copy(void* device, const void* data, size_t s
         if (copied) g_weights += size;
         return (__bridge_retained void*)copied;
     }
+    // Metal documents newBufferWithBytesNoCopy for page-aligned memory of a
+    // page-multiple length only. It accepts other pointers, but what the GPU
+    // then reads is undefined, so an unaligned request returns NULL here and
+    // the caller binds through the page-aligned whole-mapping buffer with an
+    // offset instead; the length is rounded up to the page the mapping
+    // already covers.
+    const size_t page = (size_t)getpagesize();
+    if (((uintptr_t)data % page) != 0) return NULL;
+    const size_t wrap_len = (size + page - 1) / page * page;
     id<MTLBuffer> buffer = [value newBufferWithBytesNoCopy:(void*)data
-                                                    length:size
+                                                    length:wrap_len
                                                    options:MTLResourceStorageModeShared
                                                deallocator:nil];
     // mmap-shared: counts toward the weight footprint, not a real device alloc.
@@ -623,6 +635,32 @@ void* zdraw_metal_create_buffer_no_copy(void* device, const void* data, size_t s
         mapping_register(data, size);
     }
     return (__bridge_retained void*)buffer;
+}
+
+size_t zdraw_metal_buffer_length(void* buffer) {
+    return [(__bridge id<MTLBuffer>)buffer length];
+}
+
+// Diagnostic readback that also works for private-storage buffers (blit into
+// a temporary shared buffer on `queue_`, then copy); shared buffers are read
+// directly. Returns 0 on success.
+int zdraw_metal_read_buffer_any(void* queue_, void* buffer_, void* dst, size_t size) {
+    id<MTLBuffer> buf = (__bridge id<MTLBuffer>)buffer_;
+    if (buf.storageMode != MTLStorageModePrivate) {
+        memcpy(dst, [buf contents], size);
+        return 0;
+    }
+    id<MTLCommandQueue> queue = (__bridge id<MTLCommandQueue>)queue_;
+    id<MTLBuffer> tmp = [queue.device newBufferWithLength:size options:MTLResourceStorageModeShared];
+    if (!tmp) return -1;
+    id<MTLCommandBuffer> cmd = [queue commandBuffer];
+    id<MTLBlitCommandEncoder> blit = [cmd blitCommandEncoder];
+    [blit copyFromBuffer:buf sourceOffset:0 toBuffer:tmp destinationOffset:0 size:size];
+    [blit endEncoding];
+    [cmd commit];
+    [cmd waitUntilCompleted];
+    memcpy(dst, [tmp contents], size);
+    return 0;
 }
 
 void zdraw_metal_read_buffer(void* buffer, void* dst, size_t size) {
@@ -2943,6 +2981,13 @@ static id<MTLBuffer> attn_half_scratch(id<MTLDevice> device, int slot, size_t by
 // thread count a PSO happens to resolve (the seam of the 07-18 incident).
 enum { ATTN_K_ROWS = 0, ATTN_K_FLASH = 1, ATTN_K_BLOCK = 2, ATTN_K_WIDE = 3 };
 
+// attention_rows keeps one float per key in threadgroup memory (argument
+// threadgroup(0)), sized here per dispatch at the 16-byte granularity Metal
+// requires. Every dispatcher of the rows kernel must set it.
+static size_t attn_rows_scores_bytes(const ZdrawAttnParams* params) {
+    return ((size_t)params->tokens * 4 + 15) / 16 * 16;
+}
+
 // Shared encode body for the standalone attention runner: block16 (64
 // threads) converts q/k/v to half head-major scratch in-encoder first.
 static void attention_encode(
@@ -2989,6 +3034,7 @@ static void attention_encode(
     [enc setBuffer:(__bridge id<MTLBuffer>)vb offset:(size_t)q_off atIndex:2];
     [enc setBuffer:(__bridge id<MTLBuffer>)output offset:(size_t)out_off atIndex:3];
     [enc setBytes:params length:sizeof(ZdrawAttnParams) atIndex:4];
+    if (kernel == ATTN_K_ROWS) [enc setThreadgroupMemoryLength:attn_rows_scores_bytes(params) atIndex:0];
     // block16: three head-major converts plus the attention kernel
     g_dispatch += (kernel == ATTN_K_BLOCK) ? 4 : 1;
     size_t pairs = (size_t)params->tokens * (size_t)params->heads;
@@ -4462,10 +4508,22 @@ static id<MTLComputePipelineState> ours16_pipeline_typed(id<MTLDevice> device, i
         "}"];
     NSError* err = nil;
     id<MTLLibrary> lib = [device newLibraryWithSource:src options:zdraw_compile_options() error:&err];
-    if (!lib) return nil;
+    if (!lib) {
+        fprintf(stderr, "zdraw: WARNING ours16 GEMM library compile failed (bf16=%d): %s\n", bf16,
+                err ? err.localizedDescription.UTF8String : "no error object");
+        return nil;
+    }
     id<MTLFunction> fn = [lib newFunctionWithName:@"gemm_f16_direct"];
-    if (!fn) return nil;
-    return [device newComputePipelineStateWithFunction:fn error:&err];
+    if (!fn) {
+        fprintf(stderr, "zdraw: WARNING ours16 GEMM function missing (bf16=%d)\n", bf16);
+        return nil;
+    }
+    id<MTLComputePipelineState> pipe = [device newComputePipelineStateWithFunction:fn error:&err];
+    if (!pipe) {
+        fprintf(stderr, "zdraw: WARNING ours16 GEMM pipeline failed (bf16=%d): %s\n", bf16,
+                err ? err.localizedDescription.UTF8String : "no error object");
+    }
+    return pipe;
 }
 
 static id<MTLComputePipelineState> ours16_pipeline(id<MTLDevice> device) {
@@ -5165,7 +5223,16 @@ int zdraw_metal_run_gemm_ours16_enc(
     id<MTLComputeCommandEncoder> enc = (__bridge id<MTLComputeCommandEncoder>)b->enc;
     if (!cmd || !enc) return 1;
     id<MTLComputePipelineState> pipe = ours16_pipeline_for(cmd.device, params);
-    if (!pipe) return 1;
+    if (!pipe) {
+        // The caller falls back to the generic kernel, which rounds
+        // differently: say so, once, because the certified hashes assume
+        // this route.
+        if (g_gemm_ours16_missing++ == 0) {
+            fprintf(stderr, "zdraw: WARNING ours16 GEMM pipeline unavailable; the generic GEMM kernel "
+                            "runs instead (a route the certified cards did not take)\n");
+        }
+        return 1;
+    }
     if (dense_ours_v2_enabled() && (params->n & 63u) == 0u) {
         id<MTLComputePipelineState> v2 = ours_v2_pipeline(cmd.device);
         if (v2) {
@@ -6917,6 +6984,7 @@ static void encode_attention(
     [enc setBuffer:(__bridge id<MTLBuffer>)vb offset:0 atIndex:2];
     [enc setBuffer:(__bridge id<MTLBuffer>)b->mix offset:0 atIndex:3];
     [enc setBytes:params length:sizeof(ZdrawAttnParams) atIndex:4];
+    if (kernel == ATTN_K_ROWS) [enc setThreadgroupMemoryLength:attn_rows_scores_bytes(params) atIndex:0];
     // block16: one threadgroup per 16-query block per head (rows/flash use
     // one threadgroup per token per head).
     size_t groups = kernel == ATTN_K_BLOCK
@@ -7378,6 +7446,11 @@ static Act16Pipes* act16_pipes(id<MTLDevice> device) {
         "float next = float(state[base + dim]) + inc;"
         "state[base + dim] = sat_h(next);"
         "state_sum += next * next; }"
+        // Every thread read reduce[0] for resid_norm above; without this
+        // barrier a thread that finished its loop early overwrites the slot
+        // while a lagging simdgroup is still reading it (seen as a persistent
+        // wrong Klein base render, 6 Oct 2026).
+        "threadgroup_barrier(mem_flags::mem_threadgroup);"
         "reduce[tid] = state_sum;"
         "threadgroup_barrier(mem_flags::mem_threadgroup);"
         "for (uint stride = tg_size / 2; stride > 0; stride >>= 1) {"

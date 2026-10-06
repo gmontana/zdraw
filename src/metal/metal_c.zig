@@ -21,6 +21,13 @@ pub extern fn zdraw_metal_create_buffer_no_copy(
     size: usize,
 ) ?*anyopaque;
 pub extern fn zdraw_metal_read_buffer(buffer: *anyopaque, dst: [*]u8, size: usize) void;
+pub extern fn zdraw_metal_buffer_length(buffer: *anyopaque) usize;
+pub extern fn zdraw_metal_read_buffer_any(
+    queue: *anyopaque,
+    buffer: *anyopaque,
+    dst: [*]u8,
+    size: usize,
+) c_int;
 pub extern fn zdraw_metal_write_buffer(buffer: *anyopaque, src: [*]const u8, size: usize) void;
 pub extern fn zdraw_metal_release_buffer(buffer: ?*anyopaque) void;
 pub extern fn zdraw_metal_release_weight_buffer(buffer: ?*anyopaque) void;

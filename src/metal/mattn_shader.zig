@@ -393,8 +393,6 @@ pub const attn: [:0]const u8 =
     \\#include <metal_stdlib>
     \\using namespace metal;
     \\
-    \\#define MAX_TOKENS 6144
-    \\
     \\struct Params {
     \\    uint tokens;
     \\    uint heads;
@@ -420,7 +418,11 @@ pub const attn: [:0]const u8 =
     \\    constant Params& p [[buffer(4)]],
     \\    uint group [[threadgroup_position_in_grid]],
     \\    uint tid [[thread_index_in_threadgroup]],
-    \\    uint tg_size [[threads_per_threadgroup]]
+    \\    uint tg_size [[threads_per_threadgroup]],
+    \\    // One float per key, sized by the host to tokens * 4 bytes. A static
+    \\    // scores[MAX_TOKENS] array declared the kernel over the 32 KiB
+    \\    // threadgroup limit, which Metal's validation layer rejects.
+    \\    threadgroup float* scores [[threadgroup(0)]]
     \\) {
     \\    uint tok = group / p.heads;
     \\    uint head = group - tok * p.heads;
@@ -428,7 +430,6 @@ pub const attn: [:0]const u8 =
     \\    uint limit = p.causal == 0 ? p.tokens : tok + 1;
     \\    if (p.valid != 0 && limit > p.valid) limit = p.valid;
     \\    float scale = rsqrt(float(p.head_dim));
-    \\    threadgroup float scores[MAX_TOKENS];
     \\    threadgroup float reduce[256];
     \\    float local_max = -INFINITY;
     \\    for (uint key = tid; key < limit; key += tg_size) {
@@ -453,6 +454,9 @@ pub const attn: [:0]const u8 =
     \\        scores[key] = value;
     \\        local_sum += value;
     \\    }
+    \\    // every thread read reduce[0] for max_score above; the slot is reused
+    \\    // only once every thread is past that read
+    \\    threadgroup_barrier(mem_flags::mem_threadgroup);
     \\    reduce[tid] = local_sum;
     \\    threadgroup_barrier(mem_flags::mem_threadgroup);
     \\    for (uint stride = tg_size / 2; stride > 0; stride >>= 1) {

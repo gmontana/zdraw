@@ -121,6 +121,10 @@ pub const block: [:0]const u8 =
     \\        state[base + dim] = next;
     \\        state_sum += next * next;
     \\    }
+    \\    // reduce[0] was read for resid_norm by every thread; a barrier before
+    \\    // the slot is reused keeps a fast thread from overwriting it under a
+    \\    // lagging simdgroup (the same race as act_resid_next_h).
+    \\    threadgroup_barrier(mem_flags::mem_threadgroup);
     \\    reduce[tid] = state_sum;
     \\    threadgroup_barrier(mem_flags::mem_threadgroup);
     \\    for (uint stride = tg_size / 2; stride > 0; stride >>= 1) {

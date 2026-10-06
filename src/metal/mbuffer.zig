@@ -30,7 +30,9 @@ pub const Cache = struct {
     packs: mpacked.Cache,
 
     pub fn init(device: *anyopaque) !Cache {
-        const zero = [_]u8{ 0, 0 };
+        // 16 zero bytes: bound in place of an absent gate/scale argument, so
+        // it must cover the float the kernel signature declares.
+        const zero = [_]u8{0} ** 16;
         const handle = c.zdraw_metal_create_buffer_with_data(
             device,
             zero[0..].ptr,

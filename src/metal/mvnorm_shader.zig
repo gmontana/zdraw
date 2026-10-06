@@ -58,6 +58,9 @@ pub const vnorm: [:0]const u8 =
     \\        float diff = input[ch * hw + pos] - mean;
     \\        var_sum += diff * diff;
     \\    }
+    \\    // every thread read reduce[0] for the mean above; the slot is reused
+    \\    // only once every thread is past that read
+    \\    threadgroup_barrier(mem_flags::mem_threadgroup);
     \\    reduce[tid] = var_sum;
     \\    threadgroup_barrier(mem_flags::mem_threadgroup);
     \\    for (uint stride = tg_size / 2; stride > 0; stride >>= 1) {
@@ -112,6 +115,9 @@ pub const vnorm: [:0]const u8 =
     \\        float diff = float(input[ch * hw + pos]) - mean;
     \\        var_sum += diff * diff;
     \\    }
+    \\    // every thread read reduce[0] for the mean above; the slot is reused
+    \\    // only once every thread is past that read
+    \\    threadgroup_barrier(mem_flags::mem_threadgroup);
     \\    reduce[tid] = var_sum;
     \\    threadgroup_barrier(mem_flags::mem_threadgroup);
     \\    for (uint stride = tg_size / 2; stride > 0; stride >>= 1) {
@@ -169,6 +175,9 @@ pub const vnorm: [:0]const u8 =
     \\        float diff = input[ch * hw + pos] - mean;
     \\        var_sum += diff * diff;
     \\    }
+    \\    // every thread read reduce[0] for the mean above; the slot is reused
+    \\    // only once every thread is past that read
+    \\    threadgroup_barrier(mem_flags::mem_threadgroup);
     \\    reduce[tid] = var_sum;
     \\    threadgroup_barrier(mem_flags::mem_threadgroup);
     \\    for (uint stride = tg_size / 2; stride > 0; stride >>= 1) {
@@ -215,6 +224,9 @@ pub const vnorm: [:0]const u8 =
     \\        float diff = input[ch * hw + pos] - mean;
     \\        var_sum += diff * diff;
     \\    }
+    \\    // every thread read reduce[0] for the mean above; the slot is reused
+    \\    // only once every thread is past that read
+    \\    threadgroup_barrier(mem_flags::mem_threadgroup);
     \\    reduce[tid] = var_sum;
     \\    threadgroup_barrier(mem_flags::mem_threadgroup);
     \\    for (uint stride = tg_size / 2; stride > 0; stride >>= 1) {
@@ -302,6 +314,9 @@ pub const vnorm: [:0]const u8 =
     \\        float diff = float(half(input[ch * hw + pos])) - mean;
     \\        var_sum += diff * diff;
     \\    }
+    \\    // every thread read reduce[0] for the mean above; the slot is reused
+    \\    // only once every thread is past that read
+    \\    threadgroup_barrier(mem_flags::mem_threadgroup);
     \\    reduce[tid] = var_sum;
     \\    threadgroup_barrier(mem_flags::mem_threadgroup);
     \\    for (uint stride = tg_size / 2; stride > 0; stride >>= 1) {
@@ -555,6 +570,9 @@ pub const vnorm: [:0]const u8 =
     \\        float diff = float(input[ch * hw + pos]) - mean;
     \\        var_sum += diff * diff;
     \\    }
+    \\    // every thread read reduce[0] for the mean above; the slot is reused
+    \\    // only once every thread is past that read
+    \\    threadgroup_barrier(mem_flags::mem_threadgroup);
     \\    reduce[tid] = var_sum;
     \\    threadgroup_barrier(mem_flags::mem_threadgroup);
     \\    for (uint stride = tg_size / 2; stride > 0; stride >>= 1) {
@@ -600,6 +618,9 @@ pub const vnorm: [:0]const u8 =
     \\        float diff = float(input[ch * hw + pos]) - mean;
     \\        var_sum += diff * diff;
     \\    }
+    \\    // every thread read reduce[0] for the mean above; the slot is reused
+    \\    // only once every thread is past that read
+    \\    threadgroup_barrier(mem_flags::mem_threadgroup);
     \\    reduce[tid] = var_sum;
     \\    threadgroup_barrier(mem_flags::mem_threadgroup);
     \\    for (uint stride = tg_size / 2; stride > 0; stride >>= 1) {
