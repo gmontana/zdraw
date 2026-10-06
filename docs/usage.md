@@ -146,6 +146,10 @@ ZDRAW_KLEIN_ZPACK=adapted.zpack ./zig-out/bin/zdraw generate \
   --model flux2-klein-4b --prompt "a red fox in deep snow" --out adapted.png
 ```
 
+A sidecar is verified against the checkpoint it is loaded with and refused
+when it belongs to another model of the same architecture; an adapted pack
+keeps its checkpoint's identity, so the override above renders.
+
 Pack-tool help and the [environment inventory](env-flags.md) cover quantisation
 and other options, which can affect image quality. Klein W6 packs need
 `ZDRAW_KLEIN_ACT=f32`.

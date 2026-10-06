@@ -129,7 +129,8 @@ fn packAll(
         9 + loaded.doubles.len * 4 + loaded.singles.len * 2
     else
         0;
-    const cap = 3 + loaded.doubles.len * 12 + loaded.singles.len * 2 + raw_count;
+    // + 1: the checkpoint identity entry every pack carries.
+    const cap = 4 + loaded.doubles.len * 12 + loaded.singles.len * 2 + raw_count;
     const file = try std.Io.Dir.cwd().createFile(io, opts.out, .{});
     defer file.close(io);
     var buf: [1 << 16]u8 = undefined;
@@ -152,6 +153,7 @@ fn packAll(
     }
 
     try emitBlocks(allocator, &stream, loaded, opts, adapter, &adapted);
+    try emitIdentity(allocator, &stream, loaded);
     if (opts.globals) try emitRaw(allocator, &stream, loaded);
 
     try writer.interface.flush();
@@ -328,6 +330,24 @@ fn emitRaw(allocator: std.mem.Allocator, stream: *Stream, loaded: zflux2.Loaded)
             try emitVerbatim(allocator, stream, slot, zflux2_pack.norm_kind, @field(blk, name));
         }
     }
+}
+
+/// The checkpoint identity (zflux2_pack.identityOf), so a sidecar can be
+/// refused when it is offered to another checkpoint of the same architecture.
+fn emitIdentity(allocator: std.mem.Allocator, stream: *Stream, loaded: zflux2.Loaded) !void {
+    const id = zflux2_pack.identityOf(&loaded);
+    const e = zpack_file.Entry{
+        .family = stream.family,
+        .layer = zflux2_pack.identity_slot,
+        .kind = zflux2_pack.raw_kind,
+        .rows = 1,
+        .cols = 32,
+        .group = zflux2_pack.rawGroup(.u8),
+        .bytes = &id,
+    };
+    try zpack_file.appendEntryAt(allocator, &stream.chunk, e, stream.offset);
+    try stream.emit();
+    stream.count += 1;
 }
 
 fn emitVerbatim(

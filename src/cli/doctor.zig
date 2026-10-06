@@ -79,10 +79,11 @@ pub const Report = struct {
 };
 
 /// Flags that never change the route (paths, instruments, provenance).
+// A sidecar path is NOT neutral: a pack built from another checkpoint changes
+// every weight it swaps in, so the card records it as an override.
 const neutral_env = [_][]const u8{
-    "ZDRAW_ZPACK",    "ZDRAW_KLEIN_ZPACK", "ZDRAW_STEEL_LIB",
-    "ZDRAW_PROGRESS", "ZDRAW_METRICS",     "ZDRAW_ENGINE_REVISION",
-    "ZDRAW_MEMTRACE",
+    "ZDRAW_STEEL_LIB",       "ZDRAW_PROGRESS", "ZDRAW_METRICS",
+    "ZDRAW_ENGINE_REVISION", "ZDRAW_MEMTRACE",
 };
 
 pub fn run(

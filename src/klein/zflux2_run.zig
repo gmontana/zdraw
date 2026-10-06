@@ -169,9 +169,15 @@ pub const Runtime = struct {
 
         const tx_dir = try std.fmt.allocPrint(allocator, "{s}/transformer", .{weights_dir});
         defer allocator.free(tx_dir);
-        var zpack = try findPack(io, allocator, weights_dir, cfg);
+        var path_buf: [1024]u8 = undefined;
+        const pack_path = try resolvePackPath(io, weights_dir, cfg, &path_buf);
+        var zpack: ?zpack_file.Mapped = if (pack_path) |path|
+            try openPack(io, allocator, path, "loading Klein zpack sidecar")
+        else
+            null;
         errdefer if (zpack) |*sidecar| sidecar.deinit(io);
-        var loaded = try loadWeights(io, allocator, tx_dir, cfg, zpack);
+        const adapted = if (pack_path) |path| loraNoteExists(io, path) else false;
+        var loaded = try loadWeights(io, allocator, tx_dir, cfg, zpack, adapted);
         errdefer loaded.deinit(io, allocator);
         const pack_bits: u8 = if (zpack) |*sidecar|
             try zflux2_pack.sidecarBits(sidecar.bytes())
@@ -343,12 +349,31 @@ pub const Runtime = struct {
         tx_dir: []const u8,
         cfg: zflux2.Config,
         zpack: ?zpack_file.Mapped,
+        adapted: bool,
     ) !zflux2.Loaded {
         if (zflux2.load(io, allocator, tx_dir, cfg)) |shard| {
             var loaded = shard;
             errdefer loaded.deinit(io, allocator);
             if (zpack) |*sidecar| {
-                try zflux2_pack.swapLoaded(sidecar.bytes(), &loaded);
+                const swapped = zflux2_pack.swapLoaded(sidecar.bytes(), &loaded, adapted);
+                const verdict = swapped catch |err| switch (err) {
+                    error.SidecarMismatch => {
+                        const msg = "the Klein sidecar does not belong to this checkpoint " ++
+                            "(its x_embedder or proj_out is not the f16 image of the " ++
+                            "transformer shard's); refusing to render with another " ++
+                            "model's weights. Check ZDRAW_KLEIN_ZPACK and the .zpack in " ++
+                            "the weights directory";
+                        try progress.event(io, allocator, msg);
+                        return err;
+                    },
+                    else => return err,
+                };
+                if (verdict == .unverified) {
+                    const msg = "Klein sidecar accepted without a checkpoint identity (an " ++
+                        "adapted pack from before 0.1.1); rebuild it with kleinpack to " ++
+                        "have it verified";
+                    try progress.event(io, allocator, msg);
+                }
             } else if (!zflux2_pack.allowUnpacked()) {
                 return error.MissingPackedSidecar;
             } else {
@@ -361,7 +386,8 @@ pub const Runtime = struct {
             error.FileNotFound, error.MissingTensor => {
                 const sidecar = zpack orelse return err;
                 if (!zflux2_pack.hasRaw(sidecar.bytes())) return err;
-                const msg = "no transformer shard; loading the sidecar's globals";
+                const msg = "no transformer shard; loading the sidecar's globals " ++
+                    "(nothing to verify the sidecar against: it is taken as the model)";
                 try progress.event(io, allocator, msg);
                 return zflux2_pack.loadFromSidecar(allocator, sidecar.bytes(), cfg);
             },
@@ -369,35 +395,35 @@ pub const Runtime = struct {
         }
     }
 
-    fn findPack(
+    /// The sidecar path for this model: ZDRAW_KLEIN_ZPACK when set (empty =
+    /// none), else the weights directory's pack, else `runs/<pack_name>`.
+    fn resolvePackPath(
         io: std.Io,
-        allocator: std.mem.Allocator,
         root: []const u8,
         cfg: zflux2.Config,
-    ) !?zpack_file.Mapped {
-        const env_path = std.c.getenv("ZDRAW_KLEIN_ZPACK");
-        if (env_path) |raw| {
+        buf: *[1024]u8,
+    ) !?[]const u8 {
+        if (std.c.getenv("ZDRAW_KLEIN_ZPACK")) |raw| {
             const path = std.mem.span(raw);
             if (path.len == 0) return null;
-            return try openPack(io, allocator, path, "loading Klein zpack sidecar");
+            if (path.len > buf.len) return error.NameTooLong;
+            @memcpy(buf[0..path.len], path);
+            return buf[0..path.len];
         }
-
-        var root_buf: [1024]u8 = undefined;
-        var candidates: [2][]const u8 = undefined;
-        var count: usize = 0;
-        var local_buf: [256]u8 = undefined;
-        if (std.fmt.bufPrint(&root_buf, "{s}/{s}", .{ root, cfg.pack_name })) |path| {
-            candidates[count] = path;
-            count += 1;
-        } else |_| {}
-        candidates[count] = try std.fmt.bufPrint(&local_buf, "runs/{s}", .{cfg.pack_name});
-        count += 1;
-
-        for (candidates[0..count]) |path| {
-            std.Io.Dir.cwd().access(io, path, .{}) catch continue;
-            return try openPack(io, allocator, path, "loading Klein zpack sidecar");
+        const in_root = std.fmt.bufPrint(buf, "{s}/{s}", .{ root, cfg.pack_name }) catch null;
+        if (in_root) |path| {
+            if (std.Io.Dir.cwd().access(io, path, .{})) |_| return path else |_| {}
         }
-        return null;
+        const local = try std.fmt.bufPrint(buf, "runs/{s}", .{cfg.pack_name});
+        if (std.Io.Dir.cwd().access(io, local, .{})) |_| return local else |_| return null;
+    }
+
+    /// kleinpack writes `<pack>.lora.json` beside a LoRA-merged pack.
+    fn loraNoteExists(io: std.Io, pack_path: []const u8) bool {
+        var buf: [1100]u8 = undefined;
+        const note = std.fmt.bufPrint(&buf, "{s}.lora.json", .{pack_path}) catch return false;
+        std.Io.Dir.cwd().access(io, note, .{}) catch return false;
+        return true;
     }
 
     fn openPack(

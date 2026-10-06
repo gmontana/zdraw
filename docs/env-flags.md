@@ -94,7 +94,7 @@ table with tracked root Zig files and tracked files under `src/` and `tools/`.
 | ZDRAW_KLEIN_W6_ONLY | `gemmbench.zig` | bench-selector | unset | Klein W6 subset |
 | ZDRAW_GEMM_M | `gemmbench.zig` | bench-selector | unset | rescales the Klein shapes' M (512/1024 for the edit-sized, bandwidth-bound rows of the kernel table); with ZDRAW_KLEIN_W6_ONLY |
 | ZDRAW_KLEIN_XRES | `zflux2_run.zig` | candidate | unset | resident Euler experiment |
-| ZDRAW_KLEIN_ZPACK | `zflux2_run.zig` | deployment | invocation | Klein sidecar path |
+| ZDRAW_KLEIN_ZPACK | `zflux2_run.zig` | deployment | invocation | Klein sidecar path, for every Klein model; it must belong to the loaded checkpoint (the x_embedder and proj_out entries are checked against the shard's tensors and a foreign pack is refused) |
 | ZDRAW_KLEIN_TEXT_ZPACK | `zflux2_run.zig` | deployment | invocation | Klein text pack path (4-bit encoder) |
 | ZDRAW_LATENT_IN | `zdenoise.zig`, `zflux2_run.zig` | instrument | unset | shared-latent parity input (raw f32 x0 in the engine layout; single-seed renders, both models) |
 | ZDRAW_MATH | `metal_api.m` | default-config | math dispatcher | safe-versus-fast math |

@@ -161,7 +161,61 @@ pub fn singleSlot(layer: usize, s: Single) u32 {
     return 1000 + @as(u32, @intCast(layer)) * 2 + @intFromEnum(s);
 }
 
-pub fn swapLoaded(sidecar: []const u8, loaded: *zflux2.Loaded) !void {
+/// Checkpoint identity carried by a sidecar: the SHA-256 of the timestep
+/// embedder's first linear, verbatim from the shard, stored as a 1x32 u8 raw
+/// entry in this slot. kleinpack writes it for every pack; a LoRA merge never
+/// touches that tensor, so an adapted pack keeps its checkpoint's identity.
+pub const identity_slot: u32 = 999;
+
+pub fn identityOf(loaded: *const zflux2.Loaded) [32]u8 {
+    var digest: [32]u8 = undefined;
+    std.crypto.hash.sha2.Sha256.hash(loaded.globals.time_in_1.bytes, &digest, .{});
+    return digest;
+}
+
+/// The globals whose W16 image proves a sidecar belongs to a checkpoint when
+/// the sidecar predates the identity entry: a pack is the f16 cast of its
+/// source shard, so the cast of the shard's own tensor must equal the pack's
+/// bytes exactly. A LoRA merge may legitimately change these, which is why an
+/// adapted old pack (a `.lora.json` beside it) skips this check.
+const identity_globals = [_]Global{ .x_embed, .proj_out };
+
+/// Refuses a sidecar built from another checkpoint of the same architecture
+/// (the distilled pack offered to the base model, or the reverse), which would
+/// otherwise render a silently different model: every shape fits, so only the
+/// bytes can tell. Returns .unverified when nothing could be checked.
+pub const Verdict = enum { verified, unverified };
+
+pub fn verifySidecar(sidecar: []const u8, loaded: *const zflux2.Loaded, adapted: bool) !Verdict {
+    if (sidecar.len == 0) return .unverified;
+    if (try zpack_file.findIn(sidecar, family, identity_slot, raw_kind)) |found| {
+        const want = identityOf(loaded);
+        if (!std.mem.eql(u8, found.bytes, &want)) return error.SidecarMismatch;
+        return .verified;
+    }
+    if (adapted) return .unverified;
+    var checked = false;
+    inline for (identity_globals) |g| {
+        const view = @field(loaded.globals, @tagName(g));
+        if (try zpack_file.findInBits(sidecar, family, globalSlot(g), kind, 16)) |found| {
+            if (view.shape.len != 2) return error.InvalidShape;
+            const count = view.shape[0] * view.shape[1];
+            if (found.bytes.len != count * 2) return error.SidecarMismatch;
+            for (0..count) |i| {
+                const f = std.math.clamp(view.atF32Unchecked(i), -65504.0, 65504.0);
+                const h: f16 = @floatCast(f);
+                const want = std.mem.asBytes(&h);
+                const got = found.bytes[i * 2 ..][0..2];
+                if (!std.mem.eql(u8, got, want)) return error.SidecarMismatch;
+            }
+            checked = true;
+        }
+    }
+    return if (checked) .verified else .unverified;
+}
+
+pub fn swapLoaded(sidecar: []const u8, loaded: *zflux2.Loaded, adapted: bool) !Verdict {
+    const verdict = try verifySidecar(sidecar, loaded, adapted);
     // Only resident GEMM weights move to W16. CPU-side modulation/time/final
     // norm math stays on the original bf16/f32 views; swapping those changes
     // scalar-side rounding and drifts the image.
@@ -183,6 +237,7 @@ pub fn swapLoaded(sidecar: []const u8, loaded: *zflux2.Loaded) !void {
                 try swap(sidecar, singleSlot(i, entry.slot), @field(blk.*, entry.field));
         }
     }
+    return verdict;
 }
 
 pub fn swap(sidecar: []const u8, slot: u32, view: tensor.View) !tensor.View {
@@ -656,4 +711,79 @@ test "loadFromSidecar builds every view from a --globals sidecar" {
     try std.testing.expectEqual(tensor.DType.f16, loaded.doubles[0].to_q.dtype);
     try std.testing.expectEqual(@as(usize, 1), loaded.singles[0].norm_q.shape.len);
     try std.testing.expectEqual(@as(usize, cols), loaded.singles[0].norm_q.shape[0]);
+}
+
+test "verifySidecar: identity entry first, then the f16 image, adapted old packs unverified" {
+    const allocator = std.testing.allocator;
+    const rows = 4;
+    const cols = 8;
+    var src: [rows * cols]f32 = undefined;
+    for (&src, 0..) |*v, i| v.* = @as(f32, @floatFromInt(i)) * 0.125 - 1.0;
+    var image: [rows * cols * 2]u8 = undefined;
+    for (src, 0..) |v, i| {
+        const h: f16 = @floatCast(v);
+        @memcpy(image[i * 2 ..][0..2], std.mem.asBytes(&h));
+    }
+    var other = image;
+    other[3] ^= 0x01; // one bit of one weight from a sibling checkpoint
+    const shard = tensor.View{
+        .dtype = .f32,
+        .shape = &.{ rows, cols },
+        .bytes = std.mem.sliceAsBytes(&src),
+    };
+    const t_bytes = [_]u8{ 1, 2, 3, 4, 5, 6, 7, 8 };
+    var loaded: zflux2.Loaded = undefined;
+    loaded.globals.x_embed = shard;
+    loaded.globals.proj_out = shard;
+    loaded.globals.time_in_1 = .{ .dtype = .bf16, .shape = &.{ 2, 2 }, .bytes = &t_bytes };
+    const id = identityOf(&loaded);
+    var wrong_id = id;
+    wrong_id[0] ^= 0xFF;
+    const w16 = zpack_file.Entry{
+        .family = family,
+        .layer = globalSlot(.x_embed),
+        .kind = kind,
+        .rows = rows,
+        .cols = cols,
+        .group = 0,
+        .bytes = &image,
+    };
+    const id_entry = zpack_file.Entry{
+        .family = family,
+        .layer = identity_slot,
+        .kind = raw_kind,
+        .rows = 1,
+        .cols = 32,
+        .group = rawGroup(.u8),
+        .bytes = &id,
+    };
+    var wrong_id_entry = id_entry;
+    wrong_id_entry.bytes = &wrong_id;
+    var foreign_w16 = w16;
+    foreign_w16.bytes = &other;
+
+    var with_id: std.ArrayList(u8) = .empty;
+    defer with_id.deinit(allocator);
+    // the identity entry wins over a differing image
+    try zpack_file.append(allocator, &with_id, &.{ foreign_w16, id_entry });
+    try std.testing.expectEqual(Verdict.verified, try verifySidecar(with_id.items, &loaded, false));
+    try std.testing.expectEqual(Verdict.verified, try verifySidecar(with_id.items, &loaded, true));
+
+    var wrong: std.ArrayList(u8) = .empty;
+    defer wrong.deinit(allocator);
+    try zpack_file.append(allocator, &wrong, &.{ w16, wrong_id_entry });
+    try std.testing.expectError(error.SidecarMismatch, verifySidecar(wrong.items, &loaded, false));
+
+    var old_own: std.ArrayList(u8) = .empty;
+    defer old_own.deinit(allocator);
+    try zpack_file.append(allocator, &old_own, &.{w16});
+    try std.testing.expectEqual(Verdict.verified, try verifySidecar(old_own.items, &loaded, false));
+
+    var old_foreign: std.ArrayList(u8) = .empty;
+    defer old_foreign.deinit(allocator);
+    try zpack_file.append(allocator, &old_foreign, &.{foreign_w16});
+    const foreign_bytes = old_foreign.items;
+    try std.testing.expectError(error.SidecarMismatch, verifySidecar(foreign_bytes, &loaded, false));
+    try std.testing.expectEqual(Verdict.unverified, try verifySidecar(foreign_bytes, &loaded, true));
+    try std.testing.expectEqual(Verdict.unverified, try verifySidecar(&.{}, &loaded, false));
 }
