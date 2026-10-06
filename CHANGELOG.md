@@ -5,7 +5,9 @@
 - FLUX.2 Klein base 4B (`flux2-klein-base-4b`, Apache-2.0) in the CLI: fetch,
   default directory, 50-step sampling with classifier-free guidance 4
   (`--guidance` is model-aware; the distilled models accept only 1) and guided
-  instruction edits. Certified hash and quality gate recorded.
+  instruction edits. Certified hash and quality gate recorded. Known issue:
+  in two of about thirty renders the base model produced one specific wrong
+  image (see docs/validation.md); `zdraw bench` detects it.
 - Memory, byte-identical: the streamed VAE's norm scratch is sized only by its
   readers (the product tier had wired a 1 GiB buffer at 1024px that nothing
   read); Klein's VAE mid-attention borrows its scratch from the idle resident
