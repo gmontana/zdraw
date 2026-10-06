@@ -906,7 +906,10 @@ pub const Runtime = struct {
                 const t = sched.timesteps[step];
                 try self.guided(allocator, v, v_neg, seq.xf, neg_embeds, rope, t, request.guidance);
             }
-            if (dump_steps) |dir| try dumpStepF32(allocator, std.mem.span(dir), "v", step, v);
+            if (dump_steps) |dir| {
+                const t_step = sched.timesteps[step];
+                try dumpStepAll(allocator, std.mem.span(dir), step, v, rope, &self.loaded, t_step);
+            }
             const dt = try zflux2_schedule.delta(sched, step);
             for (x, v) |*xi, vi| xi.* += dt * vi;
             start.repaint(x, sched.sigmas[step + 1]);
@@ -1051,6 +1054,40 @@ pub const Runtime = struct {
         return results;
     }
 };
+
+/// Drift instrument: the velocity every step and, on the first dumped step,
+/// the CPU-side transformer inputs the resident and per-op routes share
+/// (rope table, time embedding, modulation vectors), so a wrong render can
+/// be split between "wrong inputs" and "wrong kernels" after the fact.
+fn dumpStepAll(
+    allocator: std.mem.Allocator,
+    dir: []const u8,
+    step: usize,
+    v: []const f32,
+    rope: zflux2_dit.Rope,
+    loaded: *const zflux2.Loaded,
+    t: f32,
+) !void {
+    try dumpStepF32(allocator, dir, "v", step, v);
+    if (step != 0) return;
+    try dumpStepF32(allocator, dir, "rope_cos", 0, rope.cos);
+    try dumpStepF32(allocator, dir, "rope_sin", 0, rope.sin);
+    const hidden = loaded.cfg.hidden;
+    const temb = try allocator.alloc(f32, hidden);
+    defer allocator.free(temb);
+    try zflux2_dit.timeEmbed(allocator, null, temb, loaded.globals, t);
+    try dumpStepF32(allocator, dir, "temb", 0, temb);
+    const mods_img = try zflux2_dit.modVectors(allocator, null, loaded.globals.mod_img, temb, 2);
+    defer allocator.free(mods_img);
+    try dumpStepF32(allocator, dir, "mods_img", 0, mods_img);
+    const mods_txt = try zflux2_dit.modVectors(allocator, null, loaded.globals.mod_txt, temb, 2);
+    defer allocator.free(mods_txt);
+    try dumpStepF32(allocator, dir, "mods_txt", 0, mods_txt);
+    const g = loaded.globals;
+    const mods_single = try zflux2_dit.modVectors(allocator, null, g.mod_single, temb, 1);
+    defer allocator.free(mods_single);
+    try dumpStepF32(allocator, dir, "mods_single", 0, mods_single);
+}
 
 fn dumpStepF32(
     allocator: std.mem.Allocator,

@@ -55,6 +55,7 @@ const env = @import("../runtime/env.zig");
 const head_dim = zflux2.head_dim;
 const txt_len = zflux2.txt_len;
 const Bufs = zpool.Bufs;
+const zdump = @import("zflux2_dump.zig");
 const PoolShape = zpool.PoolShape;
 const Dims = zflux2_dit.Dims;
 const ModOff = zflux2.ModOff;
@@ -382,6 +383,7 @@ pub const Ctx = struct {
     // boundaries inflate absolute time, so these are ATTRIBUTION numbers only,
     // never product speed. Off = single batch, behaviour/timing unchanged.
     trace: bool = false,
+    dump_forwards: u32 = 0, // ZDRAW_KLEIN_DUMP_BLOCKS: forwards instrumented
     tr_embed_ns: u64 = 0,
     tr_double_ns: u64 = 0,
     tr_single_ns: u64 = 0,
@@ -819,7 +821,7 @@ pub const Ctx = struct {
         }
     }
 
-    fn weight(self: *Ctx, v: tensor.View) !WeightBind {
+    pub fn weight(self: *Ctx, v: tensor.View) !WeightBind {
         // Packed sidecar view (.u8 marker from zflux2_pack.swap, W6 or W4):
         // no-copy bind of the codes+scales; never the f16 materializer.
         if (v.dtype == .u8 and v.source != null) {
@@ -1066,7 +1068,7 @@ pub const Ctx = struct {
         ) != 0) return error.MetalDispatchFailed;
     }
 
-    fn flush(self: *Ctx) !void {
+    pub fn flush(self: *Ctx) !void {
         if (self.batch) |bt| {
             if (metal_c.zdraw_metal_batch_end(bt) != 0) return error.MetalDispatchFailed;
             self.batch = metal_c.zdraw_metal_batch_begin(self.attn.queue) orelse return error.MetalDispatchFailed;
@@ -1250,12 +1252,17 @@ pub fn forward(
         const ap = AxpyParams{ .count = @intCast(latents.len), .dt = dt };
         try ctx.glue(ctx.pipelines.axpy, .{ lat_h, b.out128.handle, null, null, null }, null, &ap, @sizeOf(AxpyParams), 2, latents.len, 256, 0);
     }
-    try ctx.gemmRun(lat_h, try ctx.weight(loaded.globals.x_embed), b.img.handle, img_len, 128, hidden, 0);
+    const wx = try ctx.weight(loaded.globals.x_embed);
+    try zdump.inputs(ctx, lat_h, img_len, wx.handle, loaded);
+    try ctx.gemmRun(lat_h, wx, b.img.handle, img_len, 128, hidden, 0);
     try projectText(ctx, dev, b, embeds, loaded, hidden);
+    try zdump.embedders(ctx, b.img.handle, b.txt.handle, img_len, hidden);
     try ctx.traceMark(&t_prev, &ctx.tr_embed_ns);
 
-    for (loaded.doubles) |blk| {
+    for (loaded.doubles, 0..) |blk, di| {
         try doubleBlock(ctx, b, blk, mods_i_h, mods_t_h, img_len, d);
+        try zdump.activation(ctx, "double_img", di, b.img.handle, img_len * hidden);
+        try zdump.activation(ctx, "double_txt", di, b.txt.handle, txt_len * hidden);
     }
 
     // concat text-first (shared layout) -> cat (sequential rows: two copies)
@@ -1271,6 +1278,7 @@ pub fn forward(
     for (loaded.singles, 0..) |blk, si| {
         const inst = ctx.trace and si == ctx.trace_single_idx;
         try singleBlock(ctx, b, blk, mods_s_h, tokens, d, inst);
+        try zdump.activation(ctx, "single", si, b.cat.handle, tokens * hidden);
     }
     try ctx.traceMark(&t_prev, &ctx.tr_single_ns);
 
@@ -1298,6 +1306,8 @@ pub fn forward(
     if (opts.read_v) {
         metal_c.zdraw_metal_read_buffer(b.out128.handle, std.mem.sliceAsBytes(out).ptr, out.len * 4);
     }
+    try zdump.activation(ctx, "out", 0, b.out128.handle, img_len * 128);
+    if (std.c.getenv("ZDRAW_KLEIN_DUMP_BLOCKS") != null) ctx.dump_forwards += 1;
     if (ctx.trace) {
         ctx.tr_final_ns += metrics.now() -% t_prev;
         ctx.tr_steps += 1;

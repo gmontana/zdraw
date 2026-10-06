@@ -77,6 +77,7 @@ table with tracked root Zig files and tracked files under `src/` and `tools/`.
 | ZDRAW_KLEIN_CONCURRENCY | `gemmbench.zig` | candidate | unset | batched multi-seed experiment |
 | ZDRAW_KLEIN_CUSTOM_GEMM | `metal_api.m` | quarantine | unset | custom-GEMM research route |
 | ZDRAW_KLEIN_DUMP_STEPS | `zflux2_run.zig` | instrument | unset | per-step drift dumps |
+| ZDRAW_KLEIN_DUMP_BLOCKS | `zflux2_dump.zig` | instrument | unset | per-block activation hashes of the first two forwards (`blocks.txt` in the directory), with the latents, the mapped sidecar and the embedder weights as bound |
 | ZDRAW_KLEIN_GEMM64 | `zflux2_resident.zig` | default-config | resident default | GEMM64 route |
 | ZDRAW_KLEIN_MODS_GPU | `zflux2_resident.zig` | default-config | resident default (`1`) | the per-step adaLN modulation matvecs run on the GPU (kmodvec, CPU-exact arithmetic, byte-identical output); `0` = the CPU per-timestep cache (A/B arm) |
 | ZDRAW_KLEIN_GEMM_MPP | `zflux2_resident.zig` | default-config | resident default (`1`) | Klein f16-A GEMMs on the Metal 4 `matmul2d` tensor path (macOS 26+; byte-identical to the direct kernel); `0` = the direct simdgroup_matrix kernel (A/B arm; also the counted, WARNING-announced fallback below Metal 4) |

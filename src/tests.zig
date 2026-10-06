@@ -58,6 +58,7 @@ test {
     _ = @import("klein/klein_bitmap.zig");
     _ = @import("klein/zflux2.zig");
     _ = @import("klein/zflux2_dit.zig");
+    _ = @import("klein/zflux2_dump.zig");
     _ = @import("klein/zflux2_glue_shader.zig");
     _ = @import("klein/zflux2_latent.zig");
     _ = @import("klein/zflux2_modvec_shader.zig");
