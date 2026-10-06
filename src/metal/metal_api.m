@@ -3581,11 +3581,15 @@ int zdraw_metal_run_f16_to_f32(void* queue_, void* device_, void* in_, void* out
 
 
 // Steel output scratch (f16), slot-keyed so q/k/v can overlap (distinct buffers).
+static void scratch_fill_shared(id<MTLBuffer> buf, const char* group, int slot);
+
 static id<MTLBuffer> steel_scratch(id<MTLDevice> device, int slot, size_t bytes) {
     static id<MTLBuffer> bufs[5] = {nil, nil, nil, nil, nil};
     if (slot < 0 || slot > 4) return nil;
-    if (!bufs[slot] || bufs[slot].length < bytes)
+    if (!bufs[slot] || bufs[slot].length < bytes) {
         bufs[slot] = [device newBufferWithLength:bytes options:MTLResourceStorageModeShared];
+        if (bufs[slot]) scratch_fill_shared(bufs[slot], "steel", slot);
+    }
     return bufs[slot];
 }
 
@@ -3866,6 +3870,7 @@ static id<MTLBuffer> f16a_stage(id<MTLDevice> device, int slot, size_t bytes) {
     if (slot < 0 || slot > 2) return nil;
     if (!stages[slot] || stages[slot].length < bytes) {
         stages[slot] = [device newBufferWithLength:bytes options:MTLResourceStorageModeShared];
+        if (stages[slot]) scratch_fill_shared(stages[slot], "f16a", slot);
     }
     return stages[slot];
 }
@@ -6072,28 +6077,34 @@ static id<MTLComputePipelineState> headmajor_convert(id<MTLDevice> device) {
     return pipe;
 }
 
-// Private storage is the one kind of GPU memory the OS does not zero: a new
-// or grown scratch buffer holds whatever the previous allocation (or the
-// previous process) left there. Every (re)allocation is therefore filled
-// before use, so a read that precedes its write sees the same bytes on every
-// run. ZDRAW_SCRATCH_POISON=1 fills with 0xFF (f16 NaN) instead, and =N
-// (0..4) poisons one slot, to expose such a read rather than hide it.
-static int scratch_poison_slot(void) {
-    static int cached = -2;
-    if (cached == -2) {
-        const char* raw = getenv("ZDRAW_SCRATCH_POISON");
-        if (!raw || !*raw) cached = -1;
-        else if (strcmp(raw, "1") == 0) cached = 5;  /* every slot */
-        else cached = atoi(raw);
-    }
-    return cached;
+// Which scratch allocations to poison: "1" every group and slot; "attn",
+// "steel" or "f16a" one group; "steel:2" one slot of one group.
+static int scratch_poisoned(const char* group, int slot) {
+    static const char* raw = NULL;
+    static int looked = 0;
+    if (!looked) { raw = getenv("ZDRAW_SCRATCH_POISON"); looked = 1; }
+    if (!raw || !*raw) return 0;
+    if (strcmp(raw, "1") == 0) return 1;
+    size_t glen = strlen(group);
+    if (strncmp(raw, group, glen) != 0) return 0;
+    if (raw[glen] == '\0') return 1;
+    if (raw[glen] == ':') return atoi(raw + glen + 1) == slot;
+    return 0;
+}
+
+// Metal leaves a new buffer's contents undefined: in practice it holds what
+// the previous allocation, or the previous process, left there. Every
+// grow-only scratch is therefore filled at (re)allocation, so a read that
+// precedes its write sees the same bytes on every run. Shared buffers are
+// filled on the CPU, private ones with a blit.
+static void scratch_fill_shared(id<MTLBuffer> buf, const char* group, int slot) {
+    memset([buf contents], scratch_poisoned(group, slot) ? 0xFF : 0x00, buf.length);
 }
 
 static void scratch_fill(id<MTLDevice> device, id<MTLBuffer> buf, int slot) {
     static id<MTLCommandQueue> fill_queue = nil;
     if (!fill_queue) fill_queue = [device newCommandQueue];
-    const int poison = scratch_poison_slot();
-    const uint8_t value = (poison == 5 || poison == slot) ? 0xFF : 0x00;
+    const uint8_t value = scratch_poisoned("attn", slot) ? 0xFF : 0x00;
     id<MTLCommandBuffer> cb = [fill_queue commandBuffer];
     id<MTLBlitCommandEncoder> blit = [cb blitCommandEncoder];
     [blit fillBuffer:buf range:NSMakeRange(0, buf.length) value:value];
