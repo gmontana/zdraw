@@ -25,9 +25,10 @@ default sampler. Two regimes are reported and never pooled:
 Memory is the peak footprint of the engine's process from `/usr/bin/time -l`,
 the same instrument for every row. It does not count clean file-backed pages,
 which matters for zDraw alone: zDraw maps its weight file and never copies it,
-so the 6.9 GiB Klein pack and the 22.1 GiB Z-Image pack live in the page cache
-outside its footprint, while the other engines load weights into process
-memory and show them in theirs. The last column adds the pack size to zDraw's
+so its weight files live in the page cache outside its footprint (6.9 GiB for
+Klein; 22.1 GiB for Z-Image, whose 16.2 GiB pack is joined by the text encoder
+and VAE files), while the other engines load weights into process memory and
+show them in theirs. The last column adds those mapped files to zDraw's
 footprint for a like-for-like upper bound.
 
 Each table was run twice with the engine order reversed; both medians are
