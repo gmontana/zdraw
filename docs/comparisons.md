@@ -61,22 +61,24 @@ memory; the single run shown is from the first order.
 | zDraw | 24.61 / 24.18 | 23.80 / 23.10 | 4.72 | 26.8 |
 | mflux (bf16) | 27.22 / 26.77 | failed / 22.54 | 56.5 | 56.5 |
 | diffusers (MPS) | 28.01 / 28.06 | 22.03 / 21.92 | 35.1 | 35.1 |
-| iris.c | failed | failed | — | — |
+| iris.c (own pass) | 35.62 | 21.93 | 61.3 | 61.3 |
 
 mflux's first warm-session attempt failed while Hugging Face closed the
 connection mid-download of a 4 GB shard; with the weights cached, the reversed
-order ran. iris.c's loader reports "Failed to load VAE" for the Z-Image model
-its downloader fetched, in both regimes and in a direct run; the cause was not
-diagnosed here, and the row is kept rather than dropped.
+order ran, and a later mflux-only rerun gave 23.46 s warm and 26.83 s cold.
+iris.c failed to load the Z-Image VAE in both interleaved passes; an hour later
+the same binary, weights and command ran, so its row comes from a pass of its
+own after the others, and the cause of the earlier failure was not found. Its
+cold time includes loading 61 GiB into process memory.
 
 ## What the numbers say, and do not say
 
 On Klein, zDraw, mflux and iris.c are within about two seconds of each other
 per image; diffusers is the slowest cold and competitive warm. On Z-Image,
-zDraw's cold render is two to three seconds faster than the others and its
-warm render is one to two seconds slower than mflux and diffusers. Speed is
+zDraw's cold render is two to eleven seconds faster than the others and its
+warm render is one to two seconds slower than mflux, diffusers and iris.c. Speed is
 not the separation. Memory is: zDraw's process holds 3 GiB for Klein and
-under 5 GiB for Z-Image against 27 to 57 GiB, and even with the whole weight
+under 5 GiB for Z-Image against 27 to 61 GiB, and even with the whole weight
 file counted it stays below every other engine. Two design decisions produce
 that, both described in [How zDraw works](how-it-works.md): weights are
 mapped and never copied, and activations live in reused pools.

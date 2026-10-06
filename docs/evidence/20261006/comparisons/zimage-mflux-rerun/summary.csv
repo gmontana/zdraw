@@ -1,0 +1,3 @@
+engine,model,tier,protocol,status,version,median_seconds,peak_rss_bytes,peak_footprint_bytes,memory_scope,output_path,content_status,reason
+mflux,z-image-turbo,product,warm-session,ok,0.18.0,23.460324292071164,30886756352,61577077360,front-end process,runs/competitive-20261005/zimage-mflux-rerun/mflux-warm.png,pass,
+mflux,z-image-turbo,product,cold-process,ok,0.18.0,26.827711625024676,29443309568,60622708544,front-end process,runs/competitive-20261005/zimage-mflux-rerun/mflux-cold.png,pass,

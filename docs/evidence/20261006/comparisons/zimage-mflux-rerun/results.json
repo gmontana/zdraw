@@ -1,0 +1,133 @@
+{
+  "case": {
+    "height": 1024,
+    "model": "z-image-turbo",
+    "prompt": "a red fox in deep snow, golden hour light",
+    "runs": 3,
+    "seed": 7,
+    "settings": "matched",
+    "steps": 4,
+    "tier": "product",
+    "warmups": 1,
+    "width": 1024
+  },
+  "created_at": "2026-10-06T00:31:21.099352+00:00",
+  "host": {
+    "loadavg": [
+      1.00830078125,
+      1.11376953125,
+      1.0224609375
+    ],
+    "machine": "arm64",
+    "macos": "26.5.2",
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "python": "3.13.9"
+  },
+  "results": [
+    {
+      "command": [
+        "/opt/anaconda3/bin/python3.13",
+        "$HOME/repos/zdraw-public/tools/mflux_bench.py",
+        "--model",
+        "z-image-turbo",
+        "--prompt",
+        "a red fox in deep snow, golden hour light",
+        "--width",
+        "1024",
+        "--height",
+        "1024",
+        "--steps",
+        "4",
+        "--seed",
+        "7",
+        "--warmups",
+        "1",
+        "--runs",
+        "3",
+        "--output",
+        "runs/competitive-20261005/zimage-mflux-rerun/mflux-warm.png"
+      ],
+      "content_detail": "ok   runs/competitive-20261005/zimage-mflux-rerun/mflux-warm.png (checker=17.8 std=88.1)",
+      "content_status": "pass",
+      "effective_steps": 4,
+      "engine": "mflux",
+      "median_seconds": 23.460324292071164,
+      "memory_scope": "front-end process",
+      "model": "z-image-turbo",
+      "notes": [],
+      "output_path": "runs/competitive-20261005/zimage-mflux-rerun/mflux-warm.png",
+      "peak_footprint_bytes": 61577077360,
+      "peak_rss_bytes": 30886756352,
+      "protocol": "warm-session",
+      "reason": "",
+      "seconds": [
+        23.24701299984008,
+        23.59979770798236,
+        23.460324292071164
+      ],
+      "status": "ok",
+      "tier": "product",
+      "version": "0.18.0"
+    },
+    {
+      "command": [
+        "/opt/anaconda3/bin/python3.13",
+        "$HOME/repos/zdraw-public/tools/mflux_bench.py",
+        "--model",
+        "z-image-turbo",
+        "--prompt",
+        "a red fox in deep snow, golden hour light",
+        "--width",
+        "1024",
+        "--height",
+        "1024",
+        "--steps",
+        "4",
+        "--seed",
+        "7",
+        "--warmups",
+        "0",
+        "--runs",
+        "1",
+        "--output",
+        "runs/competitive-20261005/zimage-mflux-rerun/mflux-cold.png"
+      ],
+      "content_detail": "ok   runs/competitive-20261005/zimage-mflux-rerun/mflux-cold.png (checker=14.9 std=80.1)",
+      "content_status": "pass",
+      "effective_steps": 4,
+      "engine": "mflux",
+      "median_seconds": 26.827711625024676,
+      "memory_scope": "front-end process",
+      "model": "z-image-turbo",
+      "notes": [],
+      "output_path": "runs/competitive-20261005/zimage-mflux-rerun/mflux-cold.png",
+      "peak_footprint_bytes": 60622708544,
+      "peak_rss_bytes": 29443309568,
+      "protocol": "cold-process",
+      "reason": "",
+      "seconds": [
+        26.42559412540868,
+        26.827711625024676,
+        27.44378075003624
+      ],
+      "status": "ok",
+      "tier": "product",
+      "version": "0.18.0"
+    }
+  ],
+  "schema_version": 1,
+  "verdicts": [
+    {
+      "decision": "incomplete",
+      "missing_required": [],
+      "protocol": "cold-process",
+      "reason": "zdraw or a comparable competitor result is missing"
+    },
+    {
+      "decision": "incomplete",
+      "missing_required": [],
+      "protocol": "warm-session",
+      "reason": "zdraw or a comparable competitor result is missing"
+    }
+  ]
+}
