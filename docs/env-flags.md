@@ -38,6 +38,7 @@ table with tracked root Zig files and tracked files under `src/` and `tools/`.
 | ZDRAW_CONVH8 | `gemmbench.zig` | bench-selector | unset | h4-vs-h8 conv kernel race (W7) |
 | ZDRAW_GEMMBENCH_GATES | `gemmbench.zig` | deployment | none | run only the correctness gates (GEMM exact/half, W6, VAE norm split, conv windows, fragment map) for small-memory runners such as the 7 GiB GitHub macOS VM |
 | ZDRAW_REF_CACHE | `zflux2_run.zig` | default-config | on | reference-image encode memo for instruction edits (path, size, mtime, render size) |
+| ZDRAW_SCRATCH_POISON | `metal_api.m` | instrument | unset | fill the private attention scratch buffers with 0xFF (f16 NaN) at allocation instead of zero: `1` every slot, `0`..`4` one slot; exposes a read that precedes its write |
 | ZDRAW_VAE_BUDGET_H | `gemmbench.zig` | bench-selector | unset | product f16 decoder per-kernel budget at the 1024 ladder |
 | ZDRAW_WINO | `gemmbench.zig` | bench-selector | unset | Winograd F(4x4,3x3) vs direct h8 conv race |
 | ZDRAW_MPP | `gemmbench.zig` | bench-selector | unset | Metal 4 tensor-path GEMM vs the production GEMM at the Klein shapes |
