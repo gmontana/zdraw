@@ -89,7 +89,8 @@ zig build
 Median of three fresh processes with cached weights, including loading through
 PNG saving. Memory is the maximum measured across those runs, **not minimum Mac
 RAM**: mapped weight pages can occupy additional memory.
-[All tested resolutions, image samples and methods](docs/resolutions.md).
+[All tested resolutions, image samples and methods](docs/resolutions.md) ·
+[Comparisons with mflux, iris.c and diffusers on the same Mac](docs/comparisons.md).
 
 ## Editing
 

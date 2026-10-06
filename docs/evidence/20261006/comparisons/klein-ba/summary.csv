@@ -1,0 +1,9 @@
+engine,model,tier,protocol,status,version,median_seconds,peak_rss_bytes,peak_footprint_bytes,memory_scope,output_path,content_status,reason
+iris,flux2-klein-4b,product,warm-session,ok,repo-head:9873887d4aa0646c650adc5b86b986d2f653b7e0; sha256:c273d018b19f,12.8,39447658496,31882982032,front-end process,runs/competitive-20261005/klein-ba/iris-warm.png,pass,
+iris,flux2-klein-4b,product,cold-process,ok,repo-head:9873887d4aa0646c650adc5b86b986d2f653b7e0; sha256:c273d018b19f,14.584842625074089,39426473984,32238612944,front-end process,runs/competitive-20261005/klein-ba/iris-cold.png,pass,
+diffusers,flux2-klein-4b,product,warm-session,ok,0.39.0,15.759872207883745,959299584,30964189632,front-end process,runs/competitive-20261005/klein-ba/diffusers-warm.png,pass,
+diffusers,flux2-klein-4b,product,cold-process,ok,0.39.0,20.431424958165735,937771008,28707064304,front-end process,runs/competitive-20261005/klein-ba/diffusers-cold.png,pass,
+mflux,flux2-klein-4b,product,warm-session,ok,0.18.0,11.409549041185528,15456157696,39461811472,front-end process,runs/competitive-20261005/klein-ba/mflux-warm.png,pass,
+mflux,flux2-klein-4b,product,cold-process,ok,0.18.0,13.448676833417267,14712782848,39070561048,front-end process,runs/competitive-20261005/klein-ba/mflux-cold.png,pass,
+zdraw,flux2-klein-4b,product,warm-session,ok,zdraw 0.1.0; repo-head:e1d3120b12c810858d3b4df22f9e8bcc0909f715; sha256:f333fdbce3c5,12.0,2610855936,3278656648,front-end process,runs/competitive-20261005/klein-ba/zdraw-warm.png,pass,
+zdraw,flux2-klein-4b,product,cold-process,ok,zdraw 0.1.0; repo-head:e1d3120b12c810858d3b4df22f9e8bcc0909f715; sha256:f333fdbce3c5,12.888497583102435,2506342400,3241071752,front-end process,runs/competitive-20261005/klein-ba/zdraw-cold.png,pass,

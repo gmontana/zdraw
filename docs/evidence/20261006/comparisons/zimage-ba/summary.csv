@@ -1,0 +1,9 @@
+engine,model,tier,protocol,status,version,median_seconds,peak_rss_bytes,peak_footprint_bytes,memory_scope,output_path,content_status,reason
+iris,z-image-turbo,product,warm-session,failed,repo-head:9873887d4aa0646c650adc5b86b986d2f653b7e0; sha256:c273d018b19f,,17858560,8077840,front-end process,,not-checked,one or more processes failed; see runs/competitive-20261005/zimage-ba/iris-warm.log
+iris,z-image-turbo,product,cold-process,failed,repo-head:9873887d4aa0646c650adc5b86b986d2f653b7e0; sha256:c273d018b19f,0.01975066587328911,17858560,8094248,front-end process,,not-checked,one or more processes failed; see runs/competitive-20261005/zimage-ba/iris-cold.log
+diffusers,z-image-turbo,product,warm-session,ok,0.39.0,21.92184062488377,20719042560,39949570872,front-end process,runs/competitive-20261005/zimage-ba/diffusers-warm.png,pass,
+diffusers,z-image-turbo,product,cold-process,ok,0.39.0,28.059421416837722,20496482304,37740893104,front-end process,runs/competitive-20261005/zimage-ba/diffusers-cold.png,pass,
+mflux,z-image-turbo,product,warm-session,ok,0.18.0,22.537312457803637,30877679616,61583549232,front-end process,runs/competitive-20261005/zimage-ba/mflux-warm.png,pass,
+mflux,z-image-turbo,product,cold-process,ok,0.18.0,26.767615291755646,29445160960,60625788856,front-end process,runs/competitive-20261005/zimage-ba/mflux-cold.png,pass,
+zdraw,z-image-turbo,product,warm-session,ok,zdraw 0.1.0; repo-head:e1d3120b12c810858d3b4df22f9e8bcc0909f715; sha256:f333fdbce3c5,23.1,5091786752,5926252616,front-end process,runs/competitive-20261005/zimage-ba/zdraw-warm.png,pass,
+zdraw,z-image-turbo,product,cold-process,ok,zdraw 0.1.0; repo-head:e1d3120b12c810858d3b4df22f9e8bcc0909f715; sha256:f333fdbce3c5,24.177905874792486,4228399104,5062831624,front-end process,runs/competitive-20261005/zimage-ba/zdraw-cold.png,pass,

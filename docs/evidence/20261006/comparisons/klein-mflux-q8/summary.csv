@@ -1,0 +1,3 @@
+engine,model,tier,protocol,status,version,median_seconds,peak_rss_bytes,peak_footprint_bytes,memory_scope,output_path,content_status,reason
+mflux,flux2-klein-4b,product,warm-session,ok,0.18.0,14.473645584192127,10815143936,38579022384,front-end process,runs/competitive-20261005/klein-mflux-q8/mflux-warm.png,pass,
+mflux,flux2-klein-4b,product,cold-process,ok,0.18.0,16.32959466567263,10094346240,37921106000,front-end process,runs/competitive-20261005/klein-mflux-q8/mflux-cold.png,pass,

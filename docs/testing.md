@@ -105,6 +105,7 @@ those flags alongside the review rather than rewriting the run as a blanket pass
 
 ## Comparisons
 
+The published cross-engine session is in [comparisons.md](comparisons.md).
 For a fixed case on your Mac:
 
 ```sh

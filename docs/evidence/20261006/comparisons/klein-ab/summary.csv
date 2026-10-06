@@ -1,0 +1,9 @@
+engine,model,tier,protocol,status,version,median_seconds,peak_rss_bytes,peak_footprint_bytes,memory_scope,output_path,content_status,reason
+zdraw,flux2-klein-4b,product,warm-session,ok,zdraw 0.1.0; repo-head:e1d3120b12c810858d3b4df22f9e8bcc0909f715; sha256:f333fdbce3c5,11.0,2610774016,3278591112,front-end process,runs/competitive-20261005/klein-ab/zdraw-warm.png,pass,
+zdraw,flux2-klein-4b,product,cold-process,ok,zdraw 0.1.0; repo-head:e1d3120b12c810858d3b4df22f9e8bcc0909f715; sha256:f333fdbce3c5,11.809627250302583,2506375168,3241088112,front-end process,runs/competitive-20261005/klein-ab/zdraw-cold.png,pass,
+mflux,flux2-klein-4b,product,warm-session,ok,0.18.0,10.941771958954632,15601876992,39449687624,front-end process,runs/competitive-20261005/klein-ab/mflux-warm.png,pass,
+mflux,flux2-klein-4b,product,cold-process,ok,0.18.0,13.408452332951128,14713225216,39074476944,front-end process,runs/competitive-20261005/klein-ab/mflux-cold.png,pass,
+diffusers,flux2-klein-4b,product,warm-session,ok,0.39.0,14.87596745789051,937476096,31022418272,front-end process,runs/competitive-20261005/klein-ab/diffusers-warm.png,pass,
+diffusers,flux2-klein-4b,product,cold-process,ok,0.39.0,20.40251279110089,947978240,28711799160,front-end process,runs/competitive-20261005/klein-ab/diffusers-cold.png,pass,
+iris,flux2-klein-4b,product,warm-session,ok,repo-head:9873887d4aa0646c650adc5b86b986d2f653b7e0; sha256:c273d018b19f,12.31,39448477696,32371159552,front-end process,runs/competitive-20261005/klein-ab/iris-warm.png,pass,
+iris,flux2-klein-4b,product,cold-process,ok,repo-head:9873887d4aa0646c650adc5b86b986d2f653b7e0; sha256:c273d018b19f,13.964384500402957,39426146304,31858242000,front-end process,runs/competitive-20261005/klein-ab/iris-cold.png,pass,
