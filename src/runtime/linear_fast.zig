@@ -272,6 +272,10 @@ test "projection routes diverge when activations carry f16-overflowing outliers"
     // Qwen3 hidden states are known for large per-channel outliers. If either
     // route stages activations through f16 it saturates at 65504 and the two
     // routes part company; this pins that.
+    // The test pins the default route, so it clears the profile flags another
+    // test in the same process may have exported, and restores them after.
+    var saved = EnvSnapshot.take(&route_flags);
+    defer saved.restore();
     var ctx = mlinear.Context.init() catch return;
     defer ctx.deinit();
     const alloc = std.testing.allocator;
@@ -311,5 +315,41 @@ test "projection routes diverge when activations carry f16-overflowing outliers"
     // f16 and saturates at 65504, so it disagrees with the rows route here.
     // This asserts the defect so the test turns green the moment it is fixed
     // by staging in f32/bf16 or applying the DiT's scale-and-restore idiom.
+    if (worst_rel <= 0.01) {
+        std.debug.print("gemm route did not diverge: worst_rel={d} gemm_mode={s}\n", .{
+            worst_rel, @tagName(ctx.gemm_mode),
+        });
+        for (route_flags) |name| {
+            std.debug.print("  {s}={s}\n", .{ name, std.c.getenv(name) orelse "(unset)" });
+        }
+    }
     try std.testing.expect(worst_rel > 0.01);
 }
+
+const route_flags = [_][*:0]const u8{
+    "ZDRAW_GEMM", "ZDRAW_GEMM_BF16", "ZDRAW_DENSE", "ZDRAW_STACK_GEMM", "ZDRAW_STACK_W16", "ZDRAW_QK_HM",
+};
+
+extern "c" fn setenv(name: [*:0]const u8, value: [*:0]const u8, overwrite: c_int) c_int;
+extern "c" fn unsetenv(name: [*:0]const u8) c_int;
+
+/// Saved values of a few environment flags, cleared for a test and put back.
+const EnvSnapshot = struct {
+    names: []const [*:0]const u8,
+    values: [8]?[:0]const u8 = .{null} ** 8,
+
+    fn take(names: []const [*:0]const u8) EnvSnapshot {
+        var snap = EnvSnapshot{ .names = names };
+        for (names, 0..) |name, i| {
+            if (std.c.getenv(name)) |v| snap.values[i] = std.mem.span(v);
+            _ = unsetenv(name);
+        }
+        return snap;
+    }
+
+    fn restore(self: *EnvSnapshot) void {
+        for (self.names, 0..) |name, i| {
+            if (self.values[i]) |v| _ = setenv(name, v.ptr, 1) else _ = unsetenv(name);
+        }
+    }
+};

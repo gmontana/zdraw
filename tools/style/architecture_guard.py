@@ -64,6 +64,14 @@ RAW_BUFFER_RELEASE_OWNERS = {
     "mpacked.zig",
 }
 
+def rel(path: Path) -> str:
+    """Repository-relative path for messages; a bare name outside the repo (self-test temp dirs)."""
+    try:
+        return str(path.relative_to(REPO))
+    except ValueError:
+        return path.name
+
+
 def imports(path: Path) -> set[str]:
     """Import targets by file name: modules live in src/ subfolders and reach
     each other with relative paths, and the boundary table names files."""
@@ -114,14 +122,14 @@ def check_allocators(src: Path = SRC) -> list[str]:
             and path.name not in PAGE_ALLOCATOR_OWNERS
         ):
             failures.append(
-                f"{path.relative_to(REPO)} uses page_allocator without owning that policy"
+                f"{rel(path)} uses page_allocator without owning that policy"
             )
         if (
             "std.heap.smp_allocator" in text
             and path.name not in SMP_ALLOCATOR_OWNERS
         ):
             failures.append(
-                f"{path.relative_to(REPO)} uses smp_allocator outside an application boundary"
+                f"{rel(path)} uses smp_allocator outside an application boundary"
             )
     return failures
 
@@ -135,7 +143,7 @@ def check_metal_buffers(src: Path = SRC) -> list[str]:
             text,
         ):
             failures.append(
-                f"{path.relative_to(REPO)} constructs Buffer directly; use Buffer.borrow "
+                f"{rel(path)} constructs Buffer directly; use Buffer.borrow "
                 "or an owning constructor"
             )
         if (
@@ -143,7 +151,7 @@ def check_metal_buffers(src: Path = SRC) -> list[str]:
             and path.name not in RAW_BUFFER_RELEASE_OWNERS
         ):
             failures.append(
-                f"{path.relative_to(REPO)} releases a raw Metal buffer outside its owner"
+                f"{rel(path)} releases a raw Metal buffer outside its owner"
             )
     buffer_source = locate(src, "mbuffer.zig").read_text(encoding="utf-8")
     required = (
@@ -163,7 +171,7 @@ def check_metal_pipelines() -> list[str]:
         text = path.read_text(encoding="utf-8")
         if "mpipe.required(" in text and "zdraw_metal_release_pipeline(" not in text:
             failures.append(
-                f"{path.relative_to(REPO)} compiles Metal pipelines without an explicit "
+                f"{rel(path)} compiles Metal pipelines without an explicit "
                 "release owner"
             )
         lines = text.splitlines()
@@ -174,7 +182,7 @@ def check_metal_pipelines() -> list[str]:
             cleanup = "\n".join(lines[index + 1 : index + 5])
             if f"zdraw_metal_release_pipeline({name})" not in cleanup:
                 failures.append(
-                    f"{path.relative_to(REPO)}:{index + 1} does not immediately protect "
+                    f"{rel(path)}:{index + 1} does not immediately protect "
                     f"pipeline {name} with errdefer"
                 )
     return failures

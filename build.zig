@@ -341,8 +341,6 @@ fn addMpsOracle(compile: *std.Build.Step.Compile, b: *std.Build, enabled: bool) 
     compile.root_module.linkFramework("MetalPerformanceShaders", .{});
 }
 
-
-
 fn fatal(b: *std.Build, comptime fmt: []const u8, args: anytype) noreturn {
     std.debug.print("build.zig: " ++ fmt ++ "\n", args);
     b.invalid_user_input = true;

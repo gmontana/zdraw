@@ -145,19 +145,27 @@ test "quality parses canonical names and maps to its VAE tier" {
 }
 
 test "a defaulted profile defers to exported env overrides" {
+    defer clearApplied(.product);
     _ = setenv("ZDRAW_VAE_ATTN_HALF", "0", 1); // exported experiment override
     applyEnv(.product, false); // would otherwise set 1 via the product tier
     const got = std.c.getenv("ZDRAW_VAE_ATTN_HALF") orelse return error.Unexpected;
     try std.testing.expect(std.mem.eql(u8, std.mem.span(got), "0"));
-    _ = unsetenv("ZDRAW_VAE_ATTN_HALF");
 }
 
 test "an explicit profile wins over stale env values" {
+    defer clearApplied(.product);
     _ = setenv("ZDRAW_VAE_ATTN_HALF", "0", 1); // stale exported value
     applyEnv(.product, true); // typed user choice: the product contract wins
     const got = std.c.getenv("ZDRAW_VAE_ATTN_HALF") orelse return error.Unexpected;
     try std.testing.expect(std.mem.eql(u8, std.mem.span(got), "1"));
-    _ = unsetenv("ZDRAW_VAE_ATTN_HALF");
+}
+
+/// Tests share one process: every flag applyEnv exported is removed again so
+/// later tests (the GEMM route tests among them) see the default environment.
+fn clearApplied(quality: Quality) void {
+    for (common) |f| _ = unsetenv(f.name.ptr);
+    for (qualityFlags(quality)) |f| _ = unsetenv(f.name.ptr);
+    for (vae_mode.flagsFor(quality.vaeMode())) |f| _ = unsetenv(f.name.ptr);
 }
 
 extern fn unsetenv(name: [*:0]const u8) c_int;
